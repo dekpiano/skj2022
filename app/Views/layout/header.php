@@ -44,6 +44,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?=base_url()?>/assets/css/style.css?v=3" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/media.css" rel="stylesheet">
 
 
 </head>
