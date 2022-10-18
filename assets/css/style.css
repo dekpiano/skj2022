@@ -1,4 +1,5 @@
 /********** Template CSS **********/
+
 :root {
     --primary: #ff00dd;
     --secondary: #249ffd;
@@ -16,6 +17,7 @@
 
 
 /*** Spinner ***/
+
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -31,6 +33,7 @@
 
 
 /*** Button ***/
+
 .btn {
     font-weight: 500;
     transition: .5s;
@@ -67,6 +70,7 @@
 
 
 /*** Navbar ***/
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -87,6 +91,7 @@
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
     color: var(--secondary);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
 }
 
 .navbar.sticky-top {
@@ -99,7 +104,6 @@
         margin-right: 0;
         padding: 8px 0;
     }
-
     .navbar .navbar-nav {
         margin-top: 8px;
         border-top: 1px solid rgba(256, 256, 256, .1)
@@ -116,7 +120,6 @@
         transition: .5s;
         opacity: 0;
     }
-
     .navbar .nav-item:hover .dropdown-menu {
         transform: rotateX(0deg);
         visibility: visible;
@@ -127,6 +130,7 @@
 
 
 /*** Header ***/
+
 #header-carousel .carousel-caption {
     top: 0;
     left: 0;
@@ -156,7 +160,6 @@
         position: relative;
         min-height: 500px;
     }
-    
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
@@ -196,6 +199,7 @@
 
 
 /*** Section Title ***/
+
 .section-title {
     position: relative;
     display: inline-block;
@@ -235,8 +239,8 @@
 }
 
 
-
 /*** Img Border ***/
+
 .img-border {
     position: relative;
     height: 100%;
@@ -266,6 +270,7 @@
 
 
 /*** Facts ***/
+
 .fact-item {
     transition: .5s;
 }
@@ -278,6 +283,7 @@
 
 
 /*** Service ***/
+
 .service-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
     border: 1px solid transparent;
@@ -292,6 +298,7 @@
 
 
 /*** Feature ***/
+
 .progress {
     height: 5px;
 }
@@ -303,6 +310,7 @@
 
 
 /*** Project ***/
+
 .project-item a {
     position: absolute;
     width: 100%;
@@ -352,6 +360,7 @@
 
 
 /*** Team ***/
+
 .team-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
 }
@@ -450,6 +459,7 @@
 
 
 /*** Footer ***/
+
 .footer .btn.btn-link {
     display: block;
     margin-bottom: 5px;
@@ -490,7 +500,9 @@
     color: var(--primary);
 }
 
+
 /*** Blog ***/
+
 .blog-item {
     position: relative;
     border-radius: 6px;

@@ -25,7 +25,7 @@
 <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="row align-items-center top-bar">
         <div class="col-lg-6 col-md-12 text-center text-lg-start">
-            <a href="" class="navbar-brand m-0 p-0">
+            <a href="<?=base_url('/');?>" class="navbar-brand m-0 p-0">
                 <h3 class="fw-bold text-primary m-0" style="font-family:'Pattaya'">
 
                     <div class="row justify-content-lg-start  con-header">
@@ -93,21 +93,50 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
     style="font-size: 20px;border-top: 5px solid rgb(36, 159, 253);">
-    <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
+    <a href="<?=base_url('/');?>" class="navbar-brand ms-3 d-lg-none">MENU</a>
     <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav me-auto p-3 p-lg-0">
-            <a href="about.html" class="nav-item nav-link">เกี่ยวกับ สกจ</a>
-            <a href="service.html" class="nav-item nav-link">บุคลากร</a>
-            <a href="<?=base_url('News')?>" class="nav-item nav-link">ประชาสัมพันธ์</a>
-            <a href="project.html" class="nav-item nav-link">กลุ่มบริหาร</a>
-            <a href="project.html" class="nav-item nav-link">ติดต่อ</a>
+            <a href="about.html" class="nav-item nav-link"><i class="fa-solid fa-house"></i> เกี่ยวกับ สกจ</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SKJ บริการ</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
+                    บุคลากร</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="feature.html" class="dropdown-item">Features</a>
+                    <a href="<?=base_url('Personnal/สายบริหาร/ผู้บริหารสถานศึกษา')?>" class="dropdown-item"><i
+                            class="fa-sharp fa-solid fa-caret-right"></i> ผู้บริหารสถานศึกษา</a>
+                    <?php foreach ($Lear as $key => $v_Lear) : ?>
+                    <a href="<?=base_url('Personnal/สายการสอน/'.str_replace(" ", "-", $v_Lear->lear_namethai))?>"
+                        class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                        <?=$v_Lear->lear_namethai;?></a>
+                    <?php endforeach; ?>
+                    <?php foreach ($PosiOther as $key => $v_PosiOther) : ?>
+                    <a href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", $v_PosiOther->posi_name))?>"
+                        class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                        <?=$v_PosiOther->posi_name;?></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <a href="<?=base_url('News')?>" class="nav-item nav-link"><i class="fa-solid fa-newspaper"></i>
+                ประชาสัมพันธ์</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        class="fa-solid fa-layer-group"></i> กลุ่มบริหาร</a>
+                <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                    <a href="https://academic.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
+                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> กิจการนักเรียน</a>
+                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
+                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> งบประมาณและแผน</a>
+                </div>
+            </div>
+
+            <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i> ติดต่อ</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
+                    SKJ บริการ</a>
+                <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                    <a href="feature.html" class="dropdown-item">Featuers</a>
                     <a href="team.html" class="dropdown-item">Our Team</a>
                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     <a href="404.html" class="dropdown-item">404 Page</a>

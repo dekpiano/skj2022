@@ -39,7 +39,11 @@ $routes->get('/', 'ConHome::index');
 $routes->get('News', 'ConNews::NewsMain');
 $routes->get('News/Detail/(:any)', 'ConNews::NewsDetail/$1');
 
+$routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
+
+$routes->get('Contact', 'ConContact::index');
 /*
+
  * --------------------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------
