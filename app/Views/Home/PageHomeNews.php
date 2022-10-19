@@ -7,7 +7,7 @@
         </div>
         <div class="row g-4">
 
-        <?php foreach ($news as $key => $v_news) : ?>
+            <?php foreach ($news as $key => $v_news) : ?>
             <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="blog-item">
@@ -16,16 +16,20 @@
                         <div class="breadcrumb">
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-user me-2"></i>Admin</a>
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
-                            <?php print_r($dateThai->thai_date_fullmonth(strtotime($v_news->news_date)));?>
-                        </a>
+                                <?php print_r($dateThai->thai_date_fullmonth(strtotime($v_news->news_date)));?>
+                            </a>
                         </div>
-                        <a class="h4 mb-0" href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
+                        <a class="h4 mb-0"
+                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
-           
-         
+            <div class="text-center">
+                <a class="btn btn-primary rounded-pill py-2 px-5 w-auto" href="<?=base_url('News')?>">ดูทั้งหมด</a>
+            </div>
+
+
         </div>
     </div>
 </div>

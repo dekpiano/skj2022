@@ -22,10 +22,11 @@ class ConHome extends BaseController
         $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $NewsModel = new NewsModel();
+        $data['uri'] = service('uri'); 
         $data['dateThai'] = new Datethai();
         $data['news'] = $NewsModel->limit(8)->orderBy('news_id', 'DESC')->get()->getResult();
         $data['Lear'] = $this->LearModel->get()->getResult();
-
+        $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
         $BannerModel = new BannerModel();
         $data['banner'] = $BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb')
                                         ->where('banner_status','on')
