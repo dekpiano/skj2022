@@ -40,10 +40,10 @@
     <link href="<?=base_url()?>/assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=2" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=3" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=4" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=6" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/media.css" rel="stylesheet">
 
 
