@@ -6,7 +6,6 @@
 <?= $this->include('Home/PageHomeDirector') ?>
 <!-- PageHomeDirector End -->
 
-
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeCounter')?>
 <!-- Facts End -->

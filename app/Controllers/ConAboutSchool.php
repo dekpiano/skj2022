@@ -10,7 +10,7 @@ use App\Models\PersonnalModel;
 use App\Models\AboutModel;
 
 
-class ConHome extends BaseController
+class ConAboutSchool extends BaseController
 {
     public function __construct(){
         $this->PosiModel = new PositionModel();
@@ -31,25 +31,19 @@ class ConHome extends BaseController
         return $data;
     }
 
-    public function index()
+    public function AboutDetail($Key)
     {        
         $data = $this->DataMain();
-     
+
+        $data['AboutDetail'] = $this->AboutModel->where('about_menu',$Key)->get()->getRow();
+        //echo '<pre>'; print_r($data['AboutDetail']);exit();
         $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['news'] = $this->NewsModel->limit(8)->orderBy('news_id', 'DESC')->get()->getResult();
-       
-        $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
-      
-        $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb')
-                                        ->where('banner_status','on')
-                                        ->orderBy('banner_id', 'DESC')
-                                        ->findAll();
-                       
+                               
       
         return  view('layout/header',$data)
                 .view('layout/navbar')
-                .view('Home/PageHomeMain')
+                .view('PageAboutSchool/PageAboutSchoolDetail')
                 .view('layout/footer');
     }
 

@@ -99,7 +99,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav me-auto p-3 p-lg-0">
-            <a href="about.html" class="nav-item nav-link"><i class="fa-solid fa-house"></i> เกี่ยวกับ สกจ</a>
+
+        <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-house"></i> เกี่ยวกับ สกจ        
+            </a>
+                <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                    <?php foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
+                    <a href="<?=base_url('About/'.$v_AboutSchool->about_menu)?>" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> <?=$v_AboutSchool->about_menu?></a>    
+                    <?php endforeach; ?>               
+                </div>
+            </div>
+          
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
@@ -138,13 +149,11 @@
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                     <a href="feature.html" class="dropdown-item">Featuers</a>
                     <a href="team.html" class="dropdown-item">Our Team</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    <a href="404.html" class="dropdown-item">404 Page</a>
+                   
                 </div>
             </div>
         </div>
-        <a href="https://academic.skj.ac.th/LoginStudent"
-            class="btn btn-sm btn-primary2 rounded-pill py-2 px-4 d-none d-lg-block">ดูผลการเรียน</a>
+        <a href="https://academic.skj.ac.th/LoginStudent" class="btn btn-sm btn-outline-light rounded-pill border-2 py-2 px-4 d-none d-lg-block">ดูผลการเรียน</a>      
     </div>
 </nav>
 <!-- Navbar End -->

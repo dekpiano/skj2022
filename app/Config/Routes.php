@@ -36,6 +36,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'ConHome::index');
+$routes->get('About/(:any)', 'ConAboutSchool::AboutDetail/$1');
+
 $routes->match(['get', 'post'],'News', 'ConNews::NewsMain');
 $routes->get('News/Detail/(:any)', 'ConNews::NewsDetail/$1');
 
