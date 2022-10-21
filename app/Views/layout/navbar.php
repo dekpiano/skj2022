@@ -100,17 +100,18 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav me-auto p-3 p-lg-0">
 
-        <div class="nav-item dropdown">
+            <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="fa-solid fa-house"></i> เกี่ยวกับ สกจ        
-            </a>
+                    <i class="fa-solid fa-house"></i> เกี่ยวกับ สกจ
+                </a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                     <?php foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
-                    <a href="<?=base_url('About/'.$v_AboutSchool->about_menu)?>" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> <?=$v_AboutSchool->about_menu?></a>    
-                    <?php endforeach; ?>               
+                    <a href="<?=base_url('About/'.$v_AboutSchool->about_menu)?>" class="dropdown-item"><i
+                            class="fa-sharp fa-solid fa-caret-right"></i> <?=$v_AboutSchool->about_menu?></a>
+                    <?php endforeach; ?>
                 </div>
             </div>
-          
+
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
@@ -135,25 +136,55 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                         class="fa-solid fa-layer-group"></i> กลุ่มบริหาร</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="https://academic.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> กิจการนักเรียน</a>
+                    <a href="https://academic.skj.ac.th/" class="dropdown-item"><i
+                            class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
+                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                        กิจการนักเรียน</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> งบประมาณและแผน</a>
+                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                        งบประมาณและแผน</a>
                 </div>
             </div>
-
-            <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i> ติดต่อ</a>
+            <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                ติดต่อ</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
                     SKJ บริการ</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="feature.html" class="dropdown-item">Featuers</a>
-                    <a href="team.html" class="dropdown-item">Our Team</a>
-                   
+                    <a href="https://admission.skj.ac.th/" class="dropdown-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                        รับสมัครนักเรียน
+                    </a>
+                    <a href="https://academic.skj.ac.th/LearningOnline" class="dropdown-item">
+                    <i class="fa-solid fa-globe"></i> ห้องเรียนออนไลน์
+                    </a>
+                    <a href="https://skj.ac.th/FecebookGroup" class="dropdown-item">
+                    <i class="fa-brands fa-facebook"></i>
+                        Fecebook กลุ่ม
+                    </a>
+                    <a href="https://skj.ac.th/Email" class="dropdown-item">
+                    <i class="fa-solid fa-envelope"></i> Email
+                        โรงเรียน
+                    </a>
+                    <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
+                    <i class="fa-solid fa-passport"></i>
+                        สวนกุหลาบศึกษา
+                    </a>
+
                 </div>
             </div>
         </div>
-        <a href="https://academic.skj.ac.th/LoginStudent" class="btn btn-sm btn-outline-light rounded-pill border-2 py-2 px-4 d-none d-lg-block">ดูผลการเรียน</a>      
+
+        <div class="nav-item dropdown ">
+            <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light border-2 py-2 px-4 d-none d-lg-block"
+                data-bs-toggle="dropdown" style="font-size: 16px;"><i class="fa-solid fa-right-to-bracket"></i>
+                เข้าสู่ระบบ</a>
+            <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                <a href="https://academic.skj.ac.th/LoginStudent" class="dropdown-item">นักเรียน</a>
+                <a href="https://teacher.skj.ac.th/" class="dropdown-item">ครูผู้สอน</a>
+            </div>
+        </div>
+
     </div>
 </nav>
 <!-- Navbar End -->
