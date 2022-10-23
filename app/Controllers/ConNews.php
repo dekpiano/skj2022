@@ -9,6 +9,7 @@ use App\Libraries\Datethai;
 use App\Models\PositionModel;
 use App\Models\LearningModel;
 use App\Models\PersonnalModel;
+use App\Models\AboutModel;
 
 class ConNews extends BaseController
 {
@@ -17,6 +18,7 @@ class ConNews extends BaseController
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
+        $this->AboutModel = new AboutModel();
        
     }
 
@@ -26,6 +28,7 @@ class ConNews extends BaseController
         $data['Lear'] = $this->LearModel->get()->getResult();
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_010'))->get()->getResult();
         $data['uri'] = service('uri'); 
+        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         helper(['form', 'url']);
         return $data;
     }
