@@ -18,7 +18,7 @@
     <meta property="og:title" content="<?= $title ?> | SKJ" />
     <meta property="og:description" content="<?= $description ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="" />
+    <meta property="og:image" content="<?=base_url('uploads/banner/Banner-skj-main.png')?>" />
 
 
     <!-- Favicon -->
@@ -40,19 +40,20 @@
     <link href="<?=base_url()?>/assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=3" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=4" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=5" rel="stylesheet">
-    <link href="<?=base_url()?>/assets/css/media.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=6" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/media.css?v=3" rel="stylesheet">
 
 
 </head>
 
 <body>
     <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
-    </div> -->
+        <img src="<?=base_url('uploads/logoSchool/LogoSKJ_4.png')?>" style="width: 5rem; height: 5rem;" alt="" class="position-absolute top-50 start-50 translate-middle">
+        <!-- <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i> -->
+    </div>
     <!-- Spinner End -->

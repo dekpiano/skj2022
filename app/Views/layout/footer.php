@@ -10,9 +10,9 @@
                 <p class="mb-2 text-white"><i class="fa fa-envelope me-3"></i>skjns160@skj.ac.th</p>
                 <div class="d-flex pt-2">
 
-                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i
+                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href="https://www.facebook.com/SKJNS160"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i
+                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i
                             class="fab fa-youtube"></i></a>
 
                 </div>

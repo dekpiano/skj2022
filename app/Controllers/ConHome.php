@@ -53,4 +53,16 @@ class ConHome extends BaseController
                 .view('layout/footer');
     }
 
+
+    function PageGroup(){
+        $data = $this->DataMain();
+        $data['title'] = "กลุ่มภายในโรงเรียน";
+        $data['description'] = "กลุ่มภายในโรงเรียน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+
+        return  view('layout/header',$data)
+                .view('layout/navbar')
+                .view('PageGroup/PageGroupMain')
+                .view('layout/footer');
+    }
+
 }

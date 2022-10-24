@@ -12,8 +12,8 @@
         <div class="col-lg-6 px-5 text-end">
             <small>Follow us:</small>
             <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square text-primary border-end rounded-0" href=""><i class="fab fa-youtube"></i></a>
+                <a class="btn-square text-primary border-end rounded-0" href="https://www.facebook.com/SKJNS160"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn-square text-primary border-end rounded-0" href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
@@ -22,25 +22,27 @@
 
 
 <!-- Brand & Contact Start -->
-<div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid py-4 px-3 wow fadeIn" data-wow-delay="0.1s">
     <div class="row align-items-center top-bar">
         <div class="col-lg-6 col-md-12 text-center text-lg-start">
             <a href="<?=base_url('/');?>" class="navbar-brand m-0 p-0">
                 <h3 class="fw-bold text-primary m-0" style="font-family:'Pattaya'">
 
-                    <div class="row justify-content-lg-start  con-header">
-                        <div class="col-2 col-md-2">
-                            <img src="<?=base_url()?>/assets/img/logo/Logo-nav.png" alt="Logo">
+                    <div class="row  con-header">
+                        <div class="d-flex align-items-center justify-content-lg-start justify-content-md-center">
+                            <div class="mx-3">
+                                <img src="<?=base_url()?>/assets/img/logo/Logo-nav.png" alt="Logo">
+                            </div>
+                            <div class="text-header">
+                                <div class="text-thai">
+                                    สวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+                                </div>
+                                <div class="text-eng">
+                                    Suankularb Wittayalai (Jiraprawat) Nakornsawan
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-6 text-header">
-                            <div class="text-thai">
-                                สวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
-                            </div>
-                            <div class="text-eng">
-                                Suankularb Wittayalai (Jiraprawat) Nakornsawan
-                            </div>
 
-                        </div>
                     </div>
 
 
@@ -92,7 +94,7 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
-    style="font-size: 20px;border-top: 5px solid #38B8F5;">
+    style="font-size: 14px;border-top: 5px solid #38B8F5;">
     <a href="<?=base_url('/');?>" class="navbar-brand ms-3 d-lg-none">MENU</a>
     <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -152,31 +154,31 @@
                     SKJ บริการ</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                     <a href="https://admission.skj.ac.th/" class="dropdown-item">
-                    <i class="fa-solid fa-user-plus"></i>
+                        <i class="fa-solid fa-user-plus"></i>
                         รับสมัครนักเรียน
                     </a>
                     <a href="https://academic.skj.ac.th/LearningOnline" class="dropdown-item">
-                    <i class="fa-solid fa-globe"></i> ห้องเรียนออนไลน์
+                        <i class="fa-solid fa-globe"></i> ห้องเรียนออนไลน์
                     </a>
-                    <a href="https://skj.ac.th/FecebookGroup" class="dropdown-item">
-                    <i class="fa-brands fa-facebook"></i>
+                    <a href="<?=base_url('PageGroup')?>" class="dropdown-item">
+                        <i class="fa-brands fa-facebook"></i>
                         Fecebook กลุ่ม
                     </a>
+
                     <a href="https://skj.ac.th/Email" class="dropdown-item">
-                    <i class="fa-solid fa-envelope"></i> Email
+                        <i class="fa-solid fa-envelope"></i> Email
                         โรงเรียน
                     </a>
                     <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
-                    <i class="fa-solid fa-passport"></i>
+                        <i class="fa-solid fa-passport"></i>
                         สวนกุหลาบศึกษา
                     </a>
-
                 </div>
             </div>
         </div>
 
         <div class="nav-item dropdown ">
-            <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light border-2 py-2 px-4 d-none d-lg-block"
+            <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light border-2 py-2 px-4"
                 data-bs-toggle="dropdown" style="font-size: 16px;"><i class="fa-solid fa-right-to-bracket"></i>
                 เข้าสู่ระบบ</a>
             <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">

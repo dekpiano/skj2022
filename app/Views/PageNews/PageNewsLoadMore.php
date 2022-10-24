@@ -1,6 +1,6 @@
 <?php if($NewsAll):?>
 <?php foreach ($NewsAll as $key => $v_news) : ?>
-<div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s"
+<div class="col-lg-3 col-md-4 col-6 wow fadeInUp" data-wow-delay="0.1s"
     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
     <div class="blog-item">
         <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">

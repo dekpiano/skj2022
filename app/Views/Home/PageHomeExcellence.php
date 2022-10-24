@@ -33,12 +33,12 @@
         </div>
 
         <div class="row g-5 mt-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-6 wow fadeInUp order-lg-0 order-1" data-wow-delay="0.5s">
                 <div class="img-border">
                     <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/sport.jpg" alt="">
                 </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6 wow fadeInUp order-lg-1 order-0" data-wow-delay="0.1s">
                 <div class="h-100">
                     <h6 class="section-title bg-white text-start text-primary pe-3">หลักสูตร</h6>
                     <h1 class="display-6 mb-4">ความเป็นเลิศทาง
@@ -68,18 +68,18 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/art.jpg" alt="">
+                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/art.JPG" alt="">
                 </div>
             </div>
         </div>
 
         <div class="row g-5 mt-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-6 wow fadeInUp order-lg-0 order-1" data-wow-delay="0.5s">
                 <div class="img-border">
                     <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/cree.jpg" alt="">
                 </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6 wow fadeInUp order-lg-1 order-0" data-wow-delay="0.1s">
                 <div class="h-100">
                     <h6 class="section-title bg-white text-start text-primary pe-3">หลักสูตร</h6>
                     <h1 class="display-6 mb-4">ความเป็นเลิศทาง
