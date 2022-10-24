@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
- $routes->setAutoRoute(true);
+ $routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -45,6 +45,11 @@ $routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
 
 $routes->get('Contact', 'ConContact::index');
 $routes->get('PageGroup', 'ConHome::PageGroup');
+
+// Login admin
+$routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
+$routes->get('Admin/Dashboard', 'admin\ConAdminDashboard::index');
+
 /*
 
  * --------------------------------------------------------------------

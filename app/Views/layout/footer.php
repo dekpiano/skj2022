@@ -10,9 +10,10 @@
                 <p class="mb-2 text-white"><i class="fa fa-envelope me-3"></i>skjns160@skj.ac.th</p>
                 <div class="d-flex pt-2">
 
-                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href="https://www.facebook.com/SKJNS160"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1" href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i
+                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1"
+                        href="https://www.facebook.com/SKJNS160"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white btn btn-square btn-outline-secondary rounded-circle me-1"
+                        href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i
                             class="fab fa-youtube"></i></a>
 
                 </div>
@@ -70,7 +71,8 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Author By <a href="https://www.facebook.com/dekpiano">Dekpiano</a>
+                    Author By <a href="https://www.facebook.com/dekpiano">Dekpiano</a> : <a href="#"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login Admim</a>
                 </div>
             </div>
         </div>
@@ -102,3 +104,31 @@
 </body>
 
 </html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Login สำหรับ Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?=base_url('Login/LoginAdmin')?>" method="post">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" id="Username" name="Username" placeholder="name@example.com">
+                        <label for="Username">Username</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+                        <label for="Password">Password</label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
