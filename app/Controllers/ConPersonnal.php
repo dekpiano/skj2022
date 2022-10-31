@@ -58,11 +58,13 @@ class ConPersonnal extends BaseController
             skjacth_personnel.tb_personnel.pers_twitter,
             skjacth_personnel.tb_personnel.pers_img,
             skjacth_personnel.tb_personnel.pers_academic,
-            skjacth_personnel.tb_personnel.pers_numberGroup
+            skjacth_personnel.tb_personnel.pers_numberGroup,
+            skjacth_personnel.tb_personnel.pers_groupleade
         ')
         ->join('skjacth_skj.tb_position','skjacth_skj.tb_position.posi_id = skjacth_personnel.tb_personnel.pers_position')       
         ->where($CheckPosi)
-        ->orderBy('skjacth_personnel.tb_personnel.pers_numberGroup')
+        ->Where('pers_status','กำลังใช้งาน')
+        ->orderBy('skjacth_personnel.tb_personnel.pers_groupleade DESC,skjacth_personnel.tb_personnel.pers_numberGroup ASC')
         ->get()->getResult();
         
         //echo '<pre>';print_r($data['PosiOther']);exit();

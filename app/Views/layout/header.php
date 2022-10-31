@@ -43,7 +43,7 @@
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=4" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=6" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=7" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/media.css?v=3" rel="stylesheet">
 
 
