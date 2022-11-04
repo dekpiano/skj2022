@@ -108,7 +108,7 @@
                 </a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                     <?php foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
-                    <a href="<?=base_url('About/'.$v_AboutSchool->about_menu)?>" class="dropdown-item"><i
+                    <a href="<?=base_url('About/'. urlencode($v_AboutSchool->about_menu))?>" class="dropdown-item"><i
                             class="fa-sharp fa-solid fa-caret-right"></i> <?=$v_AboutSchool->about_menu?></a>
                     <?php endforeach; ?>
                 </div>
@@ -118,15 +118,15 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="<?=base_url('Personnal/สายบริหาร/ผู้บริหารสถานศึกษา')?>" class="dropdown-item"><i
+                    <a href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>" class="dropdown-item"><i
                             class="fa-sharp fa-solid fa-caret-right"></i> ผู้บริหารสถานศึกษา</a>
                     <?php foreach ($Lear as $key => $v_Lear) : ?>
-                    <a href="<?=base_url('Personnal/สายการสอน/'.str_replace(" ", "-", $v_Lear->lear_namethai))?>"
+                    <a href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"
                         class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         <?=$v_Lear->lear_namethai;?></a>
                     <?php endforeach; ?>
                     <?php foreach ($PosiOther as $key => $v_PosiOther) : ?>
-                    <a href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", $v_PosiOther->posi_name))?>"
+                    <a href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", urlencode($v_PosiOther->posi_name)))?>"
                         class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         <?=$v_PosiOther->posi_name;?></a>
                     <?php endforeach; ?>
