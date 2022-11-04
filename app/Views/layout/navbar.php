@@ -173,6 +173,10 @@
                         <i class="fa-solid fa-passport"></i>
                         สวนกุหลาบศึกษา
                     </a>
+                    <a href="<?=base_url('guidance')?>" class="dropdown-item">
+                        <i class="fa-solid fa-passport"></i>
+                        ทุนการศึกษา
+                    </a> 
                 </div>
             </div>
         </div>

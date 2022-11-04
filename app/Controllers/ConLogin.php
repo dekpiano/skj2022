@@ -39,7 +39,8 @@ class ConLogin extends BaseController
             return redirect()->to('/Admin/Dashboard');
         }else{
             $session->setFlashdata('msg', 'Password is incorrect.');
-            return redirect()->to('/');
+            //return redirect()->to('/');
+            echo password_hash("48154886", PASSWORD_DEFAULT);
         }
 
         // return  view('layout/header',$data)

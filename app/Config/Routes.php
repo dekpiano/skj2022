@@ -45,11 +45,14 @@ $routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
 
 $routes->get('Contact', 'ConContact::index');
 $routes->get('PageGroup', 'ConHome::PageGroup');
+$routes->get('guidance', 'ConGuidance::index');
 
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
-$routes->get('Admin/Dashboard', 'admin\ConAdminDashboard::index');
+$routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
 
+//News
+$routes->get('Admin/News','ConAdminNews::NewsMain');
 /*
 
  * --------------------------------------------------------------------

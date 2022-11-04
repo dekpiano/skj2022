@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Models\NewsModel;
 
-class ConAdminDashboard extends BaseController
+class ConAdminNews extends BaseController
 {
     public function __construct(){
         $this->NewsModel = new NewsModel();
@@ -15,14 +15,14 @@ class ConAdminDashboard extends BaseController
         return $data;
     }
 
-    public function index()
+    public function NewsMain()
     {        
         $data = $this->DataMain();
-        $data['title'] = "หน้าแรก";
-        $data['description'] = "ภาพรวมของระบบ";
+        $data['title'] = "ข่าวประชาสัมพันธ์";
+        $data['description'] = "รวมข่าวประชาสัมพันธ์ กิจกรรมต่าง ๆ ของโรงเรียน";
         
         return view('Admin/layout/AdminHeader',$data)
-                .view('Admin/PageAdminDashboard')
+                .view('Admin/PageAdminNews/PageAdminNewsMain')
                 .view('Admin/layout/AdminFooter');
     }
 
