@@ -41,7 +41,7 @@ class ConHome extends BaseController
        
         $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
       
-        $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb')
+        $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
                                         ->where('banner_status','on')
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();

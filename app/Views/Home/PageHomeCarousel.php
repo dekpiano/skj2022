@@ -8,7 +8,9 @@
                 <?php endforeach; ?>
             </div>
             <div class="carousel-inner">
-            <?php foreach ($banner as $key => $v_banner): ?>
+            <?php foreach ($banner as $key => $v_banner): 
+                    if($v_banner['banner_linkweb'] == ""):
+            ?>
                 <div class="carousel-item <?=$key==0?'active':''?>">
                     <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>" alt="Image">
                     <!-- <div class="carousel-caption">
@@ -18,7 +20,21 @@
                         </div>
                     </div> -->
                 </div>
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <a href="<?=$v_banner['banner_linkweb']?>" target="_blank">
+                    <div class="carousel-item <?=$key==0?'active':''?>">
+                    <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>" alt="Image">
+                    <!-- <div class="carousel-caption">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
+                            <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                        </div>
+                    </div> -->
+                    </a>
+                </div>
+                <?php 
+                    endif;
+                endforeach; ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="prev">
