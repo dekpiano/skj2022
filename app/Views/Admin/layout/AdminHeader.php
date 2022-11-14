@@ -66,6 +66,14 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="<?=base_url()?>/assets/admin/assets/js/config.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/datatables.bootstrap5.css?v=1" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/buttons.bootstrap5.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/datatables.checkboxes.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/responsive.bootstrap5.css" rel="stylesheet">
   </head>
+
+  
 
   <body style="font-family:'Sarabun';">

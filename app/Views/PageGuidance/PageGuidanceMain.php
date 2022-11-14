@@ -18,7 +18,7 @@
             <h6 class="section-title bg-white text-center text-primary px-3">งานแนะแนว</h6>
             <!-- <h1 class="display-6 mb-4">If You Have Any Query, Please Feel Free Contact Us</h1> -->
         </div>
-        <div class="d-flex g-4 justify-content-center">
+        <div class="d-flex g-4 ">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
                 <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ</h4>
@@ -28,10 +28,12 @@
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/file/d/1-wIm3K5vTIVLZu6xR1qix5NZx-Vr-PR4/view?usp=share_link" class="btn btn-primary w-100">อ่านประกาศ</a>
+            <a target="_blank" href="https://drive.google.com/file/d/1-wIm3K5vTIVLZu6xR1qix5NZx-Vr-PR4/view?usp=share_link" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
+          
+            <a target="_blank" href="https://forms.gle/oc1yrxuqQM8P42EaA" class="btn btn-info w-100">สมัครทุน</a>
             </div>
         </div>
-        <div class="d-flex g-4 justify-content-center mt-3">
+        <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
                 <h4 class="mt-0 mb-3">โครงการนักเรียนร่วม 66</h4>

@@ -18,31 +18,68 @@
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
                         <div class="col-lg-12 mb-4 order-0">
-                            <div class="card">
-                                <div class="d-flex align-items-end row">
-                                    <div class="col-sm-7">
-                                        <div class="card-body">
-                                            <h3 class="card-title text-primary">ยินดีต้อนรับ 🎉</h3>
-                                            <p class="mb-4">
-                                                ข่าวประชาสัมพันธ์
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 text-center text-sm-left">
-                                        <div class="card-body pb-0 px-0 px-md-4">
-                                            <img src="<?=base_url()?>/assets/admin/assets/img/illustrations/man-with-laptop-light.png"
-                                                height="140" alt="View Badge User"
-                                                data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                                data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                        </div>
-                                    </div>
+                            <div class="card p-3">
+                                <h5 class="card-header">ตารางข่าวประชาสัมพันธ์</h5>
+                                <div class="table-responsive text-nowrap">
+                                    <table class="datatables-basic table border-top dataTable no-footer dtr-column collapsed" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>หัวข้อ</th>
+                                                <th>ประเภทข่าว</th>
+                                                <th>วันที่สร้าง</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0">
+                                            <?php foreach ($news as $key => $v_news) : ?>
+                                            <tr>
+                                                <td>
+                                                    <strong><?=$v_news->news_topic?></strong>
+                                                </td>
+                                                <td><?=$v_news->news_category?></td>                                              
+                                                <td><?=$v_news->news_date?></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                                    class="bx bx-trash me-1"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                           
+                                            
+                                         
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Create the editor container -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="editor">
+                                <p>Hello World!</p>
+                                <p>Some initial <strong>bold</strong> text</p>
+                                <p><br></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <!-- / Content -->
+
 
 
 

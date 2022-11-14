@@ -20,6 +20,9 @@ class ConAdminNews extends BaseController
         $data = $this->DataMain();
         $data['title'] = "ข่าวประชาสัมพันธ์";
         $data['description'] = "รวมข่าวประชาสัมพันธ์ กิจกรรมต่าง ๆ ของโรงเรียน";
+        $data['news'] = $this->NewsModel->get()->getResult();
+        
+        //print_r($data['news']);exit();
         
         return view('Admin/layout/AdminHeader',$data)
                 .view('Admin/PageAdminNews/PageAdminNewsMain')

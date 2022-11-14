@@ -17,14 +17,14 @@
 
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
-                <li class="menu-item active">
-                    <a href="index.html" class="menu-link">
+                <li class="menu-item <?=$uri->getSegment(2) == 'Dashboard'?"active":""?>">
+                    <a href="<?=base_url('Admin/Dashboard');?>" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">หน้าแรก</div>
                     </a>
                 </li>
 
-                <li class="menu-item">
+                <li class="menu-item <?=$uri->getSegment(2) == 'News'?"active":""?>">
                     <a href="<?=base_url('Admin/News');?>" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">ข่าวประชาสัมพันธ์</div>
