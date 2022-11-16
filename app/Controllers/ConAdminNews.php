@@ -29,4 +29,9 @@ class ConAdminNews extends BaseController
                 .view('Admin/layout/AdminFooter');
     }
 
+    public function NewsAdd(){
+        // $this->request->getVar('news_topic')
+        print_r($this->request->getFiles());
+    }
+
 }

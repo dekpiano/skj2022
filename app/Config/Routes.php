@@ -53,6 +53,8 @@ $routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
 
 //News
 $routes->get('Admin/News','ConAdminNews::NewsMain');
+
+$routes->match(['get', 'post'], 'Admin/News/AddNews', 'ConAdminNews::NewsAdd');
 /*
 
  * --------------------------------------------------------------------

@@ -31,11 +31,29 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
+<?php if($uri->getSegment(2) == 'News') : ?>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js"></script>
+<?php endif; ?>
 
 </body>
 
 <!-- Initialize Quill editor -->
 <script>
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+}
+$("#news_img").change(function() {
+    readURL(this);
+});
+
 $(document).ready(function() {
     $('#myTable').DataTable({
         "columnDefs": [{
