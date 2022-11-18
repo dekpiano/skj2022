@@ -103,30 +103,41 @@
                 <h5 class="modal-title" id="staticBackdropLabel">เพิ่มข่าว</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="form-news" action="<?=base_url('Admin/News/AddNews')?>">
+            <form id="form-news" method="post" action="<?=base_url('Admin/News/AddNews')?>"
+                enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="news_topic" class="form-label">หัวห้อข่าว</label>
-                        <input type="text" class="form-control mb-3" name="news_topic" id="news_topic" placeholder="ใส่หัวข้อข่าว..."
-                            aria-describedby="floatingInputHelp">
+                        <input type="text" class="form-control mb-3" name="news_topic" id="news_topic"
+                            placeholder="ใส่หัวข้อข่าว..." aria-describedby="floatingInputHelp" required>
+                        <div class="invalid-feedback">
+                            ใส่หัวข้อข่าว
+                        </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="news_category" class="form-label">ประเภทข่าว</label>
-                        <select id="largeSelect" class="form-select form-select" name="news_category" id="news_category">
+                        <select id="largeSelect" class="form-select form-select" name="news_category" id="news_category"
+                            required>
                             <option value="ข่าวประชาสัมพันธ์">ประชาสัมพันธ์</option>
                             <option value="ข่าวกิจกรรม">กิจกรรม</option>
                         </select>
+                        <div class="invalid-feedback">
+                            เลือกประเภทข่าว
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="date" value="<?=date('Y-m-d')?>" id="news_date" name="news_date">
+                        <input class="form-control" type="date" value="<?=date('Y-m-d')?>" id="news_date"
+                            name="news_date" required>
+                            <div class="invalid-feedback">
+                            เลือกวันที่ลง
+                        </div>
                     </div>
 
                     <!-- Create the editor container -->
                     <div id="editor" class="mb-3">
-                        <p>Hello World!</p>
-                        <p>Some initial <strong>bold</strong> text</p>
-                        <p><br></p>
+                        <p>ใส่เนื้อหาข่าวที่นี่....</p>
                     </div>
                     <div class="mb-3">
                         <label for="news_img" class="form-label">รูปภาหน้าปก</label>

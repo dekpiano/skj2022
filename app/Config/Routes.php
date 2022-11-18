@@ -50,6 +50,8 @@ $routes->get('guidance', 'ConGuidance::index');
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
 $routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
+// Logout
+$routes->get('logout', 'ConLogin::LogoutAdmin');
 
 //News
 $routes->get('Admin/News','ConAdminNews::NewsMain');

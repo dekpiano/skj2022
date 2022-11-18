@@ -12,16 +12,20 @@ $(document).on("submit", "#form-news", function(e) {
         async: false,
         success: function(data) {
             console.log(data);
-            // if (data == 1) {
-            //     Swal.fire({
-            //         position: 'top-end',
-            //         icon: 'success',
-            //         title: 'บันทึกข้อมูลสำเร็จ',
-            //         showConfirmButton: false,
-            //         timer: 3000
-            //     })
-            //     $('#ModalEditTech').modal('hide');
-            // }
+            if (data == 1) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'บันทึกข้อมูลสำเร็จ',
+                    showConfirmButton: false,
+                    timer: 3000
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.reload();
+
+                    }
+                })
+            }
         }
     });
 });

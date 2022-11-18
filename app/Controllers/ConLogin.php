@@ -50,4 +50,11 @@ class ConLogin extends BaseController
         
     }
 
+    public function LogoutAdmin()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
+    }
+
 }

@@ -22,7 +22,7 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-7">
                                         <div class="card-body">
-                                            <h3 class="card-title text-primary">ยินดีต้อนรับ 🎉</h3>
+                                            <h3 class="card-title text-primary">ยินดีต้อนรับ 🎉 <?php echo $AdminFullname;?></h3>
                                             <p class="mb-4">
                                                 ระบบงานสารสนเทศเว็บไซต์โรเรียน
                                             </p>

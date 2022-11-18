@@ -9,9 +9,12 @@ class ConAdminNews extends BaseController
     }
 
     public function DataMain(){
+        $session = session();
         $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $data['uri'] = service('uri'); 
-        helper(['form', 'url']);
+        helper(['form', 'url']);        
+        $data['AdminID'] = $session->get('AdminID');
+        $data['AdminFullname'] = $session->get('AdminFullname');
         return $data;
     }
 
@@ -30,8 +33,50 @@ class ConAdminNews extends BaseController
     }
 
     public function NewsAdd(){
-        // $this->request->getVar('news_topic')
-        print_r($this->request->getFiles());
+        $data = $this->DataMain();
+
+        $database = \Config\Database::connect();
+        $builder = $database->table('tb_news');
+        $checkID = $builder->select('news_id')->orderBy('news_id','DESC')->get()->getRow();
+        $ex = explode('_',$checkID->news_id);
+        $NewsIdNew = 'news_'.@sprintf("%03d",$ex[1]+1);
+
+        $imageFile = $this->request->getFile('news_img'); 
+        if($imageFile->getError() == 0){
+            $RandomName = $imageFile->getRandomName();
+
+            $image = \Config\Services::image()
+            ->withFile($imageFile)
+            ->resize(2560, 1440, true, 'height')
+            ->save(FCPATH.'/uploads/news/'. $RandomName);
+   
+            $data = [
+               'news_id' => $NewsIdNew,
+               'news_img' => $RandomName,
+               'news_topic' =>  $this->request->getPost('news_topic'),
+               'news_content' => $this->request->getPost('news_content'),
+               'news_date' => $this->request->getPost('news_date'),
+               'news_category' => $this->request->getPost('news_category'),
+               'personnel_id' => $data['AdminID']
+               ];
+           $save = $builder->insert($data);
+           echo $save;
+        }else{
+            $data = [
+                'news_id' => $NewsIdNew,
+                'news_topic' =>  $this->request->getPost('news_topic'),
+                'news_content' => $this->request->getPost('news_content'),
+                'news_date' => $this->request->getPost('news_date'),
+                'news_category' => $this->request->getPost('news_category'),
+                'personnel_id' => $data['AdminID']
+                ];
+            $save = $builder->insert($data);
+            echo $save;
+        }
+        
+        
+
+        
     }
 
 }

@@ -42,7 +42,7 @@
                     <?=$dateThai->thai_date_fullmonth(strtotime($news->news_date))?>
                 </a>
             </div>
-            <h1 class="mb-3">
+            <p class="mb-3">
                 <?=$news->news_content?>
                 </p>
 
