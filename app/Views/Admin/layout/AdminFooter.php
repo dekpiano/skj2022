@@ -32,13 +32,16 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=13"></script>
 <?php endif; ?>
 
 </body>
 
 <!-- Initialize Quill editor -->
 <script>
+    
+
+
 (function() {
     'use strict'
 
@@ -74,14 +77,21 @@ $("#news_img").change(function() {
     readURL(this);
 });
 
-$(document).ready(function() {
-    $('#myTable').DataTable({
-        "columnDefs": [{
-            "width": "20%",
-            "targets": 0
-        }]
-    });
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#edit_blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+}
+$("#edit_news_img").change(function() {
+    readURL(this);
 });
+
 
 
 var toolbarOptions = [
@@ -136,6 +146,13 @@ var toolbarOptions = [
 ];
 
 var quill = new Quill('#editor', {
+    modules: {
+        toolbar: toolbarOptions
+    },
+    theme: 'snow'
+});
+
+var Editquill = new Quill('#editor_update', {
     modules: {
         toolbar: toolbarOptions
     },
