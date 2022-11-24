@@ -58,8 +58,7 @@ $(document).on("submit", "#form-news", function(e) {
                     timer: 3000
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        //  window.location.reload();
-
+                        window.location.reload();
                     }
                 })
             } else {

@@ -32,7 +32,7 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=13"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=14"></script>
 <?php endif; ?>
 
 </body>
@@ -77,7 +77,7 @@ $("#news_img").change(function() {
     readURL(this);
 });
 
-function readURL(input) {
+function edit_readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -89,7 +89,7 @@ function readURL(input) {
     }
 }
 $("#edit_news_img").change(function() {
-    readURL(this);
+    edit_readURL(this);
 });
 
 
