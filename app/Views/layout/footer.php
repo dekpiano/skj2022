@@ -99,7 +99,7 @@
 <!-- Template Javascript -->
 <script src="<?=base_url()?>/assets/js/main.js"></script>
 <?php if($uri->getSegment(1) === "News"):?>
-<script src="<?=base_url()?>/assets/js/News/News.js?v=2"></script>
+<script src="<?=base_url()?>/assets/js/News/News.js?v=5"></script>
 <?php endif; ?>
 </body>
 

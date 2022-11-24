@@ -59,6 +59,7 @@ class ConNews extends BaseController
         $page = $limit * $this->request->getVar('page');
         $data['NewsAll'] = $this->fetchData($limit,$page);
         return view('PageNews/PageNewsLoadMore', $data);
+        //print_r($data['NewsAll']);
     }
 
    function fetchData($limit,$offset = ''){

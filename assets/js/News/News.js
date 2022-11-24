@@ -17,7 +17,7 @@ $(window).scroll(function() {
 
 function load_more(page) {
     $.ajax({
-        url: "ConNews/loadMoreNews?page=" + page,
+        url: "News/loadMoreNews?page=" + page,
         type: "GET",
         dataType: "html",
     }).done(function(data) {
@@ -30,6 +30,6 @@ function load_more(page) {
         $('#loader').hide();
         $('#main').append(data).show('slow');
     }).fail(function(jqXHR, ajaxOptions, thrownError) {
-        console.log(ajaxOptions);
+        console.log(jqXHR.responseText);
     });
 }
