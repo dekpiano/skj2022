@@ -3,6 +3,11 @@
 <!-- Carousel End -->
 
 <!-- PageHomeDirector Start -->
+<?= $this->include('Home/PageHomeRobot') ?>
+<!-- PageHomeDirector End -->
+
+
+<!-- PageHomeDirector Start -->
 <?= $this->include('Home/PageHomeDirector') ?>
 <!-- PageHomeDirector End -->
 
