@@ -14,7 +14,13 @@
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
-
+<style>
+    table td {
+        word-break: break-word;
+        vertical-align: top;
+        white-space: normal !important;
+    }
+</style>
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
                         <div class="col-lg-12 mb-4 order-0">
@@ -47,9 +53,12 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
-                                                            <a class="dropdown-item EditNews" href="javascript:void(0);" key-newsid="<?=$v_news->news_id?>"><i
+                                                            <a class="dropdown-item EditNews" href="javascript:void(0);"
+                                                                key-newsid="<?=$v_news->news_id?>"><i
                                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                            <a  class="dropdown-item DeleteNews" href="javascript:void(0);" key-newsid="<?=$v_news->news_id?>"><i
+                                                            <a class="dropdown-item DeleteNews"
+                                                                href="javascript:void(0);"
+                                                                key-newsid="<?=$v_news->news_id?>"><i
                                                                     class="bx bx-trash me-1"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -180,8 +189,8 @@
 
                     <div class="mb-3">
                         <label for="edit_news_category" class="form-label">ประเภทข่าว</label>
-                        <select id="largeSelect" class="form-select form-select" name="edit_news_category" id="edit_news_category"
-                            required>
+                        <select id="largeSelect" class="form-select form-select" name="edit_news_category"
+                            id="edit_news_category" required>
                             <option value="ข่าวประชาสัมพันธ์">ประชาสัมพันธ์</option>
                             <option value="ข่าวกิจกรรม">กิจกรรม</option>
                         </select>
@@ -191,8 +200,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="edit_news_date" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="date" value=""
-                            id="edit_news_date" name="edit_news_date">
+                        <input class="form-control" type="date" value="" id="edit_news_date" name="edit_news_date">
                         <div class="invalid-feedback">
                             เลือกวันที่ลง
                         </div>

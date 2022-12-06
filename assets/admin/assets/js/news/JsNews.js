@@ -6,6 +6,13 @@ $('#myTable').DataTable({
     order: [
         [3, 'desc']
     ],
+    autoWidth: false,
+    columns: [
+        { width: '5px' },
+        { width: '300px' },
+        { width: '50px' },
+        { width: '50px' }
+    ]
 });
 $(document).on("click", "#AddNews", function() {
     var myModal = new bootstrap.Modal(document.getElementById("ModalAddNews"), {});
