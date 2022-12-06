@@ -54,11 +54,12 @@ $routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
 // Logout
 $routes->get('logout', 'ConLogin::LogoutAdmin');
 
-//News
+//Admin News
 $routes->get('Admin/News','ConAdminNews::NewsMain');
 $routes->match(['get', 'post'], 'Admin/News/AddNews', 'ConAdminNews::NewsAdd');
 $routes->match(['get', 'post'], 'Admin/News/EditNews', 'ConAdminNews::NewsEdit');
 $routes->match(['get', 'post'], 'Admin/News/UpdateNews', 'ConAdminNews::NewsUpdate');
+$routes->match(['get', 'post'], 'Admin/News/DeleteNews', 'ConAdminNews::NewsDelete');
 /*
 
  * --------------------------------------------------------------------

@@ -105,3 +105,28 @@ $(document).on("submit", "#form-update-news", function(e) {
         }
     });
 });
+
+$(document).on("click", ".DeleteNews", function() {
+    let newsid = $(this).attr('key-newsid');
+    Swal.fire({
+        title: 'แจ้งเตือน?',
+        text: "ต้องการลบข้อมูลข่าวหรือไม่!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post("../Admin/News/DeleteNews", {
+                KeyNewsid: $(this).attr('key-newsid')
+            }, function(data, status) {
+                console.log(data);
+                if (data == 1) {
+                    $('#' + newsid).remove();
+                }
+            });
+        }
+    })
+
+});

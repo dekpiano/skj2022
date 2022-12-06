@@ -39,7 +39,7 @@
                                         </thead>
                                         <tbody class="table-border-bottom-0">
                                             <?php foreach ($news as $key => $v_news) : ?>
-                                            <tr>
+                                            <tr id="<?=$v_news->news_id?>">
                                                 <td>
                                                     <div class="dropdown">
                                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -49,7 +49,7 @@
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item EditNews" href="javascript:void(0);" key-newsid="<?=$v_news->news_id?>"><i
                                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                            <a  class="dropdown-item DeleteNews" href="javascript:void(0);" key-newsid="<?=$v_news->news_id?>"><i
                                                                     class="bx bx-trash me-1"></i> Delete</a>
                                                         </div>
                                                     </div>
