@@ -34,6 +34,9 @@
 <?php if($uri->getSegment(2) == 'News') : ?>
 <script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
 <?php endif; ?>
+<?php if($uri->getSegment(2) == 'Banner') : ?>
+<script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=2"></script>
+<?php endif; ?>
 
 </body>
 
@@ -74,6 +77,9 @@ function readURL(input) {
     }
 }
 $("#news_img").change(function() {
+    readURL(this);
+});
+$("#banner_img").change(function() {
     readURL(this);
 });
 
