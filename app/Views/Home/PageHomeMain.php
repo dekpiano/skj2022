@@ -1,3 +1,5 @@
+<?= $this->include('Home/PageChristmas2022') ?>
+
 <!-- Carousel Start -->
 <?= $this->include('Home/PageHomeCarousel') ?>
 <!-- Carousel End -->
