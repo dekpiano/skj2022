@@ -80,6 +80,12 @@ class ConNews extends BaseController
         $data['description'] = mb_strimwidth(strip_tags($data['news']->news_content),0,100,'...');
         $data['banner'] = base_url('uploads/news/'.$data['news']->news_img);
 
+        $dataUpdate = [
+            'news_view' => ($data['news']->news_view + 1)
+        ];
+        $data['DB']->where('news_id',$KeyNews);
+        $data['DB']->update($dataUpdate);
+
         return  view('layout/header',$data)
                 .view('layout/navbar')
                 .view('PageNews/PageNewsDetail')
