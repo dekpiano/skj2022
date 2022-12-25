@@ -18,9 +18,11 @@
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
                                 <?php print_r($dateThai->thai_date_fullmonth(strtotime($v_news->news_date)));?>
                             </a>
+                            <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$v_news->news_view?></a>
                         </div>
-                        <a class="h4 mb-0"
+                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>" news_id="<?=$v_news->news_id?>"
                             href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
+                            <!-- <?=base_url('News/Detail/'.$v_news->news_id);?> -->
                     </div>
                 </div>
             </div>

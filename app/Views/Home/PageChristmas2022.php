@@ -26,7 +26,7 @@
 
 .iced-text {
     font-family: 'Fredoka One', cursive;
-    font-size: 12vmin;
+    font-size: 11vmin;
     text-align: center;
     line-height: 1em;
     position: relative;
@@ -54,12 +54,13 @@
 }
 
 .iced-text-front {
-  color: #D5AD6D; /*if no support for background-clip*/
-background: -webkit-linear-gradient(transparent, transparent),
--webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
-background: -o-linear-gradient(transparent, transparent);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    color: #D5AD6D;
+    /*if no support for background-clip*/
+    background: -webkit-linear-gradient(transparent, transparent),
+        -webkit-linear-gradient(top, rgba(213, 173, 109, 1) 0%, rgba(213, 173, 109, 1) 26%, rgba(226, 186, 120, 1) 35%, rgba(163, 126, 67, 1) 45%, rgba(145, 112, 59, 1) 61%, rgba(213, 173, 109, 1) 100%);
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-stroke: 0.03em white;
 }
@@ -100,6 +101,8 @@ background: -o-linear-gradient(transparent, transparent);
     -webkit-text-stroke: 0.05em black;
 }
 
+
+
 /* Media Queries */
 @media screen and (max-width: 690px) {
     #timer {
@@ -114,7 +117,7 @@ background: -o-linear-gradient(transparent, transparent);
         visibility: hidden;
     }
 
-    
+
 }
 
 @media screen and (max-width: 518px) {
@@ -149,16 +152,17 @@ background: -o-linear-gradient(transparent, transparent);
     }
 
     .content1 {
-    height: 100vh;
-    /* display:flex;
+        height: 100vh;
+        /* display:flex;
   justify-content: center;
   align-items: center; */
-    background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
-    /* background-size: cover;
+        background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
+        /* background-size: cover;
     background-position: center; */
+    }
 }
 
-}
+
 
 @keyframes pulse {
     100% {
@@ -177,35 +181,15 @@ background: -o-linear-gradient(transparent, transparent);
 }
 
 
-
-
-@media (max-width: 575.98px) {}
-
-@media (max-width: 767.98px) {}
-
-@media (max-width: 991.98px) {}
-
-@media (max-width: 1199.98px) {
-  .content1 {
-    height: 100vh;
-    /* display:flex;
+@media screen and (min-width: 800px) {
+    .content1 {
+        height: 100vh;
+        /* display:flex;
   justify-content: center;
   align-items: center; */
-    background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
-  
-}
-}
+        background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
 
-@media (max-width: 1399.98px) {
-  .content1 {
-    height: 100vh;
-    /* display:flex;
-  justify-content: center;
-  align-items: center; */
-    background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
-    background-size: cover;
-    background-position: center;
-}
+    }
 }
 </style>
 <div class="content1">

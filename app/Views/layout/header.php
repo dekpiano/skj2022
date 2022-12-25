@@ -18,8 +18,11 @@
     <meta property="og:title" content="<?= $title ?> | SKJ" />
     <meta property="og:description" content="<?= $description ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="<?=base_url('uploads/banner/Banner-skj-main.png')?>" />
-
+    <?php   if($uri->getSegment(1) == "News" && $uri->getSegment(2) == "Detail") : ?>
+        <meta property="og:image" content="<?=$banner;?>" />
+    <?php else: ?>
+        <meta property="og:image" content="<?=base_url('uploads/banner/Banner-skj-main.png')?>" />
+    <?php endif; ?>
 
     <!-- Favicon -->
     <link href="<?=base_url()?>/uploads/logoSchool/LogoSKJ_4.png" rel="icon">

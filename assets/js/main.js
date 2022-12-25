@@ -110,3 +110,14 @@
     
 })(jQuery);
 
+
+$(document).on("click",".CountReadNews",function() {
+    $.post("CountReadNews", {
+        Data_View :$(this).attr('data_view'),
+        NewsID: $(this).attr('news_id')
+    }, function(data, status) {
+        console.log(data);
+
+    });
+});
+

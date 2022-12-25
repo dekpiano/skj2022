@@ -41,6 +41,7 @@ $routes->get('About/(:any)', 'ConAboutSchool::AboutDetail/$1');
 $routes->match(['get', 'post'],'News', 'ConNews::NewsMain');
 $routes->get('News/Detail/(:any)', 'ConNews::NewsDetail/$1');
 $routes->match(['get', 'post'],'News/loadMoreNews', 'ConNews::loadMoreNews');
+$routes->match(['get', 'post'],'CountReadNews','ConNews::NewsCountRead');
 
 $routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
 

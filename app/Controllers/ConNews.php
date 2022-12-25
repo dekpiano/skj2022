@@ -29,6 +29,8 @@ class ConNews extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_010'))->get()->getResult();
         $data['uri'] = service('uri'); 
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
+        $database = \Config\Database::connect();
+        $data['DB'] = $database->table('tb_news');
         helper(['form', 'url']);
         return $data;
     }
@@ -76,11 +78,22 @@ class ConNews extends BaseController
 
         $data['title'] = $data['news']->news_topic ." | สกจ. ประชาสัมพันธ์";
         $data['description'] = mb_strimwidth(strip_tags($data['news']->news_content),0,100,'...');
-        $data['banner'] = '';
+        $data['banner'] = base_url('uploads/news/'.$data['news']->news_img);
 
         return  view('layout/header',$data)
                 .view('layout/navbar')
                 .view('PageNews/PageNewsDetail')
                 .view('layout/footer');
+    }
+
+    public function NewsCountRead(){
+        $data = $this->DataMain();
+       
+        $dataUpdate = [
+            'news_view' => ($this->request->getVar('Data_View') + 1)
+        ];
+        $data['DB']->where('news_id',$this->request->getVar('NewsID'));
+        echo $data['DB']->update($dataUpdate);
+        
     }
 }

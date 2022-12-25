@@ -97,9 +97,9 @@
 <script src="<?=base_url()?>/assets/lib/lightbox/js/lightbox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
 <!-- Template Javascript -->
-<script src="<?=base_url()?>/assets/js/main.js"></script>
+<script src="<?=base_url()?>/assets/js/main.js?v=3"></script>
 <?php if($uri->getSegment(1) === "News"):?>
-<script src="<?=base_url()?>/assets/js/News/News.js?v=5"></script>
+<script src="<?=base_url()?>/assets/js/News/News.js?v=7"></script>
 <?php endif; ?>
 </body>
 

@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a class="text-white" href="<?=base_url('/')?>">หน้าแรก</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">ประชาสัมพันธ์</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="<?=base_url('News')?>">ประชาสัมพันธ์</a></li>
                 <li class="breadcrumb-item text-primary active" aria-current="page">สกจ. ประชาสัมพันธ์</li>
             </ol>
         </nav>
@@ -41,6 +41,7 @@
                 <a class="breadcrumb-item" href="#"><i class="fa fa-calendar-alt me-2"></i>
                     <?=$dateThai->thai_date_fullmonth(strtotime($news->news_date))?>
                 </a>
+                <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$news->news_view?></a>
             </div>
             <p class="mb-3">
                 <?=$news->news_content?>
@@ -81,13 +82,14 @@
                             <div class="col-12 d-flex">
                                 <img class="img-fluid rounded flex-shrink-0" src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
                                 <div class="ps-3">
-                                    <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>" class="d-block h5"><?=$v_NewsLatest->news_topic;?></a>
+                                    <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>" class="d-block h5 CountReadNews" data_view="<?=$v_NewsLatest->news_view?>" news_id="<?=$v_NewsLatest->news_id?>">
+                                    <?=$v_NewsLatest->news_topic;?></a>
                                     <div class="breadcrumb blog-meta mb-0">
                                         <small class="breadcrumb-item">
                                             <a href="#"> <?=$dateThai->thai_date_fullmonth(strtotime($v_NewsLatest->news_date))?>
                                             </a>
                                         </small>
-                                        <small class="breadcrumb-item"><a href="#">Admin</a></small>
+                                        <small class="breadcrumb-item"><a href="#">ดู <?=$v_NewsLatest->news_view?> ครั้ง</a></small>
                                     </div>
                                 </div>
                             </div>
