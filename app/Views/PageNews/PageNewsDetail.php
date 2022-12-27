@@ -43,9 +43,14 @@
                 </a>
                 <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$news->news_view?></a>
             </div>
+            <style>
+            p img{
+                width:100%;
+            }
+            </style>
             <p class="mb-3">
-                <?=$news->news_content?>
-                </p>
+                <?=$news->news_content;?>
+            </p>
 
         </div>
 
