@@ -21,6 +21,11 @@ $(document).on("click", "#AddBanner", function() {
     myModal.show();
 });
 
+$(document).on("click", ".Editbanner", function() {
+    var myModal = new bootstrap.Modal(document.getElementById("ModalEditbanner"), {});
+    myModal.show();
+});
+
 $(document).on("click", 'input[type="checkbox"]', function() {
     var status;
     if ($(this).is(":checked")) {
@@ -67,27 +72,61 @@ $(document).on("submit", "#form-banner", function(e) {
         async: false,
         success: function(data) {
             console.log(data);
-            // $('#ModalAddNews').hide();
-            // $('.modal-backdrop').remove();
-            // if (data == 1) {
-            //     Swal.fire({
-            //         position: 'top-end',
-            //         icon: 'success',
-            //         title: 'บันทึกข้อมูลสำเร็จ',
-            //         showConfirmButton: false,
-            //         timer: 3000
-            //     }).then((result) => {
-            //         if (result.dismiss === Swal.DismissReason.timer) {
-            //             window.location.reload();
-            //         }
-            //     })
-            // } else {
-            //     Swal.fire(
-            //         'แจ้งเตือน!',
-            //         data + '!',
-            //         'error'
-            //     )
-            // }
+            $('#ModalAddBanner').hide();
+            $('.modal-backdrop').remove();
+            if (data == 1) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'บันทึกข้อมูลสำเร็จ',
+                    showConfirmButton: false,
+                    timer: 3000
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.reload();
+                    }
+                })
+            } else {
+                Swal.fire(
+                    'แจ้งเตือน!',
+                    data + '!',
+                    'error'
+                )
+            }
         }
     });
+});
+
+$(document).on("click", ".Deletebanner", function() {
+    let bannerID = $(this).attr('key-bannerid');
+    Swal.fire({
+        title: 'คุณต้องการลบข้อมูลหรือไม่?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ลบเลย!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('../Admin/banner/DeleteBanner', {
+                    KeyBannerid: bannerID
+                },
+                function(data) {
+                    $('#myTable tr#' + bannerID).remove();
+                    if (data == 1) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'ลบรูปภาพสำเร็จ',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }
+            );
+
+        }
+    })
+
+
 });

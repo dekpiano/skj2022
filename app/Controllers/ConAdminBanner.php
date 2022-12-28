@@ -65,7 +65,7 @@ class ConAdminBanner extends BaseController
            
             $image = \Config\Services::image()
             ->withFile($imageFile)
-            ->resize(1920, 720, true, 'height')
+            ->resize(1920, 720, false, 'auto')
             ->save(FCPATH.'/uploads/banner/all/'. $RandomName);
             $NameImg = $RandomName;
              
@@ -145,15 +145,13 @@ class ConAdminBanner extends BaseController
         }
     }
 
-    public function NewsDelete(){
-        $id = $this->request->getPost('KeyNewsid');
-        $sel_img = $this->BannerModel->select('news_img')->where('news_id',$id)->get()->getResult();
-        if($sel_img[0]->news_img != ''){
-            @unlink(("uploads/news/".$sel_img[0]->news_img));
-        }
-        
-        $result = $this->BannerModel->delete(['news_id' => $id]);
-        
+    public function BannerDelete(){
+        $id = $this->request->getPost('KeyBannerid');
+        $sel_img = $this->BannerModel->select('banner_img')->where('banner_id',$id)->get()->getResult();
+        if($sel_img[0]->banner_img != ''){
+            @unlink("uploads/banner/all/".$sel_img[0]->banner_img);
+        }        
+        $result = $this->BannerModel->delete(['banner_id' => $id]);        
         echo $result;
     }
 

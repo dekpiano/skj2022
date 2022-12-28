@@ -35,7 +35,7 @@
 <script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
 <?php endif; ?>
 <?php if($uri->getSegment(2) == 'Banner') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=2"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=4"></script>
 <?php endif; ?>
 
 </body>
