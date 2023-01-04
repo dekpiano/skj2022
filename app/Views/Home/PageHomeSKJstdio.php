@@ -3,7 +3,7 @@
 
     <div class="d-flex">
         <div class="me-5 w-50">
-            <iframe style="width:100%;height: 390px;" src="https://www.youtube.com/embed/B-hvfcpD4SY" frameborder="0"
+            <iframe style="width:100%;height: 390px;" src="https://www.youtube.com/embed/RxdQ2-0scEQ" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen=""></iframe>
         </div>
