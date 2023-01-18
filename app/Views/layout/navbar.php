@@ -38,7 +38,7 @@
                                     สวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
                                 </div>
                                 <div class="text-eng">
-                                    Suankularb Wittayalai (Jiraprawat) Nakornsawan
+                                    Suankularb Wittayalai (Jiraprawat) Nakhon Sawan
                                 </div>
                             </div>
                         </div>
