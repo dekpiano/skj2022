@@ -5,13 +5,14 @@
     <div class="blog-item">
         <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
         <div class="blog-text">
+          
+            <a class="h4 mb-0" href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
             <div class="breadcrumb">
                 <a class="breadcrumb-item small" href="#"><i class="fa fa-user me-2"></i>Admin</a>
                 <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
                     <?=$dateThai->thai_date_fullmonth(strtotime($v_news->news_date))?>
                 </a>
             </div>
-            <a class="h4 mb-0" href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
         </div>
     </div>
 </div>
