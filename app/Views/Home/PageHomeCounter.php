@@ -6,7 +6,7 @@
                     <div class="fact-item bg-light rounded text-center h-100 p-5">
                         <i class="fa fa-users fa-4x text-primary mb-4"></i>
                         <h5 class="mb-3">นักเรียน</h5>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">921</h1>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?=$ConutStudent[0]->C_ALL_Stu;?></h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 wow fadeInUp" data-wow-delay="0.1s">

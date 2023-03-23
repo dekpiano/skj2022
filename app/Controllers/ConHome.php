@@ -8,6 +8,7 @@ use App\Models\PositionModel;
 use App\Models\LearningModel;
 use App\Models\PersonnalModel;
 use App\Models\AboutModel;
+use App\Models\StudentModels;
 
 
 class ConHome extends BaseController
@@ -19,6 +20,7 @@ class ConHome extends BaseController
         $this->NewsModel = new NewsModel();
         $this->BannerModel = new BannerModel();
         $this->AboutModel = new AboutModel();
+        $this->StudentModel = new StudentModels();
     }
 
     public function DataMain(){
@@ -45,7 +47,8 @@ class ConHome extends BaseController
                                         ->where('banner_status','on')
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();
-                       
+        $data['ConutStudent'] = $this->StudentModel->CountStudentAll();
+        //echo '<pre>'; print_r($data['ConutStudent']); exit();
       
         return  view('layout/header',$data)
                 .view('layout/navbar')
