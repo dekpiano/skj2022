@@ -147,8 +147,8 @@
                         งบประมาณและแผน</a>
                 </div>
             </div>
-            <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
-                ติดต่อ</a>
+            <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                ติดต่อ</a> -->
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
                     SKJ บริการ</a>
@@ -179,6 +179,8 @@
                     </a> 
                 </div>
             </div>
+            <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                หลักสูตรความเป็นเลิศ</a>
         </div>
 
         <div class="nav-item dropdown ">

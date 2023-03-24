@@ -48,6 +48,7 @@ $routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
 $routes->get('Contact', 'ConContact::index');
 $routes->get('PageGroup', 'ConHome::PageGroup');
 $routes->get('guidance', 'ConGuidance::index');
+$routes->get('Course', 'ConCourse::index');
 
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
@@ -67,6 +68,9 @@ $routes->get('Admin/Banner','ConAdminBanner::BannerMain');
 $routes->post('Admin/Banner/BannerOnoff','ConAdminBanner::BannerOnoff');
 $routes->match(['get', 'post'], 'Admin/banner/Addbanner', 'ConAdminBanner::BannerAdd');
 $routes->match(['get', 'post'], 'Admin/banner/DeleteBanner', 'ConAdminBanner::BannerDelete');
+
+// 
+
 /*
 
  * --------------------------------------------------------------------
