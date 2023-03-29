@@ -23,32 +23,7 @@ body {
     top: 0;
 }
 
-.hero-video .info-hero h1 {
-    color: #FB7E9C;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 5.5rem;
-    line-height: 1.2;
-    position: relative;
-    font-family: 'Pattaya';
-}
 
-.hero-video .info-hero h1 span {
-    color: #249ffd;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
-    font-size: 4rem;
-}
-
-.hero-video .info-hero h2 {
-    color: #fff;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2.1rem;
-    line-height: 1.2;
-    position: relative;
-}
 
 .hero-video .info-hero .container,
 .hero-video .info-hero .row {
@@ -99,6 +74,65 @@ body {
     background: #fff;
     margin-right: 10px;
 }
+
+@media only screen and (min-width : 320px) {
+    .hero-video .info-hero h1 {
+    color: #FB7E9C;
+    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1.2;
+    position: relative;
+    font-family: 'Pattaya';
+    }
+
+    .hero-video .info-hero h1 span {
+        color: #249ffd;
+        text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+        font-size: 2rem;
+    }
+
+    .hero-video .info-hero h2 {
+        color: #fff;
+        text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.2;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .hero-video .info-hero h1 {
+    color: #FB7E9C;
+    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 5.5rem;
+    line-height: 1.2;
+    position: relative;
+    font-family: 'Pattaya';
+    }
+
+    .hero-video .info-hero h1 span {
+        color: #249ffd;
+        text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+        font-size: 4rem;
+    }
+
+    .hero-video .info-hero h2 {
+        color: #fff;
+        text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2.1rem;
+        line-height: 1.2;
+        position: relative;
+    }
+}
+
 </style>
 <div class="hero-video">
     <video loop="" muted="" control="" autoplay="1" style="position: absolute;bottom:0;"
@@ -131,7 +165,6 @@ body {
                     <p>
                         หลักสูตรพัฒนาผู้เรียนสู่ความเป็นเลิศ 5 หลักสูตร
                     </p>
-
                 </div>
                 <div class="text-center">
                     <div class="" style="padding: 0px 41px 0px">
@@ -155,9 +188,9 @@ body {
                         <div class="icon">
                             <i class="fa-solid fa-atom"></i>
                         </div>
-                        <h4 class="title"><a href="">หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) , SMT(T)
+                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) , SMT(T)
                             </a></h4>
-                        <p class="description">
+                        <p class="description d-none d-sm-block">
                             หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
                             เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้านคณิตศาสตร์ วิทยาศาสตร์และเทคโนโลยี
                         </p>
@@ -167,29 +200,29 @@ body {
                         <div class="icon">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
-                        <h4 class="title"><a href="">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h4>
-                        <p class="description">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนาทักษะ
+                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h4>
+                        <p class="description d-none d-sm-block">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนาทักษะ
                             ความสามารถด้านกีฬา เช่น ฟุตบอล วอลเลย์บอล บาสเกตบอล ฯลฯ</p>
                     </div>
 
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-palette"></i></div>
-                        <h4 class="title"><a href="">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง (PAP)</a></h4>
-                        <p class="description">หลักสูตรหรือแผนการจัดการเรียนการสอน
+                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง (PAP)</a></h4>
+                        <p class="description d-none d-sm-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนารูปแบบ/แบบแผนของการแสดง เช่น ดนตรีไทย ดนตรีสากล การขับร้อง ศิลปะการแสดง
                             ทัศนศิลป์ วิจิตรศิลป์ ประติมากรรม ฯลฯ</p>
                     </div>
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-gears"></i></div>
-                        <h4 class="title"><a href="">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a></h4>
-                        <p class="description">หลักสูตรหรือแผนการจัดการเรียนการสอน
+                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a></h4>
+                        <p class="description d-none d-sm-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนาทักษะในการประกอบอาชีพ ได้แก่ การโรงแรม การอาหารคหกรรม
                             ธุรกิจและการประกอบการ โรงงานต่าง ๆ ฯลฯ</p>
                     </div>
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-language"></i></div>
-                        <h4 class="title"><a href="">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h4>
-                        <p class="description">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
+                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h4>
+                        <p class="description d-none d-sm-block">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
                             เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้าน ภาษาต่างประเทศ เช่น ภาษาอังกฤษ
                             ภาษาจีน</p>
                     </div>

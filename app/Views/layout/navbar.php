@@ -177,6 +177,10 @@
                         <i class="fa-solid fa-passport"></i>
                         ทุนการศึกษา
                     </a> 
+                    <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
+                        <i class="fa-solid fa-passport"></i>
+                        หนังสือรุ่น ส.ก.จ.
+                    </a> 
                 </div>
             </div>
             <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>

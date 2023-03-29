@@ -49,6 +49,8 @@ $routes->get('Contact', 'ConContact::index');
 $routes->get('PageGroup', 'ConHome::PageGroup');
 $routes->get('guidance', 'ConGuidance::index');
 $routes->get('Course', 'ConCourse::index');
+$routes->get('Yearbook', 'ConYearbook::index');
+
 
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
