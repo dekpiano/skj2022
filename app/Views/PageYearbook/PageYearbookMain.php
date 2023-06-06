@@ -14,7 +14,7 @@
 <!-- Feature Start -->
 <div class="container-xxl">
     <div>
-    <iframe style="width:100%;height:500px" src="https://online.fliphtml5.com/wpinq/vbob/#p=2"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+    <iframe style="width:100%;height:700px" src="https://online.fliphtml5.com/wpinq/uqaf/#p=2"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
 
     </div>
 </div>
