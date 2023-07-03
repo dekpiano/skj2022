@@ -11,7 +11,7 @@
 <?= $this->include('Home/PageHomeCarousel') ?>
 <!-- Carousel End -->
 
-<div class="my-6 wow fadeInUp" data-wow-delay="0.1s"
+<!-- <div class="my-6 wow fadeInUp" data-wow-delay="0.1s"
     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;background: #3287d0 url(<?=base_url('uploads/Admission/bg.png');?>) bottom center no-repeat;">
     <div class="container px-lg-5">
         <div class="row align-items-center" style="height: 555px;">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
