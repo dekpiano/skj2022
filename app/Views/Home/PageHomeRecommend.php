@@ -14,7 +14,7 @@ body {
 
 
 
-@media only screen and (min-width : 320px) {
+@media (min-width : 320px) and (max-width: 768px) {
     .hero-video {
         position: relative;
         top: 0;
@@ -78,7 +78,7 @@ body {
 
     .why-us .content h3 {
         font-weight: 700;
-        font-size: 34px;
+        font-size: 25px;
        /* margin-bottom: 30px; */
     }
 
@@ -86,11 +86,13 @@ body {
         border-radius: 10px;
         background: #fff;
         padding: 5px 5px;
+        display: flex;
+        align-items: center;
     }
 
     .why-us .icon-box .icon i {
         color: #249ffd;
-        font-size: 32px;
+        font-size: 22px;
     }
 
     .why-us .icon-box .icon {
@@ -98,8 +100,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 64px;
-        height: 64px;
+        width: 48px;
+        height: 48px;
         border: 2px solid #249ffd66;
         border-radius: 50px;
         transition: 0.5s;
@@ -108,7 +110,7 @@ body {
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
     .hero-video {
         position: relative;
         /* height: 80vh; */
@@ -170,7 +172,7 @@ body {
     .why-us .icon-box {
         border-radius: 10px;
         background: #fff;
-        padding: 5px 30px;
+        padding: 5px 15px;
     }
 
     .why-us .icon-box .icon i {
@@ -204,7 +206,7 @@ body {
 @media screen and (min-width: 800px) {}
 </style>
 <div class="hero-video">
-    <video loop="" muted="" control="" autoplay="1" style="width: 100%;"
+    <video style="width: 100%;" autoplay muted playsinline loop
         poster="<?=base_url('uploads/video/bg.png')?>">
         <source src="<?=base_url('uploads/video/video-skj2.mp4')?>" type="video/mp4">
         <!-- <source src="https://nakhonsawangames38.com//videos/home-header-video-bg.mp4" type="video/mp4"> -->
@@ -258,9 +260,9 @@ body {
                         <div class="icon">
                             <i class="fa-solid fa-atom"></i>
                         </div>
-                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) ,
+                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) ,
                                 SMT(T)
-                            </a></h4>
+                            </a></h6>
                         <p class="description d-none d-sm-block d-md-none d-lg-block">
                             หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
                             เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้านคณิตศาสตร์ วิทยาศาสตร์และเทคโนโลยี
@@ -271,7 +273,7 @@ body {
                         <div class="icon">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
-                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h4>
+                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h6>
                         <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนาทักษะ
                             ความสามารถด้านกีฬา เช่น ฟุตบอล วอลเลย์บอล บาสเกตบอล ฯลฯ</p>
@@ -279,23 +281,23 @@ body {
 
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-palette"></i></div>
-                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง
-                                (PAP)</a></h4>
+                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง
+                                (PAP)</a></h6>
                         <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนารูปแบบ/แบบแผนของการแสดง เช่น ดนตรีไทย ดนตรีสากล การขับร้อง ศิลปะการแสดง
                             ทัศนศิลป์ วิจิตรศิลป์ ประติมากรรม ฯลฯ</p>
                     </div>
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-gears"></i></div>
-                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a>
-                        </h4>
+                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a>
+                        </h6>
                         <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนาทักษะในการประกอบอาชีพ ได้แก่ การโรงแรม การอาหารคหกรรม
                             ธุรกิจและการประกอบการ โรงงานต่าง ๆ ฯลฯ</p>
                     </div>
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-language"></i></div>
-                        <h4 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h4>
+                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h6>
                         <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
                             เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้าน ภาษาต่างประเทศ เช่น ภาษาอังกฤษ
                             ภาษาจีน</p>
