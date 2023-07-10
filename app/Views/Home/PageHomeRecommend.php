@@ -173,6 +173,11 @@ body {
         border-radius: 10px;
         background: #fff;
         padding: 5px 15px;
+        display: flow-root;
+    }
+
+    .why-us .icon-box .title{
+        font-size: 22px;
     }
 
     .why-us .icon-box .icon i {

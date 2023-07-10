@@ -32,10 +32,9 @@ class ConPersonnal extends BaseController
         $data['title'] = "บุคลากรภายในโรงเรียน";
         $data['description'] = "รายละเอียดข้อมูลบุคลากรภายในโรงเรียน";
         $data['banner'] = '';
-
         
         if($Key === "ผู้บริหารสถานศึกษา"){
-            $CheckPosi = "pers_position='posi_001' OR pers_position='posi_002'";
+            $CheckPosi = "pers_position='posi_001' OR pers_position='posi_002' OR pers_position='posi_004'";
         }elseif($PoisO === 'สายการสอน'){
             $CheckLear = $this->LearModel->where('lear_namethai',str_replace("-", " ", $Key))->get()->getResult();
             $CheckPosi = ['pers_learning' => $CheckLear[0]->lear_id];           
@@ -59,7 +58,8 @@ class ConPersonnal extends BaseController
             skjacth_personnel.tb_personnel.pers_img,
             skjacth_personnel.tb_personnel.pers_academic,
             skjacth_personnel.tb_personnel.pers_numberGroup,
-            skjacth_personnel.tb_personnel.pers_groupleade
+            skjacth_personnel.tb_personnel.pers_groupleade,
+            skjacth_personnel.tb_personnel.pers_status
         ')
         ->join('skjacth_skj.tb_position','skjacth_skj.tb_position.posi_id = skjacth_personnel.tb_personnel.pers_position')       
         ->where($CheckPosi)
@@ -67,7 +67,7 @@ class ConPersonnal extends BaseController
         ->orderBy('skjacth_personnel.tb_personnel.pers_groupleade DESC,skjacth_personnel.tb_personnel.pers_numberGroup ASC')
         ->get()->getResult();
         
-        //echo '<pre>';print_r($data['PosiOther']);exit();
+        //echo '<pre>';print_r($data['Pers']);exit();
 
         return  view('layout/header',$data)
                 .view('layout/navbar')

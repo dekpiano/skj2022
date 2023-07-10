@@ -1,4 +1,36 @@
 <!-- Footer Start -->
+
+<!-- Messenger ปลั๊กอินแชท Code -->
+<div id="fb-root"></div>
+
+<!-- Your ปลั๊กอินแชท code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "230288483730783");
+  chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v17.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <div class="container-fluid bg-primary2 text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
@@ -101,6 +133,7 @@
 <?php if($uri->getSegment(1) === "News"):?>
 <script src="<?=base_url()?>/assets/js/News/News.js?v=7"></script>
 <?php endif; ?>
+
 </body>
 
 </html>
@@ -118,11 +151,13 @@
             <div class="modal-body">
                 <form action="<?=base_url('Login/LoginAdmin')?>" method="post">
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="Username" name="Username" placeholder="name@example.com">
+                        <input type="text" class="form-control" id="Username" name="Username"
+                            placeholder="name@example.com">
                         <label for="Username">Username</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+                        <input type="password" class="form-control" id="Password" name="Password"
+                            placeholder="Password">
                         <label for="Password">Password</label>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
