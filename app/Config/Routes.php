@@ -42,6 +42,7 @@ $routes->match(['get', 'post'],'News', 'ConNews::NewsMain');
 $routes->get('News/Detail/(:any)', 'ConNews::NewsDetail/$1');
 $routes->match(['get', 'post'],'News/loadMoreNews', 'ConNews::loadMoreNews');
 $routes->match(['get', 'post'],'CountReadNews','ConNews::NewsCountRead');
+$routes->get('pr', 'ConNews::pr');
 
 $routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
 
@@ -50,6 +51,7 @@ $routes->get('PageGroup', 'ConHome::PageGroup');
 $routes->get('guidance', 'ConGuidance::index');
 $routes->get('Course', 'ConCourse::index');
 $routes->get('Yearbook', 'ConYearbook::index');
+
 
 
 // Login admin

@@ -5,7 +5,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
 use App\Libraries\Datethai;
-
+use App\Models\BannerModel;
 use App\Models\PositionModel;
 use App\Models\LearningModel;
 use App\Models\PersonnalModel;
@@ -19,6 +19,7 @@ class ConNews extends BaseController
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
         $this->AboutModel = new AboutModel();
+        $this->BannerModel = new BannerModel();
        
     }
 
@@ -101,5 +102,20 @@ class ConNews extends BaseController
         $data['DB']->where('news_id',$this->request->getVar('NewsID'));
         echo $data['DB']->update($dataUpdate);
         
+    }
+
+    public function pr(){
+        $data = $this->DataMain();
+        $data['title'] = "สกจ. ประชาสัมพันธ์";
+        $data['description'] = "";
+        $data['banner'] = "";
+
+        $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
+        ->where('banner_status','on')
+        ->orderBy('banner_id', 'DESC')
+        ->findAll();
+
+        return  view('PagePr/PagePrMain',$data);
+                
     }
 }
