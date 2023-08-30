@@ -49,12 +49,12 @@
                             class="fab fa-youtube"></i></a>
 
                 </div>
-                <p class="mt-4">
+                <!-- <p class="mt-4">
                     <script type="text/javascript" src="https://www.counters-free.net/count/7r1m"></script><br>
                     <a href='http://www.counter-zaehler.de'>เยี่ยมชม</a>
                     <script type='text/javascript'
                         src='https://www.whomania.com/ctr?id=f2a759e919e693827d52f2dbf02835d8c9576ede'></script>
-                </p>
+                </p> -->
 
             </div>
             <div class="col-lg-6 col-md-6">
