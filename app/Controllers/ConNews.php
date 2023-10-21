@@ -47,7 +47,7 @@ class ConNews extends BaseController
         //     'pager' => $this->NewsModel->pager
         // ];
 
-        $data['NewsAll'] = $this->NewsModel->limit(4)->orderBy('news_id', 'DESC')->get()->getResult();
+        $data['NewsAll'] = $this->NewsModel->limit(4)->orderBy('news_date', 'DESC')->get()->getResult();
 
         return  view('layout/header',$data)
                 .view('layout/navbar')
@@ -66,7 +66,7 @@ class ConNews extends BaseController
     }
 
    function fetchData($limit,$offset = ''){
-        $dbQuery = $this->NewsModel->select('*')->limit($limit,$offset)->orderBy('news_id', 'DESC')->get();
+        $dbQuery = $this->NewsModel->select('*')->limit($limit,$offset)->orderBy('news_date', 'DESC')->get();
         return $dbQuery->getResult();
     }
 
@@ -74,8 +74,8 @@ class ConNews extends BaseController
     {    
         $data = $this->DataMain();
        
-        $data['news'] = $this->NewsModel->where('news_id',$KeyNews)->orderBy('news_id', 'DESC')->get()->getRow();
-        $data['NewsLatest'] = $this->NewsModel->limit(3)->orderBy('news_id', 'DESC')->get()->getResult();
+        $data['news'] = $this->NewsModel->where('news_id',$KeyNews)->orderBy('news_date', 'DESC')->get()->getRow();
+        $data['NewsLatest'] = $this->NewsModel->limit(3)->orderBy('news_date', 'DESC')->get()->getResult();
 
         $data['title'] = $data['news']->news_topic ." | สกจ. ประชาสัมพันธ์";
         $data['description'] = mb_strimwidth(strip_tags($data['news']->news_content),0,100,'...');

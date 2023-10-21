@@ -144,7 +144,7 @@
                             class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         กิจการนักเรียน</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
+                    <a href="https://general.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         งบประมาณและแผน</a>
                 </div>
