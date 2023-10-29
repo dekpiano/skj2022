@@ -1,22 +1,35 @@
+
+<!-- Facts Start -->
+<?= $this->include('Home/PageHomeRecommend')?>
+<!-- Facts End -->
+
+<!-- Facts Start -->
+<?= $this->include('Home/PageHomeCounter')?>
+<!-- Facts End -->
+
 <!-- Carousel Start -->
 <?= $this->include('Home/PageHomeCarousel') ?>
 <!-- Carousel End -->
 
-<div class="my-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;background: #3287d0 url(<?=base_url('uploads/Admission/bg.png');?>) bottom center no-repeat;">
-            <div class="container px-lg-5">
-                <div class="row align-items-center" style="height: 555px;">
-                    <div class="col-12 col-md-6">
-                        <h1 class="text-white">รับสมัครนักเรียน ปีการศึกษา 2566</h1>
-                        <div class="position-relative w-100 mt-3 text-center">                        <a class="btn btn-outline-light rounded-pill py-3 px-5 mt-2" href="https://admission.skj.ac.th/">ดูรายละเอียดการรับสมัครนักเรียน</a>
-                       
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="max-height: 250px;" src="<?=base_url('uploads/Admission/banner-main1.svg');?>">
-                    </div>
+<!-- <div class="my-6 wow fadeInUp" data-wow-delay="0.1s"
+    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;background: #3287d0 url(<?=base_url('uploads/Admission/bg.png');?>) bottom center no-repeat;">
+    <div class="container px-lg-5">
+        <div class="row align-items-center" style="height: 555px;">
+            <div class="col-12 col-md-6">
+                <h1 class="text-white">รับสมัครนักเรียน ปีการศึกษา 2566</h1>
+                <div class="position-relative w-100 mt-3 text-center"> <a
+                        class="btn btn-outline-light rounded-pill py-3 px-5 mt-2"
+                        href="https://admission.skj.ac.th/">ดูรายละเอียดการรับสมัครนักเรียน</a>
+
                 </div>
             </div>
+            <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                <img class="img-fluid mt-5" style="max-height: 250px;"
+                    src="<?=base_url('uploads/Admission/banner-main1.svg');?>">
+            </div>
         </div>
+    </div>
+</div> -->
 
 
 
@@ -26,12 +39,9 @@
 
 
 <!-- PageHomeDirector Start -->
-<?= $this->include('Home/PageHomeDirector') ?>
+<!-- $this->include('Home/PageHomeDirector')  -->
 <!-- PageHomeDirector End -->
 
-<!-- Facts Start -->
-<?= $this->include('Home/PageHomeCounter')?>
-<!-- Facts End -->
 
 
 <!-- News Start -->
@@ -44,10 +54,8 @@
 
 
 <!-- Excellence Start -->
-<?= $this->include('Home/PageHomeExcellence') ?>
+<!-- $this->include('Home/PageHomeExcellence') -->
 <!-- Excellence End -->
-
-
 
 
 <!-- SKJstdio Start -->
@@ -156,4 +164,3 @@
     </div>
 </div> -->
 <!-- Project End -->
-

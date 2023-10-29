@@ -12,8 +12,10 @@
         <div class="col-lg-6 px-5 text-end">
             <small>Follow us:</small>
             <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn-square text-primary border-end rounded-0" href="https://www.facebook.com/SKJNS160"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square text-primary border-end rounded-0" href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i class="fab fa-youtube"></i></a>
+                <a class="btn-square text-primary border-end rounded-0" href="https://www.facebook.com/SKJNS160"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="btn-square text-primary border-end rounded-0"
+                    href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
@@ -38,7 +40,7 @@
                                     สวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
                                 </div>
                                 <div class="text-eng">
-                                    Suankularb Wittayalai (Jiraprawat) Nakornsawan
+                                    Suankularb Wittayalai (Jiraprawat) Nakhon Sawan
                                 </div>
                             </div>
                         </div>
@@ -118,8 +120,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
                 <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>" class="dropdown-item"><i
-                            class="fa-sharp fa-solid fa-caret-right"></i> ผู้บริหารสถานศึกษา</a>
+                    <a href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"
+                        class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ผู้บริหารสถานศึกษา</a>
                     <?php foreach ($Lear as $key => $v_Lear) : ?>
                     <a href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"
                         class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
@@ -142,13 +144,15 @@
                             class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         กิจการนักเรียน</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
+                    <a href="https://general.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         งบประมาณและแผน</a>
                 </div>
             </div>
-            <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
-                ติดต่อ</a>
+            <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                ติดต่อ</a> -->
+                <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                หลักสูตรความเป็นเลิศ</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
                     SKJ บริการ</a>
@@ -165,7 +169,7 @@
                         Fecebook กลุ่ม
                     </a>
 
-                    <a href="https://skj.ac.th/Email" class="dropdown-item">
+                    <a href="<?=base_url('Email')?>" class="dropdown-item">
                         <i class="fa-solid fa-envelope"></i> Email
                         โรงเรียน
                     </a>
@@ -176,9 +180,14 @@
                     <a href="<?=base_url('guidance')?>" class="dropdown-item">
                         <i class="fa-solid fa-passport"></i>
                         ทุนการศึกษา
-                    </a> 
+                    </a>
+                    <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
+                        <i class="fa-solid fa-passport"></i>
+                        หนังสือรุ่น ส.ก.จ.
+                    </a>
                 </div>
             </div>
+            
         </div>
 
         <div class="nav-item dropdown ">

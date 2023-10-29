@@ -67,6 +67,98 @@
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
         <img src="<?=base_url('uploads/logoSchool/LogoSKJ_4.png')?>" style="width: 5rem; height: 5rem;" alt="" class="position-absolute top-50 start-50 translate-middle">
-        <!-- <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i> -->
+       
     </div>
     <!-- Spinner End -->
+    <style>
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px){
+    .blog-item {
+        height: 200px;
+    }
+
+    .blog-item .blog-text {
+        padding: 10px;
+    }
+
+    .blog-item .blog-text a {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .small{
+        font-size: .4em !important;
+    }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px){
+    
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .blog-item {
+        height: 250px;
+    }
+    .blog-item .blog-text {
+        padding: 10px;
+    }
+
+    .blog-item .blog-text a {
+        font-size: 25px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .small{
+        font-size: .8em !important;
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px){
+    .blog-item {
+        height: 250px;
+    }
+    .blog-item .blog-text {
+        padding: 10px;
+    }
+
+    .blog-item .blog-text a {
+        font-size: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .small{
+        font-size: .8em !important;
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .blog-item {
+        height: 300px;
+    }
+    .blog-item .blog-text {
+        padding: 10px;
+    }
+   
+    .blog-item .blog-text a {
+        font-size: 25px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .small{
+        font-size: .875em !important;
+    }
+}
+</style>

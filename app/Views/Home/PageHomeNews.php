@@ -1,3 +1,4 @@
+
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
@@ -10,9 +11,15 @@
             <?php foreach ($news as $key => $v_news) : ?>
             <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <div class="blog-item">
+                <div class="blog-item" style="">
                     <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
                     <div class="blog-text">
+                        
+                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>"
+                            news_id="<?=$v_news->news_id?>"
+                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
+                        <!-- <?=base_url('News/Detail/'.$v_news->news_id);?> -->
+
                         <div class="breadcrumb">
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-user me-2"></i>Admin</a>
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
@@ -20,9 +27,6 @@
                             </a>
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$v_news->news_view?></a>
                         </div>
-                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>" news_id="<?=$v_news->news_id?>"
-                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
-                            <!-- <?=base_url('News/Detail/'.$v_news->news_id);?> -->
                     </div>
                 </div>
             </div>

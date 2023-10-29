@@ -1,5 +1,5 @@
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s"
-    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),url(uploads/background/bg-news.jpg), center no-repeat; background-size: cover;background-position: bottom;" >
+    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),url(uploads/background/bg-news.jpg), center no-repeat; background-size: cover;background-position: bottom;">
     <div class="container text-center py-5">
         <h1 class="display-4 text-white  slideInDown mb-3">สกจ. ประชาสัมพันธ์</h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -26,15 +26,18 @@
                 <div class="blog-item">
                     <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
                     <div class="blog-text">
+
+                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>"
+                            news_id="<?=$v_news->news_id?>"
+                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
                         <div class="breadcrumb">
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-user me-2"></i>Admin</a>
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
                                 <?=$dateThai->thai_date_fullmonth(strtotime($v_news->news_date))?>
                             </a>
-                            <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$v_news->news_view?></a>
+                            <a class="breadcrumb-item small" href="#"><i
+                                    class="fa fa-eye me-2"></i><?=$v_news->news_view?></a>
                         </div>
-                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>" news_id="<?=$v_news->news_id?>"
-                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
                     </div>
                 </div>
             </div>
@@ -42,9 +45,9 @@
             <?php endif; ?>
             <div id="main" class="row g-4"></div>
             <div id="loader" class="row g-4" style="display:none;">
-            <?= $this->include('layout/PageLoadingData')?>
+                <?= $this->include('layout/PageLoadingData')?>
             </div>
-            
+
         </div>
     </div>
 </div>

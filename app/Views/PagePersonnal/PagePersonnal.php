@@ -19,10 +19,8 @@
             <h1 class="display-6 mb-4"><?=str_replace("-", " ", urldecode($uri->getSegment(3)));?></h1>
         </div>
         <div class="row g-4">
-
-
             <?php foreach ($Pers as $key => $v_Pers) :?>
-            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ') : ?>
+            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' || $v_Pers->pers_position  == 'posi_001') : ?>
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
@@ -50,7 +48,7 @@
             </div>
 
             <?php else :?>
-
+            <?php if($v_Pers->pers_status == "กำลังใช้งาน"): ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="team-item rounded text-center p-4">
@@ -73,6 +71,8 @@
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
+
             <?php endif; ?>
             <?php endforeach; ?>
 
