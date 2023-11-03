@@ -63,7 +63,7 @@ class ConPersonnal extends BaseController
         ')
         ->join('skjacth_skj.tb_position','skjacth_skj.tb_position.posi_id = skjacth_personnel.tb_personnel.pers_position')       
         ->where($CheckPosi)
-        ->Where('pers_status','กำลังใช้งาน')
+        //->Where('pers_status','กำลังใช้งาน')
         ->orderBy('skjacth_personnel.tb_personnel.pers_groupleade DESC,skjacth_personnel.tb_personnel.pers_numberGroup ASC')
         ->get()->getResult();
         

@@ -26,7 +26,7 @@
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <div class="team-item rounded text-center p-4">
                         <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
-                            src="https://academic.skj.ac.th/uploads/General/Personnel/<?=$v_Pers->pers_img;?>" alt="">
+                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <div class="team-text">
                             <div class="team-title">
                                 <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
@@ -53,7 +53,7 @@
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="team-item rounded text-center p-4">
                     <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
-                        src="https://academic.skj.ac.th/uploads/General/Personnel/<?=$v_Pers->pers_img;?>" alt="">
+                        src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                     <div class="team-text">
                         <div class="team-title">
                             <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
