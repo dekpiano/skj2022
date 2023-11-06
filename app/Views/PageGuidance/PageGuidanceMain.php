@@ -18,10 +18,37 @@
             <h6 class="section-title bg-white text-center text-primary px-3">งานแนะแนว</h6>
             <!-- <h1 class="display-6 mb-4">If You Have Any Query, Please Feel Free Contact Us</h1> -->
         </div>
-        <div class="d-flex g-4 ">
+        <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ</h4>
+                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2566</h4>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                สมัครทุนถึงวันที่ 1  - 27 พฤศจิกายน 2566 นี้
+                </figcaption>
+            </div>
+            <div class="ms-3 align-self-center">
+            <a target="_blank" href="https://drive.google.com/file/d/1PWf5TIsvkGoU-dMQa_681-1YgfY_wx9G/view?usp=sharing" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
+          
+            </div>
+        </div>
+        <div class="d-flex g-4 mt-3">
+            <div class="border-start border-5 border-primary ps-3">
+                <blockquote class="blockquote">
+                <h4 class="mt-0 mb-3">คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย ประจำปีการศึกษา 2567</h4>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                สมัครระหว่างวันที่ 1 - 31 มกราคม 2567 นี้
+                </figcaption>
+            </div>
+            <div class="ms-3 align-self-center">
+            <a target="_blank" href="https://drive.google.com/file/d/1WY3Dk7oHY2Q2tCoMHIxrlEMS9CwI0r9G/view?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ</a>
+            </div>
+        </div>
+        <div class="d-flex g-4 mt-3">
+            <div class="border-start border-5 border-primary ps-3">
+                <blockquote class="blockquote">
+                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2565</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
                 สมัครทุนถึงวันที่ 1 พฤศจิกายน - 15 ธันวาคม 2565 นี้
