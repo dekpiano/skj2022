@@ -29,7 +29,7 @@
             </div>
             <div class="ms-3 align-self-center">
             <a target="_blank" href="https://drive.google.com/file/d/1PWf5TIsvkGoU-dMQa_681-1YgfY_wx9G/view?usp=sharing" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
-          
+            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdz0QbewJfd4bofgbZWS5gVt3Uaxq9jGsjK0Btn3g2A63Ci4g/viewform?usp=sf_link" class="btn btn-info w-100">สมัครทุน</a>
             </div>
         </div>
         <div class="d-flex g-4 mt-3">
@@ -57,7 +57,7 @@
             <div class="ms-3 align-self-center">
             <a target="_blank" href="https://drive.google.com/file/d/1-wIm3K5vTIVLZu6xR1qix5NZx-Vr-PR4/view?usp=share_link" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
           
-            <a target="_blank" href="https://forms.gle/oc1yrxuqQM8P42EaA" class="btn btn-info w-100">สมัครทุน</a>
+            
             </div>
         </div>
         <div class="d-flex g-4 mt-3">
