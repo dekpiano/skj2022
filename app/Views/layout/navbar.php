@@ -185,6 +185,10 @@
                         <i class="fa-solid fa-passport"></i>
                         หนังสือรุ่น ส.ก.จ.
                     </a>
+                    <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
+                    <i class="fa-solid fa-hammer"></i>
+                        แจ้งซ่อมออนไลน์
+                    </a>
                 </div>
             </div>
             
