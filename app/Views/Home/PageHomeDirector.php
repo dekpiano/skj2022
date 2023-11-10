@@ -16,7 +16,7 @@
                             <img class="flex-shrink-0 rounded-circle" src="https://academic.skj.ac.th/uploads/General/Personnel/<?=$Director->pers_img?>" alt="" style="width: 150px; height: 180px;">
                             <div class="ps-4">
                                 <h6><?=$Director->pers_prefix.$Director->pers_firstname.' '.$Director->pers_lastname?></h6>
-                                <small>ผู้อำนวยการสถานศึกษา</small>
+                                <small>ผู้อำนวยการสถานศึกษา555</small>
                             </div>
                         </div>
                        

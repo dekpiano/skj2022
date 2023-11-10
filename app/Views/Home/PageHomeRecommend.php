@@ -70,7 +70,7 @@ body {
 
     .why-us .content {
         padding: 10px;
-        text-align:center;
+        text-align: center;
         background: #249ffd;
         border-radius: 4px;
         color: #fff;
@@ -79,7 +79,7 @@ body {
     .why-us .content h3 {
         font-weight: 700;
         font-size: 25px;
-       /* margin-bottom: 30px; */
+        /* margin-bottom: 30px; */
     }
 
     .why-us .icon-box {
@@ -176,7 +176,7 @@ body {
         display: flow-root;
     }
 
-    .why-us .icon-box .title{
+    .why-us .icon-box .title {
         font-size: 22px;
     }
 
@@ -211,8 +211,7 @@ body {
 @media screen and (min-width: 800px) {}
 </style>
 <div class="hero-video">
-    <video style="width: 100%;" autoplay muted playsinline loop
-        poster="<?=base_url('uploads/video/bg.png')?>">
+    <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
         <source src="<?=base_url('uploads/video/video-skj2.mp4')?>" type="video/mp4">
         <!-- <source src="https://nakhonsawangames38.com//videos/home-header-video-bg.mp4" type="video/mp4"> -->
     </video>
@@ -236,7 +235,7 @@ body {
     <div class="container">
 
         <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-xl-5 col-lg-6 col-md-6 aos-init aos-animate" data-aos="fade-up">
                 <div class="content">
                     <h3 class="text-white">หลักสูตรที่เปิดสอน</h3>
                     <p>
@@ -245,16 +244,18 @@ body {
                 </div>
                 <div class="text-center d-none d-sm-block">
                     <div class="" style="padding: 0px 41px 0px">
-                        <img class="flex-shrink-0 img-fluid" src="<?=base_url('uploads/director/PO.png')?>" alt="">
+                        <img class="flex-shrink-0 img-fluid" src="<?=base_url('uploads/director/PO1.png')?>" alt="">
                     </div>
                     <div class="mt-1">
-                        <h4><?=$Director->pers_prefix.$Director->pers_firstname.' '.$Director->pers_lastname?></h4>
-                        <small>ผู้อำนวยการสถานศึกษา</small>
+                        <h4>นางสาวอร่าม วัฒนะ</h4>
+                        <small>ผู้อำนวยการกองการศึกษา ศาสนาและวัฒนธรรม รักษาการในตำแหน่ง <br>
+                            ผู้อำนวยการสถานศึกษา โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+                        </small>
                     </div>
                 </div>
             </div>
 
-            <div class="shadow-lg icon-box col-md-6 col-xl-8 col-lg-6 d-flex flex-column  py-3">
+            <div class="shadow-lg icon-box col-md-6 col-xl-7 col-lg-6 d-flex flex-column  py-3">
                 <div class="">
                     <h4 data-aos="fade-up" class="aos-init aos-animate">เกี่ยวกับ</h4>
                     <p data-aos="fade-up" class="aos-init aos-animate">
@@ -279,7 +280,8 @@ body {
                             <i class="fa-solid fa-trophy"></i>
                         </div>
                         <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
+                        <p class="description d-none d-sm-block d-md-none d-lg-block">
+                            หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนาทักษะ
                             ความสามารถด้านกีฬา เช่น ฟุตบอล วอลเลย์บอล บาสเกตบอล ฯลฯ</p>
                     </div>
@@ -288,7 +290,8 @@ body {
                         <div class="icon"><i class="fa-solid fa-palette"></i></div>
                         <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง
                                 (PAP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
+                        <p class="description d-none d-sm-block d-md-none d-lg-block">
+                            หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนารูปแบบ/แบบแผนของการแสดง เช่น ดนตรีไทย ดนตรีสากล การขับร้อง ศิลปะการแสดง
                             ทัศนศิลป์ วิจิตรศิลป์ ประติมากรรม ฯลฯ</p>
                     </div>
@@ -296,14 +299,16 @@ body {
                         <div class="icon"><i class="fa-solid fa-gears"></i></div>
                         <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a>
                         </h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน
+                        <p class="description d-none d-sm-block d-md-none d-lg-block">
+                            หลักสูตรหรือแผนการจัดการเรียนการสอน
                             ที่มุ่งเน้นการพัฒนาทักษะในการประกอบอาชีพ ได้แก่ การโรงแรม การอาหารคหกรรม
                             ธุรกิจและการประกอบการ โรงงานต่าง ๆ ฯลฯ</p>
                     </div>
                     <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fa-solid fa-language"></i></div>
                         <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
+                        <p class="description d-none d-sm-block d-md-none d-lg-block">
+                            หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
                             เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้าน ภาษาต่างประเทศ เช่น ภาษาอังกฤษ
                             ภาษาจีน</p>
                     </div>

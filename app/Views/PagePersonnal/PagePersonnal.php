@@ -19,8 +19,38 @@
             <h1 class="display-6 mb-4"><?=str_replace("-", " ", urldecode($uri->getSegment(3)));?></h1>
         </div>
         <div class="row g-4">
+            <?php if(urldecode($uri->getSegment(3)) === "ผู้บริหารสถานศึกษา"):?>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="team-item rounded text-center p-4">
+                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                            src="<?=base_url('uploads/director/PO1.png')?>" alt="">
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5>นางสาวอร่าม วัฒนะ</h5>
+                                <span style="font-size: 0.7em;">
+                                    ผู้อำนวยการกองการศึกษา ศาสนาและวัฒนธรรม รักษาการในตำแหน่ง <br>
+                                    ผู้อำนวยการสถานศึกษา โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+
+                                </span>
+
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
             <?php foreach ($Pers as $key => $v_Pers) :?>
-            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' || $v_Pers->pers_position  == 'posi_001') : ?>
+            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ') : ?>
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
