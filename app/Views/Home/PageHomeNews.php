@@ -6,7 +6,7 @@
             <h6 class="section-title bg-white text-center text-primary px-3">SKJ News</h6>
             <h1 class="display-6 mb-4">สกจ. ประชาสัมพันธ์</h1>
         </div>
-        <div class="row g-4">
+        <div class="row g-4" data-masonry='{"percentPosition": true }'>
 
             <?php foreach ($news as $key => $v_news) : ?>
             <div class="col-lg-4 col-6 wow fadeInUp" data-wow-delay="0.1s"

@@ -18,7 +18,7 @@
             <h6 class="section-title bg-white text-center text-primary px-3">SKJ News</h6>
             <h1 class="display-6 mb-4">สกจ. ประชาสัมพันธ์</h1>
         </div> -->
-        <div class="row g-4">
+        <div class="row g-4"  id="grid">
             <?php if($NewsAll):?>
             <?php foreach ($NewsAll as $key => $v_news) : ?>
             <div class="col-lg-3 col-md-4 col-6 grid-item wow fadeInUp" data-wow-delay="0.1s"

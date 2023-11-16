@@ -47,7 +47,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?=base_url()?>/assets/css/style.css?v=7" rel="stylesheet">
-    <link href="<?=base_url()?>/assets/css/media.css?v=3" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/media.css?v=4" rel="stylesheet">
 
 
 </head>
@@ -74,9 +74,6 @@
 
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px){
-    .blog-item {
-        height: 200px;
-    }
 
     .blog-item .blog-text {
         padding: 10px;
@@ -101,9 +98,7 @@
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .blog-item {
-        height: 250px;
-    }
+ 
     .blog-item .blog-text {
         padding: 10px;
     }
@@ -122,9 +117,7 @@
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px){
-    .blog-item {
-        height: 250px;
-    }
+
     .blog-item .blog-text {
         padding: 10px;
     }
@@ -143,9 +136,7 @@
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .blog-item {
-        height: 300px;
-    }
+
     .blog-item .blog-text {
         padding: 10px;
     }
