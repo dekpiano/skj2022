@@ -55,8 +55,13 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <div class="team-item rounded text-center p-4">
+                        <?php if($v_Pers->pers_img == ""):?>
+                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                            src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
+                        <?php else: ?>
                         <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                        <?php endif; ?>
                         <div class="team-text">
                             <div class="team-title">
                                 <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
@@ -82,8 +87,13 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="team-item rounded text-center p-4">
-                    <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
-                        src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                <?php if($v_Pers->pers_img == ""):?>
+                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                            src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
+                        <?php else: ?>
+                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                        <?php endif; ?>
                     <div class="team-text">
                         <div class="team-title">
                             <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
