@@ -8,27 +8,28 @@
 </div>
 
 <script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "230288483730783");
-  chatbox.setAttribute("attribution", "biz_inbox");
+var chatbox = document.getElementById('fb-customer-chat');
+chatbox.setAttribute("page_id", "230288483730783");
+chatbox.setAttribute("attribution", "biz_inbox");
 </script>
 
 <!-- Your SDK code -->
 <script>
-  window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
     FB.init({
-      xfbml            : true,
-      version          : 'v17.0'
+        xfbml: true,
+        version: 'v17.0'
     });
-  };
+};
 
-  (function(d, s, id) {
+(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk'));
 </script>
 
 <div class="container-fluid bg-primary2 text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -125,7 +126,7 @@
 <script src="<?=base_url()?>/assets/lib/easing/easing.min.js"></script>
 <script src="<?=base_url()?>/assets/lib/waypoints/waypoints.min.js"></script>
 <script src="<?=base_url()?>/assets/lib/counterup/counterup.min.js"></script>
-<script src="<?=base_url()?>/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 <script src="<?=base_url()?>/assets/lib/lightbox/js/lightbox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
 <!-- Template Javascript -->
@@ -133,6 +134,19 @@
 <?php if($uri->getSegment(1) === "News"):?>
 <script src="<?=base_url()?>/assets/js/News/News.js?v=7"></script>
 <?php endif; ?>
+
+<script>
+$(document).ready(function() {
+    $("#news-slider").owlCarousel({
+        items : 3,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        pagination:true,
+        autoPlay:true
+    });
+});
+</script>
 
 </body>
 
