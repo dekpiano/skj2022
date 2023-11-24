@@ -46,12 +46,12 @@
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=4" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=7" rel="stylesheet">
-    <link href="<?=base_url()?>/assets/css/media.css?v=4" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=8" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/media.css?v=5" rel="stylesheet">
 
 <!-- Cookie Consent by https://www.cookiewow.com -->
-<script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script>
-    <script id="cookieWow" type="text/javascript" src="https://cookiecdn.com/configs/npYemaQ118ypmUfmagcae3jg" data-cwcid="npYemaQ118ypmUfmagcae3jg"></script>
+<!-- <script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script>
+    <script id="cookieWow" type="text/javascript" src="https://cookiecdn.com/configs/npYemaQ118ypmUfmagcae3jg" data-cwcid="npYemaQ118ypmUfmagcae3jg"></script> -->
 </head>
 
 <!-- Google tag (gtag.js) -->

@@ -137,7 +137,7 @@ window.fbAsyncInit = function() {
 
 <script>
 $(document).ready(function() {
-    $("#news-slider").owlCarousel({
+    $(".news-slider").owlCarousel({
         items : 3,
         itemsDesktop:[1199,3],
         itemsDesktopSmall:[980,2],

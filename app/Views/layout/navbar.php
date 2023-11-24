@@ -53,7 +53,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-7 d-none d-lg-block">
-            <div class="row">
+            <div class="row header-content">
                 <div class="col-4">
                     <div class="d-flex align-items-center justify-content-end">
                         <div class="flex-shrink-0 btn-lg-square border rounded-circle">

@@ -39,7 +39,7 @@ class ConHome extends BaseController
      
         $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['news'] = $this->NewsModel->where('news_category','ข่าวประชาสัมพันธ์')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
+        $data['news'] = $this->NewsModel->where('news_category !=','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
         $data['NewsReward'] = $this->NewsModel->where('news_category','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
         $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
       

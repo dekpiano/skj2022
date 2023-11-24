@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div id="news-slider" class="owl-carousel">
+            <div id="news-slider" class="owl-carousel news-slider">
                 <?php foreach ($news as $key => $v_news) : ?>
                 <div class="post-slide">
                     <div class="post-img">
@@ -17,7 +17,7 @@
                             news_id="<?=$v_news->news_id?>" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
                     <div class="post-content">
-                        <h3 class="post-title"></h3>
+                        <h3 class="post-title">                          
                             <a href="#" data_view="<?=$v_news->news_view?>"
                             news_id="<?=$v_news->news_id?>"><?=$v_news->news_topic?></a>
                         </h3>                     
