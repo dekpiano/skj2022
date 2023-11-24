@@ -39,8 +39,8 @@ class ConHome extends BaseController
      
         $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['news'] = $this->NewsModel->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
-       
+        $data['news'] = $this->NewsModel->where('news_category','ข่าวประชาสัมพันธ์')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
+        $data['NewsReward'] = $this->NewsModel->where('news_category','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
         $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
       
         $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
@@ -48,7 +48,7 @@ class ConHome extends BaseController
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();
         $data['ConutStudent'] = $this->StudentModel->CountStudentAll();
-        //echo '<pre>'; print_r($data['ConutStudent']); exit();
+        //echo '<pre>'; print_r($data['news']); exit();
       
         return  view('layout/header',$data)
                 .view('layout/navbar')

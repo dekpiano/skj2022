@@ -128,8 +128,9 @@
                         <label for="news_category" class="form-label">ประเภทข่าว</label>
                         <select id="largeSelect" class="form-select form-select" name="news_category" id="news_category"
                             required>
-                            <option value="ข่าวประชาสัมพันธ์">ประชาสัมพันธ์</option>
-                            <option value="ข่าวกิจกรรม">กิจกรรม</option>
+                            <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
+                            <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
+                            <option value="ข่าวรางวัล">ข่าวรางวัล</option>
                         </select>
                         <div class="invalid-feedback">
                             เลือกประเภทข่าว

@@ -3,6 +3,10 @@
 <?= $this->include('Home/PageHomeRecommend')?>
 <!-- Facts End -->
 
+<!-- NewsReward Start -->
+<!-- <?= $this->include('Home/PageHomeNewsReward') ?> -->
+<!-- NewsReward End -->
+
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeCounter')?>
 <!-- Facts End -->
