@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\UserHistoryModel;
 
 /**
  * Class BaseController
@@ -21,6 +22,10 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+    public function __construct(){
+        $this->UserHistoryModel = new UserHistoryModel();
+    }
+
     /**
      * Instance of the main Request object.
      *
@@ -48,5 +53,34 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+    }
+
+    function VisitorsUser (){
+        $database = \Config\Database::connect();
+        $visit = $database->table('tb_visit_user_history');
+
+        $userIP = $_SERVER['REMOTE_ADDR'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $visit->insert([
+            'visitU_date' => date('Y-m-d'),
+            'visitU_ip' => $userIP,
+            'visitU_agent' => $userAgent,
+            'visitU_count' => 1
+        ]);
+        
+        $data['visitAll'] = $visit->select('
+            COUNT(visitU_ip) AS visitAll,
+        ')->get()->getResult();  
+        $data['VisitToday'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS VisitToday')
+        ->where('visitU_date',date("Y-m-d"))->get()->getResult();
+        $data['visitMouth'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitMouth')
+        ->where('MONTH(visitU_date)',date("m"))
+        ->where('YEAR(visitU_date)',date("Y"))
+        ->get()->getResult();
+        $data['visitYear'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitYear')
+        ->where('YEAR(visitU_date)',date("Y"))
+        ->get()->getResult();
+
+        return $data;
     }
 }

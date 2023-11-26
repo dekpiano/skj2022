@@ -28,6 +28,7 @@ class ConAboutSchool extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_010'))->get()->getResult();
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         $data['uri'] = service('uri'); 
+        $data['v'] = $this->VisitorsUser();
         return $data;
     }
 

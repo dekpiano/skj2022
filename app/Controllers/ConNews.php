@@ -33,6 +33,7 @@ class ConNews extends BaseController
         $database = \Config\Database::connect();
         $data['DB'] = $database->table('tb_news');
         helper(['form', 'url']);
+        $data['v'] = $this->VisitorsUser();
         return $data;
     }
 
@@ -42,13 +43,33 @@ class ConNews extends BaseController
         $data['title'] = "สกจ. ประชาสัมพันธ์";
         $data['description'] = "ข่าวและกิจกรรมภายในโรงเรียน";
         $data['banner'] = '';
-        // $data = [
-        //     'NewsAll' => $this->NewsModel->paginate(4),
-        //     'pager' => $this->NewsModel->pager
-        // ];
 
-        $data['NewsAll'] = $this->NewsModel->limit(4)->orderBy('news_date', 'DESC')->get()->getResult();
+        $request = service('request');
+        $searchData = $request->getGet();
 
+        $search = "";
+        if(isset($searchData) && isset($searchData['search'])){
+        $search = $searchData['search'];
+        }
+
+        if($search == ''){
+            $paginateData = $this->NewsModel->orderBy('news_date', 'DESC')->paginate(20);
+          }else{
+            $paginateData = $this->NewsModel->select('*')
+                ->orLike('news_topic', $search)
+                ->orLike('news_category', $search)
+                ->orLike('news_date', $search)
+                ->orderBy('news_date', 'DESC')
+                ->paginate(20);
+          }
+
+        $data['NewsAll' ] = $paginateData;
+        $data['pager' ] = $this->NewsModel->pager;
+        $data['search' ] = $search;
+      
+        //$data['NewsAll'] = $this->NewsModel->limit(4)->orderBy('news_date', 'DESC')->get()->getResult();
+
+        //echo '<pre>';print_r($data['NewsAll']);exit();
         return  view('layout/header',$data)
                 .view('layout/navbar')
                 .view('PageNews/PageNewsMain')

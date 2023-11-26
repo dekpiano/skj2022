@@ -15,6 +15,7 @@ class ConLogin extends BaseController
         $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $data['uri'] = service('uri'); 
         helper(['form', 'url']);
+        $data['v'] = $this->VisitorsUser();
         return $data;
     }
 

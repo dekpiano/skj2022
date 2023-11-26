@@ -13,39 +13,79 @@
 
 <div class="container-xxl py-5">
     <div class="container">
-        <!-- <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
-            style="max-width: 600px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <h6 class="section-title bg-white text-center text-primary px-3">SKJ News</h6>
-            <h1 class="display-6 mb-4">สกจ. ประชาสัมพันธ์</h1>
-        </div> -->
-        <div class="row g-4"  id="grid">
+       
+    <form method='get' action="<?=base_url('News')?>" id="searchForm">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control form-control-lg" type='text' name='search' value='<?= $search ?>' placeholder="ค้นหาข่าวที่นี่...">
+        <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> ค้นหา</button>
+    </div>
+</form>
+
+        <div class="row g-4" id="grid" data-masonry='{"percentPosition": true }'>
             <?php if($NewsAll):?>
             <?php foreach ($NewsAll as $key => $v_news) : ?>
-            <div class="col-lg-3 col-md-4 col-6 grid-item wow fadeInUp" data-wow-delay="0.1s"
+            <div class="col-lg-4 col-md-4 col-6 grid-item wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="blog-item">
-                    <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
+                    <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news['news_img'])?>" alt="">
                     <div class="blog-text">
 
-                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news->news_view?>"
-                            news_id="<?=$v_news->news_id?>"
-                            href="<?=base_url('News/Detail/'.$v_news->news_id);?>"><?=$v_news->news_topic?></a>
+                        <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news['news_view']?>"
+                            news_id="<?=$v_news['news_id']?>"
+                            href="<?=base_url('News/Detail/'.$v_news['news_id']);?>"><?=$v_news['news_topic']?></a>
                         <div class="breadcrumb">
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-user me-2"></i>Admin</a>
                             <a class="breadcrumb-item small" href="#"><i class="fa fa-calendar-alt me-2"></i>
-                                <?=$dateThai->thai_date_fullmonth(strtotime($v_news->news_date))?>
+                                <?=$dateThai->thai_date_fullmonth(strtotime($v_news['news_date']))?>
                             </a>
                             <a class="breadcrumb-item small" href="#"><i
-                                    class="fa fa-eye me-2"></i><?=$v_news->news_view?></a>
+                                    class="fa fa-eye me-2"></i><?=$v_news['news_view']?></a>
                         </div>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
             <?php endif; ?>
-            <div id="main" class="row g-4"></div>
-            <div id="loader" class="row g-4" style="display:none;">
-                <?= $this->include('layout/PageLoadingData')?>
+
+            <style>
+            .pagination li {
+                margin-left: -1px;
+            }
+
+            .pagination li.active {
+                background: deepskyblue;
+                color: white;
+
+            }
+
+            .pagination li.active a {
+                color: white;
+                text-decoration: none;
+                background: deepskyblue;
+            }
+
+            .pagination li a {
+                padding: .375rem .75rem;
+                position: relative;
+                display: block;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            }
+            </style>
+
+            <div class="row mt-5 fadeInUp" data-wow-delay="0.3s" >
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="pagination justify-content-center mb-4">
+                            <?php if ($pager) :?>
+                            <?= $pager->links() ?>
+                            <?php endif ?>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>

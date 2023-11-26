@@ -30,6 +30,7 @@ class ConHome extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_010'))->get()->getResult();
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         $data['uri'] = service('uri'); 
+        $data['v'] = $this->VisitorsUser();
         return $data;
     }
 
@@ -48,14 +49,16 @@ class ConHome extends BaseController
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();
         $data['ConutStudent'] = $this->StudentModel->CountStudentAll();
-        //echo '<pre>'; print_r($data['news']); exit();
+
+        
       
-        return  view('layout/header',$data)
+
+        //echo '<pre>';print_r($data['v']); exit();
+         return  view('layout/header',$data)
                 .view('layout/navbar')
                 .view('Home/PageHomeMain')
                 .view('layout/footer');
     }
-
 
     function PageGroup(){
         $data = $this->DataMain();
