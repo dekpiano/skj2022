@@ -39,7 +39,7 @@
 
 @media (orientation: landscape) {
     .iced-text {
-        font-size: 10vmax;
+        font-size: 7vmax;
     }
 }
 
@@ -68,6 +68,7 @@
 #canvas {
     position: absolute;
 }
+
 
 
 .countdown-container h1 {
@@ -148,7 +149,7 @@
 
     .iced-text {
         padding: 50px 50px 0px;
-        font-size: 18vmin;
+        font-size: 14vmin;
     }
 
     .content1 {
@@ -156,10 +157,16 @@
         /* display:flex;
   justify-content: center;
   align-items: center; */
-        background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
+        background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
         /* background-size: cover;
     background-position: center; */
+        background-repeat: no-repeat;
     }
+
+    .countdown-container {
+        margin-bottom: 0px;
+    }
+
 }
 
 
@@ -184,31 +191,37 @@
 @media screen and (min-width: 800px) {
     .content1 {
         height: 100vh;
-        /* display:flex;
-  justify-content: center;
-  align-items: center; */
-        background-image: url(https://png.pngtree.com/background/20220828/original/pngtree-2023-happy-new-year-rabbit-lantern-auspicious-clouds-background-picture-image_1916626.jpg);
+        background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
+        background-repeat: space;
+        background-position: bottom;
+        background-size: cover;
+    }
 
+    .countdown-container {
+        margin-bottom: 250px;
     }
 }
 </style>
 <div class="content1">
     <div class="iced-text">
-        <div class="iced-text-front">Happy New Year<br> 2023</di>
+        <div class="iced-text-front">Merry Christmas 2023</di>
         </div>
     </div>
-    <div class="countdown-container">
-        <div id="timer">
-            <div id="days"></div>
-            <div id="hrs"></div>
-            <div id="mins"></div>
-            <div id="secs" class="animated"></div>
-            <span class="label">Days</span>
-            <span class="label">Hours</span>
-            <span class="label">Mins</span>
-            <span class="label">Secs</span>
+    <div class="container">
+        <div class="countdown-container">
+            <div id="timer">
+                <div id="days"></div>
+                <div id="hrs"></div>
+                <div id="mins"></div>
+                <div id="secs" class="animated"></div>
+                <span class="label">Days</span>
+                <span class="label">Hours</span>
+                <span class="label">Mins</span>
+                <span class="label">Secs</span>
+            </div>
         </div>
     </div>
+
 
     <script>
     function createSnow() {
@@ -230,7 +243,7 @@
     }
 
     setInterval(createSnow, 800);
-    var countDownDate = new Date("Jan 1, 2023 00:00:00").getTime();
+    var countDownDate = new Date("Dec 25, 2023 00:00:00").getTime();
 
     var x = setInterval(function() {
         var now = new Date().getTime();
