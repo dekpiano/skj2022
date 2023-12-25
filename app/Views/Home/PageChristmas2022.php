@@ -1,6 +1,5 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Lobster&display=swap');
 
 #snowflake {
     width: 20px;
@@ -25,7 +24,7 @@
 
 
 .iced-text {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Gasoek One', cursive;
     font-size: 11vmin;
     text-align: center;
     line-height: 1em;
@@ -164,7 +163,7 @@
     }
 
     .countdown-container {
-        margin-bottom: 0px;
+        margin-bottom: 30px;
     }
 
 }
@@ -187,24 +186,89 @@
     }
 }
 
-
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
     .content1 {
         height: 100vh;
         background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
         background-repeat: space;
         background-position: bottom;
         background-size: cover;
+        padding:120px 0px;
+    }
+
+    .iced-text {
+        font-size: 10vmax;
+    }
+
+    .countdown-container {
+        margin-bottom: 300px;
+    }
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+    .content1 {
+        height: 100vh;
+        background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
+        background-repeat: space;
+        background-position: bottom;
+        background-size: cover;
+        padding:0px 0px;
+    }
+
+    .iced-text {
+        font-size: 10vmax;
+    }
+
+    .countdown-container {
+        margin-bottom: 210px;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .content1 {
+        height: 100vh;
+        background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
+        background-repeat: space;
+        background-position: bottom;
+        background-size: cover;
+        padding:170px 0px;
+    }
+
+    .iced-text {
+        font-size: 10vmax;
     }
 
     .countdown-container {
         margin-bottom: 250px;
     }
 }
+
+@media screen and (min-width: 1400px) {
+    .content1 {
+        height: 100vh;
+        background-image: url(https://christmascountdown.app/img/themes/svg/snowman.svg);
+        background-repeat: space;
+        background-position: bottom;
+        background-size: cover;
+        padding:100px 0px;
+    }
+
+    .iced-text {
+        font-size: 10vmax;
+    }
+
+    .countdown-container {
+        margin-bottom: 250px;
+    }
+}
+
 </style>
 <div class="content1">
     <div class="iced-text">
-        <div class="iced-text-front">Merry Christmas 2023</di>
+        <div class="iced-text-front">Happy New Year 2024</di>
         </div>
     </div>
     <div class="container">
@@ -243,7 +307,7 @@
     }
 
     setInterval(createSnow, 800);
-    var countDownDate = new Date("Dec 25, 2023 00:00:00").getTime();
+    var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
 
     var x = setInterval(function() {
         var now = new Date().getTime();
