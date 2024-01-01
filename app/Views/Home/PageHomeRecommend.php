@@ -211,10 +211,10 @@ body {
 @media screen and (min-width: 800px) {}
 </style>
 <div class="hero-video">
-    <!-- <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
+    <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
         <source src="<?=base_url('uploads/video/video-skj2.mp4')?>" type="video/mp4">
         
-    </video> -->
+    </video>
     <!-- <div class="info-hero">
         <div class="container">
             <div class="row align-items-center justify-content-end">
