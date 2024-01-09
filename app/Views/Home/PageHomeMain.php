@@ -1,4 +1,5 @@
 
+<img src="uploads/Admission/banneradmission.svg" alt="">
 <!-- Facts Start -->
 <?= $this->include('Home/PageChristmas2022')?>
 <!-- Facts End -->
