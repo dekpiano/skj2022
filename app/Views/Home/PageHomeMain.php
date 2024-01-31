@@ -1,5 +1,48 @@
+<style>
+@media screen and (max-width: 453px) {
+    .AdmissionFooter a {
+        font-size: 1rem;
+    padding: 10px;
+    margin-top: -21px;
+    margin-bottom: 20px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .AdmissionFooter a {
+        font-size: 2rem;
+    padding: 10px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    }
+}
 
-<img src="uploads/Admission/banneradmission.svg" alt="">
+.overlay-bottom::after {
+    bottom: 0;
+    background: url(uploads/background/overlay-bottom.png) bottom center no-repeat;
+    background-size: contain;
+}
+.overlay-bottom::after, .overlay-top::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 85px;
+    left: 0;
+    z-index: 1;
+}
+
+</style>
+<div class="">
+<a href="https://admission.skj.ac.th/">
+<img src="uploads/Admission/banneradmission.jpg" class="img-fluid" style="width: 100%;" alt="รับสมัครนักเรียนปีการศึกษา 2567">
+</a>
+</div>
+
+
+
+<div class="text-center AdmissionFooter">
+    <a href="https://admission.skj.ac.th/" class="btn btn-primary">เข้าสู่เว็บไซต์สมัครเรียน</a>
+</div>
+
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeRecommend')?>
 <!-- Facts End -->
