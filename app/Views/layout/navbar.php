@@ -167,6 +167,10 @@
                     <i class="fa-solid fa-hammer"></i>
                         แจ้งซ่อมออนไลน์
                     </a>
+                    <a href="<?=base_url('Procurements')?>" class="dropdown-item">
+                    <i class="fa-solid fa-hammer"></i>
+                    การจัดซื้อจัดจ้าง
+                    </a>
                 </div>
             </div>
             

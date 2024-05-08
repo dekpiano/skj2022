@@ -31,17 +31,8 @@
 }
 
 </style>
-<div class="">
-<a href="https://admission.skj.ac.th/">
-<img src="uploads/Admission/banneradmission.jpg" class="img-fluid" style="width: 100%;" alt="รับสมัครนักเรียนปีการศึกษา 2567">
-</a>
-</div>
 
-
-
-<div class="text-center AdmissionFooter">
-    <a href="https://admission.skj.ac.th/" class="btn btn-primary">เข้าสู่เว็บไซต์สมัครเรียน</a>
-</div>
+<img class="img-fluid" src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset="">
 
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeRecommend')?>
