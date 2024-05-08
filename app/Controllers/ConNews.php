@@ -13,6 +13,12 @@ use App\Models\AboutModel;
 
 class ConNews extends BaseController
 {
+    public $PosiModel;
+    public $LearModel;
+    public $PersModel;
+    public $NewsModel;
+    public $BannerModel;
+    public $AboutModel;
     public function __construct(){
         $this->NewsModel = new NewsModel();
         $this->PosiModel = new PositionModel();

@@ -4,6 +4,7 @@ use App\Models\NewsModel;
 
 class ConAdminDashboard extends BaseController
 {
+    public $NewsModel;
     public function __construct(){
         //$this->session = \Config\Services::session();
         $this->NewsModel = new NewsModel();

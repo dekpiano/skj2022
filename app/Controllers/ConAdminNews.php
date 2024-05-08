@@ -4,6 +4,7 @@ use App\Models\NewsModel;
 
 class ConAdminNews extends BaseController
 {
+    public $NewsModel;
     public function __construct(){
         $this->NewsModel = new NewsModel();
     }

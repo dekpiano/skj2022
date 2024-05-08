@@ -6,9 +6,9 @@ use App\Models\LoginModel;
 
 class ConLogin extends BaseController
 {
+    public $LoginModel;
     public function __construct(){
-        $this->LoginModel = new LoginModel();
-       
+        $this->LoginModel = new LoginModel();       
     }
 
     public function DataMain(){

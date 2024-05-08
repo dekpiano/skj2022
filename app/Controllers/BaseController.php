@@ -22,6 +22,7 @@ use App\Models\UserHistoryModel;
  */
 abstract class BaseController extends Controller
 {
+    public $UserHistoryModel;
     public function __construct(){
         $this->UserHistoryModel = new UserHistoryModel();
     }

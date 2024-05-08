@@ -13,6 +13,14 @@ use App\Models\StudentModels;
 
 class ConHome extends BaseController
 {
+    public $PosiModel;
+    public $LearModel;
+    public $PersModel;
+    public $NewsModel;
+    public $BannerModel;
+    public $AboutModel;
+    public $StudentModel;
+    
     public function __construct(){
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();

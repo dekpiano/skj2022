@@ -9,6 +9,10 @@ use App\Models\AboutModel;
 
 class ConYearbook extends BaseController
 {
+    public $PosiModel;
+    public $LearModel;
+    public $PersModel;
+    public $AboutModel;
     public function __construct(){
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();

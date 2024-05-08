@@ -4,6 +4,7 @@ use App\Models\BannerModel;
 
 class ConAdminBanner extends BaseController
 {
+    public $BannerModel;
     public function __construct(){
         $this->BannerModel = new BannerModel();
     }
