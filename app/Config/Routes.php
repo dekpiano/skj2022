@@ -52,7 +52,7 @@ $routes->get('guidance', 'ConGuidance::index');
 $routes->get('Course', 'ConCourse::index');
 $routes->get('Yearbook', 'ConYearbook::index');
 $routes->get('Email', 'ConEmail::index');
-
+$routes->get('Procurements', 'ConProcurements::index');
 
 
 // Login admin

@@ -213,7 +213,7 @@ body {
 <div class="hero-video">
     <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
         <source src="<?=base_url('uploads/video/video-skj2.mp4')?>" type="video/mp4">
-        <!-- <source src="https://nakhonsawangames38.com//videos/home-header-video-bg.mp4" type="video/mp4"> -->
+        
     </video>
     <!-- <div class="info-hero">
         <div class="container">

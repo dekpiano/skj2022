@@ -45,6 +45,8 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css?v=4" rel="stylesheet">
 
+<link href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
     <!-- Template Stylesheet -->
     <link href="<?=base_url()?>/assets/css/style.css?v=8" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/media.css?v=5" rel="stylesheet">

@@ -1,26 +1,4 @@
-<!-- Topbar Start -->
-<div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
-    <div class="row gx-0 align-items-center d-none d-lg-flex">
-        <div class="col-lg-6 px-5 text-start">
-            <!-- <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Career</a></li>
-                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Terms</a></li>
-                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Privacy</a></li> -->
-            </ol>
-        </div>
-        <div class="col-lg-6 px-5 text-end">
-            <small>Follow us:</small>
-            <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn-square text-primary border-end rounded-0" href="https://www.facebook.com/SKJNS160"><i
-                        class="fab fa-facebook-f"></i></a>
-                <a class="btn-square text-primary border-end rounded-0"
-                    href="https://www.youtube.com/channel/UC7p4cQQuIFLyrF68p7JbWDw"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Topbar End -->
+
 
 
 <!-- Brand & Contact Start -->
@@ -188,6 +166,10 @@
                     <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
                     <i class="fa-solid fa-hammer"></i>
                         แจ้งซ่อมออนไลน์
+                    </a>
+                    <a href="<?=base_url('Procurements')?>" class="dropdown-item">
+                    <i class="fa-solid fa-hammer"></i>
+                    การจัดซื้อจัดจ้าง
                     </a>
                 </div>
             </div>
