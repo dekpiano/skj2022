@@ -14,24 +14,60 @@
 <!-- Feature Start -->
 <div class="container">
 
-<table id="TBProcurements" class="table table-hover">
-    <thead>
-        <tr>
-            <th>รายการจัดซื้อจัดจ้าง</th>
-            <th>ประกาศ</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td> <a target="_blank" href="<?=base_url('uploads/Procurements/2567/ประกาศ-ประกวดราคาหนังสือเรียน-67.pdf')?>"><i class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา (หนังสือเรียน) ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
-            <td>8 พฤษภาคม 2567</td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="<?=base_url('uploads/Procurements/2567/เอกสารประกวดราคาซื้อ-หนังสือเรียน67.pdf')?>"><i class="fas fa-file-pdf"></i> เอกสารประกวดราคาซื้อด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
-            <td>8 พฤษภาคม 2567</td>
-        </tr>
-    </tbody>
-</table>
-   
+    <table id="TBProcurements" class="table table-hover">
+        <thead>
+            <tr>
+                <th>รายการจัดซื้อจัดจ้าง</th>
+                <th>ประกาศ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/เอกสารประกวดราคา%20ซื้อหนังสือเรียน%202567.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
+                        (หนังสือเรียน) ด้วยวิธีประกวดราคา อิเล็กทรอนิกส์ (e-bidding)</a> </td>
+                <td>21 มิถุนายน 2567</td>
+            </tr>
+            <tr>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/เอกสารประกาศเชิญชวน%20ซื้อหนังสือเรียน%202567.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
+                        (หนังสือเรียน) ด้วยวิธี
+                        ประกวดราคาอิเล็กทรอนิกส์ (e-bidding)
+                    </a> </td>
+                <td>21 มิถุนายน 2567</td>
+            </tr>
+            <tr>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/เอกสารกำหนดราคากลาง%20สกจ.%202567.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> เอกสารกำหนดราคากลาง สกจ. 2567</a> </td>
+                <td>21 มิถุนายน 2567</td>
+            </tr>
+
+            <tr>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/ประกาศ-ประกวดราคาหนังสือเรียน-67.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
+                        (หนังสือเรียน) ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
+                <td>8 พฤษภาคม 2567</td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/เอกสารประกวดราคาซื้อ-หนังสือเรียน67.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> เอกสารประกวดราคาซื้อด้วยวิธีประกวดราคาอิเล็กทรอนิกส์
+                        (e-bidding)</a> </td>
+                <td>8 พฤษภาคม 2567</td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2567/รายละเอียดคุณลักษณะ-หนังสือเรียน.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> รายละเอียดคุณลักษณะของพัสดุ (Terms of Reference : TOR)
+                        จัดซื้อหนังสือเรียน ปีการศึกษา 2567 ตามโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา</a> </td>
+                <td>8 พฤษภาคม 2567</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
 <!-- Feature End -->

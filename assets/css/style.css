@@ -164,7 +164,7 @@
 @media (max-width: 768px) {
     #header-carousel .carousel-item {
         position: relative;
-        min-height: 500px;
+        min-height: 140px;
     }
     #header-carousel .carousel-item img {
         position: absolute;

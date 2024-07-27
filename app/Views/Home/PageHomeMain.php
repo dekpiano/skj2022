@@ -32,8 +32,12 @@
 
 </style>
 
-<img class="img-fluid" src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset="">
+<!-- <img class="img-fluid" src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset=""> -->
 
+<!-- Carousel Start -->
+<?= $this->include('Home/PageHomeCarousel') ?>
+<!-- Carousel End -->
+ 
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeRecommend')?>
 <!-- Facts End -->
@@ -48,9 +52,6 @@
 
 
 
-<!-- Carousel Start -->
-<?= $this->include('Home/PageHomeCarousel') ?>
-<!-- Carousel End -->
 
 
 <!-- PageHomeDirector Start -->

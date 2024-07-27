@@ -1,6 +1,16 @@
-<div class="container mt-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+<style>
+    @media screen and (max-width: 768px) {
+   
+    #header-carousel .carousel-item {
+        position: relative;
+        min-height: 200px;
+    }
+}
+</style>
+
+<div class="wow fadeIn" data-wow-delay="0.1s">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+        <!-- <div class="carousel-indicators">
             <?php foreach ($banner as $key => $v_banner): ?>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="<?=$key?>"
                 <?=$key==0?'class="active"':''?> aria-current="true" aria-label="Slide 1">
@@ -8,7 +18,7 @@
                     alt="Image">
             </button>
             <?php endforeach; ?>
-        </div>
+        </div> -->
         <div class="carousel-inner">
             <?php foreach ($banner as $key => $v_banner): 
                     if($v_banner['banner_linkweb'] == ""):

@@ -157,7 +157,11 @@ $(document).ready(function() {
     });
 });
 
-$('#TBProcurements').DataTable();
+$('#TBProcurements').DataTable(
+    {
+        order: [[1, 'ASC']]
+    }
+);
 </script>
 
 </body>
