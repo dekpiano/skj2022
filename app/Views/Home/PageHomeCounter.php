@@ -1,4 +1,4 @@
-<div class="bg-primary2 wow fadeInUp" data-wow-delay="0.1s" >
+<div class="wow fadeInUp" data-wow-delay="0.1s" >
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4 counter">

@@ -37,14 +37,15 @@
 <!-- Carousel Start -->
 <?= $this->include('Home/PageHomeCarousel') ?>
 <!-- Carousel End -->
+ <!-- Facts Start -->
+<?= $this->include('Home/PageHomeCounter')?>
+<!-- Facts End -->
  
 <!-- Facts Start -->
 <?= $this->include('Home/PageHomeRecommend')?>
 <!-- Facts End -->
 
-<!-- Facts Start -->
-<?= $this->include('Home/PageHomeCounter')?>
-<!-- Facts End -->
+
 
 <!-- NewsReward Start -->
 <?= $this->include('Home/PageHomeNewsReward') ?>

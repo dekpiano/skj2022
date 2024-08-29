@@ -1,11 +1,13 @@
 <?php
 namespace App\Controllers;
 use App\Models\NewsModel;
+use App\Models\AboutModel;
 
 class ConAdminNews extends BaseController
 {
     public function __construct(){
         $this->NewsModel = new NewsModel();
+        $this->AboutModel = new AboutModel();
     }
 
     public function DataMain(){
@@ -15,6 +17,7 @@ class ConAdminNews extends BaseController
         helper(['form', 'url']);        
         $data['AdminID'] = $session->get('AdminID');
         $data['AdminFullname'] = $session->get('AdminFullname');
+        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         return $data;
     }
 

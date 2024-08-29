@@ -1,11 +1,13 @@
 <?php
 namespace App\Controllers;
 use App\Models\BannerModel;
+use App\Models\AboutModel;
 
 class ConAdminBanner extends BaseController
 {
     public function __construct(){
         $this->BannerModel = new BannerModel();
+        $this->AboutModel = new AboutModel();
     }
 
     public function DataMain(){
@@ -15,6 +17,7 @@ class ConAdminBanner extends BaseController
         helper(['form', 'url']);        
         $data['AdminID'] = $session->get('AdminID');
         $data['AdminFullname'] = $session->get('AdminFullname');
+        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         return $data;
     }
 

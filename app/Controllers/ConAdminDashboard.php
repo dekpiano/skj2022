@@ -1,12 +1,14 @@
 <?php
 namespace App\Controllers;
 use App\Models\NewsModel;
+use App\Models\AboutModel;
 
 class ConAdminDashboard extends BaseController
 {
     public function __construct(){
         //$this->session = \Config\Services::session();
         $this->NewsModel = new NewsModel();
+        $this->AboutModel = new AboutModel();
     }
 
     public function DataMain(){
@@ -16,6 +18,7 @@ class ConAdminDashboard extends BaseController
         helper(['form', 'url']);        
         $data['AdminID'] = $session->get('AdminID');
         $data['AdminFullname'] = $session->get('AdminFullname');
+        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         return $data;
     }
 

@@ -37,6 +37,9 @@
 <?php if($uri->getSegment(2) == 'Banner') : ?>
 <script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=4"></script>
 <?php endif; ?>
+<?php if($uri->getSegment(2) == 'AboutSchool') : ?>
+<script src="<?=base_url()?>/assets/admin/assets/js/AboutSchool/JsAboutSchool.js?v=2"></script>
+<?php endif; ?>
 
 </body>
 
@@ -159,6 +162,13 @@ var quill = new Quill('#editor', {
 });
 
 var Editquill = new Quill('#editor_update', {
+    modules: {
+        toolbar: toolbarOptions
+    },
+    theme: 'snow'
+});
+
+var EditeAbout = new Quill('#editor_AboutSchool', {
     modules: {
         toolbar: toolbarOptions
     },
