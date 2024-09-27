@@ -58,6 +58,7 @@ abstract class BaseController extends Controller
     function VisitorsUser (){
         $database = \Config\Database::connect();
         $visit = $database->table('tb_visit_user_history');
+        $visit_stats = $database->table('tb_visit_user_stats');
 
         $userIP = $_SERVER['REMOTE_ADDR'];
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
@@ -67,19 +68,58 @@ abstract class BaseController extends Controller
             'visitU_agent' => $userAgent,
             'visitU_count' => 1
         ]);
-        
-        $data['visitAll'] = $visit->select('
+
+        $current_time = date('Y-m-d');
+        $time_24_hours_ago = date('Y-m-d', strtotime('-1 week'));
+
+        // แปลงเป็น timestamps
+        $start_timestamp = strtotime($time_24_hours_ago);
+        $current_timestamp = strtotime($current_time);
+
+        // คำนวณจำนวนวัน
+        $days_passed = ($current_timestamp - $start_timestamp) / (60 * 60 * 24);
+        if(floor($days_passed) >= 7){
+            $checkTime = $visit->select("COUNT(*) AS visit_count")
+            ->where("visitU_date <=", $current_time)
+            ->where("visitU_date >=", $time_24_hours_ago)
+            ->get()->getResult();
+    
+            
+            $visitAll = $visit->select('
             COUNT(visitU_ip) AS visitAll,
-        ')->get()->getResult();  
-        $data['VisitToday'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS VisitToday')
-        ->where('visitU_date',date("Y-m-d"))->get()->getResult();
-        $data['visitMouth'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitMouth')
-        ->where('MONTH(visitU_date)',date("m"))
-        ->where('YEAR(visitU_date)',date("Y"))
-        ->get()->getResult();
-        $data['visitYear'] = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitYear')
-        ->where('YEAR(visitU_date)',date("Y"))
-        ->get()->getResult();
+            ')->get()->getResult();  
+            $VisitToday = $visit->select('COUNT(DISTINCT(visitU_ip)) AS VisitToday')
+            ->where('visitU_date <',date("Y-m-d"))->get()->getResult();
+            $visitMouth = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitMouth')
+            ->where('MONTH(visitU_date) <=',date("m"))
+            ->where('YEAR(visitU_date) <=',date("Y"))
+            ->get()->getResult();
+            $visitYear = $visit->select('COUNT(DISTINCT(visitU_ip)) AS visitYear')
+            ->where('YEAR(visitU_date) <= ',date("Y"))
+            ->get()->getResult();
+
+            $checkUserStats = $visit_stats->where('visit_stats_id',1)->get()->getResult();
+
+
+            $update = array(
+                'visit_stats_All' => ($visitAll[0]->visitAll+$checkUserStats[0]->visit_stats_All),
+                'visit_stats_Today' => ($VisitToday[0]->VisitToday+$checkUserStats[0]->visit_stats_Today),
+                'visit_stats_Mouth' => ($visitMouth[0]->visitMouth+$checkUserStats[0]->visit_stats_Mouth),
+                'visit_stats_Year' => ($visitYear[0]->visitYear+$checkUserStats[0]->visit_stats_Year)
+            );
+            $visit_stats->where('visit_stats_id',1);
+            $sql = $visit_stats->update($update);
+
+            $visit->where('visitU_date >',$current_timestamp)->delete();
+            
+        }
+
+        
+        $checkUserStats = $visit_stats->where('visit_stats_id',1)->get()->getResult();
+        $data['visitAll'] = $checkUserStats[0]->visit_stats_All;  
+        $data['VisitToday'] = $checkUserStats[0]->visit_stats_Today;
+        $data['visitMouth'] = $checkUserStats[0]->visit_stats_Mouth;
+        $data['visitYear'] = $checkUserStats[0]->visit_stats_Year;
 
         return $data;
     }

@@ -181,7 +181,7 @@
                 data-bs-toggle="dropdown" style="font-size: 16px;"><i class="fa-solid fa-right-to-bracket"></i>
                 เข้าสู่ระบบ</a>
             <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                <a href="https://academic.skj.ac.th/LoginStudent" class="dropdown-item">นักเรียน</a>
+                <a href="https://student.skj.ac.th/" class="dropdown-item">นักเรียน</a>
                 <a href="https://teacher.skj.ac.th/" class="dropdown-item">ครูผู้สอน</a>
             </div>
         </div>

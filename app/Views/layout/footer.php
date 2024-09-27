@@ -94,10 +94,10 @@ window.fbAsyncInit = function() {
                 </div>
 <br>
                 <h5 class="text-primary mb-4">ผู้เข้าชมเว็บไซต์</h5>
-                <p class="mb-2 text-white"><i class="fa-solid fa-eye me-3"></i>ทั้งหมด : <?=$v['visitAll'][0]->visitAll?></p>
-                <p class="mb-2 text-white"><i class="fa-solid fa-user me-3"></i>วันนี้ : <?=$v['VisitToday'][0]->VisitToday?></p>
-                <p class="mb-2 text-white"><i class="fa-solid fa-users me-3"></i>เดือนนี้ : <?=$v['visitMouth'][0]->visitMouth?></p>
-                <p class="mb-2 text-white"><i class="fa-solid fa-users-rays me-3"></i>ปีนี้ : <?=$v['visitYear'][0]->visitYear?></p>
+                <p class="mb-2 text-white"><i class="fa-solid fa-eye me-3"></i>ทั้งหมด : <?=$v['visitAll']?></p>
+                <p class="mb-2 text-white"><i class="fa-solid fa-user me-3"></i>วันนี้ : <?=$v['VisitToday']?></p>
+                <p class="mb-2 text-white"><i class="fa-solid fa-users me-3"></i>เดือนนี้ : <?=$v['visitMouth']?></p>
+                <p class="mb-2 text-white"><i class="fa-solid fa-users-rays me-3"></i>ปีนี้ : <?=$v['visitYear']?></p>
 
             </div>
         </div>
