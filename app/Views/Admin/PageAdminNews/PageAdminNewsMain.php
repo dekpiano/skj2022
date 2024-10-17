@@ -14,20 +14,25 @@
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
-<style>
-    table td {
-        word-break: break-word;
-        vertical-align: top;
-        white-space: normal !important;
-    }
-</style>
+                <style>
+                table td {
+                    word-break: break-word;
+                    vertical-align: top;
+                    white-space: normal !important;
+                }
+                </style>
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
                         <div class="col-lg-12 mb-4 order-0">
                             <div class="card p-3">
                                 <div class="d-flex justify-content-between align-content-center">
                                     <h5 class="">ตารางข่าวประชาสัมพันธ์</h5>
-                                    <button class="btn btn-primary" id="AddNews">+ เพิ่มข่าว</button>
+                                    <div>
+                                        <button class="btn btn-primary" id="AddNews">+ เพิ่มข่าวด้วยตนเอง</button>
+                                        <button class="btn btn-primary" id="AddFacebook">+ เพิ่มข่าวจาก
+                                            Facebook</button>
+                                    </div>
+
                                 </div>
 
                                 <div class="table-responsive text-nowrap">
@@ -216,6 +221,79 @@
                         <label for="edit_news_img" class="form-label">รูปภาหน้าปก</label>
                         <input class="form-control" type="file" name="edit_news_img" id="edit_news_img">
                         <img src="" alt="" id="edit_blah" class="img-fluid">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal เพิ่มข่าว -->
+<div class="modal fade" id="ModalAddNewsFromFacebook" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
+    aria-labelledby="staticBackdropLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">เพิ่มข่าวจาก Facebook</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="form-news-feacbook" method="post" action="<?=base_url('Admin/News/Add/NewsFeacbook')?>"
+                enctype="multipart/form-data" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="news_topic" class="form-label">เลือกข่าวจาก Facebook</label>
+                        <select class="form-select form-select" name="sel_NewsFromFacebook" id="sel_NewsFromFacebook">
+                            <option value="">กรุณาเลือกข่าว</option>
+                        </select>
+                    </div>
+                    <hr>
+
+                    <div class="mb-3">
+                        <label for="news_topic" class="form-label">หัวห้อข่าว</label>
+                        <input type="text" class="form-control mb-3" name="news_topic_facebook" id="news_topic_facebook"
+                            placeholder="ใส่หัวข้อข่าว..." aria-describedby="floatingInputHelp" required>
+                        <div class="invalid-feedback">
+                            ใส่หัวข้อข่าว
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="news_category" class="form-label">ประเภทข่าว</label>
+                        <select id="largeSelect" class="form-select form-select" name="news_category_facebook" id="news_category_facebook"
+                            required>
+                            <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
+                            <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
+                            <option value="ข่าวรางวัล">ข่าวรางวัล</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            เลือกประเภทข่าว
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">วันที่ลง</label>
+                        <input class="form-control" type="datetime-local" value=""
+                            id="news_date_facebook" name="news_date_facebook">
+                        <div class="invalid-feedback">
+                            เลือกวันที่ลง
+                        </div>
+                    </div>
+
+                    <!-- Create the editor container -->
+                    <div id="editor_facebook" class="mb-3">
+                        <p>ใส่เนื้อหาข่าวที่นี่....</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="news_img" class="form-label">รูปภาหน้าปก</label>
+                        
+                        <img src="" alt="" id="blah_facebook" class="img-fluid">
                     </div>
                 </div>
                 <div class="modal-footer">

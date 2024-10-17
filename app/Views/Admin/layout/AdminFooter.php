@@ -32,7 +32,7 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=21.5"></script>
 <?php endif; ?>
 <?php if($uri->getSegment(2) == 'Banner') : ?>
 <script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=4"></script>
@@ -155,6 +155,13 @@ var toolbarOptions = [
 ];
 
 var quill = new Quill('#editor', {
+    modules: {
+        toolbar: toolbarOptions
+    },
+    theme: 'snow'
+});
+
+var quillFacebook = new Quill('#editor_facebook', {
     modules: {
         toolbar: toolbarOptions
     },

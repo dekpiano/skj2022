@@ -64,10 +64,12 @@ $routes->get('logout', 'ConLogin::LogoutAdmin');
 //Admin News
 $routes->get('Admin/News','ConAdminNews::NewsMain');
 $routes->match(['get', 'post'], 'Admin/News/AddNews', 'ConAdminNews::NewsAdd');
+$routes->match(['get', 'post'], 'Admin/News/Add/NewsFeacbook', 'ConAdminNews::NewsAddFeacbook');
 $routes->match(['get', 'post'], 'Admin/News/EditNews', 'ConAdminNews::NewsEdit');
 $routes->match(['get', 'post'], 'Admin/News/UpdateNews', 'ConAdminNews::NewsUpdate');
 $routes->match(['get', 'post'], 'Admin/News/DeleteNews', 'ConAdminNews::NewsDelete');
-
+$routes->match(['get', 'post'], 'Admin/News/View/Facebook', 'ConAdminNews::ViewNewsFormFacebook');
+$routes->match(['get', 'post'], 'Admin/News/Select/Facebook', 'ConAdminNews::SelectNewsFormFacebook');
 // Admin Banner
 $routes->get('Admin/Banner','ConAdminBanner::BannerMain');
 $routes->post('Admin/Banner/BannerOnoff','ConAdminBanner::BannerOnoff');

@@ -29,7 +29,7 @@ class ConAdminNews extends BaseController
         $data['news'] = $this->NewsModel->get()->getResult();
         
         //print_r($data['news']);exit();
-        
+        //$this->AddNewsFormFacebook(); exit();
         return view('Admin/layout/AdminHeader',$data)
                 .view('Admin/PageAdminNews/PageAdminNewsMain')
                 .view('Admin/layout/AdminFooter');
@@ -41,8 +41,13 @@ class ConAdminNews extends BaseController
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
         $checkID = $builder->select('news_id')->orderBy('news_id','DESC')->get()->getRow();
-        $ex = explode('_',$checkID->news_id);
-        $NewsIdNew = 'news_'.@sprintf("%03d",$ex[1]+1);
+        if($checkID){
+            $ex = explode('_',$checkID->news_id);
+            $NewsIdNew = 'news_'.@sprintf("%03d",$ex[1]+1);
+        }else{
+            $NewsIdNew = 'news_001';
+        }
+       
 
         $validateImg = $this->validate([
             'file' => [
@@ -159,6 +164,75 @@ class ConAdminNews extends BaseController
         $result = $this->NewsModel->delete(['news_id' => $id]);
         
         echo $result;
+    }
+
+
+    public function ViewNewsFormFacebook(){
+        // ดึงโพสต์จาก Facebook Graph API ถาวร
+        $access_token = "EAADjhb2HZCFABO8GJfcN3oL964ZAtJUWt9WbpfvGqIgxnXroVx7OXNSb7ySYMZCOMnh20ymyXLoH6dxtQYtG9oInZAugNqMuddOdOFNtutZBpdqgA7WbvR175W5sOX4CsZACvnQbQNynPLsZAPXZCZBHaJugVxiO2P0XrCeYyVIH5XfUfiRZBLJkqNZB0X5xPg2OvEerELGhtqcWhpZCSZC4ZD";
+        $page_id = "230288483730783";
+        $url = "https://graph.facebook.com/v12.0/$page_id/posts?fields=id,message,created_time,full_picture,attachments&access_token=$access_token";
+        
+        // ตรวจสอบการดึงข้อมูล
+        $response = @file_get_contents($url);
+        if ($response === FALSE) {
+            // แสดงข้อความข้อผิดพลาดหากเกิดข้อผิดพลาดในการดึงข้อมูล
+            echo "Error fetching data from Facebook. Please check your Access Token and Page ID.";
+        } else {
+            echo json_encode($response, true);
+
+        }
+    }
+
+    public function SelectNewsFormFacebook(){
+
+        $access_token = "EAADjhb2HZCFABO8GJfcN3oL964ZAtJUWt9WbpfvGqIgxnXroVx7OXNSb7ySYMZCOMnh20ymyXLoH6dxtQYtG9oInZAugNqMuddOdOFNtutZBpdqgA7WbvR175W5sOX4CsZACvnQbQNynPLsZAPXZCZBHaJugVxiO2P0XrCeYyVIH5XfUfiRZBLJkqNZB0X5xPg2OvEerELGhtqcWhpZCSZC4ZD";
+        $page_id = $this->request->getVar('KeyNewsFB');
+        $url = "https://graph.facebook.com/{$page_id}?fields=id,message,created_time,full_picture,attachments&access_token={$access_token}";
+
+        
+        // ตรวจสอบการดึงข้อมูล
+        $response = @file_get_contents($url);
+        if ($response === FALSE) {
+            // แสดงข้อความข้อผิดพลาดหากเกิดข้อผิดพลาดในการดึงข้อมูล
+            echo "Error fetching data from Facebook. Please check your Access Token and Page ID.";
+        } else {
+            echo json_encode($response, true);
+
+        }
+
+    }
+
+    public function NewsAddFeacbook(){
+        $data = $this->DataMain();
+
+        $database = \Config\Database::connect();
+        $builder = $database->table('tb_news');
+        $checkID = $builder->select('news_id')->orderBy('news_id','DESC')->get()->getRow();
+        if($checkID){
+            $ex = explode('_',$checkID->news_id);
+            $NewsIdNew = 'news_'.@sprintf("%03d",$ex[1]+1);
+        }else{
+            $NewsIdNew = 'news_001';
+        }
+
+        // print_r($data['AdminID']);
+       
+        // exit();
+        $data = [
+            'news_id' => $NewsIdNew,
+            'news_img' => $this->request->getVar('news_img_facebook'),
+            'news_facebook' => $this->request->getVar('sel_NewsFromFacebook'),
+            'news_topic' =>  $this->request->getVar('news_topic_facebook'),
+            'news_content' => $this->request->getVar('news_content_facebook'),
+            'news_date' => $this->request->getVar('news_date_facebook'),
+            'news_category' => $this->request->getVar('news_category_facebook'),
+            'personnel_id' => $data['AdminID']
+            ];
+        $save = $builder->insert($data);
+        echo $save;
+
+
     }
 
 }

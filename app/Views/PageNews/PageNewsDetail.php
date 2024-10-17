@@ -1,5 +1,5 @@
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s"
-    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn; background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../../uploads/news/<?=$news->news_img?>) center center no-repeat;">
+    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn; background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url() center center no-repeat;">
     <div class="container text-center py-5">
         <h1 class="display-4 text-white  slideInDown mb-3"><?php echo $news->news_topic; ?></h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -21,7 +21,11 @@
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
+                        <?php if($news->news_facebook == ""):?>
                         <img class="w-100" src="../../uploads/news/<?=$news->news_img?>" alt="Image">
+                        <?php else: ?>
+                        <img class="w-100" src="<?=$news->news_img?>" alt="Image">
+                        <?php endif; ?>
                     </div>
 
                 </div>
@@ -44,8 +48,8 @@
                 <a class="breadcrumb-item small" href="#"><i class="fa fa-eye me-2"></i><?=$news->news_view?></a>
             </div>
             <style>
-            p img{
-                width:100%;
+            p img {
+                width: 100%;
             }
             </style>
             <p class="mb-3">
@@ -85,16 +89,26 @@
                         <div class="row g-3">
                             <?php foreach ($NewsLatest as $key => $v_NewsLatest):?>
                             <div class="col-12 d-flex">
-                                <img class="img-fluid rounded flex-shrink-0" src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
+                                <?php if($v_NewsLatest->news_facebook == ""):?>
+                                <img class="img-fluid rounded flex-shrink-0"
+                                    src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
+                                <?php else: ?>
+                                <img class="img-fluid rounded flex-shrink-0"
+                                    src="<?=$v_NewsLatest->news_img?>" alt="">
+                                <?php endif; ?>
                                 <div class="ps-3">
-                                    <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>" class="d-block h5 CountReadNews" data_view="<?=$v_NewsLatest->news_view?>" news_id="<?=$v_NewsLatest->news_id?>">
-                                    <?=$v_NewsLatest->news_topic;?></a>
+                                    <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>"
+                                        class="d-block h5 CountReadNews" data_view="<?=$v_NewsLatest->news_view?>"
+                                        news_id="<?=$v_NewsLatest->news_id?>">
+                                        <?=$v_NewsLatest->news_topic;?></a>
                                     <div class="breadcrumb blog-meta mb-0">
                                         <small class="breadcrumb-item">
-                                            <a href="#"> <?=$dateThai->thai_date_fullmonth(strtotime($v_NewsLatest->news_date))?>
+                                            <a href="#">
+                                                <?=$dateThai->thai_date_fullmonth(strtotime($v_NewsLatest->news_date))?>
                                             </a>
                                         </small>
-                                        <small class="breadcrumb-item"><a href="#">ดู <?=$v_NewsLatest->news_view?> ครั้ง</a></small>
+                                        <small class="breadcrumb-item"><a href="#">ดู <?=$v_NewsLatest->news_view?>
+                                                ครั้ง</a></small>
                                     </div>
                                 </div>
                             </div>

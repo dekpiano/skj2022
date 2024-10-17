@@ -66,7 +66,14 @@
   gtag('config', 'G-4XVY09LWJ8');
 </script>
 
+
 <body>
+
+<!-- <div class="ribbon">
+        <img src="<?=base_url()?>/uploads/ari/black_ribbon_top_right.png" alt="ริบบิ้น" />
+    </div> -->
+
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
@@ -75,6 +82,20 @@
     </div>
     <!-- Spinner End -->
     <style>
+/* body {
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+   filter: grayscale(100%);
+   
+ }
+
+ .ribbon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /* transform: rotate(45deg); */
+    z-index: 1000;
+} */
+
 
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px){

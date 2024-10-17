@@ -137,3 +137,105 @@ $(document).on("click", ".DeleteNews", function() {
     })
 
 });
+
+$(document).on("click", "#AddFacebook", function() {
+    var myModal = new bootstrap.Modal(document.getElementById("ModalAddNewsFromFacebook"), {});
+    myModal.show();
+    
+    $.post('../Admin/News/View/Facebook',function(data){
+        data = JSON.parse( data );
+
+        $.each(data['data'], function (i, item) {
+            if(item.message){
+                $('#sel_NewsFromFacebook').append($('<option>', { 
+                    value: item.id,
+                    text : item.message.substr(0, 50)
+                }));
+            }
+            
+        });
+            
+    },'json');
+});
+
+$(document).on("change", "#sel_NewsFromFacebook", function() {
+
+    $.post('../Admin/News/Select/Facebook',{KeyNewsFB:$(this).val()},function(data){
+        data = JSON.parse( data );
+        var formattedDateTime = convertISOToDateTimeInput(data.created_time);
+        $('#news_topic_facebook').val(data.message.substr(0, 100));
+        $('#news_date_facebook').val(formattedDateTime);
+        $('#blah_facebook').attr('src',data.full_picture)
+        const delta = quill.clipboard.convert(data.message);
+        quillFacebook.setContents(delta, 'silent');
+
+       // console.log(data);
+
+    },'json');
+});
+
+$(document).on("submit", "#form-news-feacbook", function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    formData.append("news_content_facebook", quillFacebook.root.innerHTML);
+    formData.append("news_img_facebook", $('#blah_facebook').attr('src'));
+    $.ajax({
+        url: $('#form-news-feacbook').attr('action'),
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        async: false,
+        success: function(data) {
+            console.log(data);
+            $('#ModalAddNewsFromFacebook').hide();
+            $('.modal-backdrop').remove();
+            if (data == 1) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'บันทึกข้อมูลสำเร็จ',
+                    showConfirmButton: false,
+                    timer: 3000
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.reload();
+                    }
+                })
+            } else {
+                Swal.fire(
+                    'แจ้งเตือน!',
+                    data + '!',
+                    'error'
+                )
+            }
+        },
+        error: function (jqXHR, exception) {
+            console.log(jqXHR.responseText);
+        }
+    });
+});
+
+
+function convertISOToDateTimeInput(isoDate) {
+    var date = new Date(isoDate);
+
+    // ดึงค่า ปี, เดือน, วัน
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1; // เดือนใน JavaScript เริ่มจาก 0
+    var day = date.getDate();
+
+    // ดึงค่า ชั่วโมง และ นาที
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    // ตรวจสอบให้เดือน, วัน, ชั่วโมง, นาทีมี 2 หลักเสมอ
+    if (month < 10) month = '0' + month;
+    if (day < 10) day = '0' + day;
+    if (hours < 10) hours = '0' + hours;
+    if (minutes < 10) minutes = '0' + minutes;
+
+    // คืนค่าที่เป็น 'ปี-เดือน-วันTHH:MM'
+    return year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+}

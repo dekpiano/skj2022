@@ -13,13 +13,15 @@
 
 <div class="container-xxl py-5">
     <div class="container">
-       
-    <form method='get' action="<?=base_url('News')?>" id="searchForm">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control form-control-lg" type='text' name='search' value='<?= $search ?>' placeholder="ค้นหาข่าวที่นี่...">
-        <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> ค้นหา</button>
-    </div>
-</form>
+
+        <form method='get' action="<?=base_url('News')?>" id="searchForm">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg" type='text' name='search' value='<?= $search ?>'
+                    placeholder="ค้นหาข่าวที่นี่...">
+                <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i>
+                    ค้นหา</button>
+            </div>
+        </form>
 
         <div class="row g-4" id="grid" data-masonry='{"percentPosition": true }'>
             <?php if($NewsAll):?>
@@ -27,7 +29,11 @@
             <div class="col-lg-4 col-md-4 col-6 grid-item wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="blog-item">
+                    <?php if($v_news['news_facebook'] == ""):?>
                     <img class="img-fluid" src="<?=base_url('uploads/news/'.$v_news['news_img'])?>" alt="">
+                    <?php else: ?>
+                    <img class="img-fluid" src="<?=$v_news['news_img']?>" alt="">
+                    <?php endif; ?>
                     <div class="blog-text">
 
                         <a class="h4 mb-0 CountReadNews" data_view="<?=$v_news['news_view']?>"
@@ -75,7 +81,7 @@
             }
             </style>
 
-            <div class="row mt-5 fadeInUp" data-wow-delay="0.3s" >
+            <div class="row mt-5 fadeInUp" data-wow-delay="0.3s">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="pagination justify-content-center mb-4">
