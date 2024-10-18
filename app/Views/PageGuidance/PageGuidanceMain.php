@@ -21,6 +21,35 @@
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
+                <h4 class="mt-0 mb-3">ประกาศ! คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย ประจำปีการศึกษา 2568 โครงสร้างคณิตศาสตร์ - วิทยาศาสตร์</h4>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                สมัครระหว่างวันที่ 1 - 20 กุมภาพันธ์ 2568 นี้
+                </figcaption>
+            </div>
+            <div class="ms-3 align-self-center">
+            <a target="_blank" href="https://drive.google.com/drive/folders/1lKrwIQnxcIoSFNlg_kmz8FmgnzohOeIR?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ / ใบสมัคร</a>
+            </div>
+        </div>
+
+        <div class="d-flex g-4 mt-3">
+            <div class="border-start border-5 border-primary ps-3">
+                <blockquote class="blockquote">
+                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2567</h4>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                สมัครระหว่างวันที่ 1 - 25 พฤศจิกายน 2567 นี้
+                </figcaption>
+            </div>
+            <div class="ms-3 align-self-center">
+            <a target="_blank" href="https://drive.google.com/drive/folders/1hd1LvTLUAhwiibxr8NCcdsSnaeKNxavR?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ</a>
+            </div>
+        </div>
+
+
+        <div class="d-flex g-4 mt-3">
+            <div class="border-start border-5 border-primary ps-3">
+                <blockquote class="blockquote">
                 <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2566</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
