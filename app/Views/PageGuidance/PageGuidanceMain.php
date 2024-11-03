@@ -21,28 +21,36 @@
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">ประกาศ! คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย ประจำปีการศึกษา 2568 โครงสร้างคณิตศาสตร์ - วิทยาศาสตร์</h4>
+                    <h4 class="mt-0 mb-3">ประกาศ! คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย
+                        ประจำปีการศึกษา 2568 โครงสร้างคณิตศาสตร์ - วิทยาศาสตร์</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครระหว่างวันที่ 1 - 20 กุมภาพันธ์ 2568 นี้
+                    สมัครระหว่างวันที่ 1 - 20 กุมภาพันธ์ 2568 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/drive/folders/1lKrwIQnxcIoSFNlg_kmz8FmgnzohOeIR?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ / ใบสมัคร</a>
+                <a target="_blank"
+                    href="https://drive.google.com/drive/folders/1lKrwIQnxcIoSFNlg_kmz8FmgnzohOeIR?usp=sharing"
+                    class="btn btn-primary w-100">อ่านประกาศ / ใบสมัคร</a>
             </div>
         </div>
 
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2567</h4>
+                    <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2567</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครระหว่างวันที่ 1 - 25 พฤศจิกายน 2567 นี้
+                    สมัครระหว่างวันที่ 1 - 25 พฤศจิกายน 2567 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/drive/folders/1hd1LvTLUAhwiibxr8NCcdsSnaeKNxavR?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ</a>
+                <a target="_blank"
+                    href="https://drive.google.com/drive/folders/1hd1LvTLUAhwiibxr8NCcdsSnaeKNxavR?usp=sharing"
+                    class="btn btn-primary w-100">อ่านประกาศ</a>
+                <a target="_blank"
+                    href="https://forms.gle/5FFQpZfUCkLgUhe4A"
+                    class="btn btn-info w-100 mt-2">สมัครทุน</a>
             </div>
         </div>
 
@@ -50,56 +58,65 @@
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2566</h4>
+                    <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2566</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครทุนถึงวันที่ 1  - 27 พฤศจิกายน 2566 นี้
+                    สมัครทุนถึงวันที่ 1 - 27 พฤศจิกายน 2566 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/file/d/1PWf5TIsvkGoU-dMQa_681-1YgfY_wx9G/view?usp=sharing" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
-            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdz0QbewJfd4bofgbZWS5gVt3Uaxq9jGsjK0Btn3g2A63Ci4g/viewform?usp=sf_link" class="btn btn-info w-100">สมัครทุน</a>
+                <a target="_blank"
+                    href="https://drive.google.com/file/d/1PWf5TIsvkGoU-dMQa_681-1YgfY_wx9G/view?usp=sharing"
+                    class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
+
             </div>
         </div>
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย ประจำปีการศึกษา 2567</h4>
+                    <h4 class="mt-0 mb-3">คัดเลิอกนักเรียนเรียนร่วมชั้น ม.4 เครือข่ายโรงเรียนสวนกุหลาบวิทยาลัย
+                        ประจำปีการศึกษา 2567</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครระหว่างวันที่ 1 - 31 มกราคม 2567 นี้
+                    สมัครระหว่างวันที่ 1 - 31 มกราคม 2567 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/file/d/1WY3Dk7oHY2Q2tCoMHIxrlEMS9CwI0r9G/view?usp=sharing" class="btn btn-primary w-100">อ่านประกาศ</a>
+                <a target="_blank"
+                    href="https://drive.google.com/file/d/1WY3Dk7oHY2Q2tCoMHIxrlEMS9CwI0r9G/view?usp=sharing"
+                    class="btn btn-primary w-100">อ่านประกาศ</a>
             </div>
         </div>
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2565</h4>
+                    <h4 class="mt-0 mb-3">นักเรียนทุนราชสกุลจิรประวัติ 2565</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครทุนถึงวันที่ 1 พฤศจิกายน - 15 ธันวาคม 2565 นี้
+                    สมัครทุนถึงวันที่ 1 พฤศจิกายน - 15 ธันวาคม 2565 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/file/d/1-wIm3K5vTIVLZu6xR1qix5NZx-Vr-PR4/view?usp=share_link" class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
-          
-            
+                <a target="_blank"
+                    href="https://drive.google.com/file/d/1-wIm3K5vTIVLZu6xR1qix5NZx-Vr-PR4/view?usp=share_link"
+                    class="btn btn-primary w-100 mb-2">อ่านประกาศ</a>
+
+
             </div>
         </div>
         <div class="d-flex g-4 mt-3">
             <div class="border-start border-5 border-primary ps-3">
                 <blockquote class="blockquote">
-                <h4 class="mt-0 mb-3">โครงการนักเรียนร่วม 66</h4>
+                    <h4 class="mt-0 mb-3">โครงการนักเรียนร่วม 66</h4>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                สมัครระหว่างวันที่ 1 - 30 มกราคม 2566 นี้
+                    สมัครระหว่างวันที่ 1 - 30 มกราคม 2566 นี้
                 </figcaption>
             </div>
             <div class="ms-3 align-self-center">
-            <a target="_blank" href="https://drive.google.com/file/d/1yPoPNpcNVr3RYTvdlc5bOMwMsdufZ1Rh/view?usp=share_link" class="btn btn-primary w-100">อ่านประกาศ</a>
+                <a target="_blank"
+                    href="https://drive.google.com/file/d/1yPoPNpcNVr3RYTvdlc5bOMwMsdufZ1Rh/view?usp=share_link"
+                    class="btn btn-primary w-100">อ่านประกาศ</a>
             </div>
         </div>
     </div>
