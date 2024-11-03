@@ -112,7 +112,7 @@ window.fbAsyncInit = function() {
                 <div class="col-md-6 text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     Author By <a href="https://www.facebook.com/dekpiano">Dekpiano</a> : <a href="#"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login Admim</a>
+                        data-bs-toggle="modal" data-bs-target="#loginModal">Login Admim</a>
                 </div>
             </div>
         </div>
@@ -197,3 +197,19 @@ $('#TBProcurements').DataTable(
         </div>
     </div>
 </div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+              
+                <div class="modal-body">
+                    <!-- ปุ่มสำหรับล็อกอินผ่าน Google -->
+                    <a href="<?= base_url('SkjMain/googleLogin') ?>" class="btn btn-danger btn-block w-100">
+                        <i class="fab fa-google"></i> เข้าสู่ระบบด้วย Google
+                    </a>
+                </div>
+               
+            </div>
+        </div>
+    </div>

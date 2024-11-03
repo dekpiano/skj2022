@@ -6,7 +6,11 @@ use App\Models\AboutModel;
 class ConAdminDashboard extends BaseController
 {
     public function __construct(){
-        //$this->session = \Config\Services::session();
+        $session = session();
+        if(empty($session->get('AdminID'))){
+            header("Location:".base_url());
+            exit();
+        }
         $this->NewsModel = new NewsModel();
         $this->AboutModel = new AboutModel();
     }

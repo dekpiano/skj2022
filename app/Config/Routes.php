@@ -53,11 +53,12 @@ $routes->get('Course', 'ConCourse::index');
 $routes->get('Yearbook', 'ConYearbook::index');
 $routes->get('Email', 'ConEmail::index');
 $routes->get('Procurements', 'ConProcurements::index');
-
-
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
 $routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
+// Login admin for Google
+$routes->get('SkjMain/googleLogin', 'ConLogin::googleLogin');
+$routes->get('SkjMain/googleCallback', 'ConLogin::googleCallback');
 // Logout
 $routes->get('logout', 'ConLogin::LogoutAdmin');
 

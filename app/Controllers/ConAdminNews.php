@@ -6,6 +6,7 @@ use App\Models\AboutModel;
 class ConAdminNews extends BaseController
 {
     public function __construct(){
+        
         $this->NewsModel = new NewsModel();
         $this->AboutModel = new AboutModel();
     }
