@@ -218,11 +218,31 @@ class ConAdminNews extends BaseController
         }
 
         // print_r($data['AdminID']);
+
+        // ลิงก์รูปภาพที่ต้องการดาวน์โหลด
+            $imageUrl = $this->request->getVar('news_img_facebook'); // ใส่ URL รูปภาพที่ต้องการดาวน์โหลด
+
+            // กำหนดชื่อไฟล์ใหม่ที่จะเก็บในเซิร์ฟเวอร์
+            $randomFileName = uniqid('image_', true) . '.jpg'; 
+            $savePath = 'uploads/news/'. $randomFileName; // กำหนดโฟลเดอร์และชื่อไฟล์
+
+            // ตรวจสอบว่าลิงก์ URL ใช้ได้หรือไม่
+            $imageContent = file_get_contents($imageUrl);
+            if ($imageContent === FALSE) {
+                die("ไม่สามารถดาวน์โหลดรูปภาพได้จาก URL นี้");
+            }
+
+            // บันทึกไฟล์ในเซิร์ฟเวอร์
+            if (file_put_contents($savePath, $imageContent)) {
+                echo "รูปภาพถูกบันทึกในเซิร์ฟเวอร์ที่ $savePath สำเร็จ!";
+            } else {
+                echo "เกิดข้อผิดพลาดในการบันทึกรูปภาพ";
+            }
        
         // exit();
         $data = [
             'news_id' => $NewsIdNew,
-            'news_img' => $this->request->getVar('news_img_facebook'),
+            'news_img' => $randomFileName,
             'news_facebook' => $this->request->getVar('sel_NewsFromFacebook'),
             'news_topic' =>  $this->request->getVar('news_topic_facebook'),
             'news_content' => $this->request->getVar('news_content_facebook'),
@@ -231,7 +251,7 @@ class ConAdminNews extends BaseController
             'personnel_id' => $data['AdminID']
             ];
         $save = $builder->insert($data);
-        echo $save;
+        //echo $save;
 
 
     }

@@ -191,7 +191,7 @@ $(document).on("submit", "#form-news-feacbook", function(e) {
             console.log(data);
             $('#ModalAddNewsFromFacebook').hide();
             $('.modal-backdrop').remove();
-            if (data == 1) {
+            if (data) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
