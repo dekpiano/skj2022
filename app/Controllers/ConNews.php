@@ -78,6 +78,33 @@ class ConNews extends BaseController
     }
 
     public function loadMoreNews(){
+        $perPage = 10; // จำนวนข้อมูลต่อหน้า
+        $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
+
+        // คำนวณ offset สำหรับ pagination
+        $offset = ($page - 1) * $perPage;
+
+        // ดึงข้อมูลจากฐานข้อมูล
+       
+        $items = $this->NewsModel->limit($perPage, $offset)->orderBy('news_date', 'DESC')->get()->getResultArray();
+        
+        // นับจำนวนทั้งหมดในตาราง
+        $totalItems =$this->NewsModel->countAllResults();
+
+        $data = [
+            'items' => $items,
+            'pager' => [
+                'total' => $totalItems,
+                'currentPage' => $page,
+                'perPage' => $perPage,
+                'lastPage' => ceil($totalItems / $perPage)
+            ]
+        ];
+
+        return $this->response->setJSON($data); // ส่งข้อมูลในรูปแบบ JSON
+    }
+
+    public function loadMoreNews1(){
         $data['dateThai'] = new Datethai();
         $limit = 4; 
         $page = $limit * $this->request->getVar('page');

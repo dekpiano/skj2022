@@ -117,12 +117,13 @@ class ConAdminNews extends BaseController
         $builder = $database->table('tb_news');
         $id = $this->request->getPost('edit_news_id');
         $sel_img = $this->NewsModel->select('news_img')->where('news_id',$id)->get()->getResult();
-        if($sel_img[0]->news_img != ''){
-            @unlink(("uploads/news/".$sel_img[0]->news_img));
-        }
-
+        
         $imageFile = $this->request->getFile('edit_news_img'); 
         if($imageFile->getError() == 0){
+            if($sel_img[0]->news_img != ''){
+                @unlink(("uploads/news/".$sel_img[0]->news_img));
+            }
+
             $RandomName = $imageFile->getRandomName();
 
             $image = \Config\Services::image()

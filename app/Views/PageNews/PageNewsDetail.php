@@ -24,7 +24,7 @@
                         <?php if($news->news_facebook == ""):?>
                         <img class="w-100" src="../../uploads/news/<?=$news->news_img?>" alt="Image">
                         <?php else: ?>
-                        <img class="w-100" src="<?=$news->news_img?>" alt="Image">
+                            <img class="w-100" src="../../uploads/news/<?=$news->news_img?>" alt="Image">
                         <?php endif; ?>
                     </div>
 
@@ -93,8 +93,8 @@
                                 <img class="img-fluid rounded flex-shrink-0"
                                     src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
                                 <?php else: ?>
-                                <img class="img-fluid rounded flex-shrink-0"
-                                    src="<?=$v_NewsLatest->news_img?>" alt="">
+                                    <img class="img-fluid rounded flex-shrink-0"
+                                    src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
                                 <?php endif; ?>
                                 <div class="ps-3">
                                     <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>"
