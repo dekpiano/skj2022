@@ -13,7 +13,7 @@
                     <?php if($v_newsReward->news_facebook == ""):?>
                         <img src="<?=base_url('uploads/news/'.$v_newsReward->news_img)?>" alt="">
                         <?php else: ?>
-                            <img src="<?=$v_newsReward->news_img;?>" alt="">
+                            <img src="<?=base_url('uploads/news/'.$v_newsReward->news_img)?>" alt="">
                         <?php endif; ?>
                         <a href="<?=base_url('News/Detail/'.$v_newsReward->news_id);?>" data_view="<?=$v_newsReward->news_view?>"
                             news_id="<?=$v_newsReward->news_id?>" class="over-layer"><i class="fa fa-link"></i></a>
