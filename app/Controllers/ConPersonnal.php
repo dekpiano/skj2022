@@ -35,7 +35,7 @@ class ConPersonnal extends BaseController
         $data['banner'] = '';
         
         if($Key === "ผู้บริหารสถานศึกษา"){
-            $CheckPosi = "pers_position='posi_001' OR pers_position='posi_002' OR pers_position='posi_004'";
+            $CheckPosi = "pers_status='กำลังใช้งาน' && pers_position='posi_001' OR pers_position='posi_002'";
         }elseif($PoisO === 'สายการสอน'){
             $CheckLear = $this->LearModel->where('lear_namethai',str_replace("-", " ", $Key))->get()->getResult();
             $CheckPosi = ['pers_learning' => $CheckLear[0]->lear_id];           

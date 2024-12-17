@@ -244,12 +244,11 @@ body {
                 </div>
                 <div class="text-center d-none d-sm-block">
                     <div class="" style="padding: 0px 41px 0px">
-                        <img class="flex-shrink-0 img-fluid" src="<?=base_url('uploads/director/PO1.png')?>" alt="">
+                        <img class="flex-shrink-0 img-fluid" src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$Director->pers_img?>" alt="">
                     </div>
                     <div class="mt-1">
-                        <h4>นางสาวอร่าม วัฒนะ</h4>
-                        <small>ผู้อำนวยการกองการศึกษา ศาสนาและวัฒนธรรม รักษาการในตำแหน่ง <br>
-                            ผู้อำนวยการสถานศึกษา โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
+                        <h4><?=$Director->pers_prefix.$Director->pers_firstname.' '.$Director->pers_lastname?></h4>                
+                            ผู้อำนวยการสถานศึกษา
                         </small>
                     </div>
                 </div>

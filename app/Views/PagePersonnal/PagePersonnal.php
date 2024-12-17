@@ -18,48 +18,18 @@
             <h6 class="section-title bg-white text-center text-primary px-3">กลุ่มสาระการเรียนรู้</h6>
             <h1 class="display-6 mb-4"><?=str_replace("-", " ", urldecode($uri->getSegment(3)));?></h1>
         </div>
-        <div class="row g-4">
-            <?php if(urldecode($uri->getSegment(3)) === "ผู้บริหารสถานศึกษา"):?>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <div class="team-item rounded text-center p-4">
-                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
-                            src="<?=base_url('uploads/director/PO1.png')?>" alt="">
-                        <div class="team-text">
-                            <div class="team-title">
-                                <h5>นางสาวอร่าม วัฒนะ</h5>
-                                <span style="font-size: 0.7em;">
-                                    ผู้อำนวยการกองการศึกษา ศาสนาและวัฒนธรรม รักษาการในตำแหน่ง <br>
-                                    ผู้อำนวยการสถานศึกษา โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
-
-                                </span>
-
-                            </div>
-                            <div class="team-social">
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
+        <div class="row g-4">          
             <?php foreach ($Pers as $key => $v_Pers) :?>
-            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ') : ?>
-            <div class="row justify-content-center">
+            <?php if(urldecode($uri->getSegment(3)) === "ผู้บริหารสถานศึกษา" && $v_Pers->pers_position === "posi_001"): ?>
+                <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <div class="team-item rounded text-center p-4">
                         <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
@@ -70,11 +40,43 @@
                                 </p>
                             </div>
                             <div class="team-social">
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                <a class="btn btn-square btn-primary" href=""><i
                                         class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                <a class="btn btn-square btn-primary" href=""><i
                                         class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                                <a class="btn btn-square btn-primary" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+            <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ') : ?>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="team-item rounded text-center p-4">
+                        <?php if($v_Pers->pers_img == ""):?>
+                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                            src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
+                        <?php else: ?>
+                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                        <?php endif; ?>
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
+                                <span><?=$v_Pers->posi_name.' '.$v_Pers->pers_academic?></span>
+                                <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?>
+                                </p>
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary" href=""><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -83,15 +85,15 @@
             </div>
 
             <?php else :?>
-            <?php if($v_Pers->pers_status == "กำลังใช้งาน"): ?>
+            <?php if($v_Pers->pers_status == "กำลังใช้งาน" && $v_Pers->pers_position !== "posi_001"): ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="team-item rounded text-center p-4">
                 <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                        <img class="img-fluid  p-2 mb-4" style="width: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid border rounded-circle w-75 p-2 mb-4"
+                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                     <div class="team-text">
@@ -101,11 +103,11 @@
                             <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?></p>
                         </div>
                         <div class="team-social">
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                            <a class="btn btn-square btn-primary" href=""><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                            <a class="btn btn-square btn-primary" href=""><i
                                     class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle" href=""><i
+                            <a class="btn btn-square btn-primary" href=""><i
                                     class="fab fa-instagram"></i></a>
                         </div>
                     </div>

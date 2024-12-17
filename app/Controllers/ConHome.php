@@ -42,7 +42,7 @@ class ConHome extends BaseController
         $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
         $data['news'] = $this->NewsModel->where('news_category !=','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
         $data['NewsReward'] = $this->NewsModel->where('news_category','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
-        $data['Director'] = $this->PersModel->where('pers_position','posi_001')->get()->getRow();
+        $data['Director'] = $this->PersModel->where('pers_position','posi_001')->where('pers_status','กำลังใช้งาน')->get()->getRow();
       
         $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
                                         ->where('banner_status','on')
@@ -53,7 +53,7 @@ class ConHome extends BaseController
         
       
 
-        //echo '<pre>';print_r($data['v']); exit();
+        //echo '<pre>';print_r($data['Director']); exit();
          return  view('layout/header',$data)
                 .view('layout/navbar')
                 .view('Home/PageHomeMain')
