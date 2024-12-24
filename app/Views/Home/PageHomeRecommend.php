@@ -213,7 +213,7 @@ body {
 <div class="hero-video">
     <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
         <source src="<?=base_url('uploads/video/video-skj2.mp4')?>" type="video/mp4">
-        
+
     </video>
     <!-- <div class="info-hero">
         <div class="container">
@@ -231,91 +231,273 @@ body {
     </div> -->
 </div>
 
-<section id="why-us" class="why-us">
-    <div class="container">
 
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 col-md-6 aos-init aos-animate" data-aos="fade-up">
-                <div class="content">
-                    <h3 class="text-white">หลักสูตรที่เปิดสอน</h3>
-                    <p>
-                        หลักสูตรพัฒนาผู้เรียนสู่ความเป็นเลิศ 5 หลักสูตร
-                    </p>
-                </div>
-                <div class="text-center d-none d-sm-block">
-                    <div class="" style="padding: 0px 41px 0px">
-                        <img class="flex-shrink-0 img-fluid" src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$Director->pers_img?>" alt="">
-                    </div>
-                    <div class="mt-1">
-                        <h4><?=$Director->pers_prefix.$Director->pers_firstname.' '.$Director->pers_lastname?></h4>                
-                            ผู้อำนวยการสถานศึกษา
-                        </small>
-                    </div>
-                </div>
-            </div>
 
-            <div class="shadow-lg icon-box col-md-6 col-xl-7 col-lg-6 d-flex flex-column  py-3">
-                <div class="">
-                    <h4 data-aos="fade-up" class="aos-init aos-animate">เกี่ยวกับ</h4>
-                    <p data-aos="fade-up" class="aos-init aos-animate">
 
-                    </p>
+<style>
+    /*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .nav-tabs {
+  border: 0;
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 6px;
+  width: auto;
+}
 
-                    <div class="icon-box aos-init aos-animate" data-aos="fade-up">
-                        <div class="icon">
-                            <i class="fa-solid fa-atom"></i>
-                        </div>
-                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) ,
-                                SMT(T)
-                            </a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">
-                            หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
-                            เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้านคณิตศาสตร์ วิทยาศาสตร์และเทคโนโลยี
-                        </p>
-                    </div>
+.features .nav-item {
+  margin: 0;
+  padding: 0 5px 0 0;
+}
 
-                    <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon">
-                            <i class="fa-solid fa-trophy"></i>
-                        </div>
-                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">
-                            หลักสูตรหรือแผนการจัดการเรียนการสอน
-                            ที่มุ่งเน้นการพัฒนาทักษะ
-                            ความสามารถด้านกีฬา เช่น ฟุตบอล วอลเลย์บอล บาสเกตบอล ฯลฯ</p>
-                    </div>
+.features .nav-item:last-child {
+  padding-right: 0;
+}
 
-                    <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon"><i class="fa-solid fa-palette"></i></div>
-                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง
-                                (PAP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">
-                            หลักสูตรหรือแผนการจัดการเรียนการสอน
-                            ที่มุ่งเน้นการพัฒนารูปแบบ/แบบแผนของการแสดง เช่น ดนตรีไทย ดนตรีสากล การขับร้อง ศิลปะการแสดง
-                            ทัศนศิลป์ วิจิตรศิลป์ ประติมากรรม ฯลฯ</p>
-                    </div>
-                    <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon"><i class="fa-solid fa-gears"></i></div>
-                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</a>
-                        </h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">
-                            หลักสูตรหรือแผนการจัดการเรียนการสอน
-                            ที่มุ่งเน้นการพัฒนาทักษะในการประกอบอาชีพ ได้แก่ การโรงแรม การอาหารคหกรรม
-                            ธุรกิจและการประกอบการ โรงงานต่าง ๆ ฯลฯ</p>
-                    </div>
-                    <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon"><i class="fa-solid fa-language"></i></div>
-                        <h6 class="title"><a href="<?=base_url('Course')?>">หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</a></h6>
-                        <p class="description d-none d-sm-block d-md-none d-lg-block">
-                            หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา
-                            เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้าน ภาษาต่างประเทศ เช่น ภาษาอังกฤษ
-                            ภาษาจีน</p>
-                    </div>
+.features .nav-link {
+  background-color: none;
+  color: var(--heading-color);
+  padding: 10px 30px;
+  transition: 0.3s;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  border: 0;
+  margin: 0;
+}
 
-                </div>
+@media (max-width: 468px) {
+  .features .nav-link {
+    padding: 8px 20px;
+  }
+}
 
-            </div>
+.features .nav-link i {
+  padding-right: 15px;
+  font-size: 48px;
+}
+
+.features .nav-link h4 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.features .nav-link:hover {
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.features .nav-link:hover h4 {
+  color: var(--accent-color);
+}
+
+.features .nav-link.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.features .nav-link.active h4 {
+  color: var(--contrast-color);
+}
+
+.features .tab-content {
+  margin-top: 30px;
+}
+
+.features .tab-pane h3 {
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: 32px;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.features .tab-pane h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+
+.features .tab-pane ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features .tab-pane ul li {
+  padding-top: 10px;
+}
+
+.features .tab-pane ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: var(--accent-color);
+}
+
+.features .tab-pane p:last-child {
+  margin-bottom: 0;
+}
+</style>
+<section id="features" class="features section">
+
+      <div class="container">
+      <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <h6 class="section-title bg-white text-center text-primary px-3">SKJ Excellence</h6>
+        <h1 class="display-6 mb-4">หลักสูตรพัฒนาผู้เรียนสู่ความเป็นเลิศ 5 หลักสูตร</h1>
+    </div>
+        <div class="d-flex justify-content-center">
+
+          <ul class="nav nav-tabs aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" role="tablist">
+
+            <li class="nav-item" role="presentation">
+              <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#features-tab-1" aria-selected="true" role="tab">
+                <h4>ด้านวิชาการ SMT</h4>
+              </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2" aria-selected="false" role="tab" tabindex="-1">
+                <h4>ด้านกีฬา (SP)</h4>
+              </a><!-- End tab nav item -->
+
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3" aria-selected="false" role="tab" tabindex="-1">
+                <h4>ด้านศิลปะ ดนตรี การแสดง (PAP)</h4>
+              </a>
+            </li><!-- End tab nav item -->
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4" aria-selected="false" role="tab" tabindex="-1">
+                <h4>ด้านวิชาชีพ (CP)</h4>
+              </a>
+            </li><!-- End tab nav item -->
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-5" aria-selected="false" role="tab" tabindex="-1">
+                <h4>ด้านภาษา (CEP)</h4>
+              </a>
+            </li><!-- End tab nav item -->
+
+          </ul>
+
         </div>
 
-    </div>
-</section>
+        <div class="tab-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) , SMT(T)</h3>
+                <p class="fst-italic">
+                หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้านคณิตศาสตร์ วิทยาศาสตร์และเทคโนโลยี
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียนวิทย์ - คณิต</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียนวิทย์เทคโนโลยี</span></li>
+                  
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/science.svg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-2" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>หลักสูตรความเป็นเลิศ ด้านกีฬา (SP)</h3>
+                <p class="fst-italic">
+                หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนาทักษะ ความสามารถด้านกีฬา ส่งเสริมสุขภาพพลานามัยของตนเองและผู้อื่น การป้องกันและปฏิบัติต่อสิ่งต่าง ๆ ที่มีผลต่อสุขภาพอย่างถูกวิธี
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียน ฟุตบอล</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียน ฟุตซอล</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียน วอลเลย์บอล</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียน บาสเกตบอล</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>แผนการเรียน ตะกร้อ</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/sport.svg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-3" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>หลักสูตรความเป็นเลิศ ด้านศิลปะ ดนตรี การแสดง (PAP)</h3>
+                <p class="fst-italic">
+                หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนารูปแบบ/แบบแผนของการแสดง เช่น ดนตรีไทย ดนตรีสากล การขับร้อง ศิลปะการแสดง ทัศนศิลป์ วิจิตรศิลป์ ประติมากรรม ฯลฯ
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>สาขาดนตรี</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>สาขานาฏศิลป์</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>สาขาศิลปะ</span></li>
+                </ul>
+               
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/music.svg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-4" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>หลักสูตรความเป็นเลิศ ด้านวิชาชีพ (CP)</h3>
+                <p class="fst-italic">
+                หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนาทักษะในการประกอบอาชีพ ได้แก่   
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>การโรงแรม</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>การอาหารคหกรรม</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>โรงงานต่าง ๆ ฯลฯ</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>ธุรกิจและการประกอบการ</span></li> 
+                </ul>
+               
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/career.svg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-5" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>หลักสูตรความเป็นเลิศ ด้านภาษา (CEP)</h3>
+                <p class="fst-italic">
+                หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้าน ภาษาต่างประเทศ เช่น  
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>ภาษาอังกฤษ</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>ภาษาจีน</span></li>
+                </ul>
+                
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/language.svg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+        </div>
+
+      </div>
+
+    </section>
+    
