@@ -108,6 +108,8 @@ body {
         background: #fff;
         margin-right: 10px;
     }
+
+ 
 }
 
 @media only screen and (min-width: 800px) {
@@ -198,17 +200,52 @@ body {
         background: #fff;
         margin-right: 10px;
     }
+
+   
 }
 
 
-/* Media Queries */
-@media screen and (max-width: 690px) {}
 
-@media screen and (max-width: 518px) {}
+/* สำหรับโทรศัพท์มือถือ */
+@media (max-width: 480px) {
+    .posi-img1{
+        width: 150px;
+        position: absolute;
+        margin: -90px 25px;
+    }
 
-@media screen and (max-width: 453px) {}
+    .posi-img{
+        width: 150px;
+        position: absolute;
+        margin: 213px 25px;
+    }
+}
 
-@media screen and (min-width: 800px) {}
+/* สำหรับแท็บเล็ต */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .posi-img1{
+        width: 193px;
+        position: absolute;
+        margin: 131px 25px;
+    }
+
+    .posi-img{
+        width: 193px;
+        position: absolute;
+        margin: 160px 25px;
+    }
+}
+
+/* สำหรับแลปท็อป */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  
+}
+
+/* สำหรับจอคอมพิวเตอร์ */
+@media (min-width: 1441px) {
+  
+}
+
 </style>
 <div class="hero-video">
     <video style="width: 100%;" autoplay muted playsinline loop poster="<?=base_url('uploads/video/bg.png')?>">
@@ -397,7 +434,7 @@ body {
 
           <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
             <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+              <div class="col-lg-6 order-sm-2 order-1 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>หลักสูตรความเป็นเลิศ ด้านวิชาการ SMT(S) , SMT(T)</h3>
                 <p class="fst-italic">
                 หลักสูตรหรือแผนการจัดการเรียนการสอน ที่มุ่งเน้นการพัฒนา เพื่อส่งเสริมศักยภาพของนักเรียนที่มีความสามารถพิเศษทางด้านคณิตศาสตร์ วิทยาศาสตร์และเทคโนโลยี
@@ -408,8 +445,8 @@ body {
                   
                 </ul>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="<?=base_url()?>/uploads/Excellent/science.svg" alt="" class="img-fluid">
+              <div class="col-lg-6 order-sm-1 order-2 order-lg-2 text-center">
+                <img src="<?=base_url()?>/uploads/Excellent/science.svg" alt="" class="img-fluid posi-img1">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -430,7 +467,7 @@ body {
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="<?=base_url()?>/uploads/Excellent/sport.svg" alt="" class="img-fluid">
+                <img src="<?=base_url()?>/uploads/Excellent/sport.svg" alt="" class="img-fluid posi-img">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -450,7 +487,7 @@ body {
                
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="<?=base_url()?>/uploads/Excellent/music.svg" alt="" class="img-fluid">
+                <img src="<?=base_url()?>/uploads/Excellent/music.svg" alt="" class="img-fluid posi-img">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -471,7 +508,7 @@ body {
                
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="<?=base_url()?>/uploads/Excellent/career.svg" alt="" class="img-fluid">
+                <img src="<?=base_url()?>/uploads/Excellent/career.svg" alt="" class="img-fluid posi-img">
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -490,7 +527,7 @@ body {
                 
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="<?=base_url()?>/uploads/Excellent/language.svg" alt="" class="img-fluid">
+                <img src="<?=base_url()?>/uploads/Excellent/language.svg" alt="" class="img-fluid posi-img">
               </div>
             </div>
           </div><!-- End tab content item -->

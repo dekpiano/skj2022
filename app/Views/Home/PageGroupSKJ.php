@@ -74,35 +74,42 @@ section, .section {
             <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                 <div class="features-item">
                     <i class="bi bi-textarea-t" style="color: #ffbb2c;"></i>
-                    <h3><a href="https://www.facebook.com/%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B8%AA%E0%B8%81%E0%B8%88-1866513180276025" class="stretched-link">ภาษาไทย สกจ.</a></h3>
+                    <h3><a target="_blank" href="https://www.facebook.com/%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B8%AA%E0%B8%81%E0%B8%88-1866513180276025" class="stretched-link">ภาษาไทย สกจ.</a></h3>
                 </div>
             </div><!-- End Feature Item -->
 
             <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
                 <div class="features-item">
                     <i class="bi bi-thermometer" style="color: #e361ff;"></i>
-                    <h3><a href="https://www.facebook.com/Science-SKJ-1956424297925810" class="stretched-link"> Science Technology  SKJ </a></h3>
+                    <h3><a target="_blank" href="https://www.facebook.com/Science-SKJ-1956424297925810" class="stretched-link"> Science Technology  SKJ </a></h3>
                 </div>
             </div><!-- End Feature Item -->
 
             <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
                 <div class="features-item">
                     <i class="bi bi-calculator" style="color: #47aeff;"></i>
-                    <h3><a href="https://www.facebook.com/Math-SKJ-291631241382312" class="stretched-link">Math SKJ</a></h3>
+                    <h3><a target="_blank" href="https://www.facebook.com/Math-SKJ-291631241382312" class="stretched-link">Math SKJ</a></h3>
                 </div>
             </div><!-- End Feature Item -->
 
             <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">
                 <div class="features-item">
                     <i class="bi bi-globe2" style="color: #ffa76e;"></i>
-                    <h3><a href="https://www.facebook.com/SKJ.social/" class="stretched-link">สังคมศึกษา สกจ.นว</a></h3>
+                    <h3><a target="_blank" href="https://www.facebook.com/SKJ.social/" class="stretched-link">สังคมศึกษา สกจ.นว</a></h3>
+                </div>
+            </div><!-- End Feature Item -->
+
+            <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="700">
+                <div class="features-item">
+                    <i class="bi bi-brush" style="color: #11dbcf;"></i>
+                    <h3><a target="_blank" href="https://www.facebook.com/profile.php?id=100088994113102" class="stretched-link">ศิลปะ สกจ.</a></h3>
                 </div>
             </div><!-- End Feature Item -->
 
             <div class="col-lg-3 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="700">
                 <div class="features-item">
                     <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
-                    <h3><a href="https://www.facebook.com/skjcommittee" class="stretched-link">คณะกรรมการนักเรียนโรงเรียนสวนกุหลาบวิทยาลัย</a></h3>
+                    <h3><a target="_blank" href="https://www.facebook.com/skjcommittee" class="stretched-link">คณะกรรมการนักเรียนโรงเรียนสวนกุหลาบวิทยาลัย</a></h3>
                 </div>
             </div><!-- End Feature Item -->
 
