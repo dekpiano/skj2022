@@ -1,3 +1,8 @@
+<style>
+    .About img{
+        max-width: 100%;
+    }
+</style>
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s"
     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),url(../uploads/background/bg-about.jpg), center no-repeat; background-size: cover;background-position: bottom;">
     <div class="container text-center py-5">
@@ -14,7 +19,7 @@
     <div class="container">
         <div class="row g-5">
 
-            <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s"
+            <div class="About col-lg-8 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
               
                 <h1 class="mb-3"><?=$AboutDetail->about_menu?></h1>

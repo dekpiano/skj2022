@@ -26,10 +26,10 @@
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <div class="team-item rounded text-center p-4">
                         <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
@@ -58,10 +58,10 @@
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <div class="team-item rounded text-center p-4">
                         <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
@@ -90,10 +90,10 @@
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div class="team-item rounded text-center p-4">
                 <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid  p-2 mb-4" style="width: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="width: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
                             src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                     <div class="team-text">
