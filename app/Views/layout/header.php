@@ -48,7 +48,7 @@
 <link href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=10" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=11.1" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/media.css?v=5" rel="stylesheet">
 
 <!-- Cookie Consent by https://www.cookiewow.com -->

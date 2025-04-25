@@ -117,20 +117,43 @@
 }
 
 @media (min-width: 992px) {
+    .navbar .nav-item {
+        position: relative; /* Ensure proper positioning for dropdowns */
+    }
     .navbar .nav-item .dropdown-menu {
-        display: block;
+        display: none; /* Hidden by default */
         visibility: hidden;
-        top: 100%;
-        transform: rotateX(-75deg);
-        transform-origin: 0% 0%;
-        transition: .5s;
+        position: absolute; /* Ensure dropdown is positioned relative to the parent */
+        top: 100%; /* Position below the parent menu */
+        left: 0; /* Align with the parent menu */
+        z-index: 1000; /* Ensure dropdown appears above other elements */
+        transition: visibility 0.3s, opacity 0.3s ease-in-out;
         opacity: 0;
     }
-    .navbar .nav-item:hover .dropdown-menu {
-        transform: rotateX(0deg);
+    .navbar .nav-item:hover > .dropdown-menu,
+    .navbar .nav-item:focus-within > .dropdown-menu {
+        display: block; /* Show on hover or focus */
         visibility: visible;
-        transition: .5s;
-        opacity: 1;
+        opacity: 1; /* Ensure visibility */
+    }
+    .navbar .dropdown-submenu {
+        position: relative; /* Ensure proper positioning for submenus */
+    }
+    .navbar .dropdown-submenu .dropdown-menu {
+        display: none; /* Hidden by default */
+        visibility: hidden;
+        position: absolute; /* Ensure submenu is positioned relative to the parent */
+        top: 0;
+        left: 100%; /* Position to the right of the parent menu */
+        z-index: 1000; /* Ensure submenu appears above other elements */
+        transition: visibility 0.3s, opacity 0.3s ease-in-out;
+        opacity: 0;
+    }
+    .navbar .dropdown-submenu:hover > .dropdown-menu,
+    .navbar .dropdown-submenu:focus-within > .dropdown-menu {
+        display: block; /* Show on hover or focus */
+        visibility: visible;
+        opacity: 1; /* Ensure visibility */
     }
 }
 
@@ -947,4 +970,3 @@
         padding: 0px 15px 25px 15px;
     }
   }
-  

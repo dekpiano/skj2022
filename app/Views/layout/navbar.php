@@ -1,6 +1,3 @@
-
-
-
 <!-- Brand & Contact Start -->
 <div class="container-fluid py-4 px-3 wow fadeIn" data-wow-delay="0.1s">
     <div class="row align-items-center top-bar">
@@ -71,7 +68,57 @@
 </div>
 <!-- Brand & Contact End -->
 
+<style>
+       
 
+        .dropdown-menu .dropdown-item {
+            margin-bottom: 10px;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #008489;
+            color: #fff;
+        }
+
+        .dropdown-mega .dropdown-menu {
+            width: 100%;
+        }
+
+        .dropdown-mega h5 {
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+            margin: 0;
+        }
+
+        .list-group-item {
+            font-size: 16px;
+            color: #3F3B51;
+            border: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+            padding: 12px 0;
+        }
+
+        .list-group-item:hover {
+            color: #008489;
+        }
+
+    
+
+        /* Responsive */
+        @media(max-width: 991.5px) {
+            .navbar-brand {
+                font-size: 30px
+            }
+
+            .navbar-nav .nav-item {
+                margin: 5px 10px;
+            }
+
+            form {
+                margin: 30px 0;
+            }
+        }
+    </style>
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
     style="font-size: 14px;border-top: 5px solid #38B8F5;">
@@ -94,6 +141,118 @@
                 </div>
             </div>
 
+            <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Megamenu</a>
+                            <div class="dropdown-menu shadow">
+                                <div class="mega-content px-md-4">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                Multilevel
+                            </a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="#">Gallery</a></li>
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li class="dropdown-submenu dropstart">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Submenu Left
+                                    </a>
+                                    <ul class="dropdown-menu shadow">
+                                        <li><a class="dropdown-item" href="#">Third level 1</a></li>
+                                        <li><a class="dropdown-item" href="#">Third level 2</a></li>
+                                        <li><a class="dropdown-item" href="#">Third level 3</a></li>
+                                        <li><a class="dropdown-item" href="#">Third level 4</a></li>
+                                        <li><a class="dropdown-item" href="#">Third level 5</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu dropend">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        Submenu Right
+                                    </a>
+                                    <ul class="dropdown-menu shadow">
+                                        <li><a class="dropdown-item" href="#">Second level 1</a></li>
+                                        <li><a class="dropdown-item" href="#">Second level 2</a></li>
+                                        <li><a class="dropdown-item" href="#">Second level 3</a></li>
+                                        <li class="dropend">
+                                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside">Let's go deeper!</a>
+                                            <ul class="dropdown-menu dropdown-submenu shadow">
+                                                <li><a class="dropdown-item" href="#">Third level 1</a></li>
+                                                <li><a class="dropdown-item" href="#">Third level 2</a></li>
+                                                <li><a class="dropdown-item" href="#">Third level 3</a></li>
+                                                <li><a class="dropdown-item" href="#">Third level 4</a></li>
+                                                <li class="dropend">
+                                                    <a href="#" class="dropdown-item dropdown-toggle"
+                                                        data-bs-toggle="dropdown">Still don't have enough? Go much
+                                                        deeper!</a>
+                                                    <ul class="dropdown-menu dropdown-submenu shadow">
+                                                        <li><a class="dropdown-item" href="#">Third level 1</a></li>
+                                                        <li><a class="dropdown-item" href="#">Third level 2</a></li>
+                                                        <li><a class="dropdown-item" href="#">Third level 3</a></li>
+                                                        <li><a class="dropdown-item" href="#">Third level 4</a></li>
+                                                        <li><a class="dropdown-item" href="#">Third level 5</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Third level 5</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
@@ -112,6 +271,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
+
             <a href="<?=base_url('News')?>" class="nav-item nav-link"><i class="fa-solid fa-newspaper"></i>
                 ประชาสัมพันธ์</a>
             <div class="nav-item dropdown">
@@ -122,14 +282,14 @@
                             class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         กิจการนักเรียน</a>
-                    <a href="https://general.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
+                    
                     <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
                         งบประมาณและแผน</a>
                 </div>
             </div>
             <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
                 ติดต่อ</a> -->
-                <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+            <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
                 หลักสูตรความเป็นเลิศ</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
@@ -164,16 +324,16 @@
                         หนังสือรุ่น ส.ก.จ.
                     </a>
                     <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
-                    <i class="fa-solid fa-hammer"></i>
+                        <i class="fa-solid fa-hammer"></i>
                         แจ้งซ่อมออนไลน์
                     </a>
                     <a href="<?=base_url('Procurements')?>" class="dropdown-item">
-                    <i class="fa-solid fa-hammer"></i>
-                    การจัดซื้อจัดจ้าง
+                        <i class="fa-solid fa-hammer"></i>
+                        การจัดซื้อจัดจ้าง
                     </a>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="nav-item dropdown ">
