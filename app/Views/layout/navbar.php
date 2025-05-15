@@ -1,6 +1,3 @@
-
-
-
 <!-- Brand & Contact Start -->
 <div class="container-fluid py-4 px-3 wow fadeIn" data-wow-delay="0.1s">
     <div class="row align-items-center top-bar">
@@ -71,7 +68,55 @@
 </div>
 <!-- Brand & Contact End -->
 
+<style>
+.dropdown-menu .dropdown-item {
+    margin-bottom: 10px;
+}
 
+.dropdown-menu .dropdown-item:hover {
+    background-color: #008489;
+    color: #fff;
+}
+
+.dropdown-mega .dropdown-menu {
+    width: 100%;
+}
+
+.dropdown-mega h5 {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    margin: 0;
+}
+
+.list-group-item {
+    font-size: 16px;
+    color: #3F3B51;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    padding: 12px 0;
+}
+
+.list-group-item:hover {
+    color: #008489;
+}
+
+
+
+/* Responsive */
+@media(max-width: 991.5px) {
+    .navbar-brand {
+        font-size: 30px
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 10px;
+    }
+
+    form {
+        margin: 30px 0;
+    }
+}
+</style>
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s"
     style="font-size: 14px;border-top: 5px solid #38B8F5;">
@@ -93,7 +138,6 @@
                     <?php endforeach; ?>
                 </div>
             </div>
-
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
                     บุคลากร</a>
@@ -112,24 +156,44 @@
                     <?php endforeach; ?>
                 </div>
             </div>
+
             <a href="<?=base_url('News')?>" class="nav-item nav-link"><i class="fa-solid fa-newspaper"></i>
                 ประชาสัมพันธ์</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                        class="fa-solid fa-layer-group"></i> กลุ่มบริหาร</a>
-                <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                    <a href="https://academic.skj.ac.th/" class="dropdown-item"><i
-                            class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
-                        กิจการนักเรียน</a>
-                    <a href="https://general.skj.ac.th/" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ทั่วไป</a>
-                    <a href="#" class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
-                        งบประมาณและแผน</a>
-                </div>
-            </div>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-layer-group"></i> กลุ่มบริหาร
+                </a>
+                <ul class="dropdown-menu shadow">
+                    <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><i
+                                class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a></li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-sharp fa-solid fa-caret-right"></i> งานทั่วไป
+                        </a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking">
+                                    <i class="fa-solid fa-house"></i> จองอาคารสถานที่</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking">
+                                    <i class="fa-solid fa-car-side"></i> จองยานพาหนะ</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                    แจ้งซ่อม</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-caret-right"></i> งานบุคคล</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                            งบประมาณและแผน</a></li>
+                </ul>
+            </li>
+
+
             <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
                 ติดต่อ</a> -->
-                <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+            <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
                 หลักสูตรความเป็นเลิศ</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
@@ -164,16 +228,16 @@
                         หนังสือรุ่น ส.ก.จ.
                     </a>
                     <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
-                    <i class="fa-solid fa-hammer"></i>
+                        <i class="fa-solid fa-hammer"></i>
                         แจ้งซ่อมออนไลน์
                     </a>
                     <a href="<?=base_url('Procurements')?>" class="dropdown-item">
-                    <i class="fa-solid fa-hammer"></i>
-                    การจัดซื้อจัดจ้าง
+                        <i class="fa-solid fa-hammer"></i>
+                        การจัดซื้อจัดจ้าง
                     </a>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="nav-item dropdown ">
