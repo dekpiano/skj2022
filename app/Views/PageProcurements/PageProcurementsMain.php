@@ -17,12 +17,47 @@
     <table id="TBProcurements" class="table table-hover">
         <thead>
             <tr>
+                <th>#</th>
                 <th>รายการจัดซื้อจัดจ้าง</th>
                 <th>ประกาศ</th>
             </tr>
         </thead>
         <tbody>
+        <tr>
+        <td>10</td>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2568/สำเนาประกาศ.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> สำเนา ประกวดราคาซื้อหนังสือเรียน ปีการศึกษา 2568
+                            ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
+                <td>13 พฤษภาคม 2568</td>
+            </tr>
             <tr>
+            <td>9</td>
+                <td> <a target="_blank" href="<?=base_url('uploads/Procurements/2568/เอกสารTOR.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> TOR
+                        รายงานการจัดทำรายละเอียดคุณลักษณะเฉพาะของพัสดุและกำหนดราคากลาง จัดซื้อหนังสือเรียน ปีการศึกษา
+                        2568 </a> </td>
+                <td>13 พฤษภาคม 2568</td>
+            </tr>
+            <tr>
+            <td>8</td>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2568/เอกสารประกวดราคาหนังสือเรียน%20๒๕๖๘.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกวดราคา ด้วยวิธีซื้อ เลขที่ 1/2568 ประกวดราคาอิเล็กทรอนิกส์
+                        (e-bidding)
+                        การซื้อหนังสือเรียน ปีการศึกษา ๒๕๖๘</a> </td>
+                <td>13 พฤษภาคม 2568</td>
+            </tr>
+            <tr>
+            <td>7</td>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2568/ประกาศเชิญชวน%20หนังสือเรียน๒๕๖๘.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกวดราคาซื้อหนังสือเรียน ปีการศึกษา 2568
+                        ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
+                <td>13 พฤษภาคม 2568</td>
+            </tr>
+            <tr>
+            <td>6</td>
                 <td> <a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/เอกสารประกวดราคา%20ซื้อหนังสือเรียน%202567.pdf')?>"><i
                             class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
@@ -30,6 +65,7 @@
                 <td>21 มิถุนายน 2567</td>
             </tr>
             <tr>
+            <td>5</td>
                 <td> <a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/เอกสารประกาศเชิญชวน%20ซื้อหนังสือเรียน%202567.pdf')?>"><i
                             class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
@@ -39,6 +75,7 @@
                 <td>21 มิถุนายน 2567</td>
             </tr>
             <tr>
+            <td>4</td>
                 <td> <a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/เอกสารกำหนดราคากลาง%20สกจ.%202567.pdf')?>"><i
                             class="fas fa-file-pdf"></i> เอกสารกำหนดราคากลาง สกจ. 2567</a> </td>
@@ -46,6 +83,7 @@
             </tr>
 
             <tr>
+            <td>3</td>
                 <td> <a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/ประกาศ-ประกวดราคาหนังสือเรียน-67.pdf')?>"><i
                             class="fas fa-file-pdf"></i> ประกวดราคาซื้อโครงการสนับสนุนค่าใช้จ่ายการบริหารสถานศึกษา
@@ -53,6 +91,7 @@
                 <td>8 พฤษภาคม 2567</td>
             </tr>
             <tr>
+            <td>2</td>
                 <td><a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/เอกสารประกวดราคาซื้อ-หนังสือเรียน67.pdf')?>"><i
                             class="fas fa-file-pdf"></i> เอกสารประกวดราคาซื้อด้วยวิธีประกวดราคาอิเล็กทรอนิกส์
@@ -60,6 +99,7 @@
                 <td>8 พฤษภาคม 2567</td>
             </tr>
             <tr>
+                <td>1</td>
                 <td><a target="_blank"
                         href="<?=base_url('uploads/Procurements/2567/รายละเอียดคุณลักษณะ-หนังสือเรียน.pdf')?>"><i
                             class="fas fa-file-pdf"></i> รายละเอียดคุณลักษณะของพัสดุ (Terms of Reference : TOR)

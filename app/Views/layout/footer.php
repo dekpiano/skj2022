@@ -166,7 +166,7 @@ $(document).ready(function() {
 
 $('#TBProcurements').DataTable(
     {
-        order: [[1, 'ASC']]
+        order: [[0, 'desc']]
     }
 );
 </script>
