@@ -136,17 +136,23 @@ window.fbAsyncInit = function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 <script src="<?=base_url()?>/assets/lib/lightbox/js/lightbox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.min.js"></script>
 <!-- Template Javascript -->
 <script src="<?=base_url()?>/assets/js/main.js?v=3"></script>
 <?php if($uri->getSegment(1) === "News"):?>
-<script src="<?=base_url()?>/assets/js/News/News.js?v=10.1"></script>
+<script src="<?=base_url()?>/assets/js/News/News.js?v=11"></script>
 <?php endif; ?>
 
 <script>
 $(document).ready(function() {
+
+    const observer = lozad('img[data-src]'); 
+    observer.observe();
+
+
     $(".news-slider").owlCarousel({
         items : 3,
         itemsDesktop:[1199,3],

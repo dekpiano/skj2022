@@ -15,14 +15,14 @@
 
                         <div class="d-flex align-items-center mb-4 pb-2">
                             <img class="flex-shrink-0 rounded-circle"
-                                src="<?=base_url()?>/uploads/robot/logo_langone.png" alt="" style="width: 150px;">
+                                data-src="<?=base_url()?>/uploads/robot/logo_langone.png" alt="" style="width: 150px;">
                         </div>
 
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 align-self-center wow fadeInUp" data-wow-delay="0.1s">
                     <div class="bottom-0">
-                        <img class="img-fluid" src="<?=base_url()?>/uploads/robot/logo_robot.png" alt="">
+                        <img class="img-fluid" data-src="<?=base_url()?>/uploads/robot/logo_robot.png" alt="">
                     </div>
                 </div>
             </div>

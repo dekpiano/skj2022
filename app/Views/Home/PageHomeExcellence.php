@@ -27,7 +27,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/sci.jpg" alt="">
+                    <img class="img-fluid" data-src="<?=base_url()?>/uploads/Excellence/sci.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="row g-5 mt-5">
             <div class="col-lg-6 wow fadeInUp order-lg-0 order-1" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/sport.jpg" alt="">
+                    <img class="img-fluid" data-src="<?=base_url()?>/uploads/Excellence/sport.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp order-lg-1 order-0" data-wow-delay="0.1s">
@@ -68,7 +68,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/art.JPG" alt="">
+                    <img class="img-fluid" data-src="<?=base_url()?>/uploads/Excellence/art.JPG" alt="">
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
         <div class="row g-5 mt-5">
             <div class="col-lg-6 wow fadeInUp order-lg-0 order-1" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/cree.jpg" alt="">
+                    <img class="img-fluid" data-src="<?=base_url()?>/uploads/Excellence/cree.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp order-lg-1 order-0" data-wow-delay="0.1s">
@@ -110,7 +110,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="img-border">
-                    <img class="img-fluid" src="<?=base_url()?>/uploads/Excellence/lang.jpg" alt="">
+                    <img class="img-fluid" data-src="<?=base_url()?>/uploads/Excellence/lang.jpg" alt="">
                 </div>
             </div>
         </div>

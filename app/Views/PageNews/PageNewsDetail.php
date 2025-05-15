@@ -22,9 +22,9 @@
 
                     <div class="carousel-item active">
                         <?php if($news->news_facebook == ""):?>
-                        <img class="w-100" src="../../uploads/news/<?=$news->news_img?>" alt="Image">
+                        <img class="w-100" data-src="../../uploads/news/<?=$news->news_img?>" alt="Image">
                         <?php else: ?>
-                            <img class="w-100" src="../../uploads/news/<?=$news->news_img?>" alt="Image">
+                            <img class="w-100" data-src="../../uploads/news/<?=$news->news_img?>" alt="Image">
                         <?php endif; ?>
                     </div>
 
@@ -91,10 +91,10 @@
                             <div class="col-12 d-flex">
                                 <?php if($v_NewsLatest->news_facebook == ""):?>
                                 <img class="img-fluid rounded flex-shrink-0"
-                                    src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
+                                    data-src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
                                 <?php else: ?>
                                     <img class="img-fluid rounded flex-shrink-0"
-                                    src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
+                                    data-src="../../uploads/news/<?=$v_NewsLatest->news_img?>" alt="">
                                 <?php endif; ?>
                                 <div class="ps-3">
                                     <a href="<?=base_url('News/Detail/'.$v_NewsLatest->news_id);?>"
@@ -119,7 +119,7 @@
                     <div id="tab-2" class="tab-pane fade show p-0">
                         <div class="row g-3">
                             <div class="col-12 d-flex">
-                                <img class="img-fluid rounded flex-shrink-0" src="img/blog-sm-1.jpg" alt="">
+                                <img class="img-fluid rounded flex-shrink-0" data-src="img/blog-sm-1.jpg" alt="">
                                 <div class="ps-3">
                                     <a href="" class="d-block h5">Lorem ipsum dolor sit amet consec elit</a>
                                     <div class="breadcrumb blog-meta mb-0">
@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex">
-                                <img class="img-fluid rounded flex-shrink-0" src="img/blog-sm-2.jpg" alt="">
+                                <img class="img-fluid rounded flex-shrink-0" data-src="img/blog-sm-2.jpg" alt="">
                                 <div class="ps-3">
                                     <a href="" class="d-block h5">Lorem ipsum dolor sit amet consec elit</a>
                                     <div class="breadcrumb blog-meta mb-0">
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex">
-                                <img class="img-fluid rounded flex-shrink-0" src="img/blog-sm-3.jpg" alt="">
+                                <img class="img-fluid rounded flex-shrink-0" data-src="img/blog-sm-3.jpg" alt="">
                                 <div class="ps-3">
                                     <a href="" class="d-block h5">Lorem ipsum dolor sit amet consec elit</a>
                                     <div class="breadcrumb blog-meta mb-0">
@@ -158,7 +158,7 @@
             <div class="bg-light rounded p-4 mb-5 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <a href="">
-                    <img class="img-fluid rounded" src="img/blog-3.jpg" alt="">
+                    <img class="img-fluid rounded" data-src="img/blog-3.jpg" alt="">
                 </a>
             </div>
 

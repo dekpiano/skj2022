@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="video-frame">
-                <iframe style="width:100%;height: 400px;" src="https://www.youtube.com/embed/RxdQ2-0scEQ" frameborder="0"
+                <iframe style="width:100%;height: 400px;" data-src="https://www.youtube.com/embed/RxdQ2-0scEQ" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen=""></iframe>
                 </div>
