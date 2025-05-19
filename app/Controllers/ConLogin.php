@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 use App\Models\LoginModel;
 use App\Models\PersonnalModel;
 
+
+require_once APPPATH . '../../../librarie_skj/google_sheet/vendor/autoload.php';
 use Google_Client;
 use Google_Service_Oauth2;
 

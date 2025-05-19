@@ -30,7 +30,7 @@
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
                         <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
-                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                            src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
                             <div class="team-title">
@@ -62,7 +62,7 @@
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
                         <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
-                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                            src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
                             <div class="team-title">
@@ -94,7 +94,7 @@
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
                         <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
-                            src="https://general.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
+                            src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                     <div class="team-text">
                         <div class="team-title">
