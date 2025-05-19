@@ -8,7 +8,7 @@
                     <div class="row  con-header">
                         <div class="d-flex align-items-center justify-content-lg-start justify-content-md-center">
                             <div class="mx-3">
-                                <img src="<?=base_url()?>/assets/img/logo/Logo-nav.png" alt="Logo">
+                                <img data-src="<?=base_url()?>/assets/img/logo/Logo-nav.png" alt="Logo">
                             </div>
                             <div class="text-header">
                                 <div class="text-thai">
@@ -24,7 +24,7 @@
 
 
                 </h3>
-                <!-- <img src="<?=base_url()?>/assets/img/logo.png" alt="Logo"> -->
+                <!-- <img data-src="<?=base_url()?>/assets/img/logo.png" alt="Logo"> -->
             </a>
         </div>
         <div class="col-lg-6 col-md-7 d-none d-lg-block">

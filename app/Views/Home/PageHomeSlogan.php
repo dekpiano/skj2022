@@ -4,7 +4,7 @@
             <div class="text-white h2">
                 <div class="d-flex justify-content-center">
                     <div class="align-self-center mx-3">
-                        <img src="<?=base_url()?>/assets/img/logo/Logo-nav.png" style="width: 80px;" alt="Logo">
+                        <img data-src="<?=base_url()?>/assets/img/logo/Logo-nav.png" style="width: 80px;" alt="Logo">
                     </div>
                     <div class="align-self-center">
                         <span class="wow fadeInUp text-shadow" data-wow-delay="0.5s">เป็นผู้นำ</span>

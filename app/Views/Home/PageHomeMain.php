@@ -34,7 +34,7 @@
 }
 </style>
 
-<!-- <img class="img-fluid" src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset=""> -->
+<!-- <img class="img-fluid" data-src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset=""> -->
 
 <!-- Carousel Start -->
 <?= $this->include('Home/PageHomeCarousel') ?>
@@ -56,13 +56,13 @@
     </div>
     <div class="row justify-content-center " >
         <div class="col-md-4 col-6 wow fadeInLeft"  data-wow-delay="0.2s">
-        <img src="<?=base_url();?>/uploads/director/nayk.png" class="img-fluid" alt="">
+        <img data-src="<?=base_url();?>/uploads/director/nayk.png" class="img-fluid" alt="">
         </div>
         <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.3s">
-        <img src="<?=base_url();?>/uploads/director/pa-a.png" class="img-fluid" alt="">
+        <img data-src="<?=base_url();?>/uploads/director/pa-a.png" class="img-fluid" alt="">
         </div>
         <div class="col-md-4 col-6 wow fadeInRight" data-wow-delay="0.4s">
-        <img src="<?=base_url();?>/uploads/director/pa.png" class="img-fluid" alt="">
+        <img data-src="<?=base_url();?>/uploads/director/pa.png" class="img-fluid" alt="">
         </div>
     </div>
 </div>

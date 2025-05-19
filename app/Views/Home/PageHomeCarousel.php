@@ -14,7 +14,7 @@
             <?php foreach ($banner as $key => $v_banner): ?>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="<?=$key?>"
                 <?=$key==0?'class="active"':''?> aria-current="true" aria-label="Slide 1">
-                <img class="img-fluid" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
+                <img class="img-fluid" data-src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
                     alt="Image">
             </button>
             <?php endforeach; ?>
@@ -24,13 +24,13 @@
                     if($v_banner['banner_linkweb'] == ""):
             ?>
             <div class="carousel-item <?=$key==0?'active':''?>">
-                <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
+                <img class="w-100" data-src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
                     alt="Image">
             </div>
             <?php else: ?>
             <a href="<?=$v_banner['banner_linkweb']?>" target="_blank">
                 <div class="carousel-item <?=$key==0?'active':''?>">
-                    <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
+                    <img class="w-100" data-src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
                         alt="Image">
             </a>
         </div>
