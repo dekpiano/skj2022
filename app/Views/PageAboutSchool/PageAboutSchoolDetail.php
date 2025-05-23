@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row g-5">
 
-            <div class="About col-lg-8 wow fadeInUp" data-wow-delay="0.1s"
+            <div class="About ql-editor col-lg-8 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
               
                 <h1 class="mb-3"><?=$AboutDetail->about_menu?></h1>

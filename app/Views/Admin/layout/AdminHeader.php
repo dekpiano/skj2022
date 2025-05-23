@@ -72,6 +72,8 @@
     <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/buttons.bootstrap5.css" rel="stylesheet">
     <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/datatables.checkboxes.css" rel="stylesheet">
     <link href="<?=base_url()?>/assets/admin/assets/vendor/css/datatables/responsive.bootstrap5.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
   </head>
 
   

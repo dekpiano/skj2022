@@ -119,6 +119,54 @@
 <!-- / Layout wrapper -->
 
 
+<style>
+#bannerDropzone {
+    min-height: 240px;
+    border: 2px dashed #007bff;
+    border-radius: 12px;
+    background: #f8fafc;
+    position: relative;
+    overflow: hidden;
+}
+#bannerDropzone .dz-preview {
+    width: 100% !important;
+    margin: 0 !important;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#bannerDropzone .dz-preview .dz-image {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 220px !important;
+    max-width: 100% !important;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#bannerDropzone .dz-preview .dz-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 12px;
+}
+#bannerDropzone .dz-message {
+    font-size: 1.2rem;
+    color: #888;
+    padding: 2rem 1rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+}
+
+</style>
 
 <!-- Modal เพิ่มแบนเนอร์ -->
 <div class="modal fade" id="ModalAddBanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
@@ -158,8 +206,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="banner_img" class="form-label">รูปภาหน้าปก</label>
-                        <input class="form-control" type="file" name="banner_img" id="banner_img">
-                        <img src="" alt="" id="blah" class="img-fluid">
+                        <!-- <input class="form-control" type="file" name="banner_img" id="banner_img">
+                        <img src="" alt="" id="blah" class="img-fluid"> -->
+                         <div id="bannerDropzone" class="dropzone"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
