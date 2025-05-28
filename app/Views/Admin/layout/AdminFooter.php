@@ -33,7 +33,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
 
 <?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=22"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=23"></script>
 <?php endif; ?>
 <?php if($uri->getSegment(2) == 'Banner') : ?>
 <script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=5"></script>

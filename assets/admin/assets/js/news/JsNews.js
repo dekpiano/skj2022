@@ -179,6 +179,13 @@ $(document).on("submit", "#form-news-feacbook", function(e) {
     const formData = new FormData(this);
     formData.append("news_content_facebook", quillFacebook.root.innerHTML);
     formData.append("news_img_facebook", $('#blah_facebook').attr('src'));
+
+     // ปุ่ม submit
+    const $btn = $('#btn-submit-news-facebook');
+    $btn.prop('disabled', true);
+    $btn.find('.spinner-border').removeClass('d-none');
+    $btn.find('.btn-text').text('กำลังบันทึก...');
+
     $.ajax({
         url: $('#form-news-feacbook').attr('action'),
         type: "post",
@@ -192,6 +199,11 @@ $(document).on("submit", "#form-news-feacbook", function(e) {
             $('#ModalAddNewsFromFacebook').hide();
             $('.modal-backdrop').remove();
             if (data) {
+                // คืนปุ่มเป็นปกติ
+            $btn.prop('disabled', false);
+            $btn.find('.spinner-border').addClass('d-none');
+            $btn.find('.btn-text').text('บันทึก');
+
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -206,13 +218,21 @@ $(document).on("submit", "#form-news-feacbook", function(e) {
             } else {
                 Swal.fire(
                     'แจ้งเตือน!',
-                    data + '!',
+                    (data && data.message) ? data.message : 'บันทึกข้อมูลไม่สำเร็จ!',
                     'error'
-                )
+                );
             }
         },
         error: function (jqXHR, exception) {
-            console.log(jqXHR.responseText);
+            $btn.prop('disabled', false);
+            $btn.find('.spinner-border').addClass('d-none');
+            $btn.find('.btn-text').text('บันทึก');
+
+            Swal.fire(
+                'เกิดข้อผิดพลาด!',
+                jqXHR.responseText || 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้',
+                'error'
+            );
         }
     });
 });

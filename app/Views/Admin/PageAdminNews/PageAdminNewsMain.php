@@ -267,8 +267,8 @@
 
                     <div class="mb-3">
                         <label for="news_category" class="form-label">ประเภทข่าว</label>
-                        <select id="largeSelect" class="form-select form-select" name="news_category_facebook" id="news_category_facebook"
-                            required>
+                        <select id="largeSelect" class="form-select form-select" name="news_category_facebook"
+                            id="news_category_facebook" required>
                             <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
                             <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
                             <option value="ข่าวรางวัล">ข่าวรางวัล</option>
@@ -279,8 +279,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="datetime-local" value=""
-                            id="news_date_facebook" name="news_date_facebook">
+                        <input class="form-control" type="datetime-local" value="" id="news_date_facebook"
+                            name="news_date_facebook">
                         <div class="invalid-feedback">
                             เลือกวันที่ลง
                         </div>
@@ -292,13 +292,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="news_img" class="form-label">รูปภาหน้าปก</label>
-                        
+
                         <img src="" alt="" id="blah_facebook" class="img-fluid">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit-news-facebook">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        <span class="btn-text">บันทึก</span>
+                    </button>
                 </div>
 
             </form>
