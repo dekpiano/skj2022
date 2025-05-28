@@ -56,7 +56,7 @@ class ConAdminBanner extends BaseController
         'banner_img' => [
             'uploaded[banner_img]',
             'mime_in[banner_img,image/jpg,image/jpeg,image/png,image/gif]',
-            'max_size[banner_img,2024]',
+            
         ]
     ]);
 
