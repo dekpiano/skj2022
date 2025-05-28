@@ -11,6 +11,7 @@ class ConAdminNews extends BaseController
         $this->AboutModel = new AboutModel();
     }
 
+   
     public function DataMain(){
         $session = session();
         $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -205,6 +206,31 @@ class ConAdminNews extends BaseController
 
     }
 
+     function utf8ize($mixed) {
+        if (is_array($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed[$key] = utf8ize($value);
+            }
+        } elseif (is_string($mixed)) {
+            return mb_convert_encoding($mixed, 'UTF-8', 'UTF-8');
+        }
+        return $mixed;
+    }
+
+
+    function downloadFacebookImage($imageUrl, $savePath) {
+        $context = stream_context_create([
+            "http" => [
+                "header" => "User-Agent: Mozilla/5.0" // บางกรณี Facebook จะไม่ให้โหลดถ้าไม่มี User-Agent
+            ]
+        ]);
+        $imageContent = file_get_contents($imageUrl, false, $context);
+        if ($imageContent === false) {
+            return false;
+        }
+        return file_put_contents($savePath, $imageContent);
+    }
+
     public function NewsAddFeacbook(){
         $data = $this->DataMain();
 
@@ -217,28 +243,22 @@ class ConAdminNews extends BaseController
         }else{
             $NewsIdNew = 'news_001';
         }
-
-        // print_r($data['AdminID']);
-
-        // ลิงก์รูปภาพที่ต้องการดาวน์โหลด
-            $imageUrl = $this->request->getVar('news_img_facebook'); // ใส่ URL รูปภาพที่ต้องการดาวน์โหลด
-
-            // กำหนดชื่อไฟล์ใหม่ที่จะเก็บในเซิร์ฟเวอร์
+      
+            $imageUrl = $this->request->getPost('news_img_facebook'); // ใส่ URL รูปภาพที่ต้องการดาวน์โหลด
+            if (empty($imageUrl)) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'message' => 'ไม่พบ URL รูปภาพ'
+                ]);
+            }
             $randomFileName = uniqid('image_', true) . '.jpg'; 
             $savePath = 'uploads/news/'. $randomFileName; // กำหนดโฟลเดอร์และชื่อไฟล์
-
-            // ตรวจสอบว่าลิงก์ URL ใช้ได้หรือไม่
-            $imageContent = file_get_contents($imageUrl);
-            if ($imageContent === FALSE) {
-                die("ไม่สามารถดาวน์โหลดรูปภาพได้จาก URL นี้");
-            }
-
-            // บันทึกไฟล์ในเซิร์ฟเวอร์
-            if (file_put_contents($savePath, $imageContent)) {
-                echo "รูปภาพถูกบันทึกในเซิร์ฟเวอร์ที่ $savePath สำเร็จ!";
-            } else {
-                echo "เกิดข้อผิดพลาดในการบันทึกรูปภาพ";
-            }
+            
+         if (copy($imageUrl, $savePath)) {
+        echo "บันทึกสำเร็จ!";
+        } else {
+            echo "บันทึกไม่สำเร็จ!";
+        }
        
         // exit();
         $data = [
@@ -252,9 +272,7 @@ class ConAdminNews extends BaseController
             'personnel_id' => $data['AdminID']
             ];
         $save = $builder->insert($data);
-        //echo $save;
-
-
+       
     }
 
 }
