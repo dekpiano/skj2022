@@ -185,7 +185,7 @@
                     </li>
                     <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><i class="fa-sharp fa-solid fa-caret-right"></i> งานบุคคล</a>
                     </li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-caret-right"></i>
+                    <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><i class="fa-sharp fa-solid fa-caret-right"></i>
                             งบประมาณและแผน</a></li>
                 </ul>
             </li>
