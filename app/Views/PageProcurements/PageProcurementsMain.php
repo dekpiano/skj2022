@@ -23,6 +23,13 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>11</td>
+                <td> <a target="_blank"
+                        href="<?=base_url('uploads/Procurements/2568/ประกาศผู้ชนะประกวดราคาจัดซื้อหนังสือเรี.pdf')?>"><i
+                            class="fas fa-file-pdf"></i> ประกาศผู้ชนะการเสนอราคา ประกวดราคาซื้อหนังสือเรียน ปีการศึกษา 2568 ด้วยวิธีประกวดราคาอิเล็กทรอนิกส์ (e-bidding)</a> </td>
+                <td>22 พฤษภาคม 2568</td>
+            </tr>
         <tr>
         <td>10</td>
                 <td> <a target="_blank"

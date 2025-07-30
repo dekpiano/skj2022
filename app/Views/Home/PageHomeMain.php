@@ -47,6 +47,9 @@
 <?= $this->include('Home/PageHomeRecommend')?>
 <!-- Facts End -->
 
+<!-- News Start -->
+<?= $this->include('Home/PageHomeNews') ?>
+<!-- News End -->
 
 <section>
 <div class="container">
@@ -86,9 +89,6 @@
 <!-- $this->include('Home/PageHomeDirector')  -->
 <!-- PageHomeDirector End -->
 
-<!-- News Start -->
-<?= $this->include('Home/PageHomeNews') ?>
-<!-- News End -->
 
 <?= $this->include('Home/PageGroupSKJ') ?>
 
