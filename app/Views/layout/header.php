@@ -30,8 +30,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
@@ -48,7 +47,7 @@
     <link href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <!-- Template Stylesheet -->
-    <link href="<?=base_url()?>/assets/css/style.css?v=11.2" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/style.css?v=10" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/media.css?v=5" rel="stylesheet">
 
     <!-- Cookie Consent by https://www.cookiewow.com -->
@@ -70,7 +69,7 @@ gtag('config', 'G-4XVY09LWJ8');
 </script>
 
 
-<body>
+<body style="font-family: 'K2D', sans-serif;">
 
     <!-- <div class="ribbon">
         <img src="<?=base_url()?>/uploads/ari/black_ribbon_top_right.png" alt="ริบบิ้น" />
