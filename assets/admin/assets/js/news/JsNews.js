@@ -14,38 +14,42 @@ $('#myTable').DataTable({
         { width: '50px' }
     ]
 });
+let editPond;
+let addPond; // Declare addPond here
+
 $(document).on("click", "#AddNews", function() {
     var myModal = new bootstrap.Modal(document.getElementById("ModalAddNews"), {});
     myModal.show();
+
+    // Destroy existing addPond instance if it exists
+    if (addPond) {
+        addPond.destroy();
+    }
+
+    // Initialize FilePond for add form
+    const addInputElement = document.querySelector('input[name="news_img"]');
+    addPond = FilePond.create(addInputElement, {
+        labelIdle: `ลากและวางไฟล์ หรือ <span class="filepond--label-action">เลือกไฟล์</span>`,
+        imagePreviewHeight: 170,
+    });
 });
-
-$(document).on("click", ".EditNews", function() {
-    var myModal = new bootstrap.Modal(document.getElementById("ModalEditNews"), {});
-    myModal.show();
-
-
-    $.post("../Admin/News/EditNews", {
-        KeyNewsid: $(this).attr('key-newsid')
-    }, function(data, status) {
-        console.log(data[0].news_topic);
-        $('#edit_news_id').val(data[0].news_id);
-        $('#edit_news_topic').val(data[0].news_topic);
-        $('#edit_news_date').val(data[0].news_dateNews);
-        $('#edit_news_category').val(data[0].news_category);
-        $('#edit_blah').attr('src', '../uploads/news/' + data[0].news_img);
-        const delta = quill.clipboard.convert(data[0].news_content)
-        Editquill.setContents(delta, 'silent');
-
-    }, 'json');
-});
-
 
 $(document).on("submit", "#form-news", function(e) {
     e.preventDefault();
+
+    // Get the first file from FilePond (using addPond for the add form)
+    const file = addPond.getFile();
+
     const formData = new FormData(this);
     formData.append("news_content", quill.root.innerHTML);
+
+    // Add the file to the form data if it exists
+    if (file) {
+        formData.append('news_img', file.file);
+    }
+
     $.ajax({
-        url: $('#form-news').attr('action'),
+        url: $(this).attr('action'),
         type: "post",
         data: formData,
         processData: false,
@@ -53,16 +57,14 @@ $(document).on("submit", "#form-news", function(e) {
         cache: false,
         async: false,
         success: function(data) {
-            console.log(data);
-            $('#ModalAddNews').hide();
-            $('.modal-backdrop').remove();
+            $('#ModalAddNews').modal('hide');
             if (data == 1) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'บันทึกข้อมูลสำเร็จ',
                     showConfirmButton: false,
-                    timer: 3000
+                    timer: 2000
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         window.location.reload();
@@ -79,12 +81,67 @@ $(document).on("submit", "#form-news", function(e) {
     });
 });
 
+$(document).on("click", ".EditNews", function() {
+    var myModal = new bootstrap.Modal(document.getElementById("ModalEditNews"), {});
+    myModal.show();
+
+    // Destroy the existing FilePond instance if it exists
+    if (editPond) {
+        editPond.destroy();
+    }
+
+    const editInputElement = document.querySelector('#edit_news_img');
+
+    $.post("../Admin/News/EditNews", {
+        KeyNewsid: $(this).attr('key-newsid')
+    }, function(data, status) {
+        const news = data[0];
+        
+        // Populate form fields
+        $('#edit_news_id').val(news.news_id);
+        $('#edit_news_topic').val(news.news_topic);
+        $('#edit_news_date').val(news.news_date.slice(0, 16)); // Format for datetime-local
+        $('#edit_news_category').val(news.news_category);
+        $('#original_news_img').val(news.news_img);
+
+        // Set content for Quill editor
+        const delta = Editquill.clipboard.convert(news.news_content);
+        Editquill.setContents(delta, 'silent');
+
+        // Initialize FilePond with the existing image
+        let filePondOptions = {
+            labelIdle: `ลากไฟล์มาเพื่อเปลี่ยน หรือ <span class="filepond--label-action">คลิกเพื่อเปลี่ยนรูปภาพ</span>`,
+            imagePreviewHeight: 170,
+        };
+
+        if (news.news_img) {
+            filePondOptions.files = [{
+                source: `${BASE_URL}/uploads/news/${news.news_img}`,
+            }];
+        }
+
+        editPond = FilePond.create(editInputElement, filePondOptions);
+
+    }, 'json');
+});
+
+
+
+
 $(document).on("submit", "#form-update-news", function(e) {
     e.preventDefault();
+
     const formData = new FormData(this);
     formData.append("edit_news_content", Editquill.root.innerHTML);
+
+    // Get file from FilePond instance for the edit form
+    const file = editPond.getFile();
+    if (file) {
+        formData.append('edit_news_img', file.file);
+    }
+
     $.ajax({
-        url: $('#form-update-news').attr('action'),
+        url: $(this).attr('action'),
         type: "post",
         data: formData,
         processData: false,
@@ -92,22 +149,25 @@ $(document).on("submit", "#form-update-news", function(e) {
         cache: false,
         async: false,
         success: function(data) {
-            //console.log(data);
-            $('#ModalEditNews').hide();
-            $('.modal-backdrop').remove();
+            $('#ModalEditNews').modal('hide');
             if (data == 1) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'บันทึกข้อมูลสำเร็จ',
+                    title: 'บันทึกการเปลี่ยนแปลงสำเร็จ',
                     showConfirmButton: false,
-                    timer: 3000
+                    timer: 2000
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        //  window.location.reload();
-
+                        window.location.reload();
                     }
                 })
+            } else {
+                Swal.fire(
+                    'แจ้งเตือน!',
+                    data + '!',
+                    'error'
+                )
             }
         }
     });

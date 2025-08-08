@@ -54,15 +54,20 @@ class ConLogin extends BaseController
             $userData = $googleService->userinfo->get();
 
             $CheckUser = $this->PersModel->select('pers_id')->Where('pers_username',$userData->email)->first();
-            // ใช้ข้อมูลผู้ใช้ตามต้องการ เช่น บันทึกในฐานข้อมูล
-            session()->set([
-                'AdminID' => $CheckUser['pers_id'],
-                'AdminFullname' => $userData->name,
-                'AdminEmail' => $userData->email,
-                'logged_in' => true,
-            ]);
-
-            return redirect()->to('/Admin/Dashboard'); // เปลี่ยนเส้นทางหลังจากล็อกอินสำเร็จ
+            if($CheckUser){
+                // ใช้ข้อมูลผู้ใช้ตามต้องการ เช่น บันทึกในฐานข้อมูล
+                session()->set([
+                    'AdminID' => $CheckUser['pers_id'],
+                    'AdminFullname' => $userData->name,
+                    'AdminEmail' => $userData->email,
+                    'logged_in' => true,
+                ]);
+    
+                return redirect()->to('/Admin/Dashboard'); // เปลี่ยนเส้นทางหลังจากล็อกอินสำเร็จ
+            }else{
+                session()->setFlashdata('msg', 'ไม่พบบัญชีผู้ใช้นี้ในระบบ หรือ ไม่เป็นผู้ดูแลระบบ');
+                return redirect()->to('/');
+            }
         } else {
             return redirect()->to('/auth/googleLogin');
         }
@@ -88,9 +93,8 @@ class ConLogin extends BaseController
             $session->set($set_data);
             return redirect()->to('/Admin/Dashboard');
         }else{
-            $session->setFlashdata('msg', 'Password is incorrect.');
-            //return redirect()->to('/');
-            echo password_hash("48154886", PASSWORD_DEFAULT);
+            $session->setFlashdata('msg', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+            return redirect()->to('/');
         }
 
         // return  view('layout/header',$data)

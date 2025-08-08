@@ -52,44 +52,39 @@ class ConAdminNews extends BaseController
        
 
         $validateImg = $this->validate([
-            'file' => [
-                'mime_in[news_img,image/jpg,image/jpeg,image/png,image/gif]',
-                'max_size[news_img,2024]',
+            'news_img' => [
+                'uploaded[news_img]',
             ]
         ]);
 
         if (!$validateImg) {           
-           print_r('ไฟล์สกุลไม่ถูกต้อง หรือ ขนาดไฟล์เกิน 2 mb');
+           print_r('กรุณาอัปโหลดไฟล์รูปภาพ (jpg, jpeg, png, gif)');
         } else {
             
-        $imageFile = $this->request->getFile('news_img'); 
+            $imageFile = $this->request->getFile('news_img'); 
        
-        if($imageFile->getError() == 0){
-            $RandomName = $imageFile->getRandomName();
+            if($imageFile->isValid() && !$imageFile->hasMoved()){
+                $RandomName = $imageFile->getRandomName();
 
-           if($imageFile->getSize() > 200000){
-            $image = \Config\Services::image()
-            ->withFile($imageFile)
-            ->resize(2560, 1440, true, 'height')
-            ->save(FCPATH.'/uploads/news/'. $RandomName);
-            $NameImg = $RandomName;
-           }else{
-                $imageFile->move(FCPATH.'/uploads/news/');
-                $NameImg = $imageFile->getClientName();
-           }
+                \Config\Services::image()
+                    ->withFile($imageFile)
+                    ->fit(1920, 1080, 'center')
+                    ->save(FCPATH.'/uploads/news/'. $RandomName);
+                
+                $NameImg = $RandomName;
    
-            $data = [
-               'news_id' => $NewsIdNew,
-               'news_img' => $NameImg,
-               'news_topic' =>  $this->request->getPost('news_topic'),
-               'news_content' => $this->request->getPost('news_content'),
-               'news_date' => $this->request->getPost('news_date'),
-               'news_category' => $this->request->getPost('news_category'),
-               'personnel_id' => $data['AdminID']
-               ];
-           $save = $builder->insert($data);
-           echo $save;
-            }else{
+                $data = [
+                   'news_id' => $NewsIdNew,
+                   'news_img' => $NameImg,
+                   'news_topic' =>  $this->request->getPost('news_topic'),
+                   'news_content' => $this->request->getPost('news_content'),
+                   'news_date' => $this->request->getPost('news_date'),
+                   'news_category' => $this->request->getPost('news_category'),
+                   'personnel_id' => $data['AdminID']
+                ];
+                $save = $builder->insert($data);
+                echo $save;
+            } else {
                 $data = [
                     'news_id' => $NewsIdNew,
                     'news_topic' =>  $this->request->getPost('news_topic'),
@@ -97,7 +92,7 @@ class ConAdminNews extends BaseController
                     'news_date' => $this->request->getPost('news_date'),
                     'news_category' => $this->request->getPost('news_category'),
                     'personnel_id' => $data['AdminID']
-                    ];
+                ];
                 $save = $builder->insert($data);
                 echo $save;
             }
@@ -113,60 +108,174 @@ class ConAdminNews extends BaseController
 
     public function NewsUpdate(){
         $data = $this->DataMain();
-
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
-        $id = $this->request->getPost('edit_news_id');
-        $sel_img = $this->NewsModel->select('news_img')->where('news_id',$id)->get()->getResult();
         
-        $imageFile = $this->request->getFile('edit_news_img'); 
-        if($imageFile->getError() == 0){
-            if($sel_img[0]->news_img != ''){
-                @unlink(("uploads/news/".$sel_img[0]->news_img));
+        $id = $this->request->getPost('edit_news_id');
+        $imageFile = $this->request->getFile('edit_news_img');
+        $newContent = $this->request->getPost('edit_news_content');
+
+        // Fetch old news content to compare images
+        $oldNewsItem = $this->NewsModel->select('news_content')->where('news_id', $id)->first();
+        $oldContent = $oldNewsItem ? $oldNewsItem['news_content'] : '';
+
+        // Extract image URLs from old and new content
+        $oldImageUrls = $this->extractImageUrls($oldContent);
+        $newImageUrls = $this->extractImageUrls($newContent);
+
+        // Identify images to delete (present in old but not in new)
+        $imagesToDelete = array_diff($oldImageUrls, $newImageUrls);
+
+        // Delete identified images from server
+        foreach ($imagesToDelete as $imageUrl) {
+            $this->deleteImageFile($imageUrl);
+        }
+
+        $updateData = [
+            'news_topic' =>  $this->request->getPost('edit_news_topic'),
+            'news_content' => $newContent,
+            'news_date' => $this->request->getPost('edit_news_date'),
+            'news_category' => $this->request->getPost('edit_news_category'),
+            'personnel_id' => $data['AdminID']
+        ];
+
+        // Check if a new image is uploaded for cover
+        if ($imageFile && $imageFile->isValid() && !$imageFile->hasMoved()) {
+            // Validate the new image
+            $validateImg = $this->validate([
+                'edit_news_img' => [
+                    'uploaded[edit_news_img]',
+                    'mime_in[edit_news_img,image/jpg,image/jpeg,image/png,image/gif]',
+                ]
+            ]);
+
+            if (!$validateImg) {
+                print_r('กรุณาอัปโหลดไฟล์รูปภาพที่ถูกต้อง (jpg, jpeg, png, gif)');
+                return;
             }
 
-            $RandomName = $imageFile->getRandomName();
+            // Delete the old cover image
+            $oldCoverImage = $this->request->getPost('original_news_img');
+            if ($oldCoverImage && file_exists(FCPATH.'/uploads/news/' . $oldCoverImage)) {
+                @unlink(FCPATH.'/uploads/news/' . $oldCoverImage);
+            }
 
-            $image = \Config\Services::image()
-            ->withFile($imageFile)
-            ->resize(2560, 1440, true, 'height')
-            ->save(FCPATH.'/uploads/news/'. $RandomName);
-   
-            $data = [              
-               'news_img' => $RandomName,
-               'news_topic' =>  $this->request->getPost('edit_news_topic'),
-               'news_content' => $this->request->getPost('edit_news_content'),
-               'news_date' => $this->request->getPost('edit_news_date'),
-               'news_category' => $this->request->getPost('edit_news_category'),
-               'personnel_id' => $data['AdminID']
-               ];
-                    $builder->where('news_id',  $this->request->getPost('edit_news_id'));
-            $save = $builder->update($data);
-           echo $save;
-        }else{
-            $data = [              
-                'news_topic' =>  $this->request->getPost('edit_news_topic'),
-                'news_content' => $this->request->getPost('edit_news_content'),
-                'news_date' => $this->request->getPost('edit_news_date'),
-                'news_category' => $this->request->getPost('edit_news_category'),
-                'personnel_id' => $data['AdminID']
-                ];
-                    $builder->where('news_id',  $this->request->getPost('edit_news_id'));
-            $save = $builder->update($data);
-            echo $save;
+            // Process and save the new cover image
+            $RandomName = $imageFile->getRandomName();
+            \Config\Services::image()
+                ->withFile($imageFile)
+                ->fit(1920, 1080, 'center')
+                ->save(FCPATH.'/uploads/news/'. $RandomName);
+
+            $updateData['news_img'] = $RandomName;
+        }
+
+        $builder->where('news_id', $id);
+        $save = $builder->update($updateData);
+        echo $save;
+    }
+
+    // Helper function to extract image URLs from HTML content
+    private function extractImageUrls($htmlContent)
+    {
+        $urls = [];
+        preg_match_all('/<img[^>]+src="([^"]+)"/', $htmlContent, $matches);
+        foreach ($matches[1] as $imageUrl) {
+            // Only consider URLs that are from our uploads/news/content directory
+            // We'll extract the filename later for deletion
+            if (strpos($imageUrl, 'uploads/news/content/') !== false) {
+                $urls[] = $imageUrl;
+            }
+        }
+        return $urls;
+    }
+
+    // Helper function to delete image file from server given its URL
+    private function deleteImageFile($imageUrl)
+    {
+        // Extract filename from URL
+        $filename = basename(parse_url($imageUrl, PHP_URL_PATH));
+        $filePath = FCPATH . 'uploads/news/content/' . $filename;
+
+        if (file_exists($filePath)) {
+            @unlink($filePath);
+        }
+    }
+
+    public function uploadImage()
+    {
+        $imageFile = $this->request->getFile('image');
+
+        if (!$imageFile->isValid()) {
+            return $this->response->setStatusCode(400)->setJSON(['error' => 'Invalid file or no file uploaded']);
+        }
+
+        if ($imageFile->hasMoved()) {
+            return $this->response->setStatusCode(400)->setJSON(['error' => 'File has already been moved']);
+        }
+
+        $RandomName = $imageFile->getRandomName();
+        $uploadPath = FCPATH . '/uploads/news/content/';
+
+        // Ensure the upload directory exists
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, true);
+        }
+
+        try {
+            \Config\Services::image()
+                ->withFile($imageFile)
+                ->fit(1920, 1080, 'center') // Resize to 1920x1080, maintaining aspect ratio
+                ->save($uploadPath . $RandomName);
+
+            return $this->response->setJSON([
+                'url' => base_url('uploads/news/content/' . $RandomName)
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setStatusCode(500)->setJSON(['error' => 'Image processing failed: ' . $e->getMessage()]);
         }
     }
 
     public function NewsDelete(){
         $id = $this->request->getPost('KeyNewsid');
-        $sel_img = $this->NewsModel->select('news_img')->where('news_id',$id)->get()->getResult();
-        if($sel_img[0]->news_img != ''){
-            @unlink(("uploads/news/".$sel_img[0]->news_img));
+        // Fetch news_img and news_content
+        $newsItem = $this->NewsModel->select('news_img, news_content')->where('news_id', $id)->first();
+
+        if ($newsItem) {
+            // 1. Delete cover image
+            if (!empty($newsItem['news_img'])) {
+                $coverImagePath = FCPATH . 'uploads/news/' . $newsItem['news_img'];
+                if (file_exists($coverImagePath)) {
+                    @unlink($coverImagePath);
+                }
+            }
+
+            // 2. Delete embedded images from news_content
+            if (!empty($newsItem['news_content'])) {
+                // Use regex to parse HTML and find image URLs
+                preg_match_all('/<img[^>]+src="([^"]+)"/', $newsItem['news_content'], $matches);
+
+                foreach ($matches[1] as $imageUrl) {
+                    // Convert URL to local file path
+                    // Assuming images are stored in uploads/news/content/
+                    $base_url_length = strlen(base_url());
+                    if (substr($imageUrl, 0, $base_url_length) === base_url()) {
+                        $relativePath = substr($imageUrl, $base_url_length); // e.g., uploads/news/content/some_image.jpg
+                        $embeddedImagePath = FCPATH . $relativePath;
+
+                        if (file_exists($embeddedImagePath)) {
+                            @unlink($embeddedImagePath);
+                        }
+                    }
+                }
+            }
+
+            // 3. Delete the news record from the database
+            $result = $this->NewsModel->delete(['news_id' => $id]);
+            echo $result;
+        } else {
+            echo 0; // News item not found
         }
-        
-        $result = $this->NewsModel->delete(['news_id' => $id]);
-        
-        echo $result;
     }
 
 

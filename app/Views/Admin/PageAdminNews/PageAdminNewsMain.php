@@ -111,7 +111,7 @@
 <!-- Modal เพิ่มข่าว -->
 <div class="modal fade" id="ModalAddNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
     aria-labelledby="staticBackdropLabel" aria-hidden="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">เพิ่มข่าว</h5>
@@ -120,53 +120,55 @@
             <form id="form-news" method="post" action="<?=base_url('Admin/News/AddNews')?>"
                 enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="news_topic" class="form-label">หัวห้อข่าว</label>
-                        <input type="text" class="form-control mb-3" name="news_topic" id="news_topic"
-                            placeholder="ใส่หัวข้อข่าว..." aria-describedby="floatingInputHelp" required>
-                        <div class="invalid-feedback">
-                            ใส่หัวข้อข่าว
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="news_topic" class="form-label">หัวข้อข่าว</label>
+                                <input type="text" class="form-control" name="news_topic" id="news_topic"
+                                    placeholder="ใส่หัวข้อข่าว..." required>
+                                <div class="invalid-feedback">
+                                    กรุณาใส่หัวข้อข่าว
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="news_content_editor" class="form-label">เนื้อหาข่าว</label>
+                                <div id="news_content_editor" style="height: 300px;"></div>
+                                <input type="hidden" name="news_content" id="news_content">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="news_category" class="form-label">ประเภทข่าว</label>
-                        <select id="largeSelect" class="form-select form-select" name="news_category" id="news_category"
-                            required>
-                            <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
-                            <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
-                            <option value="ข่าวรางวัล">ข่าวรางวัล</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            เลือกประเภทข่าว
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="news_category" class="form-label">ประเภทข่าว</label>
+                                <select class="form-select" name="news_category" id="news_category" required>
+                                    <option selected disabled value="">เลือกประเภทข่าว...</option>
+                                    <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
+                                    <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
+                                    <option value="ข่าวรางวัล">ข่าวรางวัล</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    กรุณาเลือกประเภทข่าว
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="news_date" class="form-label">วันที่ลง</label>
+                                <input class="form-control" type="datetime-local"
+                                    value="<?=date('Y-m-d H:i:s')?>" id="news_date" name="news_date" required>
+                                <div class="invalid-feedback">
+                                    กรุณาเลือกวันที่ลง
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="news_img" class="form-label">รูปภาพหน้าปก</label>
+                                <input type="file" name="news_img" id="news_img">
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="datetime-local" value="<?=date('Y-m-d H:i:s')?>"
-                            id="news_date" name="news_date" required>
-                        <div class="invalid-feedback">
-                            เลือกวันที่ลง
-                        </div>
-                    </div>
-
-                    <!-- Create the editor container -->
-                    <div id="editor" class="mb-3">
-                        <p>ใส่เนื้อหาข่าวที่นี่....</p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="news_img" class="form-label">รูปภาหน้าปก</label>
-                        <input class="form-control" type="file" name="news_img" id="news_img">
-                        <img src="" alt="" id="blah" class="img-fluid">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-primary">บันทึก</button>
                 </div>
-
             </form>
-
         </div>
     </div>
 </div>
@@ -174,7 +176,7 @@
 <!-- Modal แก้ไขข่าว -->
 <div class="modal fade" id="ModalEditNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">แก้ไขข่าว</h5>
@@ -182,54 +184,57 @@
             </div>
             <form id="form-update-news" method="post" action="<?=base_url('Admin/News/UpdateNews')?>"
                 enctype="multipart/form-data" class="needs-validation" novalidate>
-                <input type="text" name="edit_news_id" id="edit_news_id" value="" style="display:none;">
+                <input type="hidden" name="edit_news_id" id="edit_news_id">
+                <input type="hidden" name="original_news_img" id="original_news_img">
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="edit_news_topic" class="form-label">หัวห้อข่าว</label>
-                        <input type="text" class="form-control mb-3" name="edit_news_topic" id="edit_news_topic"
-                            placeholder="ใส่หัวข้อข่าว..." aria-describedby="floatingInputHelp" required>
-                        <div class="invalid-feedback">
-                            ใส่หัวข้อข่าว
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="edit_news_topic" class="form-label">หัวข้อข่าว</label>
+                                <input type="text" class="form-control" name="edit_news_topic" id="edit_news_topic"
+                                    placeholder="ใส่หัวข้อข่าว..." required>
+                                <div class="invalid-feedback">
+                                    กรุณาใส่หัวข้อข่าว
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit_news_content_editor" class="form-label">เนื้อหาข่าว</label>
+                                <div id="edit_news_content_editor" style="height: 300px;"></div>
+                                <input type="hidden" name="edit_news_content" id="edit_news_content">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit_news_category" class="form-label">ประเภทข่าว</label>
-                        <select id="largeSelect" class="form-select form-select" name="edit_news_category"
-                            id="edit_news_category" required>
-                            <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
-                            <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
-                            <option value="ข่าวรางวัล">ข่าวรางวัล</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            เลือกประเภทข่าว
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="edit_news_category" class="form-label">ประเภทข่าว</label>
+                                <select class="form-select" name="edit_news_category" id="edit_news_category" required>
+                                    <option selected disabled value="">เลือกประเภทข่าว...</option>
+                                    <option value="ข่าวประชาสัมพันธ์">ข่าวประชาสัมพันธ์</option>
+                                    <option value="ข่าวกิจกรรม">ข่าวกิจกรรม</option>
+                                    <option value="ข่าวรางวัล">ข่าวรางวัล</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    กรุณาเลือกประเภทข่าว
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit_news_date" class="form-label">วันที่ลง</label>
+                                <input class="form-control" type="datetime-local" id="edit_news_date" name="edit_news_date" required>
+                                <div class="invalid-feedback">
+                                    กรุณาเลือกวันที่ลง
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit_news_img" class="form-label">รูปภาพหน้าปก</label>
+                                <input type="file" name="edit_news_img" id="edit_news_img">
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_news_date" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="date" value="" id="edit_news_date" name="edit_news_date">
-                        <div class="invalid-feedback">
-                            เลือกวันที่ลง
-                        </div>
-                    </div>
-
-                    <!-- Create the editor container -->
-                    <div id="editor_update" class="mb-3">
-                        <p>ใส่เนื้อหาข่าวที่นี่....</p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_news_img" class="form-label">รูปภาหน้าปก</label>
-                        <input class="form-control" type="file" name="edit_news_img" id="edit_news_img">
-                        <img src="" alt="" id="edit_blah" class="img-fluid">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                    <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
                 </div>
-
             </form>
-
         </div>
     </div>
 </div>
@@ -309,3 +314,10 @@
         </div>
     </div>
 </div>
+
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

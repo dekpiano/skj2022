@@ -21,6 +21,9 @@
 <script src="<?=base_url()?>/assets/admin/assets/vendor/libs/datatables/buttons.html5.js"></script>
 <script src="<?=base_url()?>/assets/admin/assets/vendor/libs/datatables/buttons.print.js"></script>
 <!-- Main JS -->
+<script>
+    const BASE_URL = "<?= base_url() ?>";
+</script>
 <script src="<?=base_url()?>/assets/admin/assets/js/main.js"></script>
 
 <!-- Page JS -->
@@ -31,9 +34,54 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script>
+    FilePond.registerPlugin(FilePondPluginImagePreview);
+</script>
+
+<!-- Initialize Quill editor -->
+<script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{'header': 1}, {'header': 2}],
+        [{'list': 'ordered'}, {'list': 'bullet'}],
+        [{'script': 'sub'}, {'script': 'super'}],
+        [{'indent': '-1'}, {'indent': '+1'}],
+        [{'direction': 'rtl'}],
+        [{'size': ['small', false, 'large', 'huge']}],
+        [{'header': [1, 2, 3, 4, 5, 6, false]}],
+        [{'color': []}, {'background': []}],
+        [{'font': []}],
+        [{'align': []}],
+        ['clean'],
+        ['link', 'image']
+    ];
+
+    var quill = new Quill('#editor', {
+        modules: { toolbar: toolbarOptions },
+        theme: 'snow'
+    });
+
+    var quillFacebook = new Quill('#editor_facebook', {
+        modules: { toolbar: toolbarOptions },
+        theme: 'snow'
+    });
+
+    var Editquill = new Quill('#editor_update', {
+        modules: { toolbar: toolbarOptions },
+        theme: 'snow'
+    });
+
+    var EditeAbout = new Quill('#editor_AboutSchool', {
+        modules: { toolbar: toolbarOptions },
+        theme: 'snow'
+    });
+</script>
 
 <?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=23"></script>
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=27"></script>
 <?php endif; ?>
 <?php if($uri->getSegment(2) == 'Banner') : ?>
 <script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=5"></script>
@@ -155,26 +203,78 @@ var toolbarOptions = [
     ['link', 'image'] // remove formatting button
 ];
 
-var quill = new Quill('#editor', {
-    modules: {
-        toolbar: toolbarOptions
-    },
-    theme: 'snow'
-});
+function imageHandler() {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
 
-var quillFacebook = new Quill('#editor_facebook', {
-    modules: {
-        toolbar: toolbarOptions
-    },
-    theme: 'snow'
-});
+    input.onchange = () => {
+        const file = input.files[0];
+        if (/^image\//.test(file.type)) {
+            const formData = new FormData();
+            formData.append('image', file);
 
-var Editquill = new Quill('#editor_update', {
-    modules: {
-        toolbar: toolbarOptions
-    },
-    theme: 'snow'
-});
+            // Get the correct editor instance
+            const quillInstance = this.quill;
+
+            fetch(`${BASE_URL}/Admin/News/uploadImage`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(result => {
+                if (result.url) {
+                    const range = quillInstance.getSelection();
+                    quillInstance.insertEmbed(range.index, 'image', result.url);
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading image:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'อัปโหลดรูปภาพไม่สำเร็จ',
+                    text: 'เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ: ' + error.message,
+                });
+            });
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'ไฟล์ไม่ถูกต้อง',
+                text: 'กรุณาเลือกไฟล์รูปภาพเท่านั้น',
+            });
+        }
+    };
+}
+
+    window.quill = new Quill('#news_content_editor', {
+        modules: {
+            toolbar: {
+                container: toolbarOptions,
+                handlers: {
+                    'image': imageHandler
+                }
+            }
+        },
+        theme: 'snow'
+    });
+
+    window.Editquill = new Quill('#edit_news_content_editor', {
+        modules: {
+            toolbar: {
+                container: toolbarOptions,
+                handlers: {
+                    'image': imageHandler
+                }
+            }
+        },
+        theme: 'snow'
+    });
 
 var EditeAbout = new Quill('#editor_AboutSchool', {
     modules: {

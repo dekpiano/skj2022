@@ -142,6 +142,7 @@ window.fbAsyncInit = function() {
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.min.js"></script>
 <!-- Template Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?=base_url()?>/assets/js/main.js?v=3"></script>
 <?php if($uri->getSegment(1) === "News"):?>
 <script src="<?=base_url()?>/assets/js/News/News.js?v=10.2"></script>
@@ -170,7 +171,15 @@ $('#TBProcurements').DataTable(
     }
 );
 </script>
-
+<?php if (session()->getFlashdata('msg')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'แจ้งเตือน!',
+            text: '<?= session()->getFlashdata('msg') ?>',
+        })
+    </script>
+<?php endif; ?>
 </body>
 
 </html>
