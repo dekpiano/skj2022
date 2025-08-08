@@ -144,7 +144,7 @@ window.fbAsyncInit = function() {
 <!-- Template Javascript -->
 <script src="<?=base_url()?>/assets/js/main.js?v=3"></script>
 <?php if($uri->getSegment(1) === "News"):?>
-<script src="<?=base_url()?>/assets/js/News/News.js?v=11"></script>
+<script src="<?=base_url()?>/assets/js/News/News.js?v=10.2"></script>
 <?php endif; ?>
 
 <script>

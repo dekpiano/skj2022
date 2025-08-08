@@ -152,6 +152,13 @@ class ConNews extends BaseController
         
     }
 
+    public function newsSuggestions()
+    {
+        $searchTerm = $this->request->getGet('term');
+        $suggestions = $this->NewsModel->getNewsSuggestions($searchTerm);
+        return $this->response->setJSON($suggestions);
+    }
+
     public function pr(){
         $data = $this->DataMain();
         $data['title'] = "สกจ. ประชาสัมพันธ์";
