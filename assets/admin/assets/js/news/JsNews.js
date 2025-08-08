@@ -37,6 +37,16 @@ $(document).on("click", "#AddNews", function() {
 $(document).on("submit", "#form-news", function(e) {
     e.preventDefault();
 
+    const form = $(this);
+    const submitBtn = $('#submitAddNewsBtn');
+    const spinner = submitBtn.find('.spinner-border');
+    const btnText = submitBtn.find('.btn-text');
+
+    // Show spinner and disable button
+    spinner.removeClass('d-none');
+    btnText.text('กำลังบันทึก...');
+    submitBtn.prop('disabled', true);
+
     // Get the first file from FilePond (using addPond for the add form)
     const file = addPond.getFile();
 
@@ -49,34 +59,48 @@ $(document).on("submit", "#form-news", function(e) {
     }
 
     $.ajax({
-        url: $(this).attr('action'),
+        url: form.attr('action'),
         type: "post",
         data: formData,
         processData: false,
         contentType: false,
         cache: false,
-        async: false,
+        async: true, // Changed to async: true for better UX with spinner
         success: function(data) {
+            // Hide spinner and enable button
+            spinner.addClass('d-none');
+            btnText.text('บันทึก');
+            submitBtn.prop('disabled', false);
+
             $('#ModalAddNews').modal('hide');
             if (data == 1) {
                 Swal.fire({
-                    position: 'top-end',
                     icon: 'success',
                     title: 'บันทึกข้อมูลสำเร็จ',
                     showConfirmButton: false,
-                    timer: 2000
-                }).then((result) => {
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        window.location.reload();
-                    }
-                })
+                    timer: 1500
+                }).then(() => {
+                    location.reload();
+                });
             } else {
                 Swal.fire(
                     'แจ้งเตือน!',
                     data + '!',
                     'error'
-                )
+                );
             }
+        },
+        error: function(xhr, status, error) {
+            // Hide spinner and enable button
+            spinner.addClass('d-none');
+            btnText.text('บันทึก');
+            submitBtn.prop('disabled', false);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'เกิดข้อผิดพลาด!',
+                text: 'ไม่สามารถบันทึกข้อมูลได้: ' + error,
+            });
         }
     });
 });
@@ -131,6 +155,16 @@ $(document).on("click", ".EditNews", function() {
 $(document).on("submit", "#form-update-news", function(e) {
     e.preventDefault();
 
+    const form = $(this);
+    const submitBtn = $('#submitEditNewsBtn');
+    const spinner = submitBtn.find('.spinner-border');
+    const btnText = submitBtn.find('.btn-text');
+
+    // Show spinner and disable button
+    spinner.removeClass('d-none');
+    btnText.text('กำลังบันทึก...');
+    submitBtn.prop('disabled', true);
+
     const formData = new FormData(this);
     formData.append("edit_news_content", Editquill.root.innerHTML);
 
@@ -141,34 +175,48 @@ $(document).on("submit", "#form-update-news", function(e) {
     }
 
     $.ajax({
-        url: $(this).attr('action'),
+        url: form.attr('action'),
         type: "post",
         data: formData,
         processData: false,
         contentType: false,
         cache: false,
-        async: false,
+        async: true, // Changed to async: true for better UX with spinner
         success: function(data) {
+            // Hide spinner and enable button
+            spinner.addClass('d-none');
+            btnText.text('บันทึกการเปลี่ยนแปลง');
+            submitBtn.prop('disabled', false);
+
             $('#ModalEditNews').modal('hide');
             if (data == 1) {
                 Swal.fire({
-                    position: 'top-end',
                     icon: 'success',
                     title: 'บันทึกการเปลี่ยนแปลงสำเร็จ',
                     showConfirmButton: false,
-                    timer: 2000
-                }).then((result) => {
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        window.location.reload();
-                    }
-                })
+                    timer: 1500
+                }).then(() => {
+                    location.reload();
+                });
             } else {
                 Swal.fire(
                     'แจ้งเตือน!',
                     data + '!',
                     'error'
-                )
+                );
             }
+        },
+        error: function(xhr, status, error) {
+            // Hide spinner and enable button
+            spinner.addClass('d-none');
+            btnText.text('บันทึกการเปลี่ยนแปลง');
+            submitBtn.prop('disabled', false);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'เกิดข้อผิดพลาด!',
+                text: 'ไม่สามารถบันทึกข้อมูลได้: ' + error,
+            });
         }
     });
 });
