@@ -13,6 +13,7 @@ use App\Models\AboutModel;
 class ConAboutSchool extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
@@ -28,24 +29,24 @@ class ConAboutSchool extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_012'))->get()->getResult();
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         $data['uri'] = service('uri'); 
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED
         return $data;
     }
 
     public function AboutDetail($Key)
     {        
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
 
-        $data['AboutDetail'] = $this->AboutModel->where('about_menu',$Key)->get()->getRow();
-        //echo '<pre>'; print_r($data['AboutDetail']);exit();
-        $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+        $page_data['AboutDetail'] = $this->AboutModel->where('about_menu',$Key)->get()->getRow();
+        $page_data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+        $page_data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
                                
+        $data = array_merge($this->data, $page_data);
       
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageAboutSchool/PageAboutSchoolDetail')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageAboutSchool/PageAboutSchoolDetail', $data)
+                .view('layout/footer', $data);
     }
 
 }

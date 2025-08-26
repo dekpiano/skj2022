@@ -10,6 +10,7 @@ use App\Models\AboutModel;
 class ConProcurements extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
@@ -23,21 +24,23 @@ class ConProcurements extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_012'))->get()->getResult();
         $data['uri'] = service('uri'); 
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED
         return $data;
     }
 
     public function index(){
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
        
-        $data['title'] = "การจัดซื้อจัดจ้าง";
-        $data['description'] = "รายละเอียดข้อมูลการจัดซื้อจัดจ้าง";
-        $data['banner'] = '';
+        $page_data['title'] = "การจัดซื้อจัดจ้าง";
+        $page_data['description'] = "รายละเอียดข้อมูลการจัดซื้อจัดจ้าง";
+        $page_data['banner'] = '';
+
+        $data = array_merge($this->data, $page_data);
 
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageProcurements/PageProcurementsMain')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageProcurements/PageProcurementsMain', $data)
+                .view('layout/footer', $data);
         
     }
 

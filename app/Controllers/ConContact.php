@@ -10,6 +10,7 @@ use App\Models\AboutModel;
 class ConContact extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
@@ -23,21 +24,23 @@ class ConContact extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_012'))->get()->getResult();
         $data['uri'] = service('uri'); 
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED
         return $data;
     }
 
     public function index(){
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
        
-        $data['title'] = "ติดต่อ";
-        $data['description'] = "รายละเอียดข้อมูลติดต่อโรงเรียน";
-        $data['banner'] = '';
+        $page_data['title'] = "ติดต่อ";
+        $page_data['description'] = "รายละเอียดข้อมูลติดต่อโรงเรียน";
+        $page_data['banner'] = '';
+
+        $data = array_merge($this->data, $page_data);
 
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageContact/PageContactMain')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageContact/PageContactMain', $data)
+                .view('layout/footer', $data);
         
     }
 

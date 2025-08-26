@@ -14,6 +14,7 @@ use App\Models\AboutModel;
 class ConNews extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->NewsModel = new NewsModel();
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
@@ -33,16 +34,16 @@ class ConNews extends BaseController
         $database = \Config\Database::connect();
         $data['DB'] = $database->table('tb_news');
         helper(['form', 'url']);
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED
         return $data;
     }
 
     public function NewsMain(){
         
-        $data = $this->DataMain();
-        $data['title'] = "สกจ. ประชาสัมพันธ์";
-        $data['description'] = "ข่าวและกิจกรรมภายในโรงเรียน";
-        $data['banner'] = '';
+        $page_data = $this->DataMain();
+        $page_data['title'] = "สกจ. ประชาสัมพันธ์";
+        $page_data['description'] = "ข่าวและกิจกรรมภายในโรงเรียน";
+        $page_data['banner'] = '';
 
         $request = service('request');
         $searchData = $request->getGet();
@@ -63,17 +64,16 @@ class ConNews extends BaseController
                 ->paginate(20);
           }
 
-        $data['NewsAll' ] = $paginateData;
-        $data['pager' ] = $this->NewsModel->pager;
-        $data['search' ] = $search;
+        $page_data['NewsAll' ] = $paginateData;
+        $page_data['pager' ] = $this->NewsModel->pager;
+        $page_data['search' ] = $search;
       
-        //$data['NewsAll'] = $this->NewsModel->limit(4)->orderBy('news_date', 'DESC')->get()->getResult();
+        $data = array_merge($this->data, $page_data);
 
-        //echo '<pre>';print_r($data['NewsAll']);exit();
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageNews/PageNewsMain')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageNews/PageNewsMain', $data)
+                .view('layout/footer', $data);
         
     }
 
@@ -120,25 +120,27 @@ class ConNews extends BaseController
 
     public function NewsDetail($KeyNews)
     {    
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
        
-        $data['news'] = $this->NewsModel->where('news_id',$KeyNews)->orderBy('news_date', 'DESC')->get()->getRow();
-        $data['NewsLatest'] = $this->NewsModel->limit(3)->orderBy('news_date', 'DESC')->get()->getResult();
+        $page_data['news'] = $this->NewsModel->where('news_id',$KeyNews)->orderBy('news_date', 'DESC')->get()->getRow();
+        $page_data['NewsLatest'] = $this->NewsModel->limit(3)->orderBy('news_date', 'DESC')->get()->getResult();
 
-        $data['title'] = $data['news']->news_topic ." | สกจ. ประชาสัมพันธ์";
-        $data['description'] = mb_strimwidth(strip_tags($data['news']->news_content),0,100,'...');
-        $data['banner'] = base_url('uploads/news/'.$data['news']->news_img);
+        $page_data['title'] = $page_data['news']->news_topic ." | สกจ. ประชาสัมพันธ์";
+        $page_data['description'] = mb_strimwidth(strip_tags($page_data['news']->news_content),0,100,'...');
+        $page_data['banner'] = base_url('uploads/news/'.$page_data['news']->news_img);
 
         $dataUpdate = [
-            'news_view' => ($data['news']->news_view + 1)
+            'news_view' => ($page_data['news']->news_view + 1)
         ];
-        $data['DB']->where('news_id',$KeyNews);
-        $data['DB']->update($dataUpdate);
+        $page_data['DB']->where('news_id',$KeyNews);
+        $page_data['DB']->update($dataUpdate);
+
+        $data = array_merge($this->data, $page_data);
 
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageNews/PageNewsDetail')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageNews/PageNewsDetail', $data)
+                .view('layout/footer', $data);
     }
 
     public function NewsCountRead(){

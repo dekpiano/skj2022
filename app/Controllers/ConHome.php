@@ -14,6 +14,7 @@ use App\Models\StudentModels;
 class ConHome extends BaseController
 {
     public function __construct(){
+        parent::__construct(); // It's good practice to call the parent constructor
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
@@ -30,45 +31,47 @@ class ConHome extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_012'))->get()->getResult();
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
         $data['uri'] = service('uri'); 
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED - This is now handled in BaseController
         return $data;
     }
 
     public function index()
     {        
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
      
-        $data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
-        $data['news'] = $this->NewsModel->where('news_category !=','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
-        $data['NewsReward'] = $this->NewsModel->where('news_category','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
-        $data['Director'] = $this->PersModel->where('pers_position','posi_001')->where('pers_status','กำลังใช้งาน')->get()->getRow();
+        $page_data['title'] = "โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+        $page_data['description'] = "เป็นผู้นำ รักเพื่อน นับถือพี่ เคารพครู กตัญญูพ่อแม่ ดูแลน้อง สนองคุณแผ่นดิน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+        $page_data['news'] = $this->NewsModel->where('news_category !=' , 'ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
+        $page_data['NewsReward'] = $this->NewsModel->where('news_category','ข่าวรางวัล')->limit(6)->orderBy('news_date', 'DESC')->get()->getResult();
+        $page_data['Director'] = $this->PersModel->where('pers_position','posi_001')->where('pers_status','กำลังใช้งาน')->get()->getRow();
       
-        $data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
+        $page_data['banner'] = $this->BannerModel->select('banner_id,banner_name,banner_img,banner_linkweb,banner_status')
                                         ->where('banner_status','on')
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();
-        $data['ConutStudent'] = $this->StudentModel->CountStudentAll();
+        $page_data['ConutStudent'] = $this->StudentModel->CountStudentAll();
 
-        
-      
+        // Merge data from BaseController (contains visitor stats) with page-specific data
+        $data = array_merge($this->data, $page_data);
 
-        //echo '<pre>';print_r($data['Director']); exit();
-         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('Home/PageHomeMain')
-                .view('layout/footer');
+        return  view('layout/header',$data)
+                .view('layout/navbar', $data)
+                .view('Home/PageHomeMain', $data)
+                .view('layout/footer', $data);
     }
 
     function PageGroup(){
-        $data = $this->DataMain();
-        $data['title'] = "กลุ่มภายในโรงเรียน";
-        $data['description'] = "กลุ่มภายในโรงเรียน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+        $page_data = $this->DataMain();
+        $page_data['title'] = "กลุ่มภายในโรงเรียน";
+        $page_data['description'] = "กลุ่มภายในโรงเรียน โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์";
+
+        // Merge data from BaseController (contains visitor stats) with page-specific data
+        $data = array_merge($this->data, $page_data);
 
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PageGroup/PageGroupMain')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PageGroup/PageGroupMain', $data)
+                .view('layout/footer', $data);
     }
 
 }

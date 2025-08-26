@@ -13,16 +13,9 @@ use Google_Service_Oauth2;
 class ConLogin extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->LoginModel = new LoginModel();
         $this->PersModel = new PersonnalModel();
-    }
-
-    public function DataMain(){
-        $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $data['uri'] = service('uri'); 
-        helper(['form', 'url']);
-        $data['v'] = $this->VisitorsUser();
-        return $data;
     }
 
     public function googleLogin()
@@ -76,7 +69,7 @@ class ConLogin extends BaseController
     public function LoginAdmin(){
         
         $session = session();
-        $data = $this->DataMain();
+        // $data = $this->DataMain(); // REMOVED
         $pass = $this->LoginModel->findAll();
 
         $username = $this->request->getVar('Username');
@@ -96,16 +89,7 @@ class ConLogin extends BaseController
             $session->setFlashdata('msg', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
             return redirect()->to('/');
         }
-
-        // return  view('layout/header',$data)
-        //         .view('layout/navbar')
-        //         .view('PageNews/PageNewsMain')
-        //         .view('layout/footer');
-        
     }
-
-
-
 
     public function LogoutAdmin()
     {

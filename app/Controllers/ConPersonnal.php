@@ -10,6 +10,7 @@ use App\Models\AboutModel;
 class ConPersonnal extends BaseController
 {
     public function __construct(){
+        parent::__construct();
         $this->PosiModel = new PositionModel();
         $this->LearModel = new LearningModel();
         $this->PersModel = new PersonnalModel();
@@ -23,16 +24,16 @@ class ConPersonnal extends BaseController
         $data['PosiOther'] = $this->PosiModel->where(array('posi_id >='=>'posi_007','posi_id <='=>'posi_012'))->get()->getResult();
         $data['uri'] = service('uri'); 
         $data['AboutSchool'] = $this->AboutModel->get()->getResult();
-        $data['v'] = $this->VisitorsUser();
+        // $data['v'] = $this->VisitorsUser(); // REMOVED
         return $data;
     }
 
     public function PersonnalMain($PoisO = null,$Key = null){
-        $data = $this->DataMain();
+        $page_data = $this->DataMain();
        
-        $data['title'] = "บุคลากรภายในโรงเรียน";
-        $data['description'] = "รายละเอียดข้อมูลบุคลากรภายในโรงเรียน";
-        $data['banner'] = '';
+        $page_data['title'] = "บุคลากรภายในโรงเรียน";
+        $page_data['description'] = "รายละเอียดข้อมูลบุคลากรภายในโรงเรียน";
+        $page_data['banner'] = '';
         
         if($Key === "ผู้บริหารสถานศึกษา"){
             $CheckPosi = "pers_status='กำลังใช้งาน' && pers_position='posi_001' OR pers_position='posi_002'";
@@ -44,7 +45,7 @@ class ConPersonnal extends BaseController
             $CheckPosi = ['pers_position' => $CheckLear[0]->posi_id];
            
         }
-        $data['Pers'] = $this->PersModel->select('
+        $page_data['Pers'] = $this->PersModel->select('
             skjacth_personnel.tb_personnel.pers_position,
             skjacth_skj.tb_position.posi_name,
             skjacth_personnel.tb_personnel.pers_prefix,
@@ -68,12 +69,12 @@ class ConPersonnal extends BaseController
         ->orderBy('skjacth_personnel.tb_personnel.pers_groupleade DESC,skjacth_personnel.tb_personnel.pers_numberGroup ASC')
         ->get()->getResult();
         
-        //echo '<pre>';print_r($data['Pers']);exit();
+        $data = array_merge($this->data, $page_data);
 
         return  view('layout/header',$data)
-                .view('layout/navbar')
-                .view('PagePersonnal/PagePersonnal')
-                .view('layout/footer');
+                .view('layout/navbar', $data)
+                .view('PagePersonnal/PagePersonnal', $data)
+                .view('layout/footer', $data);
         
     }
 
