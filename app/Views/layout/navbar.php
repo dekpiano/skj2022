@@ -74,7 +74,7 @@
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #008489;
+    background-color: #38b8f5;
     color: #fff;
 }
 
