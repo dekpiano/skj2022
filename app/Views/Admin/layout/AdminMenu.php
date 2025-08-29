@@ -85,20 +85,21 @@
             </a>
             <ul class="menu-sub ">
                 <?php
-                if ($uri->getTotalSegments() >= 3) {
-                        $segment3 = $uri->getSegment(4);
-                        $active = $segment3;
+                if ($uri->getTotalSegments() >= 4) {
+                        $active = $uri->getSegment(4);
                     } else {
-                        $active = 1;
+                        $active = null;
                     }
-                    ?>
-                <?php  foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
-                <li class="menu-item <?=$active == $v_AboutSchool->about_id?"active":""?>">
-                    <a href="<?=base_url('Admin/AboutSchool/Detail/'.$v_AboutSchool->about_id)?>" class="menu-link">
-                        <div data-i18n="Without menu"><?=$v_AboutSchool->about_menu?></div>
-                    </a>
-                </li>         
-                <?php endforeach; ?>       
+                ?>
+                <?php if (!empty($AboutSchool)) : ?>
+                    <?php foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
+                    <li class="menu-item <?=$active == $v_AboutSchool->id?"active":""?>">
+                        <a href="<?=base_url('Admin/AboutSchool/Detail/'.$v_AboutSchool->id)?>" class="menu-link">
+                            <div data-i18n="Without menu"><?=$v_AboutSchool->about_menu?></div>
+                        </a>
+                    </li>         
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </ul>
         </li>
 

@@ -28,9 +28,9 @@ class ConAdminAboutSchool extends BaseController
         $data = $this->DataMain();
         $data['title'] = "จัดการข้อมูลเกี่ยวกับโรงเรียน";
         $data['description'] = "ภาพรวมของระบบ จัดการข้อมูลเกี่ยวกับโรงเรียน";
-        $data['AboutSchoolDetail'] = $this->AboutModel->where('about_id',$key)->get()->getRow();
+        $data['AboutSchoolDetail'] = $this->AboutModel->where('id',$key)->get()->getRow();
 
-        //print_r($data['AboutSchoolDetail']); exit();
+        //print_r($data['AboutSchool']); exit();
         
         return view('Admin/layout/AdminHeader',$data)
                 .view('Admin/PageAdminAboutSchool/PageAdminAboutSchoolUpdate')
@@ -38,20 +38,35 @@ class ConAdminAboutSchool extends BaseController
     }
 
     public function AboutSchoolEdit($key){
-        $data['AboutSchoolDetail'] = $this->AboutModel->where('about_id',$key)->get()->getRow();
+        $data['AboutSchoolDetail'] = $this->AboutModel->where('id',$key)->get()->getRow();
         echo json_encode($data['AboutSchoolDetail']);
     }
 
     public function AboutSchoolUpdate($key){   
+        $session = session();
         $database = \Config\Database::connect();
         $builder = $database->table('tb_aboutschool');
 
         $data = [              
-            'about_detail' =>  $this->request->getPost('About_content')
-            ];
-                $builder->where('about_id',  $key);
+            'about_menu'         => $this->request->getPost('about_menu'),
+            'about_detail'       => $this->request->getPost('About_content'),
+            'about_date'         => date('Y-m-d H:i:s'),
+            'about_personnel_id' => $session->get('AdminID')
+        ];
+        $builder->where('id',  $key);
         $save = $builder->update($data);
 
+        echo $save;
+    }
+
+    public function AboutSchoolAdd(){
+        $session = session();
+        $save = $this->AboutModel->save([
+            'about_menu'         => $this->request->getPost('about_menu'),
+            'about_detail'       => $this->request->getPost('About_content'),
+            'about_date'         => date('Y-m-d H:i:s'),
+            'about_personnel_id' => $session->get('AdminID')
+        ]);
         echo $save;
     }
 

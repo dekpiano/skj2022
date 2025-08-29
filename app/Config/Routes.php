@@ -83,6 +83,7 @@ $routes->match(['get', 'post'], 'Admin/banner/DeleteBanner', 'ConAdminBanner::Ba
 $routes->match(['get', 'post'], 'Admin/AboutSchool/Detail/(:any)', 'ConAdminAboutSchool::AboutSchoolDetail/$1');
 $routes->match(['get', 'post'], 'Admin/AboutSchool/Edit/(:any)', 'ConAdminAboutSchool::AboutSchoolEdit/$1');
 $routes->match(['get', 'post'], 'Admin/AboutSchool/Update/(:any)', 'ConAdminAboutSchool::AboutSchoolUpdate/$1');
+$routes->match(['get', 'post'], 'Admin/AboutSchool/Add', 'ConAdminAboutSchool::AboutSchoolAdd');
 // 
 
 /*
