@@ -22,18 +22,18 @@
             <?php foreach ($Pers as $key => $v_Pers) :?>
             <?php if(urldecode($uri->getSegment(3)) === "ผู้บริหารสถานศึกษา" && $v_Pers->pers_position === "posi_001"): ?>
                 <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <div class="team-item rounded text-center p-4">
-                        <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
+                    <div class="team-item rounded text-center p-4" style="background: linear-gradient(to top, #fb7e9c 0%, #53c0f3 100%);">
+                        <?php if(empty($v_Pers->pers_img)):?>
+                        <img class="img-fluid rounded-circle  p-2" style="height: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle  p-2" style="height: 250px;"
                             src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
-                            <div class="team-title">
+                            <div class="team-title" style="color: #000;">
                                 <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
                                 <span><?=$v_Pers->posi_name.' '.$v_Pers->pers_academic?></span>
                                 <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?>
@@ -54,18 +54,18 @@
             <?php endif; ?>
             <?php if($v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ') : ?>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <div class="team-item rounded text-center p-4">
-                        <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
+                    <div class="team-item rounded text-center" style="background: linear-gradient(to top, #fb7e9c 0%, #53c0f3 100%);">
+                        <?php if(empty($v_Pers->pers_img)):?>
+                        <img class="img-fluid rounded-circle  p-2" style="height: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle p-2" style="height: 250px;"
                             src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                         <div class="team-text">
-                            <div class="team-title">
+                            <div class="team-title" style="color: #000;">
                                 <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
                                 <span><?=$v_Pers->posi_name.' '.$v_Pers->pers_academic?></span>
                                 <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?>
@@ -86,18 +86,18 @@
 
             <?php else :?>
             <?php if($v_Pers->pers_status == "กำลังใช้งาน" && $v_Pers->pers_position !== "posi_001"): ?>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <div class="team-item rounded text-center p-4">
-                <?php if($v_Pers->pers_img == ""):?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="width: 250px;"
+                <div class="team-item rounded text-center" style="background: linear-gradient(to top, #fb7e9c 0%, #53c0f3 100%);">
+                <?php if(empty($v_Pers->pers_img)):?>
+                        <img class="img-fluid rounded-circle p-2" style="width: 250px;"
                             src="<?=base_url('uploads/presonnal/man.png')?>" alt="">
                         <?php else: ?>
-                        <img class="img-fluid rounded-circle  p-2 mb-4" style="height: 250px;"
+                        <img class="img-fluid rounded-circle p-2" style="height: 250px;"
                             src="https://personnel.skj.ac.th/uploads/admin/Personnal/<?=$v_Pers->pers_img;?>" alt="">
                         <?php endif; ?>
                     <div class="team-text">
-                        <div class="team-title">
+                        <div class="team-title" style="color: #000;">
                             <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
                             <span><?=$v_Pers->posi_name.' '.$v_Pers->pers_academic?></span>
                             <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?></p>
