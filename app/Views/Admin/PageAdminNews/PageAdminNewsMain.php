@@ -1,18 +1,6 @@
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-        <!-- Menu -->
-        <?= $this->include('Admin/layout/AdminMenu');?>
-        <!-- / Menu -->
+<?= $this->extend('Admin/layout/AdminLayout') ?>
 
-        <!-- Layout container -->
-        <div class="layout-page">
-            <!-- Navbar -->
-            <?= $this->include('Admin/layout/AdminNavbar');?>
-            <!-- / Navbar -->
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
+<?= $this->section('content') ?>
                 <!-- Content -->
                 <style>
                 table td {
@@ -39,41 +27,40 @@
                                     <table
                                         class="datatables-basic table border-top dataTable no-footer dtr-column collapsed"
                                         id="myTable">
+                                        <colgroup>
+                                            <col style="width: 50%;"> <!-- หัวข้อ -->
+                                            <col style="width: 20%;"> <!-- ประเภทข่าว -->
+                                            <col style="width: 20%;"> <!-- วันที่สร้าง -->
+                                            <col style="width: 10%;"> <!-- คำสั่ง -->
+                                        </colgroup>
                                         <thead>
                                             <tr>
-                                                <th>คำสั่ง</th>
                                                 <th>หัวข้อ</th>
                                                 <th>ประเภทข่าว</th>
                                                 <th>วันที่สร้าง</th>
-
+                                                <th>คำสั่ง</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
                                             <?php foreach ($news as $key => $v_news) : ?>
                                             <tr id="<?=$v_news->news_id?>">
                                                 <td>
-                                                    <div class="dropdown">
-                                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                            data-bs-toggle="dropdown">
-                                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item EditNews" href="javascript:void(0);"
-                                                                key-newsid="<?=$v_news->news_id?>"><i
-                                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                            <a class="dropdown-item DeleteNews"
-                                                                href="javascript:void(0);"
-                                                                key-newsid="<?=$v_news->news_id?>"><i
-                                                                    class="bx bx-trash me-1"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
                                                     <strong><?=$v_news->news_topic?></strong>
                                                 </td>
                                                 <td><?=$v_news->news_category?></td>
                                                 <td><?=$v_news->news_date?></td>
-
+                                                <td>
+                                                    <div class="btn-group" role="group" aria-label="คำสั่ง">
+                                                        <a class="btn btn-outline-primary btn-sm EditNews" href="javascript:void(0);"
+                                                            key-newsid="<?=$v_news->news_id?>" title="แก้ไข">
+                                                            <i class="bx bx-edit-alt"></i>
+                                                        </a>
+                                                        <a class="btn btn-outline-danger btn-sm DeleteNews" href="javascript:void(0);"
+                                                            key-newsid="<?=$v_news->news_id?>" title="ลบ">
+                                                            <i class="bx bx-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <?php endforeach; ?>
 
@@ -91,22 +78,9 @@
 
                 </div>
                 <!-- / Content -->
+<?= $this->endSection() ?>
 
-
-
-
-            </div>
-            <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-    </div>
-
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-</div>
-<!-- / Layout wrapper -->
-
-
+<?= $this->section('modals') ?>
 
 <!-- Modal เพิ่มข่าว -->
 <div class="modal fade" id="ModalAddNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
@@ -320,7 +294,9 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
 
+<?= $this->section('scripts') ?>
 <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -328,3 +304,52 @@
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
+
+<script>
+    // โค้ด Quill instance สำหรับ news_content_editor
+    if (document.getElementById('news_content_editor') && !Quill.find(document.getElementById('news_content_editor'))) {
+        window.quill = new Quill('#news_content_editor', {
+            modules: {
+                toolbar: {
+                    container: toolbarOptions,
+                    handlers: {
+                        'image': imageHandler
+                    }
+                },
+                imageResize: {
+                    modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+                }
+            },
+            theme: 'snow'
+        });
+    }
+
+    // โค้ด Quill instance สำหรับ edit_news_content_editor
+    if (document.getElementById('edit_news_content_editor') && !Quill.find(document.getElementById('edit_news_content_editor'))) {
+        window.Editquill = new Quill('#edit_news_content_editor', {
+            modules: {
+                toolbar: {
+                    container: toolbarOptions,
+                    handlers: {
+                        'image': imageHandler
+                    }
+                },
+                imageResize: {
+                    modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+                }
+            },
+            theme: 'snow'
+        });
+    }
+
+    // โค้ด Quill instance สำหรับ editor_facebook
+    if (document.getElementById('editor_facebook') && !Quill.find(document.getElementById('editor_facebook'))) {
+        var quillFacebook = new Quill('#editor_facebook', {
+            modules: { toolbar: toolbarOptions },
+            theme: 'snow'
+        });
+    }
+</script>
+<?= $this->endSection() ?>

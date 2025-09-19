@@ -1,18 +1,6 @@
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-        <!-- Menu -->
-        <?= $this->include('Admin/layout/AdminMenu');?>
-        <!-- / Menu -->
+<?= $this->extend('Admin/layout/AdminLayout') ?>
 
-        <!-- Layout container -->
-        <div class="layout-page">
-            <!-- Navbar -->
-            <?= $this->include('Admin/layout/AdminNavbar');?>
-            <!-- / Navbar -->
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
+<?= $this->section('content') ?>
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
@@ -47,19 +35,41 @@
                     
                 </div>
                 <!-- / Content -->
-                
-            </div>
-            <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-    </div>
+<?= $this->endSection() ?>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-</div>
-<!-- / Layout wrapper -->
+<?= $this->section('scripts') ?>
+<script src="<?=base_url()?>/assets/admin/assets/js/AboutSchool/JsAboutSchool.js?v=4"></script>
 
+<script>
+    // โค้ด Quill instance สำหรับ editor_AboutSchool
+    if (document.getElementById('editor_AboutSchool') && !Quill.find(document.getElementById('editor_AboutSchool'))) {
+        var aboutSchoolEditQuill = new Quill('#editor_AboutSchool', {
+            modules: {
+                toolbar: toolbarOptions,
+                imageResize: {
+                    modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+                }
+            },
+            theme: 'snow'
+        });
+    }
 
+    // โค้ด Quill instance สำหรับ editor_add_about
+    if (document.getElementById('editor_add_about') && !Quill.find(document.getElementById('editor_add_about'))) {
+        var aboutSchoolAddQuill = new Quill('#editor_add_about', {
+            modules: {
+                toolbar: toolbarOptions,
+                imageResize: {
+                    modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+                }
+            },
+            theme: 'snow'
+        });
+    }
+</script>
+<?= $this->endSection() ?>
+
+<?= $this->section('modals') ?>
 <!-- Modal เพิ่มเกี่ยวกับโรงเรียน -->
 <div class="modal fade" id="ModalAddAboutSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalAddAboutSchoolLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -91,3 +101,4 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>

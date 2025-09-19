@@ -28,7 +28,7 @@ class ConAdminNews extends BaseController
         $data = $this->DataMain();
         $data['title'] = "ข่าวประชาสัมพันธ์";
         $data['description'] = "รวมข่าวประชาสัมพันธ์ กิจกรรมต่าง ๆ ของโรงเรียน";
-        $data['news'] = $this->NewsModel->get()->getResult();
+        $data['news'] = $this->NewsModel->orderBy('news_date', 'DESC')->get()->getResult();
         
         //print_r($data['news']);exit();
         //$this->AddNewsFormFacebook(); exit();
@@ -68,7 +68,7 @@ class ConAdminNews extends BaseController
 
                 \Config\Services::image()
                     ->withFile($imageFile)
-                    ->fit(1920, 1080, 'center')
+                    ->fit(1920, 1080, 'top')
                     ->save(FCPATH.'/uploads/news/'. $RandomName);
                 
                 $NameImg = $RandomName;
@@ -225,7 +225,7 @@ class ConAdminNews extends BaseController
         try {
             \Config\Services::image()
                 ->withFile($imageFile)
-                ->fit(1920, 1080, 'center') // Resize to 1920x1080, maintaining aspect ratio
+                //->fit(1920, 1080, 'center') // Resize to 1920x1080, maintaining aspect ratio
                 ->save($uploadPath . $RandomName);
 
             return $this->response->setJSON([
@@ -276,6 +276,32 @@ class ConAdminNews extends BaseController
         } else {
             echo 0; // News item not found
         }
+    }
+
+    public function deleteImage()
+    {
+        $this->response->setContentType('application/json');
+        $input = $this->request->getJSON();
+        $imageUrl = $input->imageUrl ?? null;
+
+        if ($imageUrl) {
+            // แยกชื่อไฟล์ออกจาก URL
+            // ตัวอย่าง URL: http://localhost/skj2022/uploads/news/content/my_image.jpg
+            // เราต้องการแค่ my_image.jpg
+            $fileName = basename(parse_url($imageUrl, PHP_URL_PATH));
+            $filePath = FCPATH . 'uploads/news/content/' . $fileName; // FCPATH คือ path ไปยัง public folder
+
+            if (file_exists($filePath)) {
+                if (unlink($filePath)) {
+                    return $this->response->setJSON(['success' => true, 'message' => 'Image deleted successfully.']);
+                } else {
+                    return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete image file.']);
+                }
+            } else {
+                return $this->response->setJSON(['success' => false, 'message' => 'Image file not found at: ' . $filePath]);
+            }
+        }
+        return $this->response->setJSON(['success' => false, 'message' => 'Invalid image URL.']);
     }
 
 

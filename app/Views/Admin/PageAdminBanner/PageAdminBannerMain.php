@@ -1,18 +1,6 @@
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-        <!-- Menu -->
-        <?= $this->include('Admin/layout/AdminMenu');?>
-        <!-- / Menu -->
+<?= $this->extend('Admin/layout/AdminLayout') ?>
 
-        <!-- Layout container -->
-        <div class="layout-page">
-            <!-- Navbar -->
-            <?= $this->include('Admin/layout/AdminNavbar');?>
-            <!-- / Navbar -->
-
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
+<?= $this->section('content') ?>
                 <!-- Content -->
                 <style>
                 table td {
@@ -103,21 +91,9 @@
 
                 </div>
                 <!-- / Content -->
+<?= $this->endSection() ?>
 
-
-
-
-            </div>
-            <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-    </div>
-
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-</div>
-<!-- / Layout wrapper -->
-
+<?= $this->section('modals') ?>
 
 <style>
 #bannerDropzone {
@@ -283,3 +259,8 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=5"></script>
+<?= $this->endSection() ?>

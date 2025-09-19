@@ -71,6 +71,7 @@ $routes->match(['get', 'post'], 'Admin/News/Add/NewsFeacbook', 'ConAdminNews::Ne
 $routes->match(['get', 'post'], 'Admin/News/EditNews', 'ConAdminNews::NewsEdit');
 $routes->match(['get', 'post'], 'Admin/News/UpdateNews', 'ConAdminNews::NewsUpdate');
 $routes->match(['get', 'post'], 'Admin/News/DeleteNews', 'ConAdminNews::NewsDelete');
+$routes->match(['post'], 'Admin/News/deleteImage', 'ConAdminNews::deleteImage'); // เพิ่ม route นี้
 $routes->match(['get', 'post'], 'Admin/News/View/Facebook', 'ConAdminNews::ViewNewsFormFacebook');
 $routes->match(['get', 'post'], 'Admin/News/Select/Facebook', 'ConAdminNews::SelectNewsFormFacebook');
 // Admin Banner

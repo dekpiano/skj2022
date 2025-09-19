@@ -22,7 +22,11 @@
 <script src="<?=base_url()?>/assets/admin/assets/vendor/libs/datatables/buttons.print.js"></script>
 <!-- Main JS -->
 <script>
+(function() { // เพิ่ม IIFE
     const BASE_URL = "<?= base_url() ?>";
+    // Expose BASE_URL to global scope if needed by other scripts
+    window.BASE_URL = BASE_URL; // ทำให้ BASE_URL เข้าถึงได้จากภายนอก IIFE
+})(); // ปิด IIFE
 </script>
 <script src="<?=base_url()?>/assets/admin/assets/js/main.js"></script>
 
@@ -43,162 +47,8 @@
 
 <!-- Initialize Quill editor -->
 <script>
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{'header': 1}, {'header': 2}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'indent': '-1'}, {'indent': '+1'}],
-        [{'direction': 'rtl'}],
-        [{'size': ['small', false, 'large', 'huge']}],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'color': []}, {'background': []}],
-        [{'font': []}],
-        [{'align': []}],
-        ['clean'],
-        ['link', 'image']
-    ];
-
-    var quill = new Quill('#editor', {
-        modules: { toolbar: toolbarOptions },
-        theme: 'snow'
-    });
-
-    var quillFacebook = new Quill('#editor_facebook', {
-        modules: { toolbar: toolbarOptions },
-        theme: 'snow'
-    });
-
-    var Editquill = new Quill('#editor_update', {
-        modules: { toolbar: toolbarOptions },
-        theme: 'snow'
-    });
-
-</script>
-
-<?php if($uri->getSegment(2) == 'News') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
-<?php endif; ?>
-<?php if($uri->getSegment(2) == 'Banner') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/banner/JsBanner.js?v=5"></script>
-<?php endif; ?>
-<?php if($uri->getSegment(2) == 'AboutSchool') : ?>
-<script src="<?=base_url()?>/assets/admin/assets/js/AboutSchool/JsAboutSchool.js?v=4"></script>
-<?php endif; ?>
-
-</body>
-
-<!-- Initialize Quill editor -->
-<script>
-    
-
-
-(function() {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-        .forEach(function(form) {
-            form.addEventListener('submit', function(event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-})()
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    }
-}
-$("#news_img").change(function() {
-    readURL(this);
-});
-$("#banner_img").change(function() {
-    readURL(this);
-});
-
-function edit_readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#edit_blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    }
-}
-$("#edit_news_img").change(function() {
-    edit_readURL(this);
-});
-
-
-
-var toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-    ['blockquote', 'code-block'],
-
-    [{
-        'header': 1
-    }, {
-        'header': 2
-    }], // custom button values
-    [{
-        'list': 'ordered'
-    }, {
-        'list': 'bullet'
-    }],
-    [{
-        'script': 'sub'
-    }, {
-        'script': 'super'
-    }], // superscript/subscript
-    [{
-        'indent': '-1'
-    }, {
-        'indent': '+1'
-    }], // outdent/indent
-    [{
-        'direction': 'rtl'
-    }], // text direction
-
-    [{
-        'size': ['small', false, 'large', 'huge']
-    }], // custom dropdown
-    [{
-        'header': [1, 2, 3, 4, 5, 6, false]
-    }],
-
-    [{
-        'color': []
-    }, {
-        'background': []
-    }], // dropdown with defaults from theme
-    [{
-        'font': []
-    }],
-    [{
-        'align': []
-    }],
-
-    ['clean'],
-    ['link', 'image'] // remove formatting button
-];
+(function() { // เพิ่ม IIFE
+const uploadedImageUrls = new Map(); // เพิ่ม Map เพื่อเก็บ URL ของรูปภาพที่ถูกอัปโหลดสำหรับแต่ละ Quill instance
 
 function imageHandler() {
     const input = document.createElement('input');
@@ -212,8 +62,7 @@ function imageHandler() {
             const formData = new FormData();
             formData.append('image', file);
 
-            // Get the correct editor instance
-            const quillInstance = this.quill;
+            const quillInstance = this.quill; // Quill instance ปัจจุบัน
 
             fetch(`${BASE_URL}/Admin/News/uploadImage`, {
                 method: 'POST',
@@ -229,6 +78,12 @@ function imageHandler() {
                 if (result.url) {
                     const range = quillInstance.getSelection();
                     quillInstance.insertEmbed(range.index, 'image', result.url);
+
+                    // เก็บ URL ของรูปภาพที่อัปโหลด
+                    if (!uploadedImageUrls.has(quillInstance)) {
+                        uploadedImageUrls.set(quillInstance, new Set());
+                    }
+                    uploadedImageUrls.get(quillInstance).add(result.url);
                 }
             })
             .catch(error => {
@@ -249,6 +104,157 @@ function imageHandler() {
     };
 }
 
+var toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote', 'code-block'],
+
+    [{
+        'header': 1
+    }, {
+        'header': 2
+    }],
+    [{
+        'list': 'ordered'
+    }, {
+        'list': 'bullet'
+    }],
+    [{
+        'script': 'sub'
+    }, {
+        'script': 'super'
+    }],
+    [{
+        'indent': '-1'
+    }, {
+        'indent': '+1'
+    }],
+    [{
+        'direction': 'rtl'
+    }],
+
+    [{
+        'size': ['small', false, 'large', 'huge']
+    }],
+    [{
+        'header': [1, 2, 3, 4, 5, 6, false]
+    }],
+
+    [{
+        'color': []
+    }, {
+        'background': []
+    }],
+    [{
+        'font': []
+    }],
+    [{
+        'align': []
+    }],
+
+    ['clean'],
+    ['link', 'image']
+];
+
+// ฟังก์ชันสำหรับเพิ่ม Event Listener ให้กับ Quill instance
+function addQuillDeleteListener(quillInstance) {
+    quillInstance.on('text-change', (delta, oldDelta, source) => {
+        if (source === 'user') {
+            const currentContent = quillInstance.getContents();
+            const currentImageUrls = new Set();
+            currentContent.ops.forEach(op => {
+                if (op.insert && op.insert.image) {
+                    currentImageUrls.add(op.insert.image);
+                }
+            });
+
+            const uploadedUrlsForThisQuill = uploadedImageUrls.get(quillInstance) || new Set();
+
+            uploadedUrlsForThisQuill.forEach(url => {
+                if (!currentImageUrls.has(url)) {
+                    console.log('Image deleted from editor:', url);
+                    fetch(`${BASE_URL}/Admin/News/deleteImage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ imageUrl: url }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('Image deleted from server:', url);
+                            uploadedUrlsForThisQuill.delete(url);
+                        } else {
+                            console.error('Failed to delete image from server:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting image from server:', error);
+                    });
+                }
+            });
+        }
+    });
+}
+
+// เพิ่มฟังก์ชัน handleImageClick
+function handleImageClick(event) {
+    const img = event.target;
+    const quill = Quill.find(img); // หา Quill instance จากรูปภาพที่ถูกคลิก
+
+    if (quill && img.tagName === 'IMG' && img.classList.contains('ql-image')) {
+        const range = quill.getSelection();
+        if (range && range.length === 0) { // ถ้าไม่มีการเลือกข้อความ
+            const blot = Quill.find(img);
+            const index = quill.getIndex(blot);
+            quill.setSelection(index, 1); // เลือกรูปภาพ
+        }
+
+        // สร้างปุ่มลบ
+        let deleteButton = document.querySelector('.ql-image-delete-button');
+        if (!deleteButton) {
+            deleteButton = document.createElement('button');
+            deleteButton.className = 'ql-image-delete-button';
+            deleteButton.innerHTML = 'X'; // หรือไอคอนถังขยะ
+            deleteButton.style.position = 'absolute';
+            deleteButton.style.background = 'red';
+            deleteButton.style.color = 'white';
+            deleteButton.style.border = 'none';
+            deleteButton.style.borderRadius = '50%';
+            deleteButton.style.width = '20px';
+            deleteButton.style.height = '20px';
+            deleteButton.style.cursor = 'pointer';
+            deleteButton.style.zIndex = '1000';
+            deleteButton.style.display = 'none'; // ซ่อนไว้ก่อน
+            document.body.appendChild(deleteButton);
+
+            deleteButton.onclick = () => {
+                const selectedBlot = quill.getSelection();
+                if (selectedBlot && selectedBlot.length === 1 && quill.getFormat(selectedBlot.index, 1).image) {
+                    quill.deleteText(selectedBlot.index, 1); // ลบรูปภาพ
+                    deleteButton.style.display = 'none'; // ซ่อนปุ่ม
+                }
+            };
+        }
+
+        // แสดงปุ่มลบใกล้รูปภาพ
+        const imgRect = img.getBoundingClientRect();
+        deleteButton.style.top = `${imgRect.top + window.scrollY}px`;
+        deleteButton.style.left = `${imgRect.right + window.scrollX - 20}px`; // วางไว้มุมขวาบนของรูป
+        deleteButton.style.display = 'block';
+
+        // ซ่อนปุ่มเมื่อคลิกที่อื่น
+        document.addEventListener('click', (e) => {
+            if (e.target !== img && e.target !== deleteButton) {
+                deleteButton.style.display = 'none';
+            }
+        }, { once: true });
+    }
+}
+
+
+// สร้าง Quill instance สำหรับ news_content_editor
+if (document.getElementById('news_content_editor') && !Quill.find(document.getElementById('news_content_editor'))) {
     window.quill = new Quill('#news_content_editor', {
         modules: {
             toolbar: {
@@ -256,11 +262,19 @@ function imageHandler() {
                 handlers: {
                     'image': imageHandler
                 }
+            },
+            imageResize: {
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
             }
         },
         theme: 'snow'
     });
+    addQuillDeleteListener(window.quill);
+    window.quill.root.addEventListener('click', handleImageClick); // เพิ่ม listener
+}
 
+// สร้าง Quill instance สำหรับ edit_news_content_editor
+if (document.getElementById('edit_news_content_editor') && !Quill.find(document.getElementById('edit_news_content_editor'))) {
     window.Editquill = new Quill('#edit_news_content_editor', {
         modules: {
             toolbar: {
@@ -268,10 +282,64 @@ function imageHandler() {
                 handlers: {
                     'image': imageHandler
                 }
+            },
+            imageResize: {
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
             }
         },
         theme: 'snow'
     });
+    addQuillDeleteListener(window.Editquill);
+    window.Editquill.root.addEventListener('click', handleImageClick); // เพิ่ม listener
+}
+
+// สร้าง Quill instance สำหรับ editor_facebook
+if (document.getElementById('editor_facebook') && !Quill.find(document.getElementById('editor_facebook'))) {
+    var quillFacebook = new Quill('#editor_facebook', {
+        modules: {
+            toolbar: toolbarOptions,
+            imageResize: {
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+            }
+        },
+        theme: 'snow'
+    });
+    addQuillDeleteListener(quillFacebook);
+    quillFacebook.root.addEventListener('click', handleImageClick); // เพิ่ม listener
+}
+
+// สร้าง Quill instance สำหรับ editor_AboutSchool (จาก PageAdminAboutSchoolUpdate.php) รหัสเดิมคือ var Editquill
+if (document.getElementById('editor_AboutSchool') && !Quill.find(document.getElementById('editor_AboutSchool'))) {
+    var aboutSchoolEditQuill = new Quill('#editor_AboutSchool', {
+        modules: {
+            toolbar: toolbarOptions,
+            imageResize: {
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+            }
+        },
+        theme: 'snow'
+    });
+    addQuillDeleteListener(aboutSchoolEditQuill);
+    aboutSchoolEditQuill.root.addEventListener('click', handleImageClick); // เพิ่ม listener
+}
+
+// สร้าง Quill instance สำหรับ editor_add_about (จาก PageAdminAboutSchoolUpdate.php) รหัสเดิมคือ var quill
+if (document.getElementById('editor_add_about') && !Quill.find(document.getElementById('editor_add_about'))) {
+    var aboutSchoolAddQuill = new Quill('#editor_add_about', {
+        modules: {
+            toolbar: toolbarOptions,
+            imageResize: {
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+            }
+        },
+        theme: 'snow'
+    });
+    addQuillDeleteListener(aboutSchoolAddQuill);
+    aboutSchoolAddQuill.root.addEventListener('click', handleImageClick); // เพิ่ม listener
+}
+})(); // ปิด IIFE
 </script>
 
+<?= $this->renderSection('scripts') ?>
+</body>
 </html>
