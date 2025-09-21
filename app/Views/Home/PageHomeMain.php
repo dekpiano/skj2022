@@ -59,13 +59,13 @@
     </div>
     <div class="row justify-content-center " >
         <div class="col-md-4 col-6 wow fadeInLeft"  data-wow-delay="0.2s">
-        <img data-src="<?=base_url();?>/uploads/director/nayk.png" class="img-fluid" alt="">
+        <img src="<?=base_url();?>/uploads/director/nayk.png" class="img-fluid" alt="" loading="lazy">
         </div>
         <div class="col-md-4 col-6 wow fadeInUp" data-wow-delay="0.3s">
-        <img data-src="<?=base_url();?>/uploads/director/pa-a.png" class="img-fluid" alt="">
+        <img src="<?=base_url();?>/uploads/director/pa-a.png" class="img-fluid" alt="" loading="lazy">
         </div>
         <div class="col-md-4 col-6 wow fadeInRight" data-wow-delay="0.4s">
-        <img data-src="<?=base_url();?>/uploads/director/pa.png" class="img-fluid" alt="">
+        <img src="<?=base_url();?>/uploads/director/pa.png" class="img-fluid" alt="" loading="lazy">
         </div>
     </div>
 </div>

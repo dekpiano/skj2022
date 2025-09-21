@@ -12,11 +12,7 @@
                 <?php foreach ($news as $key => $v_news) : ?>
                 <div class="post-slide">
                     <div class="post-img">
-                        <?php if($v_news->news_facebook == ""):?>
-                            <img data-src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
-                        <?php else: ?>
-                            <img data-src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="">
-                        <?php endif; ?>
+                        <img src="<?=base_url('uploads/news/'.$v_news->news_img)?>" alt="" loading="lazy">
                         <a href="<?=base_url('News/Detail/'.$v_news->news_id);?>" data_view="<?=$v_news->news_view?>"
                             news_id="<?=$v_news->news_id?>" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>

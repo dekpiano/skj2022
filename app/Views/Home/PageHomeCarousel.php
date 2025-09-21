@@ -24,14 +24,14 @@
                     if($v_banner['banner_linkweb'] == ""):
             ?>
             <div class="carousel-item <?=$key==0?'active':''?>">
-                <img class="w-100" data-src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
-                    alt="Image">
+                <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
+                    alt="Image" loading="lazy">
             </div>
             <?php else: ?>
             <a href="<?=$v_banner['banner_linkweb']?>" target="_blank">
                 <div class="carousel-item <?=$key==0?'active':''?>">
-                    <img class="w-100" data-src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
-                        alt="Image">
+                    <img class="w-100" src="<?=base_url()?>/uploads/banner/all/<?php echo $v_banner['banner_img'];?>"
+                        alt="Image" loading="lazy">
             </a>
         </div>
         <?php 
