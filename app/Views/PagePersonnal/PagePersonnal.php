@@ -99,7 +99,7 @@
                     <div class="team-text">
                         <div class="team-title" style="color: #000;">
                             <h5><?=$v_Pers->pers_prefix.$v_Pers->pers_firstname.' '.$v_Pers->pers_lastname?></h5>
-                            <span><?=$v_Pers->posi_name.' '.$v_Pers->pers_academic?></span>
+                            <span><?=($v_Pers->work_name == "" ? $v_Pers->posi_name : $v_Pers->work_name).' '.$v_Pers->pers_academic?></span>
                             <p><?=$v_Pers->pers_groupleade == 'หัวหน้ากลุ่มสาระ' ?"($v_Pers->pers_groupleade)":""?></p>
                         </div>
                         <div class="team-social">

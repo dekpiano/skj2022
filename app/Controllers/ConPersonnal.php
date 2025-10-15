@@ -61,15 +61,19 @@ class ConPersonnal extends BaseController
             skjacth_personnel.tb_personnel.pers_academic,
             skjacth_personnel.tb_personnel.pers_numberGroup,
             skjacth_personnel.tb_personnel.pers_groupleade,
-            skjacth_personnel.tb_personnel.pers_status
+            skjacth_personnel.tb_personnel.pers_status,
+            tb_position_main.work_name
         ')
-        ->join('skjacth_skj.tb_position','skjacth_skj.tb_position.posi_id = skjacth_personnel.tb_personnel.pers_position')       
+        ->join('skjacth_skj.tb_position','skjacth_skj.tb_position.posi_id = skjacth_personnel.tb_personnel.pers_position')
+        ->join('skjacth_skj.tb_position_main','skjacth_skj.tb_position_main.work_id = skjacth_personnel.tb_personnel.pers_workother_id','left')       
         ->where($CheckPosi)
         //->Where('pers_status','กำลังใช้งาน')
         ->orderBy('skjacth_personnel.tb_personnel.pers_groupleade DESC,skjacth_personnel.tb_personnel.pers_numberGroup ASC')
         ->get()->getResult();
         
         $data = array_merge($this->data, $page_data);
+
+        //echo "<pre>";print_r($page_data['Pers']); exit();
 
         return  view('layout/header',$data)
                 .view('layout/navbar', $data)
