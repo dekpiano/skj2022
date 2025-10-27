@@ -180,6 +180,25 @@ $('#TBProcurements').DataTable(
         })
     </script>
 <?php endif; ?>
+<?php if($uri->getSegment(1) == ''): // Only run on homepage ?>
+<script>
+$(document).ready(function() {
+    // Check if the modal has been shown before
+    if (localStorage.getItem('welcomeModalShown') !== 'true') {
+        // The modal HTML is in PageHomeMain.php, check if it exists
+        if ($('#welcomeModal').length) {
+            var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {
+                keyboard: false
+            });
+            welcomeModal.show();
+
+            // Set a flag in localStorage so it doesn't show again
+            localStorage.setItem('welcomeModalShown', 'true');
+        }
+    }
+});
+</script>
+<?php endif; ?>
 </body>
 
 </html>

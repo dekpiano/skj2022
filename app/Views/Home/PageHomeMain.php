@@ -105,3 +105,14 @@
 <!-- SKJstdio Start -->
 <?= $this->include('Home/PageHomeSKJstdio') ?>
 <!-- SKJstdio End -->
+
+<!-- Welcome Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="<?php echo base_url('uploads/24 ตุลาคม ไว้อาลัยพระพันปีหลวง.png'); ?>" class="img-fluid" alt="ประกาศ">
+            </div>
+        </div>
+    </div>
+</div>
