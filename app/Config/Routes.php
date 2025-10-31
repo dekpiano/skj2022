@@ -34,12 +34,12 @@ $routes->set404Override();
  */
 
 // Maintenance Mode: Uncomment to enable, comment out to disable.
-$routes->get('/', 'ConMaintenance::index');
-$routes->get('(:any)', 'ConMaintenance::index');
+// $routes->get('/', 'ConMaintenance::index');
+// $routes->get('(:any)', 'ConMaintenance::index');
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// $routes->get('/', 'ConHome::index');
+$routes->get('/', 'ConHome::index');
 $routes->post('/Admin/News/uploadImage', 'ConAdminNews::uploadImage');
 $routes->get('About/(:any)', 'ConAboutSchool::AboutDetail/$1');
 

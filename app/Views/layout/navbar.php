@@ -100,6 +100,46 @@
     color: #008489;
 }
 
+/* Custom CSS for Bootstrap Mega Menu - From codingyaar.com, adapted for SKJ theme */
+@media only screen and (min-width: 992px) {
+  .navbar .dropdown:hover .mega-dropdown-menu {
+    display: flex;
+  }
+}
+.navbar .mega-dropdown-menu {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border: none;
+  border-radius: 0;
+  padding: 0.7em;
+}
+.navbar .mega-dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.navbar .mega-dropdown-menu li .dropdown-item {
+  color: var(--dark); /* Use theme's dark color */
+  font-size: 1em;
+  padding: 0.5em 1em;
+}
+.navbar .mega-dropdown-menu li .dropdown-item:hover {
+  background-color: var(--light); /* Use theme's light color */
+}
+.navbar .mega-dropdown-menu li:first-child a {
+  font-weight: bold;
+  font-size: 1.1em; /* Slightly adjusted for consistency with other nav items */
+  text-transform: uppercase;
+  color: var(--secondary); /* Use theme's secondary color */
+}
+.navbar .mega-dropdown-menu li:first-child a:hover {
+  background-color: var(--light); /* Use theme's light color */
+}
+@media only screen and (min-width: 992px) and (max-width: 1140px) {
+  .navbar .dropdown:hover .mega-dropdown-menu {
+    width: 40vw;
+    flex-wrap: wrap;
+  }
+}
+
 
 
 /* Responsive */
@@ -153,56 +193,59 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-users"></i>
-                        บุคลากร</a>
-                    <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                        <a href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"
-                            class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i> ผู้บริหารสถานศึกษา</a>
-                        <?php foreach ($Lear as $key => $v_Lear) : ?>
-                        <a href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"
-                            class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
-                            <?=$v_Lear->lear_namethai;?></a>
-                        <?php endforeach; ?>
-                        <?php foreach ($PosiOther as $key => $v_PosiOther) : ?>
-                        <a href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", urlencode($v_PosiOther->posi_name)))?>"
-                            class="dropdown-item"><i class="fa-sharp fa-solid fa-caret-right"></i>
-                            <?=$v_PosiOther->posi_name;?></a>
-                        <?php endforeach; ?>
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownPersonnel" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-users"></i> บุคลากร
+                    </a>
+                    <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownPersonnel">
+                        <ul>
+                            <li><a class="dropdown-item" href="#">ผู้บริหารสถานศึกษา</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>">ผู้บริหารสถานศึกษา</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="#"><b>สายการสอน</b></a></li>
+                            <?php foreach ($Lear as $key => $v_Lear) : ?>
+                                <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"> <?=$v_Lear->lear_namethai;?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="#"><b>สายสนับสนุน</b></a></li>
+                            <?php foreach ($PosiOther as $key => $v_PosiOther) : ?>
+                                <li><a class="dropdown-item" href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", urlencode($v_PosiOther->posi_name)))?>"> <?=$v_PosiOther->posi_name;?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
 
                 <a href="<?=base_url('News')?>" class="nav-item nav-link"><i class="fa-solid fa-newspaper"></i>
                     ประชาสัมพันธ์</a>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        aria-expanded="false">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-layer-group"></i> กลุ่มบริหาร
                     </a>
-                    <ul class="dropdown-menu shadow">
-                        <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><i
-                                    class="fa-sharp fa-solid fa-caret-right"></i> วิชาการ</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-sharp fa-solid fa-caret-right"></i> งานทั่วไป
-                            </a>
-                            <ul class="dropdown-menu shadow">
-                                <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking">
-                                        <i class="fa-solid fa-house"></i> จองอาคารสถานที่</a></li>
-                                <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking">
-                                        <i class="fa-solid fa-car-side"></i> จองยานพาหนะ</a></li>
-                                <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair">
-                                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                                        แจ้งซ่อม</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><i class="fa-sharp fa-solid fa-caret-right"></i> งานบุคคล</a>
-                        </li>
-                        <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><i class="fa-sharp fa-solid fa-caret-right"></i>
-                                งบประมาณและแผน</a></li>
-                    </ul>
-                </li>
+                    <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                        <ul>
+                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b>วิชาการ</b></a></li>
+                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/">งานวิชาการ</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b>งานทั่วไป</b></a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking">จองอาคารสถานที่</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking">จองยานพาหนะ</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair">แจ้งซ่อมออนไลน์</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/FoodReport">รายงานอาหาร</a></li>
+                            
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b>งานบุคคล</b></a></li>
+                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/">งานบุคคล</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b>งบประมาณและแผน</b></a></li>
+                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/">งบประมาณและแผน</a></li>
+                        </ul>
+                    </div>
+                </div>
 
 
                 <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
