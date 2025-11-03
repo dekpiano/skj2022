@@ -204,7 +204,17 @@ class ConAdminNews extends BaseController
 
     public function uploadImage()
     {
+        // First, check if the GD library is available
+        if (!extension_loaded('gd')) {
+            return $this->response->setStatusCode(500)->setJSON(['error' => 'PHP GD library is not enabled on the server.']);
+        }
+
         $imageFile = $this->request->getFile('image');
+
+        // Check if the file is null - this can happen if the upload exceeds server limits.
+        if ($imageFile === null) {
+            return $this->response->setStatusCode(400)->setJSON(['error' => 'No file was uploaded. This might be due to server size limits (upload_max_filesize in php.ini).']);
+        }
 
         if (!$imageFile->isValid()) {
             return $this->response->setStatusCode(400)->setJSON(['error' => 'Invalid file or no file uploaded']);
@@ -215,11 +225,16 @@ class ConAdminNews extends BaseController
         }
 
         $RandomName = $imageFile->getRandomName();
-        $uploadPath = FCPATH . '/uploads/news/content/';
+        $uploadPath = rtrim(FCPATH, '/') . '/uploads/news/content/';
 
         // Ensure the upload directory exists
         if (!is_dir($uploadPath)) {
             mkdir($uploadPath, 0777, true);
+        }
+
+        // Verify the directory exists and is writable
+        if (!is_dir($uploadPath) || !is_writable($uploadPath)) {
+            return $this->response->setStatusCode(500)->setJSON(['error' => 'Failed to create or write to upload directory: ' . $uploadPath]);
         }
 
         try {
@@ -231,7 +246,7 @@ class ConAdminNews extends BaseController
             return $this->response->setJSON([
                 'url' => base_url('uploads/news/content/' . $RandomName)
             ]);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) { // Catch all throwable errors
             return $this->response->setStatusCode(500)->setJSON(['error' => 'Image processing failed: ' . $e->getMessage()]);
         }
     }

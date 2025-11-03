@@ -303,9 +303,226 @@
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://unpkg.com/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+<script>
+    Quill.register('modules/imageResize', ImageResize.default);
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="<?=base_url()?>/assets/admin/assets/js/news/JsNews.js?v=20"></script>
+
+<script>
+    // This script block is now local to the News admin page.
+    const uploadedImageUrls = new Map(); 
+
+    function imageHandler() {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.click();
+
+        input.onchange = () => {
+            const file = input.files[0];
+            if (/^image\//.test(file.type)) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                const quillInstance = this.quill;
+
+                fetch(`${BASE_URL}/Admin/News/uploadImage`, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { 
+                            throw new Error(err.error || `HTTP error! status: ${response.status}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.url) {
+                        const range = quillInstance.getSelection();
+                        quillInstance.insertEmbed(range.index, 'image', result.url);
+
+                        if (!uploadedImageUrls.has(quillInstance)) {
+                            uploadedImageUrls.set(quillInstance, new Set());
+                        }
+                        uploadedImageUrls.get(quillInstance).add(result.url);
+                    } else if (result.error) {
+                        throw new Error(result.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'อัปโหลดรูปภาพไม่สำเร็จ',
+                        text: 'เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ: ' + error.message,
+                    });
+                });
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'ไฟล์ไม่ถูกต้อง',
+                    text: 'กรุณาเลือกไฟล์รูปภาพเท่านั้น',
+                });
+            }
+        };
+    }
+
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{'header': 1}, {'header': 2}],
+        [{'list': 'ordered'}, {'list': 'bullet'}],
+        [{'script': 'sub'}, {'script': 'super'}],
+        [{'indent': '-1'}, {'indent': '+1'}],
+        [{'direction': 'rtl'}],
+        [{'size': ['small', false, 'large', 'huge']}],
+        [{'header': [1, 2, 3, 4, 5, 6, false]}],
+        [{'color': []}, {'background': []}],
+        [{'font': []}],
+        [{'align': []}],
+        ['clean'],
+        ['link', 'image']
+    ];
+
+    function addQuillDeleteListener(quillInstance) {
+        quillInstance.on('text-change', (delta, oldDelta, source) => {
+            if (source === 'user') {
+                const currentContent = quillInstance.getContents();
+                const currentImageUrls = new Set();
+                currentContent.ops.forEach(op => {
+                    if (op.insert && op.insert.image) {
+                        currentImageUrls.add(op.insert.image);
+                    }
+                });
+
+                const uploadedUrlsForThisQuill = uploadedImageUrls.get(quillInstance) || new Set();
+
+                uploadedUrlsForThisQuill.forEach(url => {
+                    if (!currentImageUrls.has(url)) {
+                        console.log('Image deleted from editor:', url);
+                        fetch(`${BASE_URL}/Admin/News/deleteImage`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ imageUrl: url }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log('Image deleted from server:', url);
+                                uploadedUrlsForThisQuill.delete(url);
+                            } else {
+                                console.error('Failed to delete image from server:', data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error deleting image from server:', error);
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    function handleImageClick(event) {
+        const img = event.target;
+        const quill = Quill.find(img); 
+
+        if (quill && img.tagName === 'IMG' && img.classList.contains('ql-image')) {
+            // Deselect any other selected image
+            const currentlySelected = document.querySelector('.ql-image-selected');
+            if (currentlySelected) {
+                currentlySelected.classList.remove('ql-image-selected');
+            }
+            // Select the clicked image
+            img.classList.add('ql-image-selected');
+
+            // --- Delete Button ---
+            let deleteButton = document.querySelector('.ql-image-delete-button');
+            if (!deleteButton) {
+                deleteButton = document.createElement('button');
+                deleteButton.className = 'ql-image-delete-button';
+                deleteButton.innerHTML = '&#128465;'; // Trash can icon
+                Object.assign(deleteButton.style, {
+                    position: 'absolute',
+                    background: '#d9534f',
+                    color: 'white',
+                    border: 'none', borderRadius: '50%',
+                    width: '24px', height: '24px',
+                    cursor: 'pointer', zIndex: '1001',
+                    display: 'none', lineHeight: '24px', textAlign: 'center'
+                });
+                document.body.appendChild(deleteButton);
+
+                deleteButton.onclick = () => {
+                    const imageToDelete = document.querySelector('.ql-image-selected');
+                    if (imageToDelete) {
+                        const blot = Quill.find(imageToDelete);
+                        if (blot) {
+                            const index = quill.getIndex(blot);
+                            quill.deleteText(index, 1);
+                        }
+                    }
+                    deleteButton.style.display = 'none';
+                    document.querySelector('.ql-image-rotate-button').style.display = 'none';
+                };
+            }
+
+            // --- Rotate Button ---
+            let rotateButton = document.querySelector('.ql-image-rotate-button');
+            if (!rotateButton) {
+                rotateButton = document.createElement('button');
+                rotateButton.className = 'ql-image-rotate-button';
+                rotateButton.innerHTML = '&#8635;'; // Rotate icon
+                Object.assign(rotateButton.style, {
+                    position: 'absolute',
+                    background: '#5bc0de',
+                    color: 'white',
+                    border: 'none', borderRadius: '50%',
+                    width: '24px', height: '24px',
+                    cursor: 'pointer', zIndex: '1001',
+                    display: 'none', lineHeight: '24px', textAlign: 'center', fontWeight: 'bold'
+                });
+                document.body.appendChild(rotateButton);
+
+                rotateButton.onclick = () => {
+                    const imageToRotate = document.querySelector('.ql-image-selected');
+                    if (imageToRotate) {
+                        let currentRotation = imageToRotate.style.transform.match(/rotate\((\d+)deg\)/);
+                        currentRotation = currentRotation ? parseInt(currentRotation[1], 10) : 0;
+                        const newRotation = (currentRotation + 90) % 360;
+                        imageToRotate.style.transform = `rotate(${newRotation}deg)`;
+                    }
+                };
+            }
+
+            // Position and show buttons
+            const imgRect = img.getBoundingClientRect();
+            deleteButton.style.top = `${imgRect.top + window.scrollY}px`;
+            deleteButton.style.left = `${imgRect.right + window.scrollX - 24}px`;
+            deleteButton.style.display = 'block';
+
+            rotateButton.style.top = `${imgRect.top + window.scrollY}px`;
+            rotateButton.style.left = `${imgRect.right + window.scrollX - 52}px`;
+            rotateButton.style.display = 'block';
+
+            // Hide buttons when clicking elsewhere
+            document.addEventListener('click', (e) => {
+                if (e.target !== img && e.target !== deleteButton && e.target !== rotateButton) {
+                    deleteButton.style.display = 'none';
+                    rotateButton.style.display = 'none';
+                    img.classList.remove('ql-image-selected');
+                }
+            }, { once: true });
+        }
+    }
+</script>
 
 <script>
     // โค้ด Quill instance สำหรับ news_content_editor
@@ -324,6 +541,8 @@
             },
             theme: 'snow'
         });
+        addQuillDeleteListener(window.quill);
+        window.quill.root.addEventListener('click', handleImageClick);
     }
 
     // โค้ด Quill instance สำหรับ edit_news_content_editor
@@ -342,6 +561,8 @@
             },
             theme: 'snow'
         });
+        addQuillDeleteListener(window.Editquill);
+        window.Editquill.root.addEventListener('click', handleImageClick);
     }
 
     // โค้ด Quill instance สำหรับ editor_facebook

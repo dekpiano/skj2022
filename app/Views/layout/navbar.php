@@ -188,7 +188,7 @@
                     <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                         <?php foreach ($AboutSchool as $key => $v_AboutSchool) : ?>
                         <a href="<?=base_url('About/'. urlencode($v_AboutSchool->about_menu))?>" class="dropdown-item"><i
-                                class="fa-sharp fa-solid fa-caret-right"></i> <?=$v_AboutSchool->about_menu?></a>
+                                class="fa-solid fa-info-circle me-2"></i> <?=$v_AboutSchool->about_menu?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -198,19 +198,18 @@
                     </a>
                     <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownPersonnel">
                         <ul>
-                            <li><a class="dropdown-item" href="#">ผู้บริหารสถานศึกษา</a></li>
-                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>">ผู้บริหารสถานศึกษา</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"><i class="fa-solid fa-user-tie me-2"></i>ผู้บริหารสถานศึกษา</a></li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="#"><b>สายการสอน</b></a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน"))?>"><b><i class="fa-solid fa-chalkboard-teacher me-2"></i>สายการสอน</b></a></li>
                             <?php foreach ($Lear as $key => $v_Lear) : ?>
-                                <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"> <?=$v_Lear->lear_namethai;?></a></li>
+                                <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"><i class="fa-solid fa-user-graduate me-2"></i> <?=$v_Lear->lear_namethai;?></a></li>
                             <?php endforeach; ?>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="#"><b>สายสนับสนุน</b></a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายสนับสนุน"))?>"><b><i class="fa-solid fa-people-carry me-2"></i>สายสนับสนุน</b></a></li>
                             <?php foreach ($PosiOther as $key => $v_PosiOther) : ?>
-                                <li><a class="dropdown-item" href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", urlencode($v_PosiOther->posi_name)))?>"> <?=$v_PosiOther->posi_name;?></a></li>
+                                <li><a class="dropdown-item" href="<?=base_url('Personnal/สายสนับสนุน/'.str_replace(" ", "-", urlencode($v_PosiOther->posi_name)))?>"><i class="fa-solid fa-user-tag me-2"></i> <?=$v_PosiOther->posi_name;?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -225,24 +224,24 @@
                     </a>
                     <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownAdmin">
                         <ul>
-                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b>วิชาการ</b></a></li>
-                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/">งานวิชาการ</a></li>
+                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b><i class="fa-solid fa-book-open me-2"></i>วิชาการ</b></a></li>
+                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><i class="fa-solid fa-graduation-cap me-2"></i>งานวิชาการ</a></li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b>งานทั่วไป</b></a></li>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking">จองอาคารสถานที่</a></li>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking">จองยานพาหนะ</a></li>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair">แจ้งซ่อมออนไลน์</a></li>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/FoodReport">รายงานอาหาร</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking"><i class="fa-solid fa-house-user me-2"></i>จองอาคารสถานที่</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking"><i class="fa-solid fa-car-side me-2"></i>จองยานพาหนะ</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair"><i class="fa-solid fa-screwdriver-wrench me-2"></i>แจ้งซ่อมออนไลน์</a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/FoodReport"><i class="fa-solid fa-utensils me-2"></i>รายงานอาหาร</a></li>
                             
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b>งานบุคคล</b></a></li>
-                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/">งานบุคคล</a></li>
+                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b><i class="fa-solid fa-users-cog me-2"></i>งานบุคคล</b></a></li>
+                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><i class="fa-solid fa-user-friends me-2"></i>งานบุคคล</a></li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b>งบประมาณและแผน</b></a></li>
-                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/">งบประมาณและแผน</a></li>
+                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b><i class="fa-solid fa-chart-line me-2"></i>งบประมาณและแผน</b></a></li>
+                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><i class="fa-solid fa-money-bill-wave me-2"></i>งบประมาณและแผน</a></li>
                         </ul>
                     </div>
                 </div>
@@ -272,24 +271,23 @@
                             <i class="fa-solid fa-envelope"></i> Email
                             โรงเรียน
                         </a>
-                        <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
-                            <i class="fa-solid fa-passport"></i>
-                            สวนกุหลาบศึกษา
-                        </a>
-                        <a href="<?=base_url('guidance')?>" class="dropdown-item">
-                            <i class="fa-solid fa-passport"></i>
+                                                <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
+                                                    <i class="fa-solid fa-book"></i>
+                                                    สวนกุหลาบศึกษา
+                                                 </a>                        <a href="<?=base_url('guidance')?>" class="dropdown-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
                             ทุนการศึกษา
                         </a>
                         <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
-                            <i class="fa-solid fa-passport"></i>
+                            <i class="fa-solid fa-book-open"></i>
                             หนังสือรุ่น ส.ก.จ.
                         </a>
                         <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
-                            <i class="fa-solid fa-hammer"></i>
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
                             แจ้งซ่อมออนไลน์
                         </a>
                         <a href="https://general.skj.ac.th/Procurements" class="dropdown-item">
-                            <i class="fa-solid fa-hammer"></i>
+                            <i class="fa-solid fa-shopping-cart"></i>
                             การจัดซื้อจัดจ้าง
                         </a>
                     </div>

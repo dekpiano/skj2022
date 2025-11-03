@@ -41,6 +41,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'ConHome::index');
 $routes->post('/Admin/News/uploadImage', 'ConAdminNews::uploadImage');
+$routes->get('/Admin/News/uploadImage', 'ConAdminNews::uploadImage');
 $routes->get('About/(:any)', 'ConAboutSchool::AboutDetail/$1');
 
 $routes->match(['get', 'post'],'News', 'ConNews::NewsMain');
