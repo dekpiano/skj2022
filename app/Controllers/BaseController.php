@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\UserHistoryModel;
 use App\Models\VisitorModel; // เพิ่ม Model ที่เราสร้าง
+use App\Models\AboutModel;
 
 abstract class BaseController extends Controller
 {
@@ -48,6 +49,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $aboutModel = new AboutModel();
 
         // --- Visitor Counter Logic ---
         $visitorModel = new VisitorModel();
@@ -63,5 +65,8 @@ abstract class BaseController extends Controller
 
         // Pass the uri object to the view as well, as it's used in the footer
         $this->data['uri'] = $this->request->uri;
+        
+        // Pass AboutSchool data to all views
+        $this->data['AboutSchool'] = $aboutModel->get()->getResult();
     }
 }

@@ -62,34 +62,43 @@ $routes->get('Email', 'ConEmail::index');
 $routes->get('Procurements', 'ConProcurements::index');
 // Login admin
 $routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
-$routes->get('Admin/Dashboard', 'ConAdminDashboard::index');
 // Login admin for Google
 $routes->get('SkjMain/googleLogin', 'ConLogin::googleLogin');
 $routes->get('SkjMain/googleCallback', 'ConLogin::googleCallback');
 // Logout
 $routes->get('logout', 'ConLogin::LogoutAdmin');
 
-//Admin News
-$routes->get('Admin/News','ConAdminNews::NewsMain');
-$routes->match(['get', 'post'], 'Admin/News/AddNews', 'ConAdminNews::NewsAdd');
-$routes->match(['get', 'post'], 'Admin/News/Add/NewsFeacbook', 'ConAdminNews::NewsAddFeacbook');
-$routes->match(['get', 'post'], 'Admin/News/EditNews', 'ConAdminNews::NewsEdit');
-$routes->match(['get', 'post'], 'Admin/News/UpdateNews', 'ConAdminNews::NewsUpdate');
-$routes->match(['get', 'post'], 'Admin/News/DeleteNews', 'ConAdminNews::NewsDelete');
-$routes->match(['post'], 'Admin/News/deleteImage', 'ConAdminNews::deleteImage'); // เพิ่ม route นี้
-$routes->match(['get', 'post'], 'Admin/News/View/Facebook', 'ConAdminNews::ViewNewsFormFacebook');
-$routes->match(['get', 'post'], 'Admin/News/Select/Facebook', 'ConAdminNews::SelectNewsFormFacebook');
-// Admin Banner
-$routes->get('Admin/Banner','ConAdminBanner::BannerMain');
-$routes->post('Admin/Banner/BannerOnoff','ConAdminBanner::BannerOnoff');
-$routes->match(['get', 'post'], 'Admin/banner/Addbanner', 'ConAdminBanner::BannerAdd');
-$routes->match(['get', 'post'], 'Admin/banner/DeleteBanner', 'ConAdminBanner::BannerDelete');
+$routes->group('Admin', ['filter' => 'permission', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('Dashboard', 'ConAdminDashboard::index');
 
-//Admin About
-$routes->match(['get', 'post'], 'Admin/AboutSchool/Detail/(:any)', 'ConAdminAboutSchool::AboutSchoolDetail/$1');
-$routes->match(['get', 'post'], 'Admin/AboutSchool/Edit/(:any)', 'ConAdminAboutSchool::AboutSchoolEdit/$1');
-$routes->match(['get', 'post'], 'Admin/AboutSchool/Update/(:any)', 'ConAdminAboutSchool::AboutSchoolUpdate/$1');
-$routes->match(['get', 'post'], 'Admin/AboutSchool/Add', 'ConAdminAboutSchool::AboutSchoolAdd');
+    //Admin News
+    $routes->get('News','ConAdminNews::NewsMain', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/AddNews', 'ConAdminNews::NewsAdd', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/Add/NewsFeacbook', 'ConAdminNews::NewsAddFeacbook', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/EditNews', 'ConAdminNews::NewsEdit', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/UpdateNews', 'ConAdminNews::NewsUpdate', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/DeleteNews', 'ConAdminNews::NewsDelete', ['filter' => 'permission:Admin']);
+    $routes->match(['post'], 'News/deleteImage', 'ConAdminNews::deleteImage', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/View/Facebook', 'ConAdminNews::ViewNewsFormFacebook', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'News/Select/Facebook', 'ConAdminNews::SelectNewsFormFacebook', ['filter' => 'permission:Admin']);
+    
+    // Admin Banner
+    $routes->get('Banner','ConAdminBanner::BannerMain', ['filter' => 'permission:Admin']);
+    $routes->post('Banner/BannerOnoff','ConAdminBanner::BannerOnoff', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'banner/Addbanner', 'ConAdminBanner::BannerAdd', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'banner/DeleteBanner', 'ConAdminBanner::BannerDelete', ['filter' => 'permission:Admin']);
+
+    //Admin About
+    $routes->match(['get', 'post'], 'AboutSchool/Detail/(:any)', 'ConAdminAboutSchool::AboutSchoolDetail/$1', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'AboutSchool/Edit/(:any)', 'ConAdminAboutSchool::AboutSchoolEdit/$1', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'AboutSchool/Update/(:any)', 'ConAdminAboutSchool::AboutSchoolUpdate/$1', ['filter' => 'permission:Admin']);
+    $routes->match(['get', 'post'], 'AboutSchool/Add', 'ConAdminAboutSchool::AboutSchoolAdd', ['filter' => 'permission:Admin']);
+
+    // Admin Roles
+    $routes->get('roles', 'RoleController::index', ['filter' => 'permission:Super Admin']);
+    $routes->post('roles/addUser', 'RoleController::addUser', ['filter' => 'permission:Super Admin']);
+    $routes->get('roles/deleteUser/(:num)', 'RoleController::deleteUser/$1', ['filter' => 'permission:Super Admin']);
+});
 // 
 
 /*

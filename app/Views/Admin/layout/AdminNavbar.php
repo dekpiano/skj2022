@@ -20,7 +20,12 @@
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <!-- Place this tag where you want the button to render. -->
                         <li class="nav-item lh-1 me-3">
-                          <?php print_r($_SESSION['AdminFullname'])?> 
+                          <?= session('AdminFullname') ?>
+                        </li>
+                        <li class="nav-item lh-1 me-3">
+                            <a class="btn btn-sm btn-outline-danger" href="<?=base_url('logout');?>" title="ออกจากระบบ">
+                                <i class="bx bx-power-off"></i>
+                            </a>
                         </li>
 
                         <!-- User -->
@@ -43,8 +48,8 @@
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
-                                                <span class="fw-semibold d-block"><?=$AdminFullname;?></span>
-                                                <small class="text-muted">Admin</small>
+                                                <span class="fw-semibold d-block"><?= session('AdminFullname') ?></span>
+                                                <small class="text-muted"><?= session('roles')[0] ?? 'Admin' ?></small>
                                             </div>
                                         </div>
                                     </a>
@@ -60,12 +65,6 @@
                                 </li>                          
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?=base_url('logout');?>">
-                                        <i class="bx bx-power-off me-2"></i>
-                                        <span class="align-middle">Log Out</span>
-                                    </a>
                                 </li>
                             </ul>
                         </li>

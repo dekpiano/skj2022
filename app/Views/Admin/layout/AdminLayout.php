@@ -4,7 +4,7 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-        <?= $this->include('Admin/layout/AdminMenu') ?>
+        <?= $this->include('Admin/layout/AdminMenu', ['uri' => $uri]) ?>
         <!-- / Menu -->
 
         <!-- Layout container -->

@@ -1,45 +1,25 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 use App\Models\NewsModel;
 use App\Models\AboutModel;
 
-class ConAdminNews extends BaseController
+class ConAdminNews extends \App\Controllers\BaseController
 {
     public function __construct(){
-        
         $this->NewsModel = new NewsModel();
         $this->AboutModel = new AboutModel();
     }
 
-   
-    public function DataMain(){
-        $session = session();
-        $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $data['uri'] = service('uri'); 
-        helper(['form', 'url']);        
-        $data['AdminID'] = $session->get('AdminID');
-        $data['AdminFullname'] = $session->get('AdminFullname');
-        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
-        return $data;
-    }
-
     public function NewsMain()
     {        
-        $data = $this->DataMain();
         $data['title'] = "ข่าวประชาสัมพันธ์";
         $data['description'] = "รวมข่าวประชาสัมพันธ์ กิจกรรมต่าง ๆ ของโรงเรียน";
         $data['news'] = $this->NewsModel->orderBy('news_date', 'DESC')->get()->getResult();
         
-        //print_r($data['news']);exit();
-        //$this->AddNewsFormFacebook(); exit();
-        return view('Admin/layout/AdminHeader',$data)
-                .view('Admin/PageAdminNews/PageAdminNewsMain')
-                .view('Admin/layout/AdminFooter');
+        return view('Admin/PageAdminNews/PageAdminNewsMain', array_merge($this->data, $data));
     }
 
     public function NewsAdd(){
-        $data = $this->DataMain();
-
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
         $checkID = $builder->select('news_id')->orderBy('news_id','DESC')->get()->getRow();
@@ -50,7 +30,6 @@ class ConAdminNews extends BaseController
             $NewsIdNew = 'news_001';
         }
        
-
         $validateImg = $this->validate([
             'news_img' => [
                 'uploaded[news_img]',
@@ -80,7 +59,7 @@ class ConAdminNews extends BaseController
                    'news_content' => $this->request->getPost('news_content'),
                    'news_date' => $this->request->getPost('news_date'),
                    'news_category' => $this->request->getPost('news_category'),
-                   'personnel_id' => $data['AdminID']
+                   'personnel_id' => session('AdminID')
                 ];
                 $save = $builder->insert($data);
                 echo $save;
@@ -91,7 +70,7 @@ class ConAdminNews extends BaseController
                     'news_content' => $this->request->getPost('news_content'),
                     'news_date' => $this->request->getPost('news_date'),
                     'news_category' => $this->request->getPost('news_category'),
-                    'personnel_id' => $data['AdminID']
+                    'personnel_id' => session('AdminID')
                 ];
                 $save = $builder->insert($data);
                 echo $save;
@@ -107,7 +86,6 @@ class ConAdminNews extends BaseController
     }
 
     public function NewsUpdate(){
-        $data = $this->DataMain();
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
         
@@ -136,7 +114,7 @@ class ConAdminNews extends BaseController
             'news_content' => $newContent,
             'news_date' => $this->request->getPost('edit_news_date'),
             'news_category' => $this->request->getPost('edit_news_category'),
-            'personnel_id' => $data['AdminID']
+            'personnel_id' => session('AdminID')
         ];
 
         // Check if a new image is uploaded for cover
@@ -382,8 +360,6 @@ class ConAdminNews extends BaseController
     }
 
     public function NewsAddFeacbook(){
-        $data = $this->DataMain();
-
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
         $checkID = $builder->select('news_id')->orderBy('news_id','DESC')->get()->getRow();
@@ -419,7 +395,7 @@ class ConAdminNews extends BaseController
             'news_content' => $this->request->getVar('news_content_facebook'),
             'news_date' => $this->request->getVar('news_date_facebook'),
             'news_category' => $this->request->getVar('news_category_facebook'),
-            'personnel_id' => $data['AdminID']
+            'personnel_id' => session('AdminID')
             ];
         $save = $builder->insert($data);
        

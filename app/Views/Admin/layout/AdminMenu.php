@@ -26,61 +26,25 @@
 
         <li class="menu-item <?=$uri->getSegment(2) == 'News'?"active":""?>">
             <a href="<?=base_url('Admin/News');?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-news"></i>
                 <div data-i18n="Analytics">ข่าวประชาสัมพันธ์</div>
             </a>
         </li>
 
         <li class="menu-item <?=$uri->getSegment(2) == 'Banner'?"active":""?>">
             <a href="<?=base_url('Admin/Banner');?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-images"></i>
                 <div data-i18n="Analytics">แบนเนอร์ประชาสัมพันธ์</div>
             </a>
         </li>
-
-        <!-- Layouts -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Without menu</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Without navbar</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
+      
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
         <!-- Layouts -->
         <li class="menu-item <?=$uri->getSegment(2) == 'AboutSchool'?"active open":""?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div data-i18n="Layouts">เกี่ยวกับโรงเรียน</div>
             </a>
             <ul class="menu-sub ">
@@ -102,6 +66,15 @@
                 <?php endif; ?>
             </ul>
         </li>
+
+        <?php if (in_array('Super Admin', session('roles') ?? [])) : ?>
+        <li class="menu-item <?=$uri->getSegment(2) == 'roles'?"active":""?>">
+            <a href="<?=base_url('Admin/roles');?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                <div data-i18n="Analytics">จัดการสิทธิ์</div>
+            </a>
+        </li>
+        <?php endif; ?>
 
     </ul>
 </aside>

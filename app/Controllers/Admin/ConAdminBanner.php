@@ -1,38 +1,22 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 use App\Models\BannerModel;
 use App\Models\AboutModel;
 
-class ConAdminBanner extends BaseController
+class ConAdminBanner extends \App\Controllers\BaseController
 {
     public function __construct(){
         $this->BannerModel = new BannerModel();
         $this->AboutModel = new AboutModel();
     }
 
-    public function DataMain(){
-        $session = session();
-        $data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $data['uri'] = service('uri'); 
-        helper(['form', 'url']);        
-        $data['AdminID'] = $session->get('AdminID');
-        $data['AdminFullname'] = $session->get('AdminFullname');
-        $data['AboutSchool'] = $this->AboutModel->get()->getResult();
-        return $data;
-    }
-
     public function BannerMain()
     {        
-        $data = $this->DataMain();
         $data['title'] = "แบนเนอร์ประชาสัมพันธ์";
         $data['description'] = "รวมแบนเนอร์ประชาสัมพันธ์ กิจกรรมต่าง ๆ ของโรงเรียน";
         $data['banner'] = $this->BannerModel->orderBy('banner_date','DESC')->get()->getResult();
         
-        //print_r($data['news']);exit();
-        
-        return view('Admin/layout/AdminHeader',$data)
-                .view('Admin/PageAdminBanner/PageAdminBannerMain')
-                .view('Admin/layout/AdminFooter');
+        return view('Admin/PageAdminBanner/PageAdminBannerMain', array_merge($this->data, $data));
     }
 
     public function BannerOnoff(){
@@ -46,8 +30,6 @@ class ConAdminBanner extends BaseController
 
   public function BannerAdd()
 {
-    $data = $this->DataMain();
-
     $database = \Config\Database::connect();
     $builder = $database->table('tb_banner');
 
@@ -86,7 +68,7 @@ class ConAdminBanner extends BaseController
                 'banner_linkweb' => $this->request->getPost('banner_linkweb'),
                 'banner_date' => $this->request->getPost('banner_date'),
                 'banner_status' => 'on',
-                'banner_personnel_id' => $data['AdminID']
+                'banner_personnel_id' => session('AdminID')
             ];
             $save = $builder->insert($dataSave);
 
@@ -103,7 +85,7 @@ class ConAdminBanner extends BaseController
                 'banner_linkweb' => $this->request->getPost('banner_linkweb'),
                 'banner_date' => $this->request->getPost('banner_date'),
                 'banner_status' => 'on',
-                'banner_personnel_id' => $data['AdminID']
+                'banner_personnel_id' => session('AdminID')
             ];
             $save = $builder->insert($dataSave);
 
@@ -124,8 +106,6 @@ class ConAdminBanner extends BaseController
     }
 
     public function NewsUpdate(){
-        $data = $this->DataMain();
-
         $database = \Config\Database::connect();
         $builder = $database->table('tb_news');
         $id = $this->request->getPost('edit_news_id');
@@ -149,7 +129,7 @@ class ConAdminBanner extends BaseController
                'news_content' => $this->request->getPost('edit_news_content'),
                'news_date' => $this->request->getPost('edit_news_date'),
                'news_category' => $this->request->getPost('edit_news_category'),
-               'personnel_id' => $data['AdminID']
+               'personnel_id' => session('AdminID')
                ];
                     $builder->where('news_id',  $this->request->getPost('edit_news_id'));
             $save = $builder->update($data);
@@ -160,7 +140,7 @@ class ConAdminBanner extends BaseController
                 'news_content' => $this->request->getPost('edit_news_content'),
                 'news_date' => $this->request->getPost('edit_news_date'),
                 'news_category' => $this->request->getPost('edit_news_category'),
-                'personnel_id' => $data['AdminID']
+                'personnel_id' => session('AdminID')
                 ];
                     $builder->where('news_id',  $this->request->getPost('edit_news_id'));
             $save = $builder->update($data);
