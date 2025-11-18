@@ -22,18 +22,17 @@
                         <li class="nav-item lh-1 me-3">
                           <?= session('AdminFullname') ?>
                         </li>
-                        <li class="nav-item lh-1 me-3">
-                            <a class="btn btn-sm btn-outline-danger" href="<?=base_url('logout');?>" title="ออกจากระบบ">
-                                <i class="bx bx-power-off"></i>
-                            </a>
-                        </li>
 
                         <!-- User -->
+                        <?php 
+                            $user_img = session('personnel')['pers_img'] ?? null; 
+                            $avatar_src = $user_img ? "https://personnel.skj.ac.th/uploads/admin/Personnal/".$user_img: base_url('assets/admin/assets/img/avatars/1.png'); 
+                        ?>
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                 data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="<?=base_url()?>/assets/admin/assets/img/avatars/1.png" alt
+                                    <img src="<?= $avatar_src ?>" alt
                                         class="w-px-40 h-auto rounded-circle" />
                                 </div>
                             </a>
@@ -43,7 +42,7 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="<?=base_url()?>/assets/admin/assets/img/avatars/1.png" alt
+                                                    <img src="<?= $avatar_src ?>" alt
                                                         class="w-px-40 h-auto rounded-circle" />
                                                 </div>
                                             </div>
@@ -56,15 +55,13 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                </li>
+                                </li>                                            
+                               
                                 <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bx bx-user me-2"></i>
-                                        <span class="align-middle">My Profile</span>
+                                    <a class="dropdown-item" href="<?=base_url('logout');?>">
+                                        <i class="bx bx-power-off me-2"></i>
+                                        <span class="align-middle">Log Out</span>
                                     </a>
-                                </li>                          
-                                <li>
-                                    <div class="dropdown-divider"></div>
                                 </li>
                             </ul>
                         </li>

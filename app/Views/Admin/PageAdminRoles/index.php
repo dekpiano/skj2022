@@ -99,21 +99,22 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const personnelSelect = document.getElementById('pers_id');
-    const usernameInput = document.getElementById('admin_username');
+    const personnelSelect = $('#pers_id');
+    const usernameInput = $('#admin_username');
 
     // Initialize Select2
-    $(personnelSelect).select2({
+    personnelSelect.select2({
         theme: 'bootstrap-5',
         placeholder: "-- เลือกบุคลากร --",
         allowClear: true,
         width: '100%'
     });
 
-    personnelSelect.addEventListener('change', function() {
-        const selectedOption = this.options[this.selectedIndex];
-        const email = selectedOption.getAttribute('data-email');
-        usernameInput.value = email || '';
+    // Listen for Select2 change event
+    personnelSelect.on('change', function() {
+        const selectedOption = $(this).find('option:selected');
+        const email = selectedOption.data('email');
+        usernameInput.val(email || '');
     });
 });
 </script>
