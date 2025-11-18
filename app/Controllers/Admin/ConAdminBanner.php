@@ -28,75 +28,90 @@ class ConAdminBanner extends \App\Controllers\BaseController
         echo $this->request->getPost('Keystatus');
     }
 
-  public function BannerAdd()
-{
-    $database = \Config\Database::connect();
-    $builder = $database->table('tb_banner');
+    public function AddBanner()
+    {
+        $database = \Config\Database::connect();
+        $builder = $database->table('tb_banner');
 
-    // จุดที่ 1: แก้ validate จาก 'file' เป็น 'banner_img'
-    $validateImg = $this->validate([
-        'banner_img' => [
-            'uploaded[banner_img]',
-            'mime_in[banner_img,image/jpg,image/jpeg,image/png,image/gif]',
-            
-        ]
-    ]);
-
-    if (!$validateImg) {
-        // ส่งกลับเป็น json (Dropzone ใช้ได้)
-        return $this->response->setJSON([
-            'status' => false,
-            'message' => 'ไฟล์สกุลไม่ถูกต้อง หรือ ขนาดไฟล์เกิน 2 mb'
+        // จุดที่ 1: แก้ validate จาก 'file' เป็น 'banner_img'
+        $validateImg = $this->validate([
+            'banner_img' => [
+                'uploaded[banner_img]',
+                'mime_in[banner_img,image/jpg,image/jpeg,image/png,image/gif]',
+                
+            ]
         ]);
-    } else {
-        $imageFile = $this->request->getFile('banner_img');
 
-        if ($imageFile && $imageFile->getError() == 0) {
-            $RandomName = $imageFile->getRandomName();
-
-            // Resize และบันทึกไฟล์
-            \Config\Services::image()
-                ->withFile($imageFile)
-                ->resize(1920, 720, false, 'auto')
-                ->save(FCPATH . '/uploads/banner/all/' . $RandomName);
-
-            $NameImg = $RandomName;
-
-            $dataSave = [
-                'banner_img' => $NameImg,
-                'banner_name' => $this->request->getPost('banner_name'),
-                'banner_linkweb' => $this->request->getPost('banner_linkweb'),
-                'banner_date' => $this->request->getPost('banner_date'),
-                'banner_status' => 'on',
-                'banner_personnel_id' => session('AdminID')
-            ];
-            $save = $builder->insert($dataSave);
-
-            // ส่งกลับเป็น json
+        if (!$validateImg) {
+            // ส่งกลับเป็น json (Dropzone ใช้ได้)
             return $this->response->setJSON([
-                'status' => true,
-                'message' => 'บันทึกแบนเนอร์สำเร็จ!',
-                'data' => $dataSave
+                'status' => false,
+                'message' => 'ไฟล์สกุลไม่ถูกต้อง หรือ ขนาดไฟล์เกิน 2 mb'
             ]);
         } else {
-            // ไม่มีไฟล์ภาพก็ยังสามารถบันทึกข้อความอื่นได้
-            $dataSave = [
-                'banner_name' => $this->request->getPost('banner_name'),
-                'banner_linkweb' => $this->request->getPost('banner_linkweb'),
-                'banner_date' => $this->request->getPost('banner_date'),
-                'banner_status' => 'on',
-                'banner_personnel_id' => session('AdminID')
-            ];
-            $save = $builder->insert($dataSave);
+            $imageFile = $this->request->getFile('banner_img');
 
-            return $this->response->setJSON([
-                'status' => true,
-                'message' => 'บันทึกแบนเนอร์ (ไม่มีรูป) สำเร็จ!',
-                'data' => $dataSave
-            ]);
+            if ($imageFile && $imageFile->getError() == 0) {
+                $RandomName = $imageFile->getRandomName();
+
+                // Resize และบันทึกไฟล์
+                \Config\Services::image()
+                    ->withFile($imageFile)
+                    ->resize(1920, 720, false, 'auto')
+                    ->save(FCPATH . '/uploads/banner/all/' . $RandomName);
+
+                $NameImg = $RandomName;
+
+                $dataSave = [
+                    'banner_img' => $NameImg,
+                    'banner_name' => $this->request->getPost('banner_name'),
+                    'banner_linkweb' => $this->request->getPost('banner_linkweb'),
+                    'banner_date' => $this->request->getPost('banner_date'),
+                    'banner_status' => 'on',
+                    'banner_personnel_id' => session('AdminID')
+                ];
+                $save = $builder->insert($dataSave);
+
+                // ส่งกลับเป็น json
+                return $this->response->setJSON([
+                    'status' => true,
+                    'message' => 'บันทึกแบนเนอร์สำเร็จ!',
+                    'data' => $dataSave
+                ]);
+            } else {
+                // ไม่มีไฟล์ภาพก็ยังสามารถบันทึกข้อความอื่นได้
+                $dataSave = [
+                    'banner_name' => $this->request->getPost('banner_name'),
+                    'banner_linkweb' => $this->request->getPost('banner_linkweb'),
+                    'banner_date' => $this->request->getPost('banner_date'),
+                    'banner_status' => 'on',
+                    'banner_personnel_id' => session('AdminID')
+                ];
+                $save = $builder->insert($dataSave);
+
+                return $this->response->setJSON([
+                    'status' => true,
+                    'message' => 'บันทึกแบนเนอร์ (ไม่มีรูป) สำเร็จ!',
+                    'data' => $dataSave
+                ]);
+            }
         }
     }
-}
+
+    public function EditBanner()
+    {
+        $id = $this->request->getVar('KeyBannerid');
+        $data = $this->BannerModel->where('banner_id', $id)->first();
+
+        if ($data) {
+            $imagePath = FCPATH . 'uploads/banner/all/' . $data['banner_img'];
+            if (empty($data['banner_img']) || !file_exists($imagePath)) {
+                $data['banner_img'] = ''; // Set to empty if not found, JS will handle placeholder
+            }
+        }
+
+        return $this->response->setJSON($data);
+    }
 
     public function NewsEdit(){
         $KeyNewsid = $this->request->getPost('KeyNewsid');
@@ -148,7 +163,7 @@ class ConAdminBanner extends \App\Controllers\BaseController
         }
     }
 
-    public function BannerDelete(){
+    public function DeleteBanner(){
         $id = $this->request->getPost('KeyBannerid');
         $sel_img = $this->BannerModel->select('banner_img')->where('banner_id',$id)->get()->getResult();
         if($sel_img[0]->banner_img != ''){
@@ -156,6 +171,61 @@ class ConAdminBanner extends \App\Controllers\BaseController
         }        
         $result = $this->BannerModel->delete(['banner_id' => $id]);        
         echo $result;
+    }
+
+    public function Updatebanner()
+    {
+        $database = \Config\Database::connect();
+        $builder = $database->table('tb_banner');
+
+        $id = $this->request->getPost('banner_id');
+        $originalImg = $this->request->getPost('original_banner_img');
+        $imageFile = $this->request->getFile('banner_img');
+
+        $dataUpdate = [
+            'banner_name' => $this->request->getPost('banner_name'),
+            'banner_linkweb' => $this->request->getPost('banner_linkweb'),
+            'banner_date' => $this->request->getPost('banner_date'),
+            'banner_personnel_id' => session('AdminID')
+        ];
+
+        // Check if a new image is uploaded
+        if ($imageFile && $imageFile->isValid() && !$imageFile->hasMoved()) {
+            $validateImg = $this->validate([
+                'banner_img' => [
+                    'uploaded[banner_img]',
+                    'mime_in[banner_img,image/jpg,image/jpeg,image/png,image/gif]',
+                ]
+            ]);
+
+            if (!$validateImg) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'message' => 'ไฟล์สกุลไม่ถูกต้อง หรือ ขนาดไฟล์เกิน 2 mb'
+                ]);
+            }
+
+            // Delete old image if it exists
+            if ($originalImg && file_exists(FCPATH . 'uploads/banner/all/' . $originalImg)) {
+                @unlink(FCPATH . 'uploads/banner/all/' . $originalImg);
+            }
+
+            $RandomName = $imageFile->getRandomName();
+            \Config\Services::image()
+                ->withFile($imageFile)
+                ->resize(1920, 720, false, 'auto')
+                ->save(FCPATH . '/uploads/banner/all/' . $RandomName);
+            
+            $dataUpdate['banner_img'] = $RandomName;
+        }
+
+        $builder->where('banner_id', $id);
+        $update = $builder->update($dataUpdate);
+
+        return $this->response->setJSON([
+            'status' => $update ? true : false,
+            'message' => $update ? 'อัปเดตแบนเนอร์สำเร็จ!' : 'อัปเดตแบนเนอร์ไม่สำเร็จ!',
+        ]);
     }
 
 }

@@ -1,6 +1,8 @@
 <?= $this->extend('Admin/layout/AdminLayout') ?>
 
 <?= $this->section('content') ?>
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
                 <!-- Content -->
                 <style>
                 table td {
@@ -12,6 +14,9 @@
                 table.dataTable .form-check-input {
                     width: 30px;
                     height: 18px;
+                }
+                .filepond--root {
+                    margin-bottom: 0;
                 }
                 </style>
                 <div class="container-xxl flex-grow-1 container-p-y">
@@ -68,9 +73,14 @@
                                                     <strong><?=$v_banner->banner_name?></strong>
                                                 </td>
                                                 <td>
-                                                    <img src="<?=base_url('uploads/banner/all/'.$v_banner->banner_img)?>"
-                                                        class="img-fluid" alt="<?=$v_banner->banner_name?>" srcset="">
-
+                                                    <?php
+                                                        $imageUrl = base_url('uploads/banner/all/'.$v_banner->banner_img);
+                                                        $imagePath = FCPATH . 'uploads/banner/all/' . $v_banner->banner_img;
+                                                        if (empty($v_banner->banner_img) || !file_exists($imagePath)) {
+                                                            $imageUrl = 'https://via.placeholder.com/300x120.png?text=Image+Not+Found';
+                                                        }
+                                                    ?>
+                                                    <img src="<?= $imageUrl ?>" class="img-fluid" alt="<?=$v_banner->banner_name?>">
                                                 </td>
                                                 <td><?=$v_banner->banner_date?></td>
 
@@ -95,66 +105,20 @@
 
 <?= $this->section('modals') ?>
 
-<style>
-#bannerDropzone {
-    min-height: 240px;
-    border: 2px dashed #007bff;
-    border-radius: 12px;
-    background: #f8fafc;
-    position: relative;
-    overflow: hidden;
-}
-#bannerDropzone .dz-preview {
-    width: 100% !important;
-    margin: 0 !important;
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#bannerDropzone .dz-preview .dz-image {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 220px !important;
-    max-width: 100% !important;
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 0;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#bannerDropzone .dz-preview .dz-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 12px;
-}
-#bannerDropzone .dz-message {
-    font-size: 1.2rem;
-    color: #888;
-    padding: 2rem 1rem;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0; left: 0;
-}
-
-</style>
-
 <!-- Modal เพิ่มแบนเนอร์ -->
 <div class="modal fade" id="ModalAddBanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
     aria-labelledby="staticBackdropLabel" aria-hidden="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">เพิ่มแบนเนอร์</h5>
+                <h5 class="modal-title" id="ModalTitle"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="form-banner" method="post" action="<?=base_url('Admin/banner/Addbanner')?>"
+            <form id="form-banner" method="post"
                 enctype="multipart/form-data" class="needs-validation" novalidate>
+                <input type="hidden" name="banner_id" id="banner_id">
+                <input type="hidden" name="original_banner_img" id="original_banner_img">
+                <?= csrf_field() ?>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="banner_name" class="form-label">หัวห้อแบนเนอร์</label>
@@ -167,7 +131,7 @@
                     <div class="mb-3">
                         <label for="banner_linkweb" class="form-label">ลิ้งก์เชื่อมโยงแบนเนอร์</label>
                         <input type="text" class="form-control mb-3" name="banner_linkweb" id="banner_linkweb"
-                            placeholder="ใส่ลิ้งก์เชื่อมโยงแบนเนอร์ Ex.https://academic.skj.ac.th/LearningOnline" aria-describedby="floatingInputHelp" >
+                            placeholder="ใส่ลิ้งก์เชื่อมโยงแบนเนอร์ Ex.https://academic.skj.ac.th/LearningOnline" >
                         <div class="invalid-feedback">
                             ลิ้งก์เชื่อมโยง
                         </div>
@@ -182,14 +146,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="banner_img" class="form-label">รูปภาหน้าปก</label>
-                        <!-- <input class="form-control" type="file" name="banner_img" id="banner_img">
-                        <img src="" alt="" id="blah" class="img-fluid"> -->
-                         <div id="bannerDropzone" class="dropzone"></div>
+                         <input type="file" name="banner_img" id="banner_img">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <button type="submit" class="btn btn-primary" id="submitBannerBtn">บันทึก</button>
                 </div>
 
             </form>
@@ -198,71 +160,19 @@
     </div>
 </div>
 
-<!-- Modal แก้ไขแบนเนอร์ -->
-<div class="modal fade" id="ModalEditbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-99"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">แก้ไขแบนเนอร์</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="form-update-banner" method="post" action="<?=base_url('Admin/banner/Updatebanner')?>"
-                enctype="multipart/form-data" class="needs-validation" novalidate>
-                <input type="text" name="edit_banner_id" id="edit_banner_id" value="" style="display:none;">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="edit_banner_topic" class="form-label">หัวห้อแบนเนอร์</label>
-                        <input type="text" class="form-control mb-3" name="edit_banner_topic" id="edit_banner_topic"
-                            placeholder="ใส่หัวข้อแบนเนอร์..." aria-describedby="floatingInputHelp" required>
-                        <div class="invalid-feedback">
-                            ใส่หัวข้อแบนเนอร์
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="edit_banner_category" class="form-label">ประเภทแบนเนอร์</label>
-                        <select id="largeSelect" class="form-select form-select" name="edit_banner_category"
-                            id="edit_banner_category" required>
-                            <option value="แบนเนอร์ประชาสัมพันธ์">ประชาสัมพันธ์</option>
-                            <option value="แบนเนอร์กิจกรรม">กิจกรรม</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            เลือกประเภทแบนเนอร์
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_banner_date" class="form-label">วันที่ลง</label>
-                        <input class="form-control" type="date" value="" id="edit_banner_date" name="edit_banner_date">
-                        <div class="invalid-feedback">
-                            เลือกวันที่ลง
-                        </div>
-                    </div>
-
-                    <!-- Create the editor container -->
-                    <div id="editor_update" class="mb-3">
-                        <p>ใส่เนื้อหาแบนเนอร์ที่นี่....</p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_banner_img" class="form-label">รูปภาหน้าปก</label>
-                        <input class="form-control" type="file" name="edit_banner_img" id="edit_banner_img">
-                        <img src="" alt="" id="edit_blah" class="img-fluid">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">บันทึก</button>
-                </div>
-
-            </form>
-
-        </div>
-    </div>
-</div>
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
+<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 <script>
+    // Register the FilePond plugin
+    FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType);
+
+    let pond; // To hold the FilePond instance
+    const BASE_URL = "<?= base_url() ?>";
+
     // All page-specific JS is now inlined
     $('#myTable').DataTable({
         "columnDefs": [{
@@ -282,14 +192,124 @@
         ]
     });
 
+    $('#form-banner').on('submit', function(e) {
+        e.preventDefault();
+        
+        if (!$('#banner_name').val().trim() || !$('#banner_date').val().trim()) {
+            Swal.fire({ icon: 'error', title: 'ผิดพลาด', text: 'กรุณากรอกข้อมูลให้ครบถ้วน' });
+            return;
+        }
+
+        const formData = new FormData(this);
+        const pondFile = pond ? pond.getFile() : null;
+        const isUpdate = $(this).attr('action').includes('Updatebanner');
+
+        if (pondFile) {
+            formData.append('banner_img', pondFile.file);
+        }
+
+        // For updates, we need to pass the banner_id
+        if (isUpdate) {
+             formData.append('banner_id', $('#banner_id').val());
+        }
+
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                if (response.status) {
+                    $('#ModalAddBanner').modal('hide');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: response.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire({ icon: 'error', title: 'บันทึกไม่สำเร็จ', text: response.message || 'กรุณาลองใหม่อีกครั้ง' });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: 'AJAX request failed: ' + textStatus });
+            }
+        });
+    });
+
+    // Add Banner button click
     $(document).on("click", "#AddBanner", function() {
+        $('#ModalTitle').text('เพิ่มแบนเนอร์');
+        $('#form-banner').attr('action', '<?=base_url('Admin/Banner/Addbanner')?>').trigger('reset');
+        
+        const inputElement = document.querySelector('#banner_img');
+        pond = FilePond.create(inputElement, {
+            labelIdle: `ลากและวางไฟล์ หรือ <span class="filepond--label-action">เลือกไฟล์</span>`,
+            imagePreviewHeight: 200,
+            acceptedFileTypes: ['image/*'],
+            credits: false
+        });
+        
         var myModal = new bootstrap.Modal(document.getElementById("ModalAddBanner"), {});
         myModal.show();
     });
 
+    // Edit Banner button click
     $(document).on("click", ".Editbanner", function() {
-        var myModal = new bootstrap.Modal(document.getElementById("ModalEditbanner"), {});
-        myModal.show();
+        $('#ModalTitle').text('แก้ไขแบนเนอร์');
+        $('#form-banner').attr('action', '<?=base_url('Admin/Banner/Updatebanner')?>');
+        
+        let bannerId = $(this).attr('key-bannerid');
+        const inputElement = document.querySelector('#banner_img');
+
+        $.post('<?=base_url('Admin/Banner/EditBanner')?>', { KeyBannerid: bannerId }, function(data) {
+            if(data) {
+                $('#banner_id').val(data.banner_id);
+                $('#banner_name').val(data.banner_name);
+                $('#banner_linkweb').val(data.banner_linkweb);
+                $('#original_banner_img').val(data.banner_img);
+                
+                let date = new Date(data.banner_date);
+                let formattedDate = date.getFullYear() + '-' + 
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' + 
+                                ('0' + date.getDate()).slice(-2) + 'T' + 
+                                ('0' + date.getHours()).slice(-2) + ':' + 
+                                ('0' + date.getMinutes()).slice(-2);
+                $('#banner_date').val(formattedDate);
+
+                let filePondOptions = {
+                    labelIdle: 'ลากไฟล์มาเพื่อเปลี่ยน หรือ <span class="filepond--label-action">คลิกเพื่อเปลี่ยนรูปภาพ</span>',
+                    imagePreviewHeight: 200,
+                    acceptedFileTypes: ['image/*'],
+                    credits: false
+                };
+
+                if (data.banner_img) {
+                    filePondOptions.files = [{
+                        source: `${BASE_URL}/uploads/banner/all/${data.banner_img}`,
+                    }];
+                }
+
+                pond = FilePond.create(inputElement, filePondOptions);
+
+                var myModal = new bootstrap.Modal(document.getElementById("ModalAddBanner"), {});
+                myModal.show();
+            } else {
+                Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: 'ไม่พบข้อมูลแบนเนอร์' });
+            }
+        }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'เกิดข้อผิดพลาด (' + jqXHR.status + ')',
+                text: 'ไม่สามารถดึงข้อมูลแบนเนอร์ได้: ' + textStatus + '. ' + errorThrown,
+            });
+        });
     });
 
     $(document).on("click", 'input[type="checkbox"]', function() {
@@ -302,7 +322,7 @@
 
         $.ajax({
             type: "POST",
-            url: "../Admin/Banner/BannerOnoff",
+            url: "<?=base_url('Admin/Banner/BannerOnoff')?>",
             data: {
                 Onoffstatus: status,
                 Keystatus: $(this).attr('status-key')
@@ -334,7 +354,7 @@
             confirmButtonText: 'ลบเลย!'
         }).then((result) => {
             if (result.isConfirmed) {
-                $.post('../Admin/banner/DeleteBanner', {
+                $.post('<?=base_url('Admin/Banner/DeleteBanner')?>', {
                         KeyBannerid: bannerID
                     },
                     function(data) {
@@ -355,77 +375,13 @@
         })
     });
 
-    Dropzone.autoDiscover = false; // สำคัญ! ป้องกันซ้อน
-
-    const myBannerDropzone = new Dropzone("#bannerDropzone", {
-        url: "../Admin/banner/Addbanner",
-        paramName: "banner_img", // ชื่อ field ฝั่ง backend
-        maxFiles: 1,
-        acceptedFiles: 'image/*',
-        addRemoveLinks: true,
-        dictDefaultMessage: "ลากรูปภาพมาวาง หรือคลิกเลือกไฟล์",
-        autoProcessQueue: false, // รอ trigger ด้วย JS (จะได้ submit ข้อมูลอื่นไปด้วย)
-        thumbnailWidth: 900,     // ขนาดใหญ่ตาม zone ที่ต้องการ
-        thumbnailHeight: 360,
-        thumbnailMethod: "contain",
-        init: function() {
-            const dz = this;
-            // ดัก submit ของ modal ฟอร์ม
-            $('#form-banner').on('submit', function(e) {
-                e.preventDefault();
-                 if (!$('#banner_name').val().trim() || !$('#banner_date').val().trim() || dz.getQueuedFiles().length === 0) {
-                    alert('กรุณากรอกข้อมูลให้ครบ');
-                    return;
-                }
-                dz.processQueue(); // เริ่ม upload!
-            });
-
-            dz.on("sending", function(file, xhr, formData) {
-                // ดึงข้อมูล input อื่น ๆ จาก modal ส่งไปพร้อมไฟล์
-                formData.append('banner_name', $('#banner_name').val());
-                formData.append('banner_linkweb', $('#banner_linkweb').val());
-                formData.append('banner_date', $('#banner_date').val());
-            });
-
-            dz.on("success", function(file, response) {
-                if (response.status) {
-                    // รีเซ็ตฟอร์มและ Dropzone
-                    $('#form-banner')[0].reset();
-                    dz.removeAllFiles();
-                    $('#ModalAddBanner').modal('hide');
-                    Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'บันทึกรูปภาพสำเร็จ',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 1500); // รอ 2 วินาทีแล้ว reload
-                    // reload table/banner list ถ้ามี
-                } else {
-                    alert('บันทึกไม่สำเร็จ: ' + response.message);
-                }
-            });
-
-            $('#bannerDropzone .dz-message').html(`
-              <svg width="48" height="48" fill="#007bff" viewBox="0 0 24 24" style="margin-bottom:8px;">
-                <path d="M12 16a1 1 0 0 1-1-1V7.83l-2.59 2.58a1 1 0 0 1-1.42-1.42l4.3-4.29a1 1 0 0 1 1.42 0l4.3 4.29a1 1 0 0 1-1.42 1.42L13 7.83V15a1 1 0 0 1-1 1zm-7 2a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2H5z"/>
-              </svg>
-              <br>
-              <span>ลากรูปภาพมาวาง หรือคลิกเพื่อเลือกรูป</span>
-            `);
-
-            dz.on("error", function(file, errorMessage, xhr) {
-                alert('เกิดข้อผิดพลาด: ' + errorMessage);
-            });
-
-            // ปิด modal แล้ว reset Dropzone ด้วย
-            $('#ModalAddBanner').on('hidden.bs.modal', function () {
-                dz.removeAllFiles();
-            });
+    // When modal is hidden, clear the filepond input and form
+    $('#ModalAddBanner').on('hidden.bs.modal', function () {
+        if (pond) {
+            pond.destroy();
+            pond = null;
         }
+        $('#form-banner').trigger('reset');
     });
 </script>
 <?= $this->endSection() ?>
