@@ -28,11 +28,6 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="https://unpkg.com/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<script>
-    FilePond.registerPlugin(FilePondPluginImagePreview);
-</script>
 
 <!-- Main JS -->
 <script>
