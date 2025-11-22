@@ -262,7 +262,7 @@
                             </li>
                         </ul>
                         <ul>
-                           <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
+                            <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking"><i class="fa-solid fa-house-user me-2"></i>จองอาคารสถานที่</a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking"><i class="fa-solid fa-car-side me-2"></i>จองยานพาหนะ</a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair"><i class="fa-solid fa-screwdriver-wrench me-2"></i>แจ้งซ่อมออนไลน์</a></li>
@@ -302,6 +302,9 @@
 
             </div>
 
+            <button id="grayscaleToggle" class="btn btn-sm btn-outline-light border-2 py-2 px-3 me-2" style="font-size: 16px;" onclick="toggleGrayscale()">
+                <i class="fa-solid fa-adjust"></i>
+            </button>
             <div class="nav-item dropdown ">
                 <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light border-2 py-2 px-4"
                     data-bs-toggle="dropdown" style="font-size: 16px;"><i class="fa-solid fa-right-to-bracket"></i>
@@ -316,3 +319,11 @@
     </div>
 </nav>
 <!-- Navbar End -->
+<script>
+    function toggleGrayscale() {
+        const html = document.documentElement;
+        html.classList.toggle('grayscale-mode');
+        const isGrayscale = html.classList.contains('grayscale-mode');
+        localStorage.setItem('grayscale-mode', isGrayscale);
+    }
+</script>

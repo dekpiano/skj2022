@@ -53,9 +53,7 @@
     <!-- Cookie Consent by https://www.cookiewow.com -->
     <!-- <script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script>
     <script id="cookieWow" type="text/javascript" src="https://cookiecdn.com/configs/npYemaQ118ypmUfmagcae3jg" data-cwcid="npYemaQ118ypmUfmagcae3jg"></script> -->
-    <style>
-        html { filter: grayscale(0.7); }
-    </style>
+   
 </head>
 
 <!-- Google tag (gtag.js) -->
