@@ -12,8 +12,8 @@
                 <div class="col-lg-3 col-md-3 col-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="fact-item bg-light rounded text-center h-100 p-2">
                         <i class="fa-solid fa-chalkboard-user fa-4x text-primary mb-4"></i>
-                        <h5 class="mb-3">ครู</h5>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">65</h1>
+                        <h5 class="mb-3">บุคลากร</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?=$count_personnel?></h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-3 wow fadeInUp" data-wow-delay="0.3s">
@@ -26,9 +26,9 @@
 
                 <div class="col-lg-3 col-md-3 col-3 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="fact-item bg-light rounded text-center h-100 p-2">
-                        <i class="fa fa-check fa-4x text-primary mb-4"></i>
-                        <h5 class="mb-3">Projects Done</h5>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">1234</h1>
+                        <i class="fa fa-book fa-4x text-primary mb-4"></i>
+                        <h5 class="mb-3">สาระการเรียนรู้</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?=$count_learning?></h1>
                     </div>
                 </div>
             </div>

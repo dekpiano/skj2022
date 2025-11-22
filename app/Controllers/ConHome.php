@@ -50,6 +50,8 @@ class ConHome extends BaseController
                                         ->orderBy('banner_id', 'DESC')
                                         ->findAll();
         $page_data['ConutStudent'] = $this->StudentModel->CountStudentAll();
+        $page_data['count_personnel'] = $this->PersModel->where('pers_status', 'กำลังใช้งาน')->countAllResults();
+        $page_data['count_learning'] = $this->LearModel->countAllResults();
 
         // Merge data from BaseController (contains visitor stats) with page-specific data
         $data = array_merge($this->data, $page_data);

@@ -198,14 +198,15 @@
                     </a>
                     <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownPersonnel">
                         <ul>
-                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"><i class="fa-solid fa-user-tie me-2"></i>ฝ่ายบริหาร</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-tie me-2"></i>ฝ่ายบริหาร</a></li>
                             <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b><i class="fa-solid fa-book-open me-2"></i>วิชาการ</b></a></li>
                              <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
                              <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b><i class="fa-solid fa-users-cog me-2"></i>งานบุคคล</b></a></li>
                              <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b><i class="fa-solid fa-chart-line me-2"></i>งบประมาณและแผน</b></a></li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน"))?>"><b><i class="fa-solid fa-chalkboard-teacher me-2"></i>กลุ่มสาระการเรียนรู้</b></a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน"))?>"><b><i class="fa-solid fa-chalkboard-teacher me-2"></i>บุคลากร</b></a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"><i class="fa-solid fa-user-tie me-2"></i>ฝ่ายบริหาร</a></li>
                             <?php foreach ($Lear as $key => $v_Lear) : ?>
                                 <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"><i class="fa-solid fa-user-graduate me-2"></i> <?=$v_Lear->lear_namethai;?></a></li>
                             <?php endforeach; ?>
