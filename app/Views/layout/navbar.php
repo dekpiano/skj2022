@@ -194,14 +194,18 @@
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownPersonnel" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-users"></i> บุคลากร
+                        <i class="fa-solid fa-users"></i> หน่วยงาน
                     </a>
                     <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownPersonnel">
                         <ul>
-                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"><i class="fa-solid fa-user-tie me-2"></i>ผู้บริหารสถานศึกษา</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายบริหาร/ผู้บริหารสถานศึกษา"))?>"><i class="fa-solid fa-user-tie me-2"></i>ฝ่ายบริหาร</a></li>
+                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b><i class="fa-solid fa-book-open me-2"></i>วิชาการ</b></a></li>
+                             <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
+                             <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b><i class="fa-solid fa-users-cog me-2"></i>งานบุคคล</b></a></li>
+                             <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b><i class="fa-solid fa-chart-line me-2"></i>งบประมาณและแผน</b></a></li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน"))?>"><b><i class="fa-solid fa-chalkboard-teacher me-2"></i>สายการสอน</b></a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน"))?>"><b><i class="fa-solid fa-chalkboard-teacher me-2"></i>กลุ่มสาระการเรียนรู้</b></a></li>
                             <?php foreach ($Lear as $key => $v_Lear) : ?>
                                 <li><a class="dropdown-item" href="<?=base_url('Personnal/'.urlencode("สายการสอน/").str_replace(" ", "-", urlencode($v_Lear->lear_namethai)))?>"><i class="fa-solid fa-user-graduate me-2"></i> <?=$v_Lear->lear_namethai;?></a></li>
                             <?php endforeach; ?>
@@ -218,17 +222,47 @@
                 <a href="<?=base_url('News')?>" class="nav-item nav-link"><i class="fa-solid fa-newspaper"></i>
                     ประชาสัมพันธ์</a>
 
+
+
+                <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                    ติดต่อ</a> -->
+                <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
+                    หลักสูตรความเป็นเลิศ</a>
+
+                    
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-layer-group"></i> กลุ่มบริหาร
+                        <i class="fa-solid fa-layer-group"></i> SKJ บริการ
                     </a>
                     <div class="dropdown-menu shadow border-0 rounded-0 rounded-bottom m-0 mega-dropdown-menu" aria-labelledby="navbarDropdownAdmin">
                         <ul>
                             <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><b><i class="fa-solid fa-book-open me-2"></i>วิชาการ</b></a></li>
-                            <li><a class="dropdown-item" href="https://academic.skj.ac.th/"><i class="fa-solid fa-graduation-cap me-2"></i>งานวิชาการ</a></li>
+                            <li><a href="https://admission.skj.ac.th/" class="dropdown-item">
+                            <i class="fa-solid fa-user-plus"></i>
+                            รับสมัครนักเรียน</a></li>
+                            <li>
+                                 <a href="https://academic.skj.ac.th/LearningOnline" class="dropdown-item">
+                                    <i class="fa-solid fa-globe"></i> ห้องเรียนออนไลน์
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
+                                                    <i class="fa-solid fa-book"></i>
+                                                    สวนกุหลาบศึกษา
+                                                 </a>                        <a href="<?=base_url('guidance')?>" class="dropdown-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            ทุนการศึกษา
+                        </a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
+                            <i class="fa-solid fa-book-open"></i>
+                            หนังสือรุ่น ส.ก.จ.
+                        </a>
+                            </li>
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
+                           <li><a class="dropdown-item" href="https://general.skj.ac.th/"><b><i class="fa-solid fa-briefcase me-2"></i>งานทั่วไป</b></a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/Booking"><i class="fa-solid fa-house-user me-2"></i>จองอาคารสถานที่</a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/CarBooking"><i class="fa-solid fa-car-side me-2"></i>จองยานพาหนะ</a></li>
                             <li><a class="dropdown-item" href="https://general.skj.ac.th/Repair"><i class="fa-solid fa-screwdriver-wrench me-2"></i>แจ้งซ่อมออนไลน์</a></li>
@@ -236,62 +270,35 @@
                             
                         </ul>
                         <ul>
-                            <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b><i class="fa-solid fa-users-cog me-2"></i>งานบุคคล</b></a></li>
+                             <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><b><i class="fa-solid fa-users-cog me-2"></i>งานบุคคล</b></a></li>
                             <li><a class="dropdown-item" href="https://personnel.skj.ac.th/"><i class="fa-solid fa-user-friends me-2"></i>งานบุคคล</a></li>
                         </ul>
                         <ul>
                             <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><b><i class="fa-solid fa-chart-line me-2"></i>งบประมาณและแผน</b></a></li>
-                            <li><a class="dropdown-item" href="https://budgetplan.skj.ac.th/"><i class="fa-solid fa-money-bill-wave me-2"></i>งบประมาณและแผน</a></li>
+                            <li>
+                                <a href="https://general.skj.ac.th/Procurements" class="dropdown-item">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                            การจัดซื้อจัดจ้าง
+                        </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="#"><b><i class="fa-solid fa-chart-line me-2"></i>สารสนเทศ</b></a></li>
+                            <li>
+                                 <a href="<?=base_url('PageGroup')?>" class="dropdown-item">
+                            <i class="fa-brands fa-facebook"></i>
+                            Fecebook กลุ่ม
+                        </a>
+                            </li>
+                            <li>    <a href="<?=base_url('Email')?>" class="dropdown-item">
+                            <i class="fa-solid fa-envelope"></i> Email
+                            โรงเรียน
+                        </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-
-                <!-- <a href="<?=base_url('Contact')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
-                    ติดต่อ</a> -->
-                <a href="<?=base_url('Course')?>" class="nav-item nav-link"><i class="fa-solid fa-address-book"></i>
-                    หลักสูตรความเป็นเลิศ</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-bars"></i>
-                        SKJ บริการ</a>
-                    <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
-                        <a href="https://admission.skj.ac.th/" class="dropdown-item">
-                            <i class="fa-solid fa-user-plus"></i>
-                            รับสมัครนักเรียน
-                        </a>
-                        <a href="https://academic.skj.ac.th/LearningOnline" class="dropdown-item">
-                            <i class="fa-solid fa-globe"></i> ห้องเรียนออนไลน์
-                        </a>
-                        <a href="<?=base_url('PageGroup')?>" class="dropdown-item">
-                            <i class="fa-brands fa-facebook"></i>
-                            Fecebook กลุ่ม
-                        </a>
-
-                        <a href="<?=base_url('Email')?>" class="dropdown-item">
-                            <i class="fa-solid fa-envelope"></i> Email
-                            โรงเรียน
-                        </a>
-                                                <a href="https://learnsuan.skj.ac.th/" class="dropdown-item">
-                                                    <i class="fa-solid fa-book"></i>
-                                                    สวนกุหลาบศึกษา
-                                                 </a>                        <a href="<?=base_url('guidance')?>" class="dropdown-item">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            ทุนการศึกษา
-                        </a>
-                        <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
-                            <i class="fa-solid fa-book-open"></i>
-                            หนังสือรุ่น ส.ก.จ.
-                        </a>
-                        <a href="https://general.skj.ac.th/Repair" class="dropdown-item">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
-                            แจ้งซ่อมออนไลน์
-                        </a>
-                        <a href="https://general.skj.ac.th/Procurements" class="dropdown-item">
-                            <i class="fa-solid fa-shopping-cart"></i>
-                            การจัดซื้อจัดจ้าง
-                        </a>
-                    </div>
-                </div>
 
             </div>
 
