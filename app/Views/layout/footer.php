@@ -1,36 +1,16 @@
 <!-- Footer Start -->
 
-<!-- Messenger ปลั๊กอินแชท Code -->
-<div id="fb-root"></div>
-
-<!-- Your ปลั๊กอินแชท code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
-
-<script>
-var chatbox = document.getElementById('fb-customer-chat');
-chatbox.setAttribute("page_id", "230288483730783");
-chatbox.setAttribute("attribution", "biz_inbox");
-</script>
-
-<!-- Your SDK code -->
-<script>
-window.fbAsyncInit = function() {
-    FB.init({
-        xfbml: true,
-        version: 'v17.0'
-    });
-};
-
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+<style>
+    .messenger-fab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+    }
+</style>
+<a href="http://m.me/230288483730783" target="_blank" class="btn btn-primary btn-lg-square rounded-circle messenger-fab">
+    <i class="fab fa-facebook-messenger" style="font-size: 24px;"></i>
+</a>
 
 <div class="container-fluid bg-primary2 text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">

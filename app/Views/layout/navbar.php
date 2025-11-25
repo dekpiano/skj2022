@@ -296,6 +296,11 @@
                             โรงเรียน
                         </a>
                             </li>
+                            <li>
+                                <a href="https://documentcenter.skj.ac.th/" class="dropdown-item">
+                                    <i class="bi bi-file-earmark-arrow-down"></i> โหลดเอกสาร
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
