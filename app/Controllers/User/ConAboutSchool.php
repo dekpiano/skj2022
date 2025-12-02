@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Models\NewsModel;
 use App\Models\BannerModel;
 use App\Libraries\Datethai;
@@ -43,10 +44,10 @@ class ConAboutSchool extends BaseController
                                
         $data = array_merge($this->data, $page_data);
       
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageAboutSchool/PageAboutSchoolDetail', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+        .view('User/layout/navbar', $data)
+        .view('User/PageAboutSchool/PageAboutSchoolDetail', $data)
+        .view('User/layout/footer', $data);
     }
 
 }

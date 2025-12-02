@@ -37,18 +37,18 @@
 <!-- <img class="img-fluid" data-src="<?=base_url('uploads/banner/backtoschool.png')?>" alt="" srcset=""> -->
 
 <!-- Carousel Start -->
-<?= $this->include('Home/PageHomeCarousel') ?>
+<?= $this->include('User/Home/PageHomeCarousel') ?>
 <!-- Carousel End -->
 <!-- Facts Start -->
-<?= $this->include('Home/PageHomeCounter')?>
+<?= $this->include('User/Home/PageHomeCounter')?>
 <!-- Facts End -->
 
 <!-- Facts Start -->
-<?= $this->include('Home/PageHomeRecommend')?>
+<?= $this->include('User/Home/PageHomeRecommend')?>
 <!-- Facts End -->
 
 <!-- News Start -->
-<?= $this->include('Home/PageHomeNews') ?>
+<?= $this->include('User/Home/PageHomeNews') ?>
 <!-- News End -->
 
 <section>
@@ -73,7 +73,7 @@
 </section>
 
 <!-- NewsReward Start -->
-<?= $this->include('Home/PageHomeNewsReward') ?>
+<?= $this->include('User/Home/PageHomeNewsReward') ?>
 <!-- NewsReward End -->
 
 
@@ -81,7 +81,7 @@
 
 
 <!-- PageHomeDirector Start -->
-<?= $this->include('Home/PageHomeRobot') ?>
+<?= $this->include('User/Home/PageHomeRobot') ?>
 <!-- PageHomeDirector End -->
 
 
@@ -90,10 +90,10 @@
 <!-- PageHomeDirector End -->
 
 
-<?= $this->include('Home/PageGroupSKJ') ?>
+<?= $this->include('User/Home/PageGroupSKJ') ?>
 
 <!-- Slogan Start -->
-<?= $this->include('Home/PageHomeSlogan') ?>
+<?= $this->include('User/Home/PageHomeSlogan') ?>
 <!-- Slogan End -->
 
 
@@ -103,7 +103,7 @@
 
 
 <!-- SKJstdio Start -->
-<?= $this->include('Home/PageHomeSKJstdio') ?>
+<?= $this->include('User/Home/PageHomeSKJstdio') ?>
 <!-- SKJstdio End -->
 
 <!-- Welcome Modal -->

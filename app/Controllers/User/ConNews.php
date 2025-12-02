@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
@@ -70,10 +71,10 @@ class ConNews extends BaseController
       
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageNews/PageNewsMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PageNews/PageNewsMain', $data)
+                .view('User/layout/footer', $data);
         
     }
 
@@ -109,7 +110,7 @@ class ConNews extends BaseController
         $limit = 4; 
         $page = $limit * $this->request->getVar('page');
         $data['NewsAll'] = $this->fetchData($limit,$page);
-        return view('PageNews/PageNewsLoadMore', $data);
+        return view('User/PageNews/PageNewsLoadMore', $data);
         //print_r($data['NewsAll']);
     }
 
@@ -137,10 +138,10 @@ class ConNews extends BaseController
 
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageNews/PageNewsDetail', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PageNews/PageNewsDetail', $data)
+                .view('User/layout/footer', $data);
     }
 
     public function NewsCountRead(){
@@ -172,7 +173,7 @@ class ConNews extends BaseController
         ->orderBy('banner_id', 'DESC')
         ->findAll();
 
-        return  view('PagePr/PagePrMain',$data);
+        return  view('User/PagePr/PagePrMain',$data);
                 
     }
 }

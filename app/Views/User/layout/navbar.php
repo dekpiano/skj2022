@@ -257,9 +257,15 @@
                             </li>
                             <li>
                                 <a href="<?=base_url('Yearbook')?>" class="dropdown-item">
-                            <i class="fa-solid fa-book-open"></i>
-                            หนังสือรุ่น ส.ก.จ.
-                        </a>
+                                    <i class="fa-solid fa-book-open"></i>
+                                    หนังสือรุ่น ส.ก.จ.
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://sites.google.com/skj.ac.th/skj68/home" target="_blank" class="dropdown-item">
+                                    <i class="fa-solid fa-file-export"></i>
+                                    การประกันคุณภาพภายนอก
+                                </a>
                             </li>
                         </ul>
                         <ul>

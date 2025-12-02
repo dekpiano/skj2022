@@ -39,34 +39,34 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'ConHome::index');
-$routes->post('/Admin/News/uploadImage', 'ConAdminNews::uploadImage');
-$routes->get('/Admin/News/uploadImage', 'ConAdminNews::uploadImage');
-$routes->get('About/(:any)', 'ConAboutSchool::AboutDetail/$1');
+$routes->get('/', 'User\ConHome::index');
+$routes->post('/Admin/News/uploadImage', 'Admin\ConAdminNews::uploadImage');
+$routes->get('/Admin/News/uploadImage', 'Admin\ConAdminNews::uploadImage');
+$routes->get('About/(:any)', 'User\ConAboutSchool::AboutDetail/$1');
 
-$routes->match(['get', 'post'],'News', 'ConNews::NewsMain');
-$routes->get('News/Detail/(:any)', 'ConNews::NewsDetail/$1');
-$routes->match(['get', 'post'],'News/loadMoreNews', 'ConNews::loadMoreNews');
-$routes->match(['get', 'post'],'CountReadNews','ConNews::NewsCountRead');
-$routes->get('news-suggestions', 'ConNews::newsSuggestions');
-$routes->get('pr', 'ConNews::pr');
+$routes->match(['get', 'post'],'News', 'User\ConNews::NewsMain');
+$routes->get('News/Detail/(:any)', 'User\ConNews::NewsDetail/$1');
+$routes->match(['get', 'post'],'News/loadMoreNews', 'User\ConNews::loadMoreNews');
+$routes->match(['get', 'post'],'CountReadNews','User\ConNews::NewsCountRead');
+$routes->get('news-suggestions', 'User\ConNews::newsSuggestions');
+$routes->get('pr', 'User\ConNews::pr');
 
-$routes->get('Personnal/(:any)/(:any)','ConPersonnal::PersonnalMain/$1/$2');
+$routes->get('Personnal/(:any)/(:any)','User\ConPersonnal::PersonnalMain/$1/$2');
 
-$routes->get('Contact', 'ConContact::index');
-$routes->get('PageGroup', 'ConHome::PageGroup');
-$routes->get('guidance', 'ConGuidance::index');
-$routes->get('Course', 'ConCourse::index');
-$routes->get('Yearbook', 'ConYearbook::index');
-$routes->get('Email', 'ConEmail::index');
-$routes->get('Procurements', 'ConProcurements::index');
+$routes->get('Contact', 'User\ConContact::index');
+$routes->get('PageGroup', 'User\ConHome::PageGroup');
+$routes->get('guidance', 'User\ConGuidance::index');
+$routes->get('Course', 'User\ConCourse::index');
+$routes->get('Yearbook', 'User\ConYearbook::index');
+$routes->get('Email', 'User\ConEmail::index');
+$routes->get('Procurements', 'User\ConProcurements::index');
 // Login admin
-$routes->match(['get', 'post'], 'Login/LoginAdmin', 'ConLogin::LoginAdmin');
+$routes->match(['get', 'post'], 'Login/LoginAdmin', 'User\ConLogin::LoginAdmin');
 // Login admin for Google
-$routes->get('SkjMain/googleLogin', 'ConLogin::googleLogin');
-$routes->get('SkjMain/googleCallback', 'ConLogin::googleCallback');
+$routes->get('SkjMain/googleLogin', 'User\ConLogin::googleLogin');
+$routes->get('SkjMain/googleCallback', 'User\ConLogin::googleCallback');
 // Logout
-$routes->get('logout', 'ConLogin::LogoutAdmin');
+$routes->get('logout', 'User\ConLogin::LogoutAdmin');
 
 $routes->group('Admin', ['filter' => 'permission', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
     $routes->get('Dashboard', 'ConAdminDashboard::index');

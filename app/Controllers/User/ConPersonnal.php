@@ -1,5 +1,6 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Libraries\Datethai;
 
 use App\Models\PositionModel;
@@ -75,10 +76,10 @@ class ConPersonnal extends BaseController
 
         //echo "<pre>";print_r($page_data['Pers']); exit();
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PagePersonnal/PagePersonnal', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PagePersonnal/PagePersonnal', $data)
+                .view('User/layout/footer', $data);
         
     }
 

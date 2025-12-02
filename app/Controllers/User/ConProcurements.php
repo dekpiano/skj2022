@@ -1,5 +1,6 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Libraries\Datethai;
 
 use App\Models\PositionModel;
@@ -37,10 +38,10 @@ class ConProcurements extends BaseController
 
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageProcurements/PageProcurementsMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PageProcurements/PageProcurementsMain', $data)
+                .view('User/layout/footer', $data);
         
     }
 

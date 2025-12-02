@@ -1,5 +1,6 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Libraries\Datethai;
 
 use App\Models\PositionModel;
@@ -7,7 +8,7 @@ use App\Models\LearningModel;
 use App\Models\PersonnalModel;
 use App\Models\AboutModel;
 
-class ConGuidance extends BaseController
+class ConCourse extends BaseController
 {
     public function __construct(){
         parent::__construct();
@@ -31,16 +32,16 @@ class ConGuidance extends BaseController
     public function index(){
         $page_data = $this->DataMain();
        
-        $page_data['title'] = "ทุนการศึกษา";
-        $page_data['description'] = "รายละเอียดข้อมูลทุนการศึกษา";
+        $page_data['title'] = "หลักสูตรความเป็นเลิศ";
+        $page_data['description'] = "รายละเอียดข้อมูลหลักสูตรความเป็นเลิศ";
         $page_data['banner'] = '';
 
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageGuidance/PageGuidanceMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PageCourse/PageCourseMain', $data)
+                .view('User/layout/footer', $data);
         
     }
 

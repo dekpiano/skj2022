@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use CodeIgniter\Controller;
 use App\Models\LoginModel;
 use App\Models\PersonnalModel;

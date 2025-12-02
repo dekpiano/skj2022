@@ -1,5 +1,6 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Libraries\Datethai;
 
 use App\Models\PositionModel;
@@ -37,10 +38,10 @@ class ConContact extends BaseController
 
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageContact/PageContactMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+        .view('User/layout/navbar', $data)
+        .view('User/PageContact/PageContactMain', $data)
+        .view('User/layout/footer', $data);
         
     }
 

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User;
+use App\Controllers\BaseController;
 use App\Models\NewsModel;
 use App\Models\BannerModel;
 use App\Libraries\Datethai;
@@ -56,10 +57,10 @@ class ConHome extends BaseController
         // Merge data from BaseController (contains visitor stats) with page-specific data
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('Home/PageHomeMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/Home/PageHomeMain', $data)
+                .view('User/layout/footer', $data);
     }
 
     function PageGroup(){
@@ -70,10 +71,10 @@ class ConHome extends BaseController
         // Merge data from BaseController (contains visitor stats) with page-specific data
         $data = array_merge($this->data, $page_data);
 
-        return  view('layout/header',$data)
-                .view('layout/navbar', $data)
-                .view('PageGroup/PageGroupMain', $data)
-                .view('layout/footer', $data);
+        return  view('User/layout/header',$data)
+                .view('User/layout/navbar', $data)
+                .view('User/PageGroup/PageGroupMain', $data)
+                .view('User/layout/footer', $data);
     }
 
 }
